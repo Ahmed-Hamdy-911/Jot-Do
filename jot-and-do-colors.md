@@ -5,6 +5,16 @@
 
 ---
 
+## Splash's colors
+
+a724ec 
+9d33ef
+8c4af4
+8059f8
+7866fa
+
+---
+
 ## 🗒️ Colors of Notes
 
 ### Row 1:

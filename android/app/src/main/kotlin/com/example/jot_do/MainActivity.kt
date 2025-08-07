@@ -1,4 +1,4 @@
-package com.example.jot_do
+package com.eng.tito.jot_do
 
 import io.flutter.embedding.android.FlutterActivity
 
