@@ -55,15 +55,15 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Jot & Do`
+  /// `Jot&Do`
   String get appName {
-    return Intl.message('Jot & Do', name: 'appName', desc: '', args: []);
+    return Intl.message('Jot&Do', name: 'appName', desc: '', args: []);
   }
 
-  /// `Welcome to Jot & Do`
+  /// `Welcome to Jot&Do`
   String get splashText1 {
     return Intl.message(
-      'Welcome to Jot & Do',
+      'Welcome to Jot&Do',
       name: 'splashText1',
       desc: '',
       args: [],
