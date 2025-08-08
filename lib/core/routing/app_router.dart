@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/features/splash/views/splash_view.dart';
+import 'package:jot_do/features/splash/presentation/views/splash_view.dart';
 
 import 'app_routes.dart';
 
