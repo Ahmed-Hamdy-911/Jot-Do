@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import '../../../generated/l10n.dart';
+import '../../generated/l10n.dart';
 
-class AppConstant {
+class AppConstants {
   static const mainLightColor = Color(0xff7e66ee);
   static const mainDarkColor = Color(0xffb5b2f4);
 
@@ -44,4 +44,24 @@ class AppConstant {
     useMaterial3: true,
     fontFamily: 'Cairo',
   );
+
+  // Images
+
+  // splash view
+  static const String imageSplashPath = 'assets/icons/jot&do_icon.png';
+
+  static List<Color> splashColorsList = const [
+    Color(0xffa724ec),
+    Color(0xff9d33ef),
+    Color(0xff8c4af4),
+    Color(0xff8059f8),
+  ];
+
+  // Onboarding view
+  static const String imageOnBoardingPath1 =
+      'assets/images/onBoarding/on_boarding1.png';
+  static const String imageOnBoardingPath2 =
+      'assets/images/onBoarding/on_boarding2.png';
+  static const String imageOnBoardingPath3 =
+      'assets/images/onBoarding/on_boarding3.png';
 }

@@ -22,13 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "GetStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "appName": MessageLookupByLibrary.simpleMessage("Jot&Do"),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
-      "Write down everything on your mind and keep it all in one place.",
+      "Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.",
     ),
     "onBoardingDesc2": MessageLookupByLibrary.simpleMessage(
-      "Select start and end dates to never miss a task or note.",
+      "Categorize, color-code, and set dates to keep your notes neat and easy to find.",
     ),
     "onBoardingDesc3": MessageLookupByLibrary.simpleMessage(
       "Save your data locally or back it up to the cloud, all in one tap.",
@@ -40,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Set Deadlines Easily",
     ),
     "onBoardingTitle3": MessageLookupByLibrary.simpleMessage("Sync Your Notes"),
+    "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "splashText1": MessageLookupByLibrary.simpleMessage("Welcome to Jot&Do"),
     "splashText2": MessageLookupByLibrary.simpleMessage("Plan. Note. Do."),
   };

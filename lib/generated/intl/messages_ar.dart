@@ -22,13 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "GetStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
     "appName": MessageLookupByLibrary.simpleMessage("دوّن و نفذ"),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
-      "دوّن كل ما يدور في ذهنك واحتفظ به في مكان واحد.",
+      "لا تدع فكرة تفلت منك — دوّن أفكارك في ثوانٍ، في أي مكان وأي وقت.",
     ),
     "onBoardingDesc2": MessageLookupByLibrary.simpleMessage(
-      "اختر تاريخ البدء والانتهاء حتى لا تفوّت أي مهمة.",
+      "صنّف ملاحظاتك، أضف ألوانًا، وحدد التواريخ لتبقى منظمة وسهلة الوصول.",
     ),
     "onBoardingDesc3": MessageLookupByLibrary.simpleMessage(
       "احفظ بياناتك محليًا أو قم بعمل نسخة احتياطية إلى السحابة بضغطة واحدة.",
@@ -38,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "حدد المواعيد بسهولة",
     ),
     "onBoardingTitle3": MessageLookupByLibrary.simpleMessage("زامن ملاحظاتك"),
+    "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "splashText1": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بك في دوّن و نفذ",
     ),

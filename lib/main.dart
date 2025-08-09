@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/constants/colors/constant.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jot_do/core/constants/constant.dart';
 import 'package:jot_do/core/routing/app_router.dart';
 import 'package:jot_do/core/routing/app_routes.dart';
+import 'core/blocObserver/bloc_observer.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -15,12 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Jot&Do',
       debugShowCheckedModeBanner: false,
-      theme: AppConstant.lightTheme,
-      darkTheme: AppConstant.darkTheme,
+      theme: AppConstants.lightTheme,
+      darkTheme: AppConstants.darkTheme,
       themeMode: ThemeMode.system,
-      localeResolutionCallback: AppConstant.localeResolutionCallback,
-      supportedLocales: AppConstant.supportedLocales,
-      localizationsDelegates: AppConstant.localizationsDelegates,
+      localeResolutionCallback: AppConstants.localeResolutionCallback,
+      supportedLocales: AppConstants.supportedLocales,
+      localizationsDelegates: AppConstants.localizationsDelegates,
       initialRoute: AppRoutes.splash,
       onGenerateRoute: AppRouter.onGenerateRoute,
     );

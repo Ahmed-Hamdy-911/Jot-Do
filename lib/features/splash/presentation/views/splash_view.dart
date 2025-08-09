@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:jot_do/core/constants/constant.dart';
 import 'package:jot_do/generated/l10n.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,16 +18,11 @@ class SplashView extends StatelessWidget {
       body: Container(
         height: height,
         width: width,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             gradient: RadialGradient(
           center: Alignment.center,
           radius: 1.3,
-          colors: [
-            Color(0xffa724ec),
-            Color(0xff9d33ef),
-            Color(0xff8c4af4),
-            Color(0xff8059f8),
-          ],
+          colors: AppConstants.splashColorsList,
         )),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
