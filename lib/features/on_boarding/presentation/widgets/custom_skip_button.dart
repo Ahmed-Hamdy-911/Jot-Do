@@ -20,18 +20,13 @@ class CustomSkipButton extends StatelessWidget {
           top: 20,
           end: 16,
         ),
-        padding: EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          color: Colors.grey[300]!.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(30),
-        ),
         child: TextButton(
             onPressed: onPressed,
             child: Text(
               S.of(context).skip,
               style: TextStyle(
                 color: AppConstants.colorScheme,
-                fontSize: 18,
+                fontSize: 16,
                 decoration: TextDecoration.underline,
                 decorationColor: AppConstants.colorScheme,
                 fontWeight: FontWeight.bold,

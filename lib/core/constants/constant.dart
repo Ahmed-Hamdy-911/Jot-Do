@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 
 import '../../generated/l10n.dart';
 
@@ -9,6 +10,7 @@ class AppConstants {
 
   static const colorScheme = Colors.purple;
 
+// localization
   static const supportedLocales = [
     Locale('en', ''),
     Locale('ar', ''),
@@ -31,6 +33,10 @@ class AppConstants {
     }
     return supportedLocales.first;
   };
+
+  static bool isArabic() {
+    return Intl.getCurrentLocale().startsWith('ar');
+  }
 
   static ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: colorScheme),
