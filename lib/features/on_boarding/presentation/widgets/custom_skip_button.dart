@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jot_do/generated/l10n.dart';
-
 import '../../../../core/constants/constant.dart';
-import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
 
 class CustomSkipButton extends StatelessWidget {
   const CustomSkipButton({

@@ -22,7 +22,62 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "already_have_account": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("Jot&Do"),
+    "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
+    "back_to_login": MessageLookupByLibrary.simpleMessage("Back to Login"),
+    "confirm_password": MessageLookupByLibrary.simpleMessage(
+      "Confirm Password",
+    ),
+    "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
+    "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
+    "dont_have_account": MessageLookupByLibrary.simpleMessage(
+      "Don’t have an account?",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
+      "Enter your password again",
+    ),
+    "enter_email": MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "enter_name": MessageLookupByLibrary.simpleMessage("Enter your name"),
+    "enter_password": MessageLookupByLibrary.simpleMessage(
+      "Enter your password",
+    ),
+    "error_invalid_email": MessageLookupByLibrary.simpleMessage(
+      "Invalid email address",
+    ),
+    "error_name_contains_special_characters":
+        MessageLookupByLibrary.simpleMessage(
+          "Name cannot contain special characters",
+        ),
+    "error_name_starts_with_number": MessageLookupByLibrary.simpleMessage(
+      "Name cannot start with a number",
+    ),
+    "error_passwords_not_match": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
+    "error_required_field": MessageLookupByLibrary.simpleMessage(
+      "This field is required",
+    ),
+    "error_short_name": MessageLookupByLibrary.simpleMessage(
+      "Name must be at least 3 characters",
+    ),
+    "error_short_password": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 6 characters",
+    ),
+    "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+    "logging_in": MessageLookupByLibrary.simpleMessage("Logging in..."),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "login_excited_text": MessageLookupByLibrary.simpleMessage(
+      "Happy to see you again!",
+    ),
+    "login_to_continue": MessageLookupByLibrary.simpleMessage(
+      "Login to continue",
+    ),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
       "Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.",
     ),
@@ -39,8 +94,36 @@ class MessageLookup extends MessageLookupByLibrary {
       "Set Deadlines Easily",
     ),
     "onBoardingTitle3": MessageLookupByLibrary.simpleMessage("Sync Your Notes"),
+    "or_continue_with": MessageLookupByLibrary.simpleMessage(
+      "Or continue with",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "register_excited_text": MessageLookupByLibrary.simpleMessage(
+      "Create your account and unlock exclusive features.",
+    ),
+    "registering": MessageLookupByLibrary.simpleMessage("Registering..."),
+    "remember_me": MessageLookupByLibrary.simpleMessage("Remember Me"),
+    "resend_code": MessageLookupByLibrary.simpleMessage("Resend Code?"),
+    "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "send": MessageLookupByLibrary.simpleMessage("Send"),
+    "send_password_reset": MessageLookupByLibrary.simpleMessage(
+      "We will send you an email to change your password.",
+    ),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "splashText1": MessageLookupByLibrary.simpleMessage("Welcome to Jot&Do"),
     "splashText2": MessageLookupByLibrary.simpleMessage("Plan. Note. Do."),
+    "success_login": MessageLookupByLibrary.simpleMessage("Login successful"),
+    "success_registration": MessageLookupByLibrary.simpleMessage(
+      "Registration successful",
+    ),
+    "verify_email_message": MessageLookupByLibrary.simpleMessage(
+      "We have sent you a link to verify your email address.\n to ",
+    ),
+    "verify_email_title": MessageLookupByLibrary.simpleMessage(
+      "Verify Your Email...",
+    ),
+    "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
   };
 }

@@ -42,6 +42,11 @@ class AppConstants {
     colorScheme: ColorScheme.fromSeed(seedColor: colorScheme),
     useMaterial3: true,
     fontFamily: 'Cairo',
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      elevation: 0,
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -49,6 +54,11 @@ class AppConstants {
         seedColor: mainDarkColor, brightness: Brightness.dark),
     useMaterial3: true,
     fontFamily: 'Cairo',
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      elevation: 0,
+    ),
   );
 
   // Images

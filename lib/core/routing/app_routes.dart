@@ -24,7 +24,7 @@ class AppRoutes {
   static const String notes = '/notes';
   static const String noteDetails = '/note-details';
   static const String editProfile = '/edit-profile';
-  static const String changePassword = '/change-password';
+  static const String forgotPassword = '/forgot-password';
   static const String resetPassword = '/reset-password';
   static const String verifyEmail = '/verify-email';
   static const String onBoarding = '/onboarding';
