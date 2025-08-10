@@ -27,7 +27,7 @@ class CustomTextAndTextButton extends StatelessWidget {
           style: TextStyle(
             fontSize: MediaQuery.sizeOf(context).width < 600
                 ? MediaQuery.sizeOf(context).width * 0.035
-                : MediaQuery.sizeOf(context).width * 0.07,
+                : MediaQuery.sizeOf(context).width * 0.03,
             color: AppConstants.mainLightColor,
           ),
         ),

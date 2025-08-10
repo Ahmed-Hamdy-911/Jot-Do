@@ -60,31 +60,33 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             return Scaffold(
               floatingActionButton: CustomNextButton(
                   pages: _pages, pageController: _pageController),
-              body: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: AlignmentDirectional.centerStart,
-                      end: AlignmentDirectional.centerEnd,
-                      colors: [
-                        Color(0xffa724ec),
-                        Colors.white,
-                      ]),
-                ),
-                child: Column(
-                  children: [
-                    CustomSkipButton(onPressed: () {
-                      context.read<OnBoardingCubit>().skipOnBoarding();
-                    }),
-                    PageViewBuilder(
-                        pageController: _pageController, pages: _pages),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    CustomSmoothPageIndicator(
-                        pageController: _pageController, pages: _pages),
-                  ],
+              body: SingleChildScrollView(
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: AlignmentDirectional.centerStart,
+                        end: AlignmentDirectional.centerEnd,
+                        colors: [
+                          Color(0xffa724ec),
+                          Colors.white,
+                        ]),
+                  ),
+                  child: Column(
+                    children: [
+                      CustomSkipButton(onPressed: () {
+                        context.read<OnBoardingCubit>().skipOnBoarding();
+                      }),
+                      PageViewBuilder(
+                          pageController: _pageController, pages: _pages),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      CustomSmoothPageIndicator(
+                          pageController: _pageController, pages: _pages),
+                    ],
+                  ),
                 ),
               ),
             );

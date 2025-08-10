@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
 import '../../../../core/widgets/custom_text_form.dart';
 import '../../../../generated/l10n.dart';
 
@@ -21,14 +22,12 @@ class CustomEmailField extends StatelessWidget {
           style: TextStyle(
             fontSize: MediaQuery.sizeOf(context).width < 600
                 ? MediaQuery.sizeOf(context).width * 0.04
-                : MediaQuery.sizeOf(context).width * 0.08,
+                : MediaQuery.sizeOf(context).width * 0.03,
             color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.01,
-        ),
+       const SmallSpace(),
         CustomTextFormField(
           hintText: S.of(context).enter_email,
           controller: _emailController,

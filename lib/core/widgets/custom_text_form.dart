@@ -90,12 +90,14 @@ class CustomTextFormField extends StatelessWidget {
       enabled: enabled,
       readOnly: readOnly,
       maxLength: maxLength,
+      
       decoration: InputDecoration(
+        
         filled: filled,
         fillColor: fillColor,
         labelText: labelText,
         labelStyle: labelStyle,
-        contentPadding: contentPadding,
+        contentPadding: contentPadding ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         hintText: hintText,
         hintStyle: customHintStyle ??
             TextStyle(

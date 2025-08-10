@@ -42,6 +42,7 @@ class AppConstants {
     colorScheme: ColorScheme.fromSeed(seedColor: colorScheme),
     useMaterial3: true,
     fontFamily: 'Cairo',
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
@@ -54,6 +55,7 @@ class AppConstants {
         seedColor: mainDarkColor, brightness: Brightness.dark),
     useMaterial3: true,
     fontFamily: 'Cairo',
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,

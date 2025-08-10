@@ -7,6 +7,7 @@ import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../core/widgets/custom_text_and_text_button.dart';
 import '../../../../../core/widgets/custom_text_form.dart';
+import '../../../../on_boarding/presentation/widgets/custom_skip_button.dart';
 import '../../widgets/social_auth_widget.dart';
 
 class LoginView extends StatefulWidget {
@@ -24,6 +25,16 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          CustomSkipButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.home);
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -32,7 +43,6 @@ class _LoginViewState extends State<LoginView> {
               key: formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Center(
                     child: Text(
@@ -54,9 +64,9 @@ class _LoginViewState extends State<LoginView> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
-                      fontSize: MediaQuery.sizeOf(context).width < 600
-                          ? MediaQuery.sizeOf(context).width * 0.04
-                          : MediaQuery.sizeOf(context).width * 0.08,
+                           fontSize: MediaQuery.sizeOf(context).width < 600
+                ? MediaQuery.sizeOf(context).width * 0.04
+                : MediaQuery.sizeOf(context).width * 0.03,
                     ),
                   ),
                   SmallSpace(),
@@ -98,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
                               color: AppConstants.colorScheme,
                               fontSize: MediaQuery.sizeOf(context).width < 600
                                   ? MediaQuery.sizeOf(context).width * 0.035
-                                  : MediaQuery.sizeOf(context).width * 0.07,
+                                  : MediaQuery.sizeOf(context).width * 0.03,
                             ),
                           ),
                         ],
@@ -116,7 +126,7 @@ class _LoginViewState extends State<LoginView> {
                             color: Colors.red.shade900,
                             fontSize: MediaQuery.sizeOf(context).width < 600
                                 ? MediaQuery.sizeOf(context).width * 0.035
-                                : MediaQuery.sizeOf(context).width * 0.07,
+                                : MediaQuery.sizeOf(context).width * 0.03,
                           ),
                         ),
                       ),
@@ -140,7 +150,7 @@ class _LoginViewState extends State<LoginView> {
                       textButtonTitle: S.of(context).register,
                       fontSize: MediaQuery.sizeOf(context).width < 600
                           ? MediaQuery.sizeOf(context).width * 0.035
-                          : MediaQuery.sizeOf(context).width * 0.07,
+                          : MediaQuery.sizeOf(context).width * 0.03,
                       onPressed: () {
                         Navigator.pushNamed(context, AppRoutes.register);
                       })
@@ -174,7 +184,7 @@ class CustomOrWithWidget extends StatelessWidget {
           S.of(context).or_continue_with,
           style: TextStyle(
             fontSize: 16,
-            // textColor: AppConstants.colorScheme,
+            color: Colors.grey.shade600,
           ),
         ),
         Expanded(
