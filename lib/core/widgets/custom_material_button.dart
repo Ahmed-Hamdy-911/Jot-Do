@@ -36,10 +36,9 @@ class CustomMaterialButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
           side: customBorderSide ?? BorderSide.none,
         ),
-        height: screenWidth < 600 ? screenWidth * 0.13 : screenWidth * 0.06,
+        height: screenWidth < 600 ? screenHeight * 0.06 : screenHeight * 0.08,
         minWidth: minWidth ?? screenWidth,
         color: color ?? AppConstants.colorScheme,
-        // textColor: Colors.white,
         child: isLoading == true
             ? CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
