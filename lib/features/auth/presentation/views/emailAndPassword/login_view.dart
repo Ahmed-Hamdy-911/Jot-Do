@@ -21,7 +21,11 @@ class LoginView extends StatelessWidget {
         actions: [
           CustomSkipButton(
             onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.home);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.home,
+                (route) => false,
+              );
             },
           ),
         ],

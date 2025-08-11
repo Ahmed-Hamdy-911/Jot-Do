@@ -7,7 +7,7 @@ class CustomSkipButton extends StatelessWidget {
     super.key,
     required this.onPressed,
   });
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Align(
