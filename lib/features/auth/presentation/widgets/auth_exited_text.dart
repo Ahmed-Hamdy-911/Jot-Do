@@ -18,6 +18,7 @@ class AuthExcitedText extends StatelessWidget {
         children: [
           Text(
             title,
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: AppConstants.colorScheme,
               fontWeight: FontWeight.bold,

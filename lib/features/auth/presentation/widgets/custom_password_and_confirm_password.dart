@@ -20,15 +20,15 @@ class _CustomPasswordAndConfirmPasswordWidgetState
     extends State<CustomPasswordAndConfirmPasswordWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    var screenWidth = MediaQuery.sizeOf(context).width;
+      return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           S.of(context).password,
           style: TextStyle(
-            fontSize: MediaQuery.sizeOf(context).width < 600
-                ? MediaQuery.sizeOf(context).width * 0.04
-                : MediaQuery.sizeOf(context).width * 0.08,
+            fontSize:
+                screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
             color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
@@ -58,9 +58,8 @@ class _CustomPasswordAndConfirmPasswordWidgetState
         Text(
           S.of(context).confirm_password,
           style: TextStyle(
-            fontSize: MediaQuery.sizeOf(context).width < 600
-                ? MediaQuery.sizeOf(context).width * 0.04
-                : MediaQuery.sizeOf(context).width * 0.08,
+            fontSize:
+                screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
             color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
