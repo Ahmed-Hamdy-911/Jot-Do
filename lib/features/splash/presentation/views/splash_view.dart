@@ -4,7 +4,6 @@ import 'package:jot_do/core/constants/constant.dart';
 import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
 import 'package:jot_do/generated/l10n.dart';
 import 'package:page_transition/page_transition.dart';
-
 import '../../../on_boarding/presentation/views/on_boarding_view.dart';
 
 class SplashView extends StatelessWidget {
@@ -23,7 +22,7 @@ class SplashView extends StatelessWidget {
         decoration: BoxDecoration(
             gradient: RadialGradient(
           center: Alignment.center,
-          radius: 1.3,
+          radius: 1.4,
           colors: AppConstants.splashColorsList,
         )),
         child: LayoutBuilder(builder: (context, constraints) {
@@ -33,62 +32,59 @@ class SplashView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    flex: 1,
-                    child: Center(
-                      child: AnimatedSplashScreen(
-                        nextScreen: const OnBoardingView(),
-                        backgroundColor: Colors.transparent,
-                        curve: Curves.bounceOut,
-                        splashTransition: SplashTransition.sizeTransition,
-                        pageTransitionType: PageTransitionType.fade,
-                        duration: 3000,
-                        splashIconSize: screenWidth,
-                        splash: AnimatedCrossFade(
-                          crossFadeState: CrossFadeState.showFirst,
-                          alignment: AlignmentDirectional.center,
-                          duration: Duration(milliseconds: 1000),
-                          firstChild: Image.asset(
-                            AppConstants.imageSplashPath,
-                            width: screenWidth * 0.6,
-                          ),
-                          secondChild: Container(
-                            color: Colors.transparent,
-                          ),
+                  SizedBox(
+                    width: screenWidth * 0.25,
+                    child: AnimatedSplashScreen(
+                      nextScreen: const OnBoardingView(),
+                      backgroundColor: Colors.transparent,
+                      curve: Curves.bounceOut,
+                      splashTransition: SplashTransition.sizeTransition,
+                      pageTransitionType: PageTransitionType.fade,
+                      duration: 3000,
+                      splashIconSize: screenWidth * 0.25,
+                      splash: AnimatedCrossFade(
+                        crossFadeState: CrossFadeState.showFirst,
+                        alignment: Alignment.center,
+                        duration: const Duration(milliseconds: 1000),
+                        firstChild: Image.asset(
+                          AppConstants.imageSplashPath,
+                          fit: BoxFit.contain,
+                        ),
+                        secondChild: Container(
+                          color: Colors.transparent,
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: TweenAnimationBuilder<double>(
-                      tween: Tween<double>(begin: 0, end: 1),
-                      duration: const Duration(seconds: 1),
-                      builder: (context, value, child) {
-                        return Opacity(
-                          opacity: value,
-                          child: child,
-                        );
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            S.of(context).appName,
-                            style: TextStyle(
-                              fontSize: screenWidth * 0.104,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                  TweenAnimationBuilder<double>(
+                    tween: Tween<double>(begin: 0, end: 1),
+                    duration: const Duration(seconds: 1),
+                    builder: (context, value, child) {
+                      return Opacity(
+                        opacity: value,
+                        child: child,
+                      );
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.of(context).appName,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.07,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
-                          Text(S.of(context).splashText2,
-                              style: TextStyle(
-                                fontSize: screenWidth * 0.05,
-                                color: Colors.white,
-                              )),
-                        ],
-                      ),
+                        ),
+                        Text(
+                          S.of(context).splashText2,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.035,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

@@ -80,9 +80,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       }),
                       PageViewBuilder(
                           pageController: _pageController, pages: _pages),
-                      SizedBox(
-                        height: 50,
-                      ),
                       CustomSmoothPageIndicator(
                           pageController: _pageController, pages: _pages),
                     ],

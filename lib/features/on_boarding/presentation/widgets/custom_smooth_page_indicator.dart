@@ -18,7 +18,7 @@ class CustomSmoothPageIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.08,
       width: MediaQuery.of(context).size.width,
       child: Center(
         child: SmoothPageIndicator(
@@ -31,8 +31,8 @@ class CustomSmoothPageIndicator extends StatelessWidget {
           count: _pages.length,
           effect: WormEffect(
               spacing: 8.0,
-              dotHeight: 15,
-              dotWidth: 15,
+              dotHeight: 12,
+              dotWidth: 12,
               dotColor: Colors.white70,
               activeDotColor: AppConstants.colorScheme),
         ),

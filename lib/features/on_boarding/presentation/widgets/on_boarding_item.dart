@@ -5,7 +5,6 @@ Widget buildOnBoardingPage(
   required String title,
   required String description,
   required String image,
-
 }) {
   final screenWidth = MediaQuery.of(context).size.width;
 
@@ -14,12 +13,8 @@ Widget buildOnBoardingPage(
 
   if (screenWidth < 500) {
     // Mobile
-    titleFontSize = 24;
-    descriptionFontSize = 16;
-  } else if (screenWidth < 590) {
-    // Tablet
-    titleFontSize = 22;
-    descriptionFontSize = 15;
+    titleFontSize = screenWidth * 0.05;
+    descriptionFontSize = screenWidth * 0.04;
   } else if (screenWidth < 1024) {
     // Tablet
     titleFontSize = 32;
@@ -68,7 +63,6 @@ Widget buildOnBoardingPage(
                         color: Colors.black54,
                       ),
                     ),
-                   
                   ],
                 ),
               ),
@@ -85,7 +79,6 @@ Widget buildOnBoardingPage(
                     screenWidth < 500 ? screenWidth * 0.8 : screenWidth * 0.6,
                 fit: BoxFit.contain,
               ),
-              const SizedBox(height: 24),
               Text(
                 title,
                 style: TextStyle(
@@ -95,7 +88,7 @@ Widget buildOnBoardingPage(
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 8.0),
               Text(
                 description,
                 style: TextStyle(
@@ -104,8 +97,6 @@ Widget buildOnBoardingPage(
                 ),
                 textAlign: TextAlign.center,
               ),
-             
-              
             ],
           );
         }
