@@ -5,20 +5,11 @@ import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../on_boarding/presentation/widgets/custom_skip_button.dart';
 import '../../widgets/auth_exited_text.dart';
-import '../../widgets/form_login.dart';
+import '../../widgets/login_form.dart';
 import '../../widgets/login_extras_widgets.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends StatelessWidget {
   const LoginView({super.key});
-
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +43,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: FormLogin(
-                              formKey: formKey,
-                              emailController: emailController,
-                              passwordController: passwordController),
+                          child: LoginForm(),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.5,
@@ -90,10 +78,7 @@ class _LoginViewState extends State<LoginView> {
                       title: title,
                       subtitle: subtitle,
                     ),
-                    FormLogin(
-                        formKey: formKey,
-                        emailController: emailController,
-                        passwordController: passwordController),
+                    LoginForm(),
                     const MediumSpace(),
                     LoginExtrasWidget(),
                   ],

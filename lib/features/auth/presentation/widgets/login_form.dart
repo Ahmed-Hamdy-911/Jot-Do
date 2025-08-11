@@ -7,18 +7,19 @@ import '../../../../core/widgets/custom_text_form.dart';
 import '../../../../generated/l10n.dart';
 import 'custom_email_field.dart';
 
-class FormLogin extends StatelessWidget {
-  const FormLogin({
+class LoginForm extends StatefulWidget {
+  const LoginForm({
     super.key,
-    required this.formKey,
-    required this.emailController,
-    required this.passwordController,
   });
 
-  final GlobalKey<FormState> formKey;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
 
+class _LoginFormState extends State<LoginForm> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
