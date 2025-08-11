@@ -155,6 +155,36 @@ class S {
     );
   }
 
+  /// `Welcome back! Ready to get things done?`
+  String get login_welcome {
+    return Intl.message(
+      'Welcome back! Ready to get things done?',
+      name: 'login_welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up now to unlock more features and stay productive!`
+  String get register_welcome {
+    return Intl.message(
+      'Sign up now to unlock more features and stay productive!',
+      name: 'register_welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What are you waiting for? Log in now!`
+  String get login_call_to_action {
+    return Intl.message(
+      'What are you waiting for? Log in now!',
+      name: 'login_call_to_action',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Login to continue`
   String get login_to_continue {
     return Intl.message(

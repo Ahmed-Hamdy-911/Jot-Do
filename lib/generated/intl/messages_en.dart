@@ -71,11 +71,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
     "logging_in": MessageLookupByLibrary.simpleMessage("Logging in..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "login_call_to_action": MessageLookupByLibrary.simpleMessage(
+      "What are you waiting for? Log in now!",
+    ),
     "login_excited_text": MessageLookupByLibrary.simpleMessage(
       "Happy to see you again!",
     ),
     "login_to_continue": MessageLookupByLibrary.simpleMessage(
       "Login to continue",
+    ),
+    "login_welcome": MessageLookupByLibrary.simpleMessage(
+      "Welcome back! Ready to get things done?",
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +108,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "Create your account and unlock exclusive features.",
+    ),
+    "register_welcome": MessageLookupByLibrary.simpleMessage(
+      "Sign up now to unlock more features and stay productive!",
     ),
     "registering": MessageLookupByLibrary.simpleMessage("Registering..."),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember Me"),

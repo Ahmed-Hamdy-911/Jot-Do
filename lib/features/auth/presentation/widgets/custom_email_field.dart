@@ -14,20 +14,20 @@ class CustomEmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.sizeOf(context).width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           S.of(context).email,
           style: TextStyle(
-            fontSize: MediaQuery.sizeOf(context).width < 600
-                ? MediaQuery.sizeOf(context).width * 0.04
-                : MediaQuery.sizeOf(context).width * 0.03,
+            fontSize:
+                screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
             color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
         ),
-       const SmallSpace(),
+        const SmallSpace(),
         CustomTextFormField(
           hintText: S.of(context).enter_email,
           controller: _emailController,

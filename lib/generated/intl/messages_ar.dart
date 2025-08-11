@@ -75,11 +75,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "logging_in": MessageLookupByLibrary.simpleMessage("جاري تسجيل الدخول..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "login_call_to_action": MessageLookupByLibrary.simpleMessage(
+      "ماذا تنتظر؟ سجّل الدخول الآن!",
+    ),
     "login_excited_text": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بعودتك!",
     ),
     "login_to_continue": MessageLookupByLibrary.simpleMessage(
       "سجّل الدخول للمتابعة",
+    ),
+    "login_welcome": MessageLookupByLibrary.simpleMessage(
+      "مرحباً بعودتك! هل أنت مستعد لإنجاز المهام؟",
     ),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
@@ -104,6 +110,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "قم بإنشاء حسابك وافتح الميزات الحصرية.",
+    ),
+    "register_welcome": MessageLookupByLibrary.simpleMessage(
+      "سجّل الآن لفتح المزيد من الميزات والبقاء منتجًا!",
     ),
     "registering": MessageLookupByLibrary.simpleMessage("جاري إنشاء الحساب..."),
     "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),

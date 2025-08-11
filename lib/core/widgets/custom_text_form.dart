@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jot_do/generated/l10n.dart';
 
+import '../constants/constant.dart';
+
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
@@ -78,6 +80,10 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       minLines: minLines,
       initialValue: initialValue,
+      style: TextStyle(
+        fontSize: 16,
+        color: Colors.black,
+      ),
       onTapOutside: onTapOutside ??
           (event) {
             FocusScope.of(context).requestFocus(FocusNode());
@@ -90,31 +96,36 @@ class CustomTextFormField extends StatelessWidget {
       enabled: enabled,
       readOnly: readOnly,
       maxLength: maxLength,
-      
+      cursorColor: AppConstants.colorScheme,
       decoration: InputDecoration(
-        
         filled: filled,
         fillColor: fillColor,
         labelText: labelText,
         labelStyle: labelStyle,
-        contentPadding: contentPadding ?? const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        contentPadding: contentPadding ??
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         hintText: hintText,
         hintStyle: customHintStyle ??
             TextStyle(
               fontSize: 14,
-              color: Colors.grey[600],
+              color: Colors.grey[800],
             ),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         suffix: suffixWidget,
-        //
         errorStyle: const TextStyle(
           color: Colors.red,
           fontSize: 12,
         ),
         helperText: helperText,
+        helperMaxLines: 2,
         helperStyle:
             Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 14),
+        focusedBorder: customBorder ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50),
+              borderSide: BorderSide(color: AppConstants.colorScheme),
+            ),
         enabledBorder: customBorder ??
             OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
