@@ -554,6 +554,236 @@ class S {
       args: [],
     );
   }
+
+  /// `Your Notes`
+  String get your_notes {
+    return Intl.message('Your Notes', name: 'your_notes', desc: '', args: []);
+  }
+
+  /// `Add Note`
+  String get add_note {
+    return Intl.message('Add Note', name: 'add_note', desc: '', args: []);
+  }
+
+  /// `Note Title`
+  String get note_title {
+    return Intl.message('Note Title', name: 'note_title', desc: '', args: []);
+  }
+
+  /// `Note Content`
+  String get note_content {
+    return Intl.message(
+      'Note Content',
+      name: 'note_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Note`
+  String get save_note {
+    return Intl.message('Save Note', name: 'save_note', desc: '', args: []);
+  }
+
+  /// `Edit Note`
+  String get edit_note {
+    return Intl.message('Edit Note', name: 'edit_note', desc: '', args: []);
+  }
+
+  /// `Delete Note`
+  String get delete_note {
+    return Intl.message('Delete Note', name: 'delete_note', desc: '', args: []);
+  }
+
+  /// `Note saved successfully`
+  String get note_saved {
+    return Intl.message(
+      'Note saved successfully',
+      name: 'note_saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note deleted successfully`
+  String get note_deleted {
+    return Intl.message(
+      'Note deleted successfully',
+      name: 'note_deleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note updated successfully`
+  String get note_updated {
+    return Intl.message(
+      'Note updated successfully',
+      name: 'note_updated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notes found`
+  String get no_notes_found {
+    return Intl.message(
+      'No notes found',
+      name: 'no_notes_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search Notes`
+  String get search_notes {
+    return Intl.message(
+      'Search Notes',
+      name: 'search_notes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
+
+  /// `Your Tasks`
+  String get your_tasks {
+    return Intl.message('Your Tasks', name: 'your_tasks', desc: '', args: []);
+  }
+
+  /// `Add Task`
+  String get add_task {
+    return Intl.message('Add Task', name: 'add_task', desc: '', args: []);
+  }
+
+  /// `Task Title`
+  String get task_title {
+    return Intl.message('Task Title', name: 'task_title', desc: '', args: []);
+  }
+
+  /// `Task Description`
+  String get task_description {
+    return Intl.message(
+      'Task Description',
+      name: 'task_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Due Date`
+  String get task_due_date {
+    return Intl.message('Due Date', name: 'task_due_date', desc: '', args: []);
+  }
+
+  /// `Save Task`
+  String get save_task {
+    return Intl.message('Save Task', name: 'save_task', desc: '', args: []);
+  }
+
+  /// `Edit Task`
+  String get edit_task {
+    return Intl.message('Edit Task', name: 'edit_task', desc: '', args: []);
+  }
+
+  /// `Delete Task`
+  String get delete_task {
+    return Intl.message('Delete Task', name: 'delete_task', desc: '', args: []);
+  }
+
+  /// `Task saved successfully`
+  String get task_saved {
+    return Intl.message(
+      'Task saved successfully',
+      name: 'task_saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task deleted successfully`
+  String get task_deleted {
+    return Intl.message(
+      'Task deleted successfully',
+      name: 'task_deleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task updated successfully`
+  String get task_updated {
+    return Intl.message(
+      'Task updated successfully',
+      name: 'task_updated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No tasks found`
+  String get no_tasks_found {
+    return Intl.message(
+      'No tasks found',
+      name: 'no_tasks_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task completed`
+  String get task_completed {
+    return Intl.message(
+      'Task completed',
+      name: 'task_completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task not completed`
+  String get task_archieved {
+    return Intl.message(
+      'Task not completed',
+      name: 'task_archieved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task pending`
+  String get task_pending {
+    return Intl.message(
+      'Task pending',
+      name: 'task_pending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Progress`
+  String get task_in_progress {
+    return Intl.message(
+      'In Progress',
+      name: 'task_in_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message('Home', name: 'home', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "add_note": MessageLookupByLibrary.simpleMessage("إضافة ملاحظة"),
+    "add_task": MessageLookupByLibrary.simpleMessage("إضافة مهمة"),
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟",
     ),
@@ -35,7 +37,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
+    "delete_note": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
+    "delete_task": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "edit_note": MessageLookupByLibrary.simpleMessage("تعديل الملاحظة"),
+    "edit_task": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "أعد إدخال كلمة المرور",
@@ -73,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "google": MessageLookupByLibrary.simpleMessage(
       "تسجيل الدخول باستخدام جوجل",
     ),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "logging_in": MessageLookupByLibrary.simpleMessage("جاري تسجيل الدخول..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "login_call_to_action": MessageLookupByLibrary.simpleMessage(
@@ -88,6 +95,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "مرحباً بعودتك! هل أنت مستعد لإنجاز المهام؟",
     ),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "no_notes_found": MessageLookupByLibrary.simpleMessage("لا توجد ملاحظات"),
+    "no_tasks_found": MessageLookupByLibrary.simpleMessage("لا توجد مهام"),
+    "note_content": MessageLookupByLibrary.simpleMessage("محتوى الملاحظة"),
+    "note_deleted": MessageLookupByLibrary.simpleMessage(
+      "تم حذف الملاحظة بنجاح",
+    ),
+    "note_saved": MessageLookupByLibrary.simpleMessage("تم حفظ الملاحظة بنجاح"),
+    "note_title": MessageLookupByLibrary.simpleMessage("عنوان الملاحظة"),
+    "note_updated": MessageLookupByLibrary.simpleMessage(
+      "تم تعديل الملاحظة بنجاح",
+    ),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
       "لا تدع فكرة تفلت منك — دوّن أفكارك في ثوانٍ، في أي مكان وأي وقت.",
     ),
@@ -120,10 +138,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
+    "save_note": MessageLookupByLibrary.simpleMessage("حفظ الملاحظة"),
+    "save_task": MessageLookupByLibrary.simpleMessage("حفظ المهمة"),
+    "search": MessageLookupByLibrary.simpleMessage("بحث"),
+    "search_notes": MessageLookupByLibrary.simpleMessage("بحث في الملاحظات"),
     "send": MessageLookupByLibrary.simpleMessage("إرسال"),
     "send_password_reset": MessageLookupByLibrary.simpleMessage(
       "سنرسل لك بريدًا إلكترونيًا لتغيير كلمة المرور.",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "splashText1": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بك في دوّن و نفذ",
@@ -135,6 +158,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "تم إنشاء الحساب بنجاح",
     ),
+    "task_archieved": MessageLookupByLibrary.simpleMessage(
+      "لم يتم إنجاز المهمة",
+    ),
+    "task_completed": MessageLookupByLibrary.simpleMessage("تم إنجاز المهمة"),
+    "task_deleted": MessageLookupByLibrary.simpleMessage("تم حذف المهمة بنجاح"),
+    "task_description": MessageLookupByLibrary.simpleMessage("وصف المهمة"),
+    "task_due_date": MessageLookupByLibrary.simpleMessage("تاريخ الاستحقاق"),
+    "task_in_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "task_pending": MessageLookupByLibrary.simpleMessage("مهمة معلّقة"),
+    "task_saved": MessageLookupByLibrary.simpleMessage("تم حفظ المهمة بنجاح"),
+    "task_title": MessageLookupByLibrary.simpleMessage("عنوان المهمة"),
+    "task_updated": MessageLookupByLibrary.simpleMessage(
+      "تم تعديل المهمة بنجاح",
+    ),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا لك رابطًا للتحقق من عنوان بريدك الإلكتروني.\n إلى ",
     ),
@@ -142,5 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحقق من بريدك الإلكتروني...",
     ),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
+    "your_notes": MessageLookupByLibrary.simpleMessage("ملاحظاتك"),
+    "your_tasks": MessageLookupByLibrary.simpleMessage("مهامك"),
   };
 }

@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "add_note": MessageLookupByLibrary.simpleMessage("Add Note"),
+    "add_task": MessageLookupByLibrary.simpleMessage("Add Task"),
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
@@ -33,9 +35,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
     "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
+    "delete_note": MessageLookupByLibrary.simpleMessage("Delete Note"),
+    "delete_task": MessageLookupByLibrary.simpleMessage("Delete Task"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage(
       "Don’t have an account?",
     ),
+    "edit_note": MessageLookupByLibrary.simpleMessage("Edit Note"),
+    "edit_task": MessageLookupByLibrary.simpleMessage("Edit Task"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "Enter your password again",
@@ -69,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
     "logging_in": MessageLookupByLibrary.simpleMessage("Logging in..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "login_call_to_action": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +91,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Welcome back! Ready to get things done?",
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "no_notes_found": MessageLookupByLibrary.simpleMessage("No notes found"),
+    "no_tasks_found": MessageLookupByLibrary.simpleMessage("No tasks found"),
+    "note_content": MessageLookupByLibrary.simpleMessage("Note Content"),
+    "note_deleted": MessageLookupByLibrary.simpleMessage(
+      "Note deleted successfully",
+    ),
+    "note_saved": MessageLookupByLibrary.simpleMessage(
+      "Note saved successfully",
+    ),
+    "note_title": MessageLookupByLibrary.simpleMessage("Note Title"),
+    "note_updated": MessageLookupByLibrary.simpleMessage(
+      "Note updated successfully",
+    ),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
       "Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.",
     ),
@@ -116,16 +136,41 @@ class MessageLookup extends MessageLookupByLibrary {
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember Me"),
     "resend_code": MessageLookupByLibrary.simpleMessage("Resend Code?"),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "save_note": MessageLookupByLibrary.simpleMessage("Save Note"),
+    "save_task": MessageLookupByLibrary.simpleMessage("Save Task"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "search_notes": MessageLookupByLibrary.simpleMessage("Search Notes"),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "send_password_reset": MessageLookupByLibrary.simpleMessage(
       "We will send you an email to change your password.",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "splashText1": MessageLookupByLibrary.simpleMessage("Welcome to Jot&Do"),
     "splashText2": MessageLookupByLibrary.simpleMessage("Plan. Note. Do."),
     "success_login": MessageLookupByLibrary.simpleMessage("Login successful"),
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "Registration successful",
+    ),
+    "task_archieved": MessageLookupByLibrary.simpleMessage(
+      "Task not completed",
+    ),
+    "task_completed": MessageLookupByLibrary.simpleMessage("Task completed"),
+    "task_deleted": MessageLookupByLibrary.simpleMessage(
+      "Task deleted successfully",
+    ),
+    "task_description": MessageLookupByLibrary.simpleMessage(
+      "Task Description",
+    ),
+    "task_due_date": MessageLookupByLibrary.simpleMessage("Due Date"),
+    "task_in_progress": MessageLookupByLibrary.simpleMessage("In Progress"),
+    "task_pending": MessageLookupByLibrary.simpleMessage("Task pending"),
+    "task_saved": MessageLookupByLibrary.simpleMessage(
+      "Task saved successfully",
+    ),
+    "task_title": MessageLookupByLibrary.simpleMessage("Task Title"),
+    "task_updated": MessageLookupByLibrary.simpleMessage(
+      "Task updated successfully",
     ),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "We have sent you a link to verify your email address.\n to ",
@@ -134,5 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Verify Your Email...",
     ),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
+    "your_notes": MessageLookupByLibrary.simpleMessage("Your Notes"),
+    "your_tasks": MessageLookupByLibrary.simpleMessage("Your Tasks"),
   };
 }
