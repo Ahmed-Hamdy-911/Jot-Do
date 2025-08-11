@@ -45,6 +45,7 @@ class AppConstants {
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
+      foregroundColor: colorScheme,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
     ),
@@ -58,6 +59,7 @@ class AppConstants {
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
+      foregroundColor: colorScheme,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
     ),
