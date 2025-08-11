@@ -4,6 +4,7 @@ import '../../features/auth/presentation/views/emailAndPassword/login_view.dart'
 import '../../features/auth/presentation/views/emailAndPassword/register_view.dart';
 import '../../features/auth/presentation/views/forgot_password/forgot_password_view.dart';
 import '../../features/auth/presentation/views/verification/verification_email_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
 import 'app_routes.dart';
 
 class AppRouter {
@@ -21,6 +22,8 @@ class AppRouter {
         final email = settings.arguments as String;
         return MaterialPageRoute(
             builder: (_) => VerificationEmailView(email: email));
+      case AppRoutes.home:
+        return MaterialPageRoute(builder: (_) => const HomeView());
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());
     }
