@@ -7,6 +7,17 @@ class NoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return NoteBody();
+  }
+}
+
+class NoteBody extends StatelessWidget {
+  const NoteBody({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return ListViewBuilder();
   }
 }

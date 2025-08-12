@@ -14,13 +14,15 @@ class ListViewBuilder extends StatelessWidget {
       children: [
         Expanded(
           child: ListView.builder(
+            padding: EdgeInsets.zero,
             itemCount: 17,
             itemBuilder: (context, index) => NoteItem(
               color: AppConstants.noteColors[index],
             ),
           ),
         ),
-        const SmallSpace(),
+       
+       
       ],
     );
   }

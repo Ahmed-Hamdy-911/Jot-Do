@@ -75,7 +75,9 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
       bottom: TabBar(
+        dividerColor: Colors.white70,
         indicatorSize: TabBarIndicatorSize.label,
         controller: tabController,
         unselectedLabelColor: Colors.grey[800],
