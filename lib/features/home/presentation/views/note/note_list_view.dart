@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/constants/constant.dart';
-import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import 'note_item.dart';
 
 class ListViewBuilder extends StatelessWidget {

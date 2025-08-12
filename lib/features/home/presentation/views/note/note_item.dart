@@ -17,7 +17,9 @@ class NoteItem extends StatelessWidget {
     final dateTime = AppConstants.formatDateTime(DateTime.now());
     const fontFamily = "Tajawal";
     return Container(
-      margin: EdgeInsetsDirectional.only(top: 12,),
+      margin: EdgeInsetsDirectional.only(
+        top: 12,
+      ),
       padding: EdgeInsets.all(18).copyWith(bottom: 10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
