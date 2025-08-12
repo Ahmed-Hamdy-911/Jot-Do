@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 
@@ -47,6 +48,7 @@ class AppConstants {
       backgroundColor: Colors.transparent,
       foregroundColor: colorScheme,
       surfaceTintColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
       elevation: 0,
     ),
   );
@@ -61,6 +63,7 @@ class AppConstants {
       backgroundColor: Colors.transparent,
       foregroundColor: colorScheme,
       surfaceTintColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       elevation: 0,
     ),
   );
