@@ -90,10 +90,9 @@ class AppConstants {
   static int maxLengthOfDescNoteInHomeView = 400;
   // truncate the text
   static String getTruncatedText({required String text, int? maxLengthToDesc}) {
-    String result = "";
     maxLengthToDesc = maxLengthOfDescNoteInHomeView;
     if (text.length > maxLengthToDesc) {
-      return result = "${text.substring(0, maxLengthToDesc - 3)}...";
+      return text = "${text.substring(0, maxLengthToDesc - 3)}...";
     }
     return text;
   }
