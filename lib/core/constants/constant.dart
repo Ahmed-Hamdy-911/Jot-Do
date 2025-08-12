@@ -87,4 +87,42 @@ class AppConstants {
       'assets/images/onBoarding/on_boarding2.png';
   static const String imageOnBoardingPath3 =
       'assets/images/onBoarding/on_boarding3.png';
+  static int maxLengthOfDescNoteInHomeView = 400;
+  // truncate the text
+  static String getTruncatedText({required String text, int? maxLengthToDesc}) {
+    String result = "";
+    maxLengthToDesc = maxLengthOfDescNoteInHomeView;
+    if (text.length > maxLengthToDesc) {
+      return result = "${text.substring(0, maxLengthToDesc - 3)}...";
+    }
+    return text;
+  }
+
+  // format datetime
+  static String formatDateTime(DateTime dateTime) {
+    final formatter = DateFormat('d/M/yyyy h:mm a');
+    return formatter.format(dateTime);
+  }
+
+  // notes
+  static final List<Color> noteColors = const [
+    Color(0xff26C281),
+    Color(0xff2CC7C9),
+    Color(0xff25A4F2),
+    Color(0xff5C6BC0),
+    Color(0xffA76CE6),
+    Color(0xffB2AA8E),
+    Color(0xffE07BD2),
+    Color(0xffF28EA0),
+    Color(0xffDA5A48),
+    Color(0xffF89B4C),
+    Color(0xffF7DC3A),
+    Color(0xffC8E6C9),
+    Color(0xff676F54),
+    Color(0xffFA9839),
+    Color(0xffF9E23B),
+    Color(0xff4DD0FC),
+    Color(0xff4EF2C0),
+    Color(0xffA0F51C),
+  ];
 }

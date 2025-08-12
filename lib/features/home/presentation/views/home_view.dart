@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:jot_do/core/constants/constant.dart';
+import 'package:jot_do/features/home/presentation/views/note/note_view.dart';
 import 'package:jot_do/generated/l10n.dart';
 
 class HomeView extends StatefulWidget {
@@ -51,15 +53,15 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: TabBarView(
         controller: tabController,
         children: [
+          NoteView(),
           Center(
-            child: Text(S.of(context).your_notes),
-          ),
-          Center(
-            child: Text(S.of(context).your_tasks),
+            child: Text(
+              S.of(context).your_tasks,
+            ),
           ),
         ],
       ),
@@ -74,11 +76,18 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       bottom: TabBar(
-        indicatorSize: TabBarIndicatorSize.tab,
+        indicatorSize: TabBarIndicatorSize.label,
         controller: tabController,
+        unselectedLabelColor: Colors.grey[800],
+        labelColor: AppConstants.colorScheme,
+        indicatorColor: AppConstants.colorScheme.shade800,
         tabs: [
-          Tab(text: S.of(context).your_notes),
-          Tab(text: S.of(context).your_tasks),
+          Tab(
+            text: S.of(context).your_notes,
+          ),
+          Tab(
+            text: S.of(context).your_tasks,
+          ),
         ],
       ),
     );
