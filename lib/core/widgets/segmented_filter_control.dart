@@ -29,8 +29,7 @@ class SegmentedControl extends StatelessWidget {
                     horizontal: screenW > 600 ? 60 : 30)),
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        screenW > 600 ? screenW * 0.008 : screenW * 0.02),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
                 side: WidgetStatePropertyAll(

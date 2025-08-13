@@ -50,19 +50,22 @@ class BottomAppBarItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(6),
                     child: Row(
+                      mainAxisAlignment: screenWidth > 600
+                          ? MainAxisAlignment.center
+                          : MainAxisAlignment.start,
                       children: [
                         Icon(
                           isSelected ? iconSelected : iconUnSelected,
                           color: isSelected
                               ? Colors.white
                               : AppConstants.mainDarkColor.withOpacity(0.9),
-                          size: isSelected ? 30 : 28,
+                          size: isSelected ? 28 : 26,
                         ),
                         SizedBox(width: screenWidth * 0.03),
                         Text(
                           title,
                           style: TextStyle(
-                            fontSize: isSelected ? 18 : 16,
+                            fontSize: isSelected ? 17 : 15,
                             color: isSelected
                                 ? Colors.white
                                 : AppConstants.mainDarkColor.withOpacity(0.9),
