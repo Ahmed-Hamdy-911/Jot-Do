@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'segmented_filter_control_widget.dart';
+import 'segmented_filter_control.dart';
 
 class SegmentedFilterControlBuilder extends StatelessWidget {
   const SegmentedFilterControlBuilder({
@@ -19,6 +19,7 @@ class SegmentedFilterControlBuilder extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: segmentList.length,
         itemBuilder: (context, index) => SegmentedControl(
+          segmentIndex: index,
           title: segmentList[index],
         ),
         separatorBuilder: (context, index) => const SizedBox(width: 10),
