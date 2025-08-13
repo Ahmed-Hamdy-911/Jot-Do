@@ -650,6 +650,16 @@ class S {
     return Intl.message('Search', name: 'search', desc: '', args: []);
   }
 
+  /// `Add note or task`
+  String get add_note_or_task {
+    return Intl.message(
+      'Add note or task',
+      name: 'add_note_or_task',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your Tasks`
   String get your_tasks {
     return Intl.message('Your Tasks', name: 'your_tasks', desc: '', args: []);

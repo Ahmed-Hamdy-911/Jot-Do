@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jot_do/core/constants/constant.dart';
 import 'package:jot_do/features/home/presentation/manager/cubits/BottomNaviCubit/bottom_navi_cubit_cubit.dart';
 import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
@@ -58,6 +59,7 @@ class _HomeScaffoldState extends State<HomeScaffold>
         return DefaultTabController(
           length: 2,
           child: Scaffold(
+            extendBody: true,
             appBar: context.watch<BottomNaviCubit>().state == 0
                 ? PreferredSize(
                     preferredSize: const Size.fromHeight(kToolbarHeight),
@@ -65,9 +67,19 @@ class _HomeScaffoldState extends State<HomeScaffold>
                       tabController: _tabController,
                     ),
                   )
-                : AppBar(),
+                : null,
             body: screens[bottomCubit.currentIndex],
             bottomNavigationBar: CustomBottomNaviAppBar(),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: AppConstants.mainLightColor.withOpacity(0.8),
+              foregroundColor: Colors.white,
+              onPressed: () {},
+              shape: CircleBorder(),
+              tooltip: S.of(context).add_note_or_task,
+              child: Icon(Icons.add),
+            ),
           ),
         );
       },

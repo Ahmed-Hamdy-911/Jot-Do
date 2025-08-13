@@ -49,7 +49,9 @@ class BottomAppBarItem extends StatelessWidget {
                     children: [
                       Icon(
                         isSelected ? iconSelected : iconUnSelected,
-                        color: isSelected ? Colors.white : Colors.grey,
+                        color: isSelected
+                            ? Colors.white
+                            : AppConstants.mainDarkColor.withOpacity(0.9),
                         size: isSelected ? 30 : 28,
                       ),
                       SizedBox(width: screenWidth * 0.03),
@@ -57,7 +59,9 @@ class BottomAppBarItem extends StatelessWidget {
                         title,
                         style: TextStyle(
                           fontSize: isSelected ? 18 : 16,
-                          color: isSelected ? Colors.white : Colors.grey,
+                          color: isSelected
+                              ? Colors.white
+                              : AppConstants.mainDarkColor.withOpacity(0.9),
                         ),
                       ),
                     ],
