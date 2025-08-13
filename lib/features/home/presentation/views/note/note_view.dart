@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/widgets/filter_list_view_builder.dart';
+import 'package:jot_do/core/widgets/filter_view_builder.dart';
 import 'package:jot_do/generated/l10n.dart';
 import 'note_list_view.dart';
 
@@ -29,7 +29,7 @@ class NoteBody extends StatelessWidget {
     ];
     return Column(
       children: [
-        SegmentedFilterControlBuilder(segmentList: noteFilters),
+        FilterViewBuilder(filterList: noteFilters),
         ListViewBuilder(),
       ],
     );
