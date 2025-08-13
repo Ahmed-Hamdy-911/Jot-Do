@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/constants/constant.dart';
 import 'package:jot_do/features/home/presentation/manager/cubits/BottomNaviCubit/bottom_navi_cubit_cubit.dart';
 import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
+import '../widgets/custom_floating_button';
 import '../widgets/custom_home_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -56,11 +56,12 @@ class _HomeScaffoldState extends State<HomeScaffold>
     var bottomCubit = BlocProvider.of<BottomNaviCubit>(context);
     return BlocBuilder<BottomNaviCubit, int>(
       builder: (context, state) {
+        bool isHome = context.watch<BottomNaviCubit>().state == 0;
         return DefaultTabController(
           length: 2,
           child: Scaffold(
             extendBody: true,
-            appBar: context.watch<BottomNaviCubit>().state == 0
+            appBar: isHome
                 ? PreferredSize(
                     preferredSize: const Size.fromHeight(kToolbarHeight),
                     child: CustomAppBar(
@@ -72,17 +73,11 @@ class _HomeScaffoldState extends State<HomeScaffold>
             bottomNavigationBar: CustomBottomNaviAppBar(),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked,
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: AppConstants.mainLightColor.withOpacity(0.8),
-              foregroundColor: Colors.white,
-              onPressed: () {},
-              shape: CircleBorder(),
-              tooltip: S.of(context).add_note_or_task,
-              child: Icon(Icons.add),
-            ),
+            floatingActionButton: CustomFloatingButton(),
           ),
         );
       },
     );
   }
 }
+

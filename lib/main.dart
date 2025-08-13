@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppConstants.lightTheme,
       darkTheme: AppConstants.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       localeResolutionCallback: AppConstants.localeResolutionCallback,
       supportedLocales: AppConstants.supportedLocales,
       localizationsDelegates: AppConstants.localizationsDelegates,
