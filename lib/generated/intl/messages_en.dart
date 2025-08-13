@@ -76,6 +76,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_short_password": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 6 characters",
     ),
+    "filter_all": MessageLookupByLibrary.simpleMessage("All"),
+    "filter_archived": MessageLookupByLibrary.simpleMessage("Archived"),
+    "filter_favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
+    "filter_highlight": MessageLookupByLibrary.simpleMessage("Highlight"),
+    "filter_new": MessageLookupByLibrary.simpleMessage("New"),
+    "filter_pined": MessageLookupByLibrary.simpleMessage("Pined"),
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),

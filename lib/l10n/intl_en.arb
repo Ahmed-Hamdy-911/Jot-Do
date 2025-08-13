@@ -85,6 +85,12 @@
     "task_pending": "Task pending",
     "task_in_progress":  "In Progress",
     "home": "Home",
-    "settings": "Settings"
+    "settings": "Settings",
+    "filter_all": "All",
+    "filter_new": "New",
+    "filter_favorite": "Favorite",
+    "filter_highlight": "Highlight",
+    "filter_archived": "Archived",
+    "filter_pined": "Pined"
 
 }

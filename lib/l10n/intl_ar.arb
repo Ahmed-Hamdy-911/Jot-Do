@@ -85,6 +85,12 @@
     "task_pending": "مهمة معلّقة",
     "task_in_progress": "قيد التنفيذ",
     "home": "الرئيسية",
-    "settings": "الإعدادات"
+    "settings": "الإعدادات",
+    "filter_all": "الكل",
+    "filter_new": "جديد",
+    "filter_favorite": "المفضلة",
+    "filter_highlight": "مميزة",
+    "filter_archived": "مؤرشف",
+    "filter_pined": "مثبت"
 
 }

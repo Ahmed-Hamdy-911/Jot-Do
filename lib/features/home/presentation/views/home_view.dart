@@ -4,7 +4,8 @@ import 'package:jot_do/features/home/presentation/manager/cubits/BottomNaviCubit
 import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
-import '../widgets/custom_floating_button';
+
+import '../widgets/custom_floating_button.dart';
 import '../widgets/custom_home_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -80,4 +81,3 @@ class _HomeScaffoldState extends State<HomeScaffold>
     );
   }
 }
-

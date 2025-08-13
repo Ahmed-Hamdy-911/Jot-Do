@@ -9,17 +9,13 @@ class ListViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-            child: ListView.builder(
-          padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
-          itemCount: 17,
-          itemBuilder: (context, index) => NoteItem(
-            color: AppConstants.noteColors[index],
-          ),
-        )),
-      ],
-    );
+    return Expanded(
+        child: ListView.builder(
+      padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
+      itemCount: 17,
+      itemBuilder: (context, index) => NoteItem(
+        color: AppConstants.noteColors[index],
+      ),
+    ));
   }
 }

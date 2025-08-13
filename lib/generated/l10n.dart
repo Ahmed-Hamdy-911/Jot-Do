@@ -794,6 +794,51 @@ class S {
   String get settings {
     return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
+
+  /// `All`
+  String get filter_all {
+    return Intl.message('All', name: 'filter_all', desc: '', args: []);
+  }
+
+  /// `New`
+  String get filter_new {
+    return Intl.message('New', name: 'filter_new', desc: '', args: []);
+  }
+
+  /// `Favorite`
+  String get filter_favorite {
+    return Intl.message(
+      'Favorite',
+      name: 'filter_favorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Highlight`
+  String get filter_highlight {
+    return Intl.message(
+      'Highlight',
+      name: 'filter_highlight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Archived`
+  String get filter_archived {
+    return Intl.message(
+      'Archived',
+      name: 'filter_archived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pined`
+  String get filter_pined {
+    return Intl.message('Pined', name: 'filter_pined', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

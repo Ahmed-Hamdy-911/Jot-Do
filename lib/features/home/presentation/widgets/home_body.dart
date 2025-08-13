@@ -24,4 +24,3 @@ class HomeBody extends StatelessWidget {
     );
   }
 }
-

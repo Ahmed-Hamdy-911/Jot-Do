@@ -76,6 +76,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_short_password": MessageLookupByLibrary.simpleMessage(
       "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
     ),
+    "filter_all": MessageLookupByLibrary.simpleMessage("الكل"),
+    "filter_archived": MessageLookupByLibrary.simpleMessage("مؤرشف"),
+    "filter_favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),
+    "filter_highlight": MessageLookupByLibrary.simpleMessage("مميزة"),
+    "filter_new": MessageLookupByLibrary.simpleMessage("جديد"),
+    "filter_pined": MessageLookupByLibrary.simpleMessage("مثبت"),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "هل نسيت كلمة المرور؟",
     ),

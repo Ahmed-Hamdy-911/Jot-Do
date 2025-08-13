@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:jot_do/core/widgets/segmented_filter_control_builder.dart';
+import 'package:jot_do/generated/l10n.dart';
 import 'note_list_view.dart';
 
 class NoteView extends StatelessWidget {
@@ -18,7 +19,19 @@ class NoteBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListViewBuilder();
+    final List<String> noteFilters = [
+      S.of(context).filter_all,
+      S.of(context).filter_new,
+      S.of(context).filter_favorite,
+      S.of(context).filter_highlight,
+      S.of(context).filter_archived,
+      S.of(context).filter_pined,
+    ];
+    return Column(
+      children: [
+        SegmentedFilterControlBuilder(segmentList: noteFilters),
+        ListViewBuilder(),
+      ],
+    );
   }
 }
-
