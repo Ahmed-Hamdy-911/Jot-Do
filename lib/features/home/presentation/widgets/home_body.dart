@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
-import '../views/note/note_view.dart';
+import 'package:jot_do/core/constants/constant.dart';
+
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key, required this.tabController});
@@ -12,14 +12,7 @@ class HomeBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: TabBarView(
         controller: tabController,
-        children: [
-          NoteView(),
-          Center(
-            child: Text(
-              S.of(context).your_tasks,
-            ),
-          ),
-        ],
+        children: AppConstants.homeBodyList,
       ),
     );
   }

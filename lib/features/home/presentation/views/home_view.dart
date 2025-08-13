@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jot_do/features/home/presentation/manager/cubits/BottomNaviCubit/bottom_navi_cubit_cubit.dart';
 import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
+import '../../../../core/constants/constant.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
 
 import '../widgets/custom_floating_button.dart';
@@ -41,6 +42,9 @@ class _HomeScaffoldState extends State<HomeScaffold>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(() {
+      AppConstants.homeBodyIndex = _tabController.index;
+    });
   }
 
   @override

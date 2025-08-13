@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jot_do/core/widgets/filter_view_builder.dart';
 import 'package:jot_do/generated/l10n.dart';
-import 'note_list_view.dart';
+import 'widgets/note_list_view.dart';
 
 class NoteView extends StatelessWidget {
   const NoteView({super.key});

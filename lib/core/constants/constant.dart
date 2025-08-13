@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 
+import '../../features/home/presentation/views/note/note_view.dart';
+import '../../features/home/presentation/views/task/task_view.dart';
 import '../../generated/l10n.dart';
 
 class AppConstants {
@@ -39,6 +41,7 @@ class AppConstants {
     return Intl.getCurrentLocale().startsWith('ar');
   }
 
+// theme
   static ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: colorScheme),
     useMaterial3: true,
@@ -102,6 +105,14 @@ class AppConstants {
     final formatter = DateFormat('d/M/yyyy h:mm a');
     return formatter.format(dateTime);
   }
+
+  // home
+  static int homeBodyIndex = 0;
+
+  static List<Widget> homeBodyList = const [
+    NoteView(),
+    TaskView(),
+  ];
 
   // notes
   static final List<Color> noteColors = const [

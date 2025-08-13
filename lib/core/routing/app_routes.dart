@@ -19,10 +19,14 @@ class AppRoutes {
   static const String support = '/support';
   static const String logout = '/logout';
   static const String error = '/error';
-  static const String editNote = '/edit-note';
   static const String addNote = '/add-note';
   static const String notes = '/notes';
+  static const String editNote = '/edit-note';
   static const String noteDetails = '/note-details';
+  static const String addTask = '/add-task';
+  static const String tasks = '/tasks';
+  static const String editTask = '/edit-task';
+  static const String taskDetails = '/task-details';
   static const String editProfile = '/edit-profile';
   static const String forgotPassword = '/forgot-password';
   static const String resetPassword = '/reset-password';

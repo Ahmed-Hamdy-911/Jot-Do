@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:jot_do/generated/l10n.dart';
-import '../../../../../core/constants/constant.dart';
-import '../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../../../core/constants/constant.dart';
+import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({

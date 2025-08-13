@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jot_do/features/home/presentation/views/note/widgets/add_note_view.dart';
+import 'package:jot_do/features/home/presentation/views/task/add_task_view.dart';
 import 'package:jot_do/features/splash/presentation/views/splash_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/login_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/register_view.dart';
@@ -24,6 +26,10 @@ class AppRouter {
             builder: (_) => VerificationEmailView(email: email));
       case AppRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomeView());
+      case AppRoutes.addNote:
+        return MaterialPageRoute(builder: (_) => const AddNoteView());
+      case AppRoutes.addTask:
+        return MaterialPageRoute(builder: (_) => const AddTaskView());
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());
     }
