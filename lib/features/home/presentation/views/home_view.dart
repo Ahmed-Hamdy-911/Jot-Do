@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/features/home/presentation/views/note/note_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jot_do/features/home/presentation/manager/cubits/BottomNaviCubit/bottom_navi_cubit_cubit.dart';
+import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
+import '../widgets/custom_bottom_navigation_bar.dart';
+import '../widgets/custom_home_app_bar.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(providers: [
+      BlocProvider(
+        create: (context) => BottomNaviCubit(),
+      ),
+    ], child: HomeScaffold());
+  }
 }
 
-class _HomeViewState extends State<HomeView>
+class HomeScaffold extends StatefulWidget {
+  const HomeScaffold({
+    super.key,
+  });
+
+  @override
+  State<HomeScaffold> createState() => _HomeScaffoldState();
+}
+
+class _HomeScaffoldState extends State<HomeScaffold>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -29,69 +46,31 @@ class _HomeViewState extends State<HomeView>
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: CustomAppBar(
-            tabController: _tabController,
-          ),
-        ),
-        body: HomeBody(
-          tabController: _tabController,
-        ),
+    final List<Widget> screens = [
+      HomeBody(tabController: _tabController),
+      Container(
+        child: Center(child: Text(S.of(context).settings)),
       ),
-    );
-  }
-}
-
-class HomeBody extends StatelessWidget {
-  const HomeBody({super.key, required this.tabController});
-  final TabController tabController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: TabBarView(
-        controller: tabController,
-        children: [
-          NoteView(),
-          Center(
-            child: Text(
-              S.of(context).your_tasks,
-            ),
+    ];
+    var bottomCubit = BlocProvider.of<BottomNaviCubit>(context);
+    return BlocBuilder<BottomNaviCubit, int>(
+      builder: (context, state) {
+        return DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            appBar: context.watch<BottomNaviCubit>().state == 0
+                ? PreferredSize(
+                    preferredSize: const Size.fromHeight(kToolbarHeight),
+                    child: CustomAppBar(
+                      tabController: _tabController,
+                    ),
+                  )
+                : AppBar(),
+            body: screens[bottomCubit.currentIndex],
+            bottomNavigationBar: CustomBottomNaviAppBar(),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.tabController});
-  final TabController tabController;
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      bottom: TabBar(
-        dividerColor: Colors.white70,
-        indicatorSize: TabBarIndicatorSize.label,
-        controller: tabController,
-        unselectedLabelColor: Colors.grey[800],
-        labelColor: AppConstants.colorScheme,
-        indicatorColor: AppConstants.colorScheme.shade800,
-        tabs: [
-          Tab(
-            text: S.of(context).your_notes,
-          ),
-          Tab(
-            text: S.of(context).your_tasks,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
