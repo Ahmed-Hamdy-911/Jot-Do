@@ -26,10 +26,10 @@ class BottomAppBarItem extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             clipBehavior: Clip.antiAlias,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(AppConstants.kRadius),
             child: Ink(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(AppConstants.kRadius),
                 gradient: isSelected
                     ? LinearGradient(
                         begin: AlignmentDirectional.centerStart,
@@ -42,7 +42,7 @@ class BottomAppBarItem extends StatelessWidget {
                 message: title,
                 waitDuration: Duration(milliseconds: 500),
                 child: InkWell(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(AppConstants.kRadius),
                   splashColor: Colors.amber.withOpacity(0.25),
                   onTap: () => context
                       .read<BottomNaviCubit>()

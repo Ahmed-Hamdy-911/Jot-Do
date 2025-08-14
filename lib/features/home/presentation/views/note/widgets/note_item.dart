@@ -22,7 +22,7 @@ class NoteItem extends StatelessWidget {
       ),
       padding: EdgeInsets.all(18).copyWith(bottom: 10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(AppConstants.kRadius),
           gradient: LinearGradient(
               begin: AlignmentDirectional.topStart,
               end: AlignmentDirectional.bottomEnd,

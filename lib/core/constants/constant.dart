@@ -135,4 +135,8 @@ class AppConstants {
     Color(0xff4EF2C0),
     Color(0xffA0F51C),
   ];
+
+  // add Note color
+  static Color addNoteBGColor = noteColors[0];
+  static double kRadius = 16;
 }

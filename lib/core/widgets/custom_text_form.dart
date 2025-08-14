@@ -35,6 +35,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixWidget,
     this.helperText,
     this.onChanged,
+    this.customInputStyle,
   });
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -51,6 +52,7 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final int? maxLength;
+  final TextStyle? customInputStyle;
   final TextStyle? customHintStyle;
   final TextStyle? labelStyle;
   final bool? enabled;
@@ -80,10 +82,11 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       minLines: minLines,
       initialValue: initialValue,
-      style: TextStyle(
-        fontSize: 16,
-        color: Colors.black,
-      ),
+      style: customInputStyle ??
+          TextStyle(
+            fontSize: 16,
+            color: Colors.black,
+          ),
       onTapOutside: onTapOutside ??
           (event) {
             FocusScope.of(context).requestFocus(FocusNode());

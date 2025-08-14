@@ -33,10 +33,10 @@ class CustomMaterialButton extends StatelessWidget {
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(AppConstants.kRadius),
           side: customBorderSide ?? BorderSide.none,
         ),
-        height: screenWidth < 600 ? screenHeight * 0.06 : screenHeight * 0.08,
+        height: screenWidth > 600 ? screenHeight * 0.08 : screenHeight * 0.07,
         minWidth: minWidth ?? screenWidth,
         color: color ?? AppConstants.colorScheme,
         child: isLoading == true
@@ -46,7 +46,9 @@ class CustomMaterialButton extends StatelessWidget {
             : Text(
                 text,
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: screenWidth > 600
+                      ? screenWidth * 0.02
+                      : screenWidth * 0.04,
                   color: Colors.white,
                 ),
               ),
