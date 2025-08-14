@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/core/cubits/filterCubit/filter_cubit.dart';
+import 'package:jot_do/core/cubits/selectionCubit/filter_cubit.dart';
 
 class FilterItem extends StatelessWidget {
   const FilterItem({
@@ -15,9 +15,9 @@ class FilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenW = MediaQuery.of(context).size.width;
-    var segmentCubit = context.read<FilterCubit>();
+    var segmentCubit = context.read<SelectionCubit>();
     bool isSelected =
-        context.watch<FilterCubit>().state.filterIndex == filerIndex;
+        context.watch<SelectionCubit>().state.selectedIndex == filerIndex;
     return OutlinedButton(
         onPressed: () => segmentCubit.switchSegment(filerIndex),
         style: ButtonStyle(

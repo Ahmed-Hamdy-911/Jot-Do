@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/cubits/filterCubit/filter_cubit.dart';
+import 'package:jot_do/core/cubits/selectionCubit/filter_cubit.dart';
 import 'filter_item.dart';
 
 class FilterViewBuilder extends StatelessWidget {
@@ -13,7 +13,7 @@ class FilterViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FilterCubit(),
+      create: (context) => SelectionCubit(),
       child: FilterListView(filterList: filterList),
     );
   }
