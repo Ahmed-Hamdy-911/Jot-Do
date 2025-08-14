@@ -1,4 +1,4 @@
 class FilterState {
-  final int filterIdex;
-  const FilterState({required this.filterIdex});
+  final int filterIndex;
+  const FilterState({required this.filterIndex});
 }

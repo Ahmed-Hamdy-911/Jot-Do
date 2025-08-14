@@ -17,7 +17,7 @@ class FilterItem extends StatelessWidget {
     var screenW = MediaQuery.of(context).size.width;
     var segmentCubit = context.read<FilterCubit>();
     bool isSelected =
-        context.watch<FilterCubit>().state.filterIdex == filerIndex;
+        context.watch<FilterCubit>().state.filterIndex == filerIndex;
     return OutlinedButton(
         onPressed: () => segmentCubit.switchSegment(filerIndex),
         style: ButtonStyle(
