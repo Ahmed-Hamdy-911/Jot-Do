@@ -4,7 +4,7 @@ import 'package:jot_do/core/cubits/selectionCubit/filter_state.dart';
 class SelectionCubit extends Cubit<SelectionState> {
   SelectionCubit() : super(SelectionState(selectedIndex: 0));
 
-  void switchSegment(int index) {
+  void switchSelection(int index) {
     emit(SelectionState(selectedIndex: index));
   }
 }

@@ -19,7 +19,7 @@ class FilterItem extends StatelessWidget {
     bool isSelected =
         context.watch<SelectionCubit>().state.selectedIndex == filerIndex;
     return OutlinedButton(
-        onPressed: () => segmentCubit.switchSegment(filerIndex),
+        onPressed: () => segmentCubit.switchSelection(filerIndex),
         style: ButtonStyle(
             shadowColor: null,
             padding: WidgetStatePropertyAll(EdgeInsetsDirectional.symmetric(

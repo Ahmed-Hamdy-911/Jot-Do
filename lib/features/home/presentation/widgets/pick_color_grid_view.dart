@@ -28,6 +28,7 @@ class PickColorGridView extends StatelessWidget {
           itemBuilder: (context, index) {
             return PickColorItem(
               color: AppConstants.noteColors[index],
+              colorIndex: index,
             );
           },
         ),
