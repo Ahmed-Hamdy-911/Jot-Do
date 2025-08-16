@@ -21,7 +21,6 @@ class AppRouter {
           type: PageTransitionType.fade,
           child: const OnBoardingView(),
           settings: settings,
-          duration: const Duration(milliseconds: 500),
         );
       case AppRoutes.login:
         return PageTransition(
