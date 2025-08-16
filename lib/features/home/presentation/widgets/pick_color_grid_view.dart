@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jot_do/features/home/presentation/manager/cubits/PickColor/pick_color_cubit.dart';
 import '../../../../core/constants/constant.dart';
 import 'pick_color_item.dart';
 
@@ -27,7 +29,7 @@ class PickColorGridView extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             return PickColorItem(
-              color: AppConstants.noteColors[index],
+              color: context.read<PickColorCubit>().noteColors[index],
               colorIndex: index,
             );
           },

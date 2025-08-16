@@ -1,14 +1,43 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:jot_do/core/constants/constant.dart';
+import 'package:jot_do/core/routing/app_routes.dart';
 import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
 import 'package:jot_do/generated/l10n.dart';
-import 'package:page_transition/page_transition.dart';
-import '../../../on_boarding/presentation/views/on_boarding_view.dart';
 
-class SplashView extends StatelessWidget {
+class SplashView extends StatefulWidget {
   final Widget? startWidget;
   const SplashView({super.key, this.startWidget});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  bool _showFirst = true;
+  @override
+  void initState() {
+    super.initState();
+    logoChangeAnimation();
+    naviToNextWidget();
+  }
+
+  Future<void> naviToNextWidget() {
+    return Future.delayed(Duration(seconds: 3), () {
+      if (!mounted) return;
+      Navigator.pushNamedAndRemoveUntil(
+          context, AppRoutes.onBoarding, (route) => false);
+    });
+  }
+
+  Future<void> logoChangeAnimation() {
+    return Future.delayed(Duration(seconds: 1), () {
+      if (mounted) {
+        setState(() {
+          _showFirst = false;
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +61,19 @@ class SplashView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: screenWidth * 0.25,
-                    child: AnimatedSplashScreen(
-                      nextScreen: const OnBoardingView(),
-                      backgroundColor: Colors.transparent,
-                      curve: Curves.bounceOut,
-                      splashTransition: SplashTransition.sizeTransition,
-                      pageTransitionType: PageTransitionType.fade,
-                      duration: 3000,
-                      splashIconSize: screenWidth * 0.25,
-                      splash: AnimatedCrossFade(
-                        crossFadeState: CrossFadeState.showFirst,
-                        alignment: Alignment.center,
-                        duration: const Duration(milliseconds: 1000),
-                        firstChild: Image.asset(
-                          AppConstants.imageSplashPath,
-                          fit: BoxFit.contain,
-                        ),
-                        secondChild: Container(
-                          color: Colors.transparent,
-                        ),
-                      ),
+                  AnimatedCrossFade(
+                    crossFadeState: _showFirst
+                        ? CrossFadeState.showFirst
+                        : CrossFadeState.showSecond,
+                    alignment: Alignment.center,
+                    duration: const Duration(milliseconds: 3000),
+                    firstChild: Image.asset(
+                      AppConstants.imageSplashPath,
+                      fit: BoxFit.contain,
+                      width: screenWidth * 0.25,
+                    ),
+                    secondChild: Container(
+                      color: Colors.transparent,
                     ),
                   ),
                   TweenAnimationBuilder<double>(
@@ -94,27 +114,18 @@ class SplashView extends StatelessWidget {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: screenWidth * 0.4,
-                  child: AnimatedSplashScreen(
-                    nextScreen: const OnBoardingView(),
-                    backgroundColor: Colors.transparent,
-                    curve: Curves.bounceOut,
-                    splashTransition: SplashTransition.sizeTransition,
-                    pageTransitionType: PageTransitionType.fade,
-                    duration: 3000,
-                    splashIconSize: screenWidth,
-                    splash: AnimatedCrossFade(
-                      crossFadeState: CrossFadeState.showFirst,
-                      duration: Duration(milliseconds: 1000),
-                      firstChild: Image.asset(
-                        AppConstants.imageSplashPath,
-                        width: screenWidth,
-                      ),
-                      secondChild: Container(
-                        color: Colors.transparent,
-                      ),
-                    ),
+                AnimatedCrossFade(
+                  crossFadeState: _showFirst
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                  duration: Duration(milliseconds: 3000),
+                  firstChild: Image.asset(
+                    AppConstants.imageSplashPath,
+                    height: screenWidth * 0.4,
+                    width: screenWidth,
+                  ),
+                  secondChild: Container(
+                    color: Colors.transparent,
                   ),
                 ),
                 const MediumSpace(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/constant.dart';
-import '../manager/cubits/BottomNaviCubit/bottom_navi_cubit_cubit.dart';
+import '../manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
 
 class BottomAppBarItem extends StatelessWidget {
   const BottomAppBarItem({

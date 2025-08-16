@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jot_do/core/widgets/custom_material_button.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../manager/cubits/PickColor/pick_color_cubit.dart';
 import '../../../widgets/pick_color_grid_view.dart';
 
 class NoteForm extends StatefulWidget {
@@ -63,7 +65,7 @@ class _NoteFormState extends State<NoteForm> {
           customDivider(),
           const SmallSpace(),
           CustomMaterialButton(
-            color: AppConstants.addNoteBGColor,
+            color: context.watch<PickColorCubit>().state.selectedColor,
             onPressed: () {
               if (_formKey.currentState!.validate()) {}
             },

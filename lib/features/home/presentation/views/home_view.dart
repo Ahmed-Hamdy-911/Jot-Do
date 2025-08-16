@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/features/home/presentation/manager/cubits/BottomNaviCubit/bottom_navi_cubit_cubit.dart';
+import 'package:jot_do/features/home/presentation/manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
 import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
 import '../../../../core/constants/constant.dart';

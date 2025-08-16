@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/cubits/selectionCubit/filter_cubit.dart';
-import 'package:jot_do/core/cubits/selectionCubit/filter_state.dart';
+import 'package:jot_do/features/home/presentation/manager/cubits/PickColor/pick_color_cubit.dart';
+import 'package:jot_do/features/home/presentation/manager/cubits/PickColor/pick_color_state.dart';
 import '../../../../core/constants/constant.dart';
 
 class PickColorItem extends StatelessWidget {
@@ -17,10 +17,10 @@ class PickColorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     final isWideScreen = screenWidth > 600;
-    return BlocBuilder<SelectionCubit, SelectionState>(
+    return BlocBuilder<PickColorCubit, PickColorState>(
       builder: (context, state) {
-        var selectionCubit = context.watch<SelectionCubit>();
-        bool isSelected = selectionCubit.state.selectedIndex == colorIndex;
+        var pickColorCubit = context.watch<PickColorCubit>();
+        bool isSelected = pickColorCubit.state.selectedIndex == colorIndex;
         return Padding(
           padding: const EdgeInsets.all(2.0),
           child: Material(
@@ -28,7 +28,7 @@ class PickColorItem extends StatelessWidget {
             shape: const CircleBorder(),
             child: InkWell(
               onTap: () {
-                context.read<SelectionCubit>().switchSelection(colorIndex);
+                context.read<PickColorCubit>().pickColor(colorIndex, color);
                 AppConstants.addNoteBGColor = color;
               },
               highlightColor: Colors.white.withOpacity(0.3),
