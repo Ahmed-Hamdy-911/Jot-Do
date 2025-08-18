@@ -42,7 +42,7 @@ class SplashView extends StatelessWidget {
                         curve: Curves.bounceOut,
                         splashTransition: SplashTransition.sizeTransition,
                         pageTransitionType: PageTransitionType.fade,
-                        duration: 3000,
+                        duration: 2000,
                         splashIconSize: screenWidth * 0.25,
                         splash: AnimatedCrossFade(
                           crossFadeState: CrossFadeState.showFirst,
@@ -104,7 +104,7 @@ class SplashView extends StatelessWidget {
                       curve: Curves.bounceOut,
                       splashTransition: SplashTransition.sizeTransition,
                       pageTransitionType: PageTransitionType.fade,
-                      duration: 3000,
+                      duration: 2000,
                       splashIconSize: screenWidth,
                       splash: AnimatedCrossFade(
                         crossFadeState: CrossFadeState.showFirst,
