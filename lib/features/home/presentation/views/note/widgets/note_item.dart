@@ -4,36 +4,39 @@ import 'package:iconly/iconly.dart';
 import 'package:jot_do/generated/l10n.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
+import 'slidable_actions.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
     super.key,
     required this.color,
+    required this.index,
   });
   final Color color;
+  final int index;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     var content = S.of(context).note_content;
     final dateTime = AppConstants.formatDateTime(DateTime.now());
     const fontFamily = "Tajawal";
-    return Container(
-      margin: EdgeInsetsDirectional.only(
-        top: 12,
-      ),
-      padding: EdgeInsets.all(18).copyWith(bottom: 10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppConstants.kRadius),
-          gradient: LinearGradient(
-              begin: AlignmentDirectional.topStart,
-              end: AlignmentDirectional.bottomEnd,
-              colors: [
-                color.withValues(alpha: 0.9),
-                color.withValues(alpha: 0.7),
-                color.withValues(alpha: 0.5),
-                color.withValues(alpha: 0.3)
-              ])),
-      child: Slidable(
+    return Slidable(
+      key: ValueKey(index),
+      startActionPane: onDismissibleStartAction(context),
+      endActionPane: onDismissibleEndAction(context),
+      child: Container(
+        padding: EdgeInsets.all(18).copyWith(bottom: 10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppConstants.kRadius),
+            gradient: LinearGradient(
+                begin: AlignmentDirectional.topStart,
+                end: AlignmentDirectional.bottomEnd,
+                colors: [
+                  color.withValues(alpha: 0.9),
+                  color.withValues(alpha: 0.7),
+                  color.withValues(alpha: 0.5),
+                  color.withValues(alpha: 0.3)
+                ])),
         child: Stack(
           children: [
             Column(
@@ -111,4 +114,6 @@ class NoteItem extends StatelessWidget {
       ),
     );
   }
+
+
 }

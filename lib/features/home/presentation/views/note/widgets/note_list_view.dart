@@ -13,8 +13,12 @@ class ListViewBuilder extends StatelessWidget {
         child: ListView.builder(
       padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
       itemCount: 17,
-      itemBuilder: (context, index) => NoteItem(
-        color: AppConstants.noteColors[index],
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.only(top: 12),
+        child: NoteItem(
+          index: index,
+          color: AppConstants.noteColors[index],
+        ),
       ),
     ));
   }

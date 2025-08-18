@@ -67,7 +67,7 @@
     "no_notes_found": "No notes found",
     "search_notes": "Search Notes",
     "search": "Search",
-    "add_note_or_task" : "Add note or task",
+    "add_note_or_task": "Add note or task",
     "your_tasks": "Your Tasks",
     "add_task": "Add Task",
     "task_title": "Task Title",
@@ -81,9 +81,9 @@
     "task_updated": "Task updated successfully",
     "no_tasks_found": "No tasks found",
     "task_completed": "Task completed",
-    "task_archieved": "Task not completed",
+    "task_archived": "Task not completed",
     "task_pending": "Task pending",
-    "task_in_progress":  "In Progress",
+    "task_in_progress": "In Progress",
     "home": "Home",
     "settings": "Settings",
     "filter_all": "All",
@@ -91,6 +91,8 @@
     "filter_favorite": "Favorite",
     "filter_highlight": "Highlight",
     "filter_archived": "Archived",
-    "filter_pined": "Pined"
-
+    "filter_pined": "Pined",
+    "pin": "Pin",
+    "archive": "Archive",
+    "delete": "Delete"
 }

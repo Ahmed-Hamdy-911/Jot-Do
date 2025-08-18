@@ -755,10 +755,10 @@ class S {
   }
 
   /// `Task not completed`
-  String get task_archieved {
+  String get task_archived {
     return Intl.message(
       'Task not completed',
-      name: 'task_archieved',
+      name: 'task_archived',
       desc: '',
       args: [],
     );
@@ -837,6 +837,21 @@ class S {
   /// `Pined`
   String get filter_pined {
     return Intl.message('Pined', name: 'filter_pined', desc: '', args: []);
+  }
+
+  /// `Pin`
+  String get pin {
+    return Intl.message('Pin', name: 'pin', desc: '', args: []);
+  }
+
+  /// `Archive`
+  String get archive {
+    return Intl.message('Archive', name: 'archive', desc: '', args: []);
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
   }
 }
 

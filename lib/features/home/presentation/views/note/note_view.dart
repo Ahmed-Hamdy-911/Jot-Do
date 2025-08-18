@@ -25,7 +25,6 @@ class NoteBody extends StatelessWidget {
       S.of(context).filter_all,
       S.of(context).filter_new,
       S.of(context).filter_favorite,
-      S.of(context).filter_highlight,
       S.of(context).filter_archived,
       S.of(context).filter_pined,
     ];

@@ -32,12 +32,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appName": MessageLookupByLibrary.simpleMessage("Jot&Do"),
     "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
+    "archive": MessageLookupByLibrary.simpleMessage("Archive"),
     "back_to_login": MessageLookupByLibrary.simpleMessage("Back to Login"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
     "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "delete_note": MessageLookupByLibrary.simpleMessage("Delete Note"),
     "delete_task": MessageLookupByLibrary.simpleMessage("Delete Task"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage(
@@ -134,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "pin": MessageLookupByLibrary.simpleMessage("Pin"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "Create your account and unlock exclusive features.",
@@ -161,9 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "Registration successful",
     ),
-    "task_archieved": MessageLookupByLibrary.simpleMessage(
-      "Task not completed",
-    ),
+    "task_archived": MessageLookupByLibrary.simpleMessage("Task not completed"),
     "task_completed": MessageLookupByLibrary.simpleMessage("Task completed"),
     "task_deleted": MessageLookupByLibrary.simpleMessage(
       "Task deleted successfully",

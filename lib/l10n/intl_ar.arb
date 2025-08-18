@@ -5,7 +5,7 @@
     "onBoardingTitle1": "نظّم أفكارك",
     "onBoardingDesc1": "لا تدع فكرة تفلت منك — دوّن أفكارك في ثوانٍ، في أي مكان وأي وقت.",
     "onBoardingTitle2": "حدد المواعيد بسهولة",
-    "onBoardingDesc2":"صنّف ملاحظاتك، أضف ألوانًا، وحدد التواريخ لتبقى منظمة وسهلة الوصول.",
+    "onBoardingDesc2": "صنّف ملاحظاتك، أضف ألوانًا، وحدد التواريخ لتبقى منظمة وسهلة الوصول.",
     "onBoardingTitle3": "زامن ملاحظاتك",
     "onBoardingDesc3": "احفظ بياناتك محليًا أو قم بعمل نسخة احتياطية إلى السحابة بضغطة واحدة.",
     "skip": "تخطي",
@@ -53,8 +53,8 @@
     "resend_code": "إعادة إرسال الرمز؟",
     "back_to_login": "العودة لتسجيل الدخول",
     "login_excited_text": "مرحبًا بعودتك!",
-    "register_excited_text":"قم بإنشاء حسابك وافتح الميزات الحصرية.",
-        "your_notes": "ملاحظاتك",
+    "register_excited_text": "قم بإنشاء حسابك وافتح الميزات الحصرية.",
+    "your_notes": "ملاحظاتك",
     "add_note": "إضافة ملاحظة",
     "note_title": "عنوان الملاحظة",
     "note_content": "محتوى الملاحظة",
@@ -81,7 +81,7 @@
     "task_updated": "تم تعديل المهمة بنجاح",
     "no_tasks_found": "لا توجد مهام",
     "task_completed": "تم إنجاز المهمة",
-    "task_archieved": "لم يتم إنجاز المهمة",
+    "task_archived": "لم يتم إنجاز المهمة",
     "task_pending": "مهمة معلّقة",
     "task_in_progress": "قيد التنفيذ",
     "home": "الرئيسية",
@@ -91,6 +91,8 @@
     "filter_favorite": "المفضلة",
     "filter_highlight": "مميزة",
     "filter_archived": "مؤرشف",
-    "filter_pined": "مثبت"
-
+    "filter_pined": "مثبت",
+    "pin": "تثبيت",
+    "archive": "أرشفة",
+    "delete": "حذف"
 }

@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appName": MessageLookupByLibrary.simpleMessage("دوّن و نفذ"),
     "apple": MessageLookupByLibrary.simpleMessage("تسجيل الدخول باستخدام آبل"),
+    "archive": MessageLookupByLibrary.simpleMessage("أرشفة"),
     "back_to_login": MessageLookupByLibrary.simpleMessage(
       "العودة لتسجيل الدخول",
     ),
@@ -40,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "delete_note": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
     "delete_task": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
@@ -134,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "pin": MessageLookupByLibrary.simpleMessage("تثبيت"),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "قم بإنشاء حسابك وافتح الميزات الحصرية.",
@@ -167,7 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "تم إنشاء الحساب بنجاح",
     ),
-    "task_archieved": MessageLookupByLibrary.simpleMessage(
+    "task_archived": MessageLookupByLibrary.simpleMessage(
       "لم يتم إنجاز المهمة",
     ),
     "task_completed": MessageLookupByLibrary.simpleMessage("تم إنجاز المهمة"),
