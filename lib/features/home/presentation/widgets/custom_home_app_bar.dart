@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/constant.dart';
 import '../../../../generated/l10n.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.tabController});
+class CustomHomeAppBar extends StatelessWidget {
+  const CustomHomeAppBar({super.key, required this.tabController});
   final TabController tabController;
   @override
   Widget build(BuildContext context) {

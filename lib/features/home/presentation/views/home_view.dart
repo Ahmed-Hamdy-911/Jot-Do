@@ -13,12 +13,8 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => BottomNaviCubit(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => BottomNaviCubit(),
       child: HomeScaffold(),
     );
   }
@@ -61,29 +57,24 @@ class _HomeScaffoldState extends State<HomeScaffold>
       ),
     ];
     var bottomCubit = BlocProvider.of<BottomNaviCubit>(context);
-    return BlocBuilder<BottomNaviCubit, int>(
-      builder: (context, state) {
-        bool isHome = context.watch<BottomNaviCubit>().state == 0;
-        return DefaultTabController(
-          length: 2,
-          child: Scaffold(
-            extendBody: true,
-            appBar: isHome
-                ? PreferredSize(
-                    preferredSize: const Size.fromHeight(kToolbarHeight),
-                    child: CustomAppBar(
-                      tabController: _tabController,
-                    ),
-                  )
-                : null,
-            body: screens[bottomCubit.currentIndex],
-            bottomNavigationBar: CustomBottomNaviAppBar(),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
-            floatingActionButton: CustomFloatingButton(),
-          ),
-        );
-      },
+    bool isHome = context.watch<BottomNaviCubit>().state == 0;
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        extendBody: true,
+        appBar: isHome
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(kToolbarHeight),
+                child: CustomHomeAppBar(
+                  tabController: _tabController,
+                ),
+              )
+            : null,
+        body: screens[bottomCubit.currentIndex],
+        bottomNavigationBar: CustomBottomNaviAppBar(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: CustomFloatingButton(),
+      ),
     );
   }
 }
