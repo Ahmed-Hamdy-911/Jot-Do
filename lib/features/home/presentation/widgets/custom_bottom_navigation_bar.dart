@@ -13,7 +13,7 @@ class CustomBottomNaviAppBar extends StatelessWidget {
     return BottomAppBar(
       height: kBottomNavigationBarHeight,
       shape: CircularNotchedRectangle(),
-      color: AppConstants.mainLightColor.withOpacity(0.9),
+      color: AppConstants.mainLightColor.withValues(alpha: 0.9),
       elevation: 0,
       padding: EdgeInsets.symmetric(horizontal: 12),
       child: Row(

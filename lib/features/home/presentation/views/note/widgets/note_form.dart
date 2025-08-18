@@ -29,7 +29,7 @@ class _NoteFormState extends State<NoteForm> {
     fontSize: 19,
   );
   final bool filled = true;
-  final Color fillColor = Colors.grey.withOpacity(0.1);
+  final Color fillColor = Colors.grey.withValues(alpha: 0.1);
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;

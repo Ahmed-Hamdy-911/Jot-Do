@@ -11,7 +11,7 @@ class CustomFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: AppConstants.mainLightColor.withOpacity(0.8),
+      backgroundColor: AppConstants.mainLightColor.withValues(alpha: 0.8),
       foregroundColor: Colors.white,
       onPressed: () {
         final currentIndex = AppConstants.homeBodyIndex;

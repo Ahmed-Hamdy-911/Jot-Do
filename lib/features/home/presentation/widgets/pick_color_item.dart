@@ -31,7 +31,7 @@ class PickColorItem extends StatelessWidget {
                 context.read<PickColorCubit>().pickColor(colorIndex, color);
                 AppConstants.addNoteBGColor = color;
               },
-              highlightColor: Colors.white.withOpacity(0.3),
+              highlightColor: Colors.white.withValues(alpha: 0.3),
               customBorder: const CircleBorder(),
               child: Stack(
                 alignment: AlignmentDirectional.topStart,

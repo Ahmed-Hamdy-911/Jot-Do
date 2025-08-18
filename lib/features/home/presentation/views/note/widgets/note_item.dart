@@ -28,10 +28,10 @@ class NoteItem extends StatelessWidget {
               begin: AlignmentDirectional.topStart,
               end: AlignmentDirectional.bottomEnd,
               colors: [
-                color.withOpacity(0.9),
-                color.withOpacity(0.7),
-                color.withOpacity(0.5),
-                color.withOpacity(0.3)
+                color.withValues(alpha: 0.9),
+                color.withValues(alpha: 0.7),
+                color.withValues(alpha: 0.5),
+                color.withValues(alpha: 0.3)
               ])),
       child: Slidable(
         child: Stack(
@@ -97,7 +97,7 @@ class NoteItem extends StatelessWidget {
                 onTap: () {},
                 child: CircleAvatar(
                   radius: screenWidth * 0.04,
-                  backgroundColor: Colors.white.withOpacity(0.2),
+                  backgroundColor: Colors.white.withValues(alpha: 0.2),
                   child: Icon(
                     IconlyLight.heart,
                     size: screenWidth * 0.07,

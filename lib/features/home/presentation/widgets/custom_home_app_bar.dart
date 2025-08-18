@@ -9,12 +9,12 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: AppConstants.mainLightColor.withOpacity(0.9),
+      backgroundColor: AppConstants.mainLightColor.withValues(alpha: 0.9),
       bottom: TabBar(
         dividerColor: Colors.transparent,
         indicatorSize: TabBarIndicatorSize.label,
         controller: tabController,
-        unselectedLabelColor: AppConstants.mainDarkColor.withOpacity(0.9),
+        unselectedLabelColor: AppConstants.mainDarkColor.withValues(alpha: 0.9),
         labelColor: Colors.white,
         indicatorColor: AppConstants.colorScheme.shade800,
         labelStyle: TextStyle(fontSize: 16),

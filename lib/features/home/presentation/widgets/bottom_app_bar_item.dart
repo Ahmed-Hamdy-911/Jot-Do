@@ -43,7 +43,7 @@ class BottomAppBarItem extends StatelessWidget {
                 waitDuration: Duration(milliseconds: 500),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(AppConstants.kRadius),
-                  splashColor: Colors.amber.withOpacity(0.25),
+                  splashColor: Colors.amber.withValues(alpha: 0.25),
                   onTap: () => context
                       .read<BottomNaviCubit>()
                       .changeBottomPage(pageIndex),
@@ -58,7 +58,8 @@ class BottomAppBarItem extends StatelessWidget {
                           isSelected ? iconSelected : iconUnSelected,
                           color: isSelected
                               ? Colors.white
-                              : AppConstants.mainDarkColor.withOpacity(0.9),
+                              : AppConstants.mainDarkColor
+                                  .withValues(alpha: 0.9),
                           size: isSelected ? 28 : 26,
                         ),
                         SizedBox(width: screenWidth * 0.03),
@@ -68,7 +69,8 @@ class BottomAppBarItem extends StatelessWidget {
                             fontSize: isSelected ? 17 : 15,
                             color: isSelected
                                 ? Colors.white
-                                : AppConstants.mainDarkColor.withOpacity(0.9),
+                                : AppConstants.mainDarkColor
+                                    .withValues(alpha: 0.9),
                           ),
                         ),
                       ],
