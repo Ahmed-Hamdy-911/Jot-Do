@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
+    "account": MessageLookupByLibrary.simpleMessage("الحساب"),
     "add_note": MessageLookupByLibrary.simpleMessage("إضافة ملاحظة"),
     "add_note_or_task": MessageLookupByLibrary.simpleMessage(
       "إضافة ملاحظة أو مهمة",
@@ -32,15 +34,20 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appName": MessageLookupByLibrary.simpleMessage("دوّن و نفذ"),
     "apple": MessageLookupByLibrary.simpleMessage("تسجيل الدخول باستخدام آبل"),
+    "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "archive": MessageLookupByLibrary.simpleMessage("أرشفة"),
     "back_to_login": MessageLookupByLibrary.simpleMessage(
       "العودة لتسجيل الدخول",
+    ),
+    "backup_sync": MessageLookupByLibrary.simpleMessage(
+      "النسخ الاحتياطي والمزامنة",
     ),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
+    "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "delete_note": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
     "delete_task": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
@@ -48,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_note": MessageLookupByLibrary.simpleMessage("تعديل الملاحظة"),
     "edit_task": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "أعد إدخال كلمة المرور",
     ),
@@ -91,6 +99,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "تسجيل الدخول باستخدام جوجل",
     ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "light": MessageLookupByLibrary.simpleMessage("فاتح"),
     "logging_in": MessageLookupByLibrary.simpleMessage("جاري تسجيل الدخول..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "login_call_to_action": MessageLookupByLibrary.simpleMessage(
@@ -116,6 +126,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "note_title": MessageLookupByLibrary.simpleMessage("عنوان الملاحظة"),
     "note_updated": MessageLookupByLibrary.simpleMessage(
       "تم تعديل الملاحظة بنجاح",
+    ),
+    "notification_settings": MessageLookupByLibrary.simpleMessage(
+      "إعدادات الإشعارات",
     ),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
       "لا تدع فكرة تفلت منك — دوّن أفكارك في ثوانٍ، في أي مكان وأي وقت.",
@@ -154,6 +167,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "save_task": MessageLookupByLibrary.simpleMessage("حفظ المهمة"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "search_notes": MessageLookupByLibrary.simpleMessage("بحث في الملاحظات"),
+    "selectColorNote": MessageLookupByLibrary.simpleMessage(
+      "اختر لون الملاحظة",
+    ),
     "send": MessageLookupByLibrary.simpleMessage("إرسال"),
     "send_password_reset": MessageLookupByLibrary.simpleMessage(
       "سنرسل لك بريدًا إلكترونيًا لتغيير كلمة المرور.",
@@ -184,6 +200,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "task_updated": MessageLookupByLibrary.simpleMessage(
       "تم تعديل المهمة بنجاح",
     ),
+    "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا لك رابطًا للتحقق من عنوان بريدك الإلكتروني.\n إلى ",
     ),

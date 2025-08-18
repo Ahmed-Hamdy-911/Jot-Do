@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about_app": MessageLookupByLibrary.simpleMessage("About App"),
+    "account": MessageLookupByLibrary.simpleMessage("Account"),
     "add_note": MessageLookupByLibrary.simpleMessage("Add Note"),
     "add_note_or_task": MessageLookupByLibrary.simpleMessage(
       "Add note or task",
@@ -32,13 +34,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "appName": MessageLookupByLibrary.simpleMessage("Jot&Do"),
     "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "archive": MessageLookupByLibrary.simpleMessage("Archive"),
     "back_to_login": MessageLookupByLibrary.simpleMessage("Back to Login"),
+    "backup_sync": MessageLookupByLibrary.simpleMessage("Backup & Sync"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
     "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
+    "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "delete_note": MessageLookupByLibrary.simpleMessage("Delete Note"),
     "delete_task": MessageLookupByLibrary.simpleMessage("Delete Task"),
@@ -48,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_note": MessageLookupByLibrary.simpleMessage("Edit Note"),
     "edit_task": MessageLookupByLibrary.simpleMessage("Edit Task"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "Enter your password again",
     ),
@@ -87,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "light": MessageLookupByLibrary.simpleMessage("Light"),
     "logging_in": MessageLookupByLibrary.simpleMessage("Logging in..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "login_call_to_action": MessageLookupByLibrary.simpleMessage(
@@ -114,6 +122,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "note_title": MessageLookupByLibrary.simpleMessage("Note Title"),
     "note_updated": MessageLookupByLibrary.simpleMessage(
       "Note updated successfully",
+    ),
+    "notification_settings": MessageLookupByLibrary.simpleMessage(
+      "Notification Settings",
     ),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
       "Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.",
@@ -152,6 +163,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "save_task": MessageLookupByLibrary.simpleMessage("Save Task"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "search_notes": MessageLookupByLibrary.simpleMessage("Search Notes"),
+    "selectColorNote": MessageLookupByLibrary.simpleMessage(
+      "Select note color",
+    ),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "send_password_reset": MessageLookupByLibrary.simpleMessage(
       "We will send you an email to change your password.",
@@ -182,6 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "task_updated": MessageLookupByLibrary.simpleMessage(
       "Task updated successfully",
     ),
+    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "We have sent you a link to verify your email address.\n to ",
     ),

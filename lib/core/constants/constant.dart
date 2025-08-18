@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
-
 import '../../features/home/presentation/views/note/note_view.dart';
 import '../../features/home/presentation/views/task/task_view.dart';
 import '../../generated/l10n.dart';

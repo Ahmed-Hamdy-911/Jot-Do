@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jot_do/features/home/presentation/manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
+import 'package:jot_do/features/home/presentation/views/settings/settings_view.dart';
 import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
 import 'package:jot_do/generated/l10n.dart';
 import '../../../../core/constants/constant.dart';
@@ -50,11 +51,9 @@ class _HomeScaffoldState extends State<HomeScaffold>
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> screens = [
+    List<Widget> screens = [
       HomeBody(tabController: _tabController),
-      Container(
-        child: Center(child: Text(S.of(context).settings)),
-      ),
+      SettingsView(),
     ];
     var bottomCubit = BlocProvider.of<BottomNaviCubit>(context);
     bool isHome = context.watch<BottomNaviCubit>().state == 0;

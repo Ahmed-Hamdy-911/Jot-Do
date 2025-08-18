@@ -659,6 +659,16 @@ class S {
     );
   }
 
+  /// `Select note color`
+  String get selectColorNote {
+    return Intl.message(
+      'Select note color',
+      name: 'selectColorNote',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your Tasks`
   String get your_tasks {
     return Intl.message('Your Tasks', name: 'your_tasks', desc: '', args: []);
@@ -852,6 +862,66 @@ class S {
   /// `Delete`
   String get delete {
     return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Backup & Sync`
+  String get backup_sync {
+    return Intl.message(
+      'Backup & Sync',
+      name: 'backup_sync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification Settings`
+  String get notification_settings {
+    return Intl.message(
+      'Notification Settings',
+      name: 'notification_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message('Account', name: 'account', desc: '', args: []);
+  }
+
+  /// `About App`
+  String get about_app {
+    return Intl.message('About App', name: 'about_app', desc: '', args: []);
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message('English', name: 'english', desc: '', args: []);
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
+  }
+
+  /// `Dark`
+  String get dark {
+    return Intl.message('Dark', name: 'dark', desc: '', args: []);
+  }
+
+  /// `Light`
+  String get light {
+    return Intl.message('Light', name: 'light', desc: '', args: []);
   }
 }
 

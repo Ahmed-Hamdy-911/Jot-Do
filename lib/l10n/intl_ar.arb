@@ -68,6 +68,7 @@
     "search_notes": "بحث في الملاحظات",
     "search": "بحث",
     "add_note_or_task": "إضافة ملاحظة أو مهمة",
+    "selectColorNote": "اختر لون الملاحظة",
     "your_tasks": "مهامك",
     "add_task": "إضافة مهمة",
     "task_title": "عنوان المهمة",
@@ -94,5 +95,15 @@
     "filter_pined": "مثبت",
     "pin": "تثبيت",
     "archive": "أرشفة",
-    "delete": "حذف"
+    "delete": "حذف",
+    "backup_sync": "النسخ الاحتياطي والمزامنة",
+    "notification_settings": "إعدادات الإشعارات",
+    "language": "اللغة",
+    "theme": "المظهر",
+    "account": "الحساب",
+    "about_app": "حول التطبيق",
+    "english": "الإنجليزية",
+    "arabic": "العربية",
+    "dark": "داكن",
+    "light": "فاتح"
 }

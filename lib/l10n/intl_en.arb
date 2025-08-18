@@ -68,6 +68,7 @@
     "search_notes": "Search Notes",
     "search": "Search",
     "add_note_or_task": "Add note or task",
+    "selectColorNote": "Select note color",
     "your_tasks": "Your Tasks",
     "add_task": "Add Task",
     "task_title": "Task Title",
@@ -94,5 +95,15 @@
     "filter_pined": "Pined",
     "pin": "Pin",
     "archive": "Archive",
-    "delete": "Delete"
+    "delete": "Delete",
+    "backup_sync": "Backup & Sync",
+    "notification_settings": "Notification Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "account": "Account",
+    "about_app": "About App",
+    "english": "English",
+    "arabic": "Arabic",
+    "dark": "Dark",
+    "light": "Light"
 }
