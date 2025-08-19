@@ -29,7 +29,7 @@ class CustomSmoothPageIndicator extends StatelessWidget {
                 curve: Curves.easeIn);
           },
           count: _pages.length,
-          effect: WormEffect(
+          effect: const WormEffect(
               spacing: 8.0,
               dotHeight: 12,
               dotWidth: 12,

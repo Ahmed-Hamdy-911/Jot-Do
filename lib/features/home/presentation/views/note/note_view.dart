@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/widgets/filter_view_builder.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../core/widgets/filter_view_builder.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/cubits/selectionCubit/selection_cubit.dart';
 import 'widgets/note_list_view.dart';
 
@@ -10,7 +10,7 @@ class NoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NoteBody();
+    return const NoteBody();
   }
 }
 
@@ -33,7 +33,7 @@ class NoteBody extends StatelessWidget {
       child: Column(
         children: [
           FilterViewBuilder(filterList: noteFilters),
-          ListViewBuilder(),
+          const ListViewBuilder(),
         ],
       ),
     );

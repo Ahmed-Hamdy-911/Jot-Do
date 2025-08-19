@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../core/widgets/custom_text_and_text_button.dart';

@@ -6,7 +6,7 @@ import 'pick_color_state.dart';
 class PickColorCubit extends Cubit<PickColorState> {
   PickColorCubit()
       : super(PickColorState(
-          selectedColor: Color(0xff26C281),
+          selectedColor: const Color(0xff26C281),
           selectedIndex: 0,
         ));
   final List<Color> noteColors = const [

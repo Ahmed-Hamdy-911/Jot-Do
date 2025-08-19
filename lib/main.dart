@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/core/routing/app_router.dart';
-import 'package:jot_do/core/routing/app_routes.dart';
+import 'core/constants/constant.dart';
+import 'core/routing/app_routes.dart';
 import 'core/blocObserver/bloc_observer.dart';
+import 'core/routing/app_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

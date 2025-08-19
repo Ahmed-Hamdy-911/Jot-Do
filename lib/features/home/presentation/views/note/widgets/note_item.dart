@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconly/iconly.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import 'slidable_actions.dart';
@@ -25,7 +25,7 @@ class NoteItem extends StatelessWidget {
       startActionPane: onDismissibleStartAction(context),
       endActionPane: onDismissibleEndAction(context),
       child: Container(
-        padding: EdgeInsets.all(18).copyWith(bottom: 10),
+        padding: const EdgeInsets.all(18).copyWith(bottom: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppConstants.kRadius),
             gradient: LinearGradient(

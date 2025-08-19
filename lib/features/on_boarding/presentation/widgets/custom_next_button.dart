@@ -42,7 +42,7 @@ class CustomNextButton extends StatelessWidget {
         percent: progress,
         animation: true,
         animationDuration: 300,
-        center: Icon(
+        center: const Icon(
           Icons.arrow_forward_ios,
           color: AppConstants.colorScheme,
           size: 18,

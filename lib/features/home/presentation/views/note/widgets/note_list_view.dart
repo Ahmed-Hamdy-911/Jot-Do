@@ -11,7 +11,7 @@ class ListViewBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: ListView.builder(
-      padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
+      padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
       itemCount: 17,
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.only(top: 12),

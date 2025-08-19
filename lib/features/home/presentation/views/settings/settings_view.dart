@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../core/constants/constant.dart';
+import '../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/language_model.dart';
 
 class SettingsView extends StatelessWidget {
@@ -37,7 +37,7 @@ class SettingsView extends StatelessWidget {
           CustomSettingItem(
             title: S.of(context).backup_sync,
             leadingIcon: Icons.backup_outlined,
-            trailing: Icon(Icons.restore),
+            trailing: const Icon(Icons.restore),
             onTap: () {},
           ),
           const MediumSpace(),
@@ -105,7 +105,7 @@ class CustomSettingItem extends StatelessWidget {
     return ListTile(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(AppConstants.kRadius),
-          side: BorderSide(
+          side: const BorderSide(
             width: 1,
             color: Colors.black54,
           )),
@@ -113,7 +113,7 @@ class CustomSettingItem extends StatelessWidget {
       title: Text(title),
       subtitle: subTitle != null ? Text(subTitle!) : null,
       trailing:
-          trailing == null ? Icon(Icons.arrow_forward_ios_sharp) : trailing,
+          trailing == null ? const Icon(Icons.arrow_forward_ios_sharp) : trailing,
       onTap: onTap,
     );
   }

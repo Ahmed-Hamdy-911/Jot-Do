@@ -39,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
                   screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
             ),
           ),
-          SmallSpace(),
+          const SmallSpace(),
           CustomTextFormField(
             hintText: S.of(context).enter_password,
             controller: passwordController,
@@ -102,7 +102,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ],
           ),
-          SmallSpace(),
+          const SmallSpace(),
           CustomMaterialButton(
             onPressed: () async {
               if (formKey.currentState!.validate()) {}

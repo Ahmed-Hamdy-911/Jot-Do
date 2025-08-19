@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
-import 'package:jot_do/features/home/presentation/manager/cubits/PickColor/pick_color_cubit.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../manager/cubits/PickColor/pick_color_cubit.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../core/constants/constant.dart';
 import 'pick_color_item.dart';
 
@@ -22,7 +22,7 @@ class PickColorGridView extends StatelessWidget {
         children: [
           Text(
             S.of(context).selectColorNote,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
             ),
           ),

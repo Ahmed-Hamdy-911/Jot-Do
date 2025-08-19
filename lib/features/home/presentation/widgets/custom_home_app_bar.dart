@@ -17,7 +17,7 @@ class CustomHomeAppBar extends StatelessWidget {
         unselectedLabelColor: AppConstants.mainDarkColor.withValues(alpha: 0.9),
         labelColor: Colors.white,
         indicatorColor: AppConstants.colorScheme.shade800,
-        labelStyle: TextStyle(fontSize: 16),
+        labelStyle: const TextStyle(fontSize: 16),
         tabs: [
           Tab(
             text: S.of(context).your_notes,

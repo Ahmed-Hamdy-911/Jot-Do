@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/features/home/presentation/manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
-import 'package:jot_do/features/home/presentation/views/settings/settings_view.dart';
-import 'package:jot_do/features/home/presentation/widgets/home_body.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
+import 'settings/settings_view.dart';
+import '../widgets/home_body.dart';
+
 import '../../../../core/constants/constant.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
 import '../widgets/custom_floating_button.dart';
@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => BottomNaviCubit(),
-      child: HomeScaffold(),
+      child: const HomeScaffold(),
     );
   }
 }
@@ -53,7 +53,7 @@ class _HomeScaffoldState extends State<HomeScaffold>
   Widget build(BuildContext context) {
     List<Widget> screens = [
       HomeBody(tabController: _tabController),
-      SettingsView(),
+      const SettingsView(),
     ];
     var bottomCubit = BlocProvider.of<BottomNaviCubit>(context);
     bool isHome = context.watch<BottomNaviCubit>().state == 0;
@@ -70,9 +70,9 @@ class _HomeScaffoldState extends State<HomeScaffold>
               )
             : null,
         body: screens[bottomCubit.currentIndex],
-        bottomNavigationBar: CustomBottomNaviAppBar(),
+        bottomNavigationBar: const CustomBottomNaviAppBar(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: CustomFloatingButton(),
+        floatingActionButton: const CustomFloatingButton(),
       ),
     );
   }

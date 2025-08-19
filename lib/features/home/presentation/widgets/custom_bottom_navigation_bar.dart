@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:jot_do/core/constants/constant.dart';
+import '../../../../core/constants/constant.dart';
 import '../../../../generated/l10n.dart';
 import 'bottom_app_bar_item.dart';
 
@@ -12,10 +12,10 @@ class CustomBottomNaviAppBar extends StatelessWidget {
     var screenWidth = MediaQuery.sizeOf(context).width;
     return BottomAppBar(
       height: kBottomNavigationBarHeight,
-      shape: CircularNotchedRectangle(),
+      shape: const CircularNotchedRectangle(),
       color: AppConstants.mainLightColor.withValues(alpha: 0.9),
       elevation: 0,
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
           BottomAppBarItem(

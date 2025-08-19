@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:jot_do/core/constants/constant.dart';
+import '../../../../../../core/constants/constant.dart';
 import '../../../../../../generated/l10n.dart';
 
 ActionPane onDismissibleStartAction(context) => ActionPane(

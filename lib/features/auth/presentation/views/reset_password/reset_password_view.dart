@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 import '../../widgets/custom_password_and_confirm_password.dart';
 

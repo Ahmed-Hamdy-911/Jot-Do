@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/constants/constant.dart';
+import '../constants/constant.dart';
 
 class CustomTextAndTextButton extends StatelessWidget {
   const CustomTextAndTextButton({

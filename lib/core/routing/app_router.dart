@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/features/home/presentation/views/note/widgets/add_note_view.dart';
-import 'package:jot_do/features/home/presentation/views/task/add_task_view.dart';
-import 'package:jot_do/features/splash/presentation/views/splash_view.dart';
+import '../../features/home/presentation/views/note/widgets/add_note_view.dart';
+import '../../features/home/presentation/views/task/add_task_view.dart';
+import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/login_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/register_view.dart';
 import '../../features/auth/presentation/views/forgot_password/forgot_password_view.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
-import 'package:jot_do/features/auth/presentation/widgets/auth_exited_text.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../widgets/auth_exited_text.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 
 import '../../widgets/custom_email_field.dart';

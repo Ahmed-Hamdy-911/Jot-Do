@@ -40,7 +40,7 @@ class BottomAppBarItem extends StatelessWidget {
               ),
               child: Tooltip(
                 message: title,
-                waitDuration: Duration(milliseconds: 500),
+                waitDuration: const Duration(milliseconds: 500),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(AppConstants.kRadius),
                   splashColor: Colors.amber.withValues(alpha: 0.25),

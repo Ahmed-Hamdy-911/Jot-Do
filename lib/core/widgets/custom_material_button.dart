@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/constants/constant.dart';
+import '../constants/constant.dart';
 
 class CustomMaterialButton extends StatelessWidget {
   const CustomMaterialButton({
@@ -40,7 +40,7 @@ class CustomMaterialButton extends StatelessWidget {
         minWidth: minWidth ?? screenWidth,
         color: color ?? AppConstants.colorScheme,
         child: isLoading == true
-            ? CircularProgressIndicator(
+            ? const CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               )
             : Text(

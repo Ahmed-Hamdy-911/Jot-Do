@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../generated/l10n.dart';
 
 import '../constants/constant.dart';
 
@@ -83,7 +83,7 @@ class CustomTextFormField extends StatelessWidget {
       minLines: minLines,
       initialValue: initialValue,
       style: customInputStyle ??
-          TextStyle(
+          const TextStyle(
             fontSize: 16,
             color: Colors.black,
           ),
@@ -127,7 +127,7 @@ class CustomTextFormField extends StatelessWidget {
         focusedBorder: customBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
-              borderSide: BorderSide(color: AppConstants.colorScheme),
+              borderSide: const BorderSide(color: AppConstants.colorScheme),
             ),
         enabledBorder: customBorder ??
             OutlineInputBorder(

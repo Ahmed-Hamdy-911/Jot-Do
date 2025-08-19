@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../core/constants/constant.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../on_boarding/presentation/widgets/custom_skip_button.dart';
@@ -45,7 +45,7 @@ class LoginView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 1,
                           child: LoginForm(),
                         ),
@@ -59,7 +59,7 @@ class LoginView extends StatelessWidget {
                             width: 50,
                           ),
                         ),
-                        Expanded(
+                        const Expanded(
                           flex: 1,
                           child: LoginExtrasWidget(),
                         ),
@@ -82,9 +82,9 @@ class LoginView extends StatelessWidget {
                       title: title,
                       subtitle: subtitle,
                     ),
-                    LoginForm(),
+                    const LoginForm(),
                     const MediumSpace(),
-                    LoginExtrasWidget(),
+                    const LoginExtrasWidget(),
                   ],
                 ),
               ),

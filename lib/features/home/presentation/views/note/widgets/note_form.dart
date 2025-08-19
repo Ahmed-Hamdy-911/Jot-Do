@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/widgets/custom_material_button.dart';
+import '../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../../core/widgets/custom_text_form.dart';
@@ -24,7 +24,7 @@ class _NoteFormState extends State<NoteForm> {
     borderRadius: BorderRadius.circular(AppConstants.kRadius),
     borderSide: BorderSide.none,
   );
-  final TextStyle customInputStyle = TextStyle(
+  final TextStyle customInputStyle = const TextStyle(
     color: Colors.black,
     fontSize: 19,
   );
@@ -61,7 +61,7 @@ class _NoteFormState extends State<NoteForm> {
             customInputStyle: customInputStyle.copyWith(fontSize: 15),
           ),
           customDivider(),
-          PickColorGridView(),
+          const PickColorGridView(),
           customDivider(),
           const SmallSpace(),
           CustomMaterialButton(
@@ -76,7 +76,7 @@ class _NoteFormState extends State<NoteForm> {
     );
   }
 
-  Widget customDivider() => Divider(
+  Widget customDivider() => const Divider(
         height: 15,
       );
 }

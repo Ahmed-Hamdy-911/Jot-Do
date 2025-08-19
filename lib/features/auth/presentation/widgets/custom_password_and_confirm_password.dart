@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../../../core/widgets/custom_text_form.dart';
 

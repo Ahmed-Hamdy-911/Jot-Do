@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/core/widgets/constants_spaces_widgets.dart';
-import 'package:jot_do/generated/l10n.dart';
+import '../../../../../core/constants/constant.dart';
+import '../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 
 class VerificationEmailView extends StatelessWidget {
@@ -99,7 +99,7 @@ class VerificationBody extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       S.of(context).resend_code,
-                      style: TextStyle(
+                      style: const TextStyle(
                         decoration: TextDecoration.underline,
                         height: 0.7,
                         fontSize: 16,

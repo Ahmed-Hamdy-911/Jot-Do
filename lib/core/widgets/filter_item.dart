@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/core/constants/constant.dart';
-import 'package:jot_do/core/cubits/selectionCubit/selection_cubit.dart';
+import '../constants/constant.dart';
+import '../cubits/selectionCubit/selection_cubit.dart';
 
 class FilterItem extends StatelessWidget {
   const FilterItem({

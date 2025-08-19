@@ -24,7 +24,7 @@ class _RegisterViewState extends State<RegisterView> {
                   child: const RegisterForm(),
                 );
               }
-              return RegisterForm();
+              return const RegisterForm();
             }),
           ),
         ),

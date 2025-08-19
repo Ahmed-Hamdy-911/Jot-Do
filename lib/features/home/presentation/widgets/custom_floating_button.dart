@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/core/routing/app_routes.dart';
-import 'package:jot_do/generated/l10n.dart';
-import 'package:jot_do/core/constants/constant.dart';
+import '../../../../core/routing/app_routes.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../core/constants/constant.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   const CustomFloatingButton({
@@ -21,9 +21,9 @@ class CustomFloatingButton extends StatelessWidget {
           Navigator.pushNamed(context, AppRoutes.addTask);
         }
       },
-      shape: CircleBorder(),
+      shape: const CircleBorder(),
       tooltip: S.of(context).add_note_or_task,
-      child: Icon(Icons.add),
+      child: const Icon(Icons.add),
     );
   }
 }

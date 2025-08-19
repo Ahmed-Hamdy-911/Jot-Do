@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
+
 import '../../features/home/presentation/views/note/note_view.dart';
 import '../../features/home/presentation/views/task/task_view.dart';
 import '../../generated/l10n.dart';
@@ -46,7 +47,7 @@ class AppConstants {
     useMaterial3: true,
     fontFamily: 'Cairo',
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       foregroundColor: colorScheme,
       surfaceTintColor: Colors.transparent,
@@ -61,7 +62,7 @@ class AppConstants {
     useMaterial3: true,
     fontFamily: 'Cairo',
     scaffoldBackgroundColor: Colors.black,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       foregroundColor: colorScheme,
       surfaceTintColor: Colors.transparent,

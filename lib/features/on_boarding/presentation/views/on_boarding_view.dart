@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jot_do/features/on_boarding/presentation/manager/cubits/onBoarding/on_boarding_cubit.dart';
+import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
 import '../../../../core/constants/constant.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../generated/l10n.dart';
@@ -65,7 +65,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 child: Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: AlignmentDirectional.centerStart,
                         end: AlignmentDirectional.centerEnd,

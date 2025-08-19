@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jot_do/features/auth/presentation/widgets/auth_exited_text.dart';
-import 'package:jot_do/generated/l10n.dart';
+import 'auth_exited_text.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
