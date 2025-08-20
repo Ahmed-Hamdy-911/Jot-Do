@@ -24,12 +24,11 @@ class FilterListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: screenWidth > 600 ? screenHeight * 0.09 : screenHeight * 0.067,
+      height: screenWidth > 600 ? 60 : 50,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8).copyWith(bottom: 4),
         scrollDirection: Axis.horizontal,
         itemCount: filterList.length,
         itemBuilder: (context, index) => FilterItem(
