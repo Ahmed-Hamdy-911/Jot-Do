@@ -55,6 +55,8 @@
     "login_excited_text": "Happy to see you again!",
     "register_excited_text": "Create your account and unlock exclusive features.",
     "your_notes": "Your Notes",
+    "note_details": "Note Details",
+    "created_at": "Created At: ",
     "add_note": "Add Note",
     "note_title": "Note Title",
     "note_content": "Note Content",

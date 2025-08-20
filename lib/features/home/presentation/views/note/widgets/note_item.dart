@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconly/iconly.dart';
+import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
@@ -25,7 +26,9 @@ class NoteItem extends StatelessWidget {
       startActionPane: onDismissibleStartAction(context),
       endActionPane: onDismissibleEndAction(context),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, AppRoutes.noteDetails);
+        },
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
         highlightColor: color.withValues(alpha: 0.3),
         child: Container(

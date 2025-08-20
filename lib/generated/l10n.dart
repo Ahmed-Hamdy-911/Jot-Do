@@ -559,6 +559,21 @@ class S {
     return Intl.message('Your Notes', name: 'your_notes', desc: '', args: []);
   }
 
+  /// `Note Details`
+  String get note_details {
+    return Intl.message(
+      'Note Details',
+      name: 'note_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Created At: `
+  String get created_at {
+    return Intl.message('Created At: ', name: 'created_at', desc: '', args: []);
+  }
+
   /// `Add Note`
   String get add_note {
     return Intl.message('Add Note', name: 'add_note', desc: '', args: []);

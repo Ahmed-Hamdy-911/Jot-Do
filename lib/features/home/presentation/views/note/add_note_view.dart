@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../manager/cubits/PickColor/pick_color_cubit.dart';
-import '../../../manager/cubits/PickColor/pick_color_state.dart';
-import '../../../../../../generated/l10n.dart';
-import 'note_form.dart';
+import '../../manager/cubits/PickColor/pick_color_cubit.dart';
+import '../../manager/cubits/PickColor/pick_color_state.dart';
+import '../../../../../generated/l10n.dart';
+import 'widgets/note_form.dart';
 
 class AddNoteView extends StatelessWidget {
   const AddNoteView({super.key});

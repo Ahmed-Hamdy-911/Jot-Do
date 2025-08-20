@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
+    "created_at": MessageLookupByLibrary.simpleMessage("تم الانشاء في: "),
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "delete_note": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
@@ -122,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "note_deleted": MessageLookupByLibrary.simpleMessage(
       "تم حذف الملاحظة بنجاح",
     ),
+    "note_details": MessageLookupByLibrary.simpleMessage("تفاصيل الملاحظة"),
     "note_saved": MessageLookupByLibrary.simpleMessage("تم حفظ الملاحظة بنجاح"),
     "note_title": MessageLookupByLibrary.simpleMessage("عنوان الملاحظة"),
     "note_updated": MessageLookupByLibrary.simpleMessage(

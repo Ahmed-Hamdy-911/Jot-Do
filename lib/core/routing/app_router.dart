@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../features/home/presentation/views/note/widgets/add_note_view.dart';
+import '../../features/home/presentation/views/note/add_note_view.dart';
+import '../../features/home/presentation/views/note/note_details_view.dart';
 import '../../features/home/presentation/views/task/add_task_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/login_view.dart';
@@ -47,6 +48,8 @@ class AppRouter {
         );
       case AppRoutes.addNote:
         return MaterialPageRoute(builder: (_) => const AddNoteView());
+      case AppRoutes.noteDetails:
+        return MaterialPageRoute(builder: (_) => const NoteDetailsView());
       case AppRoutes.addTask:
         return MaterialPageRoute(builder: (_) => const AddTaskView());
       default:

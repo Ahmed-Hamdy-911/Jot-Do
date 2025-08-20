@@ -55,6 +55,8 @@
     "login_excited_text": "مرحبًا بعودتك!",
     "register_excited_text": "قم بإنشاء حسابك وافتح الميزات الحصرية.",
     "your_notes": "ملاحظاتك",
+    "note_details": "تفاصيل الملاحظة",
+    "created_at": "تم الانشاء في: ",
     "add_note": "إضافة ملاحظة",
     "note_title": "عنوان الملاحظة",
     "note_content": "محتوى الملاحظة",

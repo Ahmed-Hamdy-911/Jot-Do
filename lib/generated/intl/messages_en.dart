@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
     "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
+    "created_at": MessageLookupByLibrary.simpleMessage("Created At: "),
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "delete_note": MessageLookupByLibrary.simpleMessage("Delete Note"),
@@ -116,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "note_deleted": MessageLookupByLibrary.simpleMessage(
       "Note deleted successfully",
     ),
+    "note_details": MessageLookupByLibrary.simpleMessage("Note Details"),
     "note_saved": MessageLookupByLibrary.simpleMessage(
       "Note saved successfully",
     ),
