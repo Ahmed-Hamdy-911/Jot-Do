@@ -14,7 +14,6 @@ class CustomSkipButton extends StatelessWidget {
       alignment: AlignmentDirectional.bottomEnd,
       child: Container(
         margin: const EdgeInsetsDirectional.only(
-          top: 16,
           end: 16,
         ),
         child: TextButton(

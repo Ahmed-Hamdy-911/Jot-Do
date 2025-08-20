@@ -74,16 +74,18 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                           Colors.white,
                         ]),
                   ),
-                  child: Column(
-                    children: [
-                      CustomSkipButton(onPressed: () {
-                        context.read<OnBoardingCubit>().skipOnBoarding();
-                      }),
-                      PageViewBuilder(
-                          pageController: _pageController, pages: _pages),
-                      CustomSmoothPageIndicator(
-                          pageController: _pageController, pages: _pages),
-                    ],
+                  child: SafeArea(
+                    child: Column(
+                      children: [
+                        CustomSkipButton(onPressed: () {
+                          context.read<OnBoardingCubit>().skipOnBoarding();
+                        }),
+                        PageViewBuilder(
+                            pageController: _pageController, pages: _pages),
+                        CustomSmoothPageIndicator(
+                            pageController: _pageController, pages: _pages),
+                      ],
+                    ),
                   ),
                 ),
               ),

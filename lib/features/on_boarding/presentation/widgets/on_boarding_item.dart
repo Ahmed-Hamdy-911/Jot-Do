@@ -29,7 +29,7 @@ Widget buildOnBoardingPage(
     padding: const EdgeInsets.all(16.0),
     child: LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth >= 500) {
+        if (constraints.maxWidth >= 600) {
           // 📌 Desktop / Wide tablet → Row layout
           return Row(
             children: [
