@@ -90,10 +90,10 @@ class AppConstants {
       'assets/images/onBoarding/on_boarding2.png';
   static const String imageOnBoardingPath3 =
       'assets/images/onBoarding/on_boarding3.png';
-  static int maxLengthOfDescNoteInHomeView = 400;
+  static int maxLengthOfContentNoteInHomeView = 500;
   // truncate the text
   static String getTruncatedText({required String text, int? maxLengthToDesc}) {
-    maxLengthToDesc = maxLengthOfDescNoteInHomeView;
+    maxLengthToDesc = maxLengthOfContentNoteInHomeView;
     if (text.length > maxLengthToDesc) {
       return text = "${text.substring(0, maxLengthToDesc - 3)}...";
     }

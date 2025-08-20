@@ -13,36 +13,56 @@ ActionPane onDismissibleStartAction(context) => ActionPane(
           icon: Icons.delete,
           label: S.of(context).delete,
           borderRadius: BorderRadius.only(
-            topRight: Radius.circular(AppConstants.kRadius),
-            bottomRight: Radius.circular(AppConstants.kRadius),
+            topRight: AppConstants.isArabic()
+                ? Radius.zero
+                : Radius.circular(AppConstants.kRadius),
+            bottomRight: AppConstants.isArabic()
+                ? Radius.zero
+                : Radius.circular(AppConstants.kRadius),
+            topLeft: AppConstants.isArabic()
+                ? Radius.circular(AppConstants.kRadius)
+                : Radius.zero,
+            bottomLeft: AppConstants.isArabic()
+                ? Radius.circular(AppConstants.kRadius)
+                : Radius.zero,
           ),
         ),
       ],
     );
-ActionPane onDismissibleEndAction(context) => ActionPane(
-      motion: const DrawerMotion(),
-      children: [
-        SlidableAction(
-          onPressed: (context) => null,
-          backgroundColor: const Color(0xFF26A69A),
-          foregroundColor: Colors.white,
-          icon: Icons.push_pin,
-          label: S.of(context).pin,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(AppConstants.kRadius),
-            bottomLeft: Radius.circular(AppConstants.kRadius),
-          ),
-        ),
-        SlidableAction(
-          onPressed: (context) => null,
-          backgroundColor: Colors.blueGrey.shade500,
-          foregroundColor: Colors.white,
-          icon: Icons.archive,
-          label: S.of(context).archive,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(AppConstants.kRadius),
-            bottomLeft: Radius.circular(AppConstants.kRadius),
-          ),
-        ),
-      ],
-    );
+ActionPane onDismissibleEndAction(context) {
+  var borderRadius = BorderRadius.only(
+    topLeft: AppConstants.isArabic()
+        ? Radius.zero
+        : Radius.circular(AppConstants.kRadius),
+    bottomLeft: AppConstants.isArabic()
+        ? Radius.zero
+        : Radius.circular(AppConstants.kRadius),
+    topRight: AppConstants.isArabic()
+        ? Radius.circular(AppConstants.kRadius)
+        : Radius.zero,
+    bottomRight: AppConstants.isArabic()
+        ? Radius.circular(AppConstants.kRadius)
+        : Radius.zero,
+  );
+  return ActionPane(
+    motion: const DrawerMotion(),
+    children: [
+      SlidableAction(
+        onPressed: (context) => null,
+        backgroundColor: const Color(0xFF26A69A),
+        foregroundColor: Colors.white,
+        icon: Icons.push_pin,
+        label: S.of(context).pin,
+        borderRadius: borderRadius,
+      ),
+      SlidableAction(
+        onPressed: (context) => null,
+        backgroundColor: Colors.blueGrey.shade500,
+        foregroundColor: Colors.white,
+        icon: Icons.archive,
+        label: S.of(context).archive,
+        borderRadius: borderRadius,
+      ),
+    ],
+  );
+}

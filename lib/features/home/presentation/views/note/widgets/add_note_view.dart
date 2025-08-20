@@ -30,7 +30,6 @@ class AddNoteScaffold extends StatelessWidget {
             appBar: AppBar(
               title: Text(S.of(context).add_note),
               backgroundColor: state.selectedColor,
-              surfaceTintColor: Colors.transparent,
             ),
             body: const SingleChildScrollView(
               child: Padding(
