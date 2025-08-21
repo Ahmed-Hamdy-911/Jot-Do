@@ -4,6 +4,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../on_boarding/presentation/widgets/custom_skip_button.dart';
+import '../../../data/repository/cache_auth_repo.dart';
 import '../../widgets/auth_exited_text.dart';
 import '../../widgets/login_form.dart';
 import '../../widgets/login_extras_widgets.dart';
@@ -23,6 +24,7 @@ class LoginView extends StatelessWidget {
               alignment: AlignmentDirectional.bottomEnd,
               child: CustomSkipButton(
                 onPressed: () {
+                  CacheAuthRepo.skipAuthentication();
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     AppRoutes.home,
