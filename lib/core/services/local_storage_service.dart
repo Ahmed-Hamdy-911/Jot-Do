@@ -9,5 +9,7 @@ class LocalStorageService {
     await Hive.initFlutter();
     Hive.registerAdapter(NoteModelAdapter());
     await Hive.openBox<NoteModel>(AppConstants.notesStorage);
+
+    await Hive.openBox<NoteModel>(AppConstants.settingsStorage);
   }
 }

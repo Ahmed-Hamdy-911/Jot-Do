@@ -142,4 +142,7 @@ class AppConstants {
 
   // note
   static const String notesStorage = 'notes';
+
+  // settings
+  static const String settingsStorage = 'settings';
 }
