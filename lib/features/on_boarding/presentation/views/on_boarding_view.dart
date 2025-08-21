@@ -43,13 +43,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       child: Builder(builder: (context) {
         return BlocConsumer<OnBoardingCubit, OnBoardingStates>(
           listener: (context, state) {
-            if (state is OnBoardingCompleted) {
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                AppRoutes.login,
-                (route) => false,
-              );
-            } else if (state is OnBoardingSkipped) {
+            if (state is OnBoardingCompleted || state is OnBoardingSkipped) {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 AppRoutes.login,
