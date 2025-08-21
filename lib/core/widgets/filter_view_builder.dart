@@ -26,7 +26,7 @@ class FilterListView extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: screenWidth > 600 ? 60 : 50,
+      height: screenWidth > 600 ? 40 : 40,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 8).copyWith(bottom: 4),
         scrollDirection: Axis.horizontal,
