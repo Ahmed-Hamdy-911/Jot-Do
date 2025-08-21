@@ -71,7 +71,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       validator: validator ??
           (value) {
-            if (value == null || value.isEmpty) {
+            if (value == null || value.trim().isEmpty) {
               return S.of(context).error_required_field;
             }
             return null;
