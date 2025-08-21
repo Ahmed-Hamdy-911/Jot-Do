@@ -78,6 +78,12 @@ class _NoteFormState extends State<NoteForm> {
                 customInputStyle: customInputStyle,
                 filled: filled,
                 fillColor: fillColor,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return S.of(context).error_required_field;
+                  }
+                  return null;
+                },
               ),
               customDivider(),
               CustomTextFormField(
