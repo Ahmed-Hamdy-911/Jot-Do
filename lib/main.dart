@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
 
-  LocalStorageService.init();
+  await LocalStorageService.init();
 
   runApp(const MyApp());
 }

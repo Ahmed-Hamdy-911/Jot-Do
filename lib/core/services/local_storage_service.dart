@@ -10,6 +10,6 @@ class LocalStorageService {
     Hive.registerAdapter(NoteModelAdapter());
     await Hive.openBox<NoteModel>(AppConstants.notesStorage);
 
-    await Hive.openBox<NoteModel>(AppConstants.settingsStorage);
+    await Hive.openBox(AppConstants.settingsStorage);
   }
 }
