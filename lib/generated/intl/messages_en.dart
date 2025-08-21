@@ -112,7 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "no_notes_found": MessageLookupByLibrary.simpleMessage("No notes found"),
+    "no_notes_yet": MessageLookupByLibrary.simpleMessage("No notes yet!"),
     "no_tasks_found": MessageLookupByLibrary.simpleMessage("No tasks found"),
+    "no_tasks_yet": MessageLookupByLibrary.simpleMessage("No tasks yet!"),
     "note_content": MessageLookupByLibrary.simpleMessage("Note Content"),
     "note_deleted": MessageLookupByLibrary.simpleMessage(
       "Note deleted successfully",

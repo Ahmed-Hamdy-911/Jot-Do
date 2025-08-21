@@ -107,5 +107,7 @@
     "english": "English",
     "arabic": "Arabic",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "no_notes_yet": "No notes yet!",
+    "no_tasks_yet": "No tasks yet!"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/widgets/empty_widget.dart';
 import '../../../../../generated/l10n.dart';
 
 class TaskView extends StatelessWidget {
@@ -6,8 +7,6 @@ class TaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(S.of(context).your_tasks),
-    );
+    return EmptyWidget(text: S.of(context).no_tasks_yet);
   }
 }

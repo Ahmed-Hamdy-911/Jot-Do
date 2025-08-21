@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../manager/cubits/NoteCubits/AddNote/add_note_cubit.dart';
+import '../../manager/cubits/NoteCubits/AddNote/add_note_state.dart';
 import '../../manager/cubits/PickColor/pick_color_cubit.dart';
 import '../../manager/cubits/PickColor/pick_color_state.dart';
 import '../../../../../generated/l10n.dart';
@@ -10,8 +12,15 @@ class AddNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PickColorCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => PickColorCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AddNoteCubit(),
+        ),
+      ],
       child: const AddNoteScaffold(),
     );
   }
@@ -31,10 +40,14 @@ class AddNoteScaffold extends StatelessWidget {
               title: Text(S.of(context).add_note),
               backgroundColor: state.selectedColor,
             ),
-            body: const SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: NoteForm(),
+            body: AbsorbPointer(
+              absorbing:
+                  context.watch<AddNoteCubit>().state is AddNoteLoadingState,
+              child: const SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: NoteForm(),
+                ),
               ),
             ));
       },

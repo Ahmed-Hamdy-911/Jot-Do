@@ -2,25 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconly/iconly.dart';
 import '../../../../../../core/routing/app_routes.dart';
-import '../../../../../../generated/l10n.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../data/models/note_model.dart';
 import 'slidable_actions.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
     super.key,
-    required this.color,
     required this.index,
+    required this.note,
   });
-  final Color color;
+
   final int index;
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-    var content = S.of(context).note_content;
-    final dateTime = AppConstants.formatDateTime(DateTime.now());
-
+    final color = note.color;
     return Slidable(
       key: ValueKey(index),
       startActionPane: onDismissibleStartAction(context),
@@ -30,7 +29,7 @@ class NoteItem extends StatelessWidget {
           Navigator.pushNamed(context, AppRoutes.noteDetails);
         },
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
-        highlightColor: color.withValues(alpha: 0.3),
+        highlightColor: Color(color).withValues(alpha: 0.3),
         child: Container(
           padding: const EdgeInsets.all(18).copyWith(bottom: 10),
           decoration: BoxDecoration(
@@ -39,25 +38,21 @@ class NoteItem extends StatelessWidget {
                   begin: AlignmentDirectional.topStart,
                   end: AlignmentDirectional.bottomEnd,
                   colors: [
-                    color.withValues(alpha: 0.9),
-                    color.withValues(alpha: 0.7),
-                    color.withValues(alpha: 0.5),
-                    color.withValues(alpha: 0.3)
+                    Color(color).withValues(alpha: 0.9),
+                    Color(color).withValues(alpha: 0.7),
+                    Color(color).withValues(alpha: 0.5),
+                    Color(color).withValues(alpha: 0.3)
                   ])),
           child: screenWidth > 600
               ? NoteBody(
-                  content: content,
-                  dateTime: dateTime,
-                  color: color,
+                  note: note,
                   titleFontSize: 22,
                   contentFontSize: 16,
                   showMoreFontSize: 14,
                   dateTimeFontSize: 13,
                 )
               : NoteBody(
-                  content: content,
-                  dateTime: dateTime,
-                  color: color,
+                  note: note,
                   titleFontSize: 20,
                   contentFontSize: 14,
                   showMoreFontSize: 12,
@@ -72,18 +67,14 @@ class NoteItem extends StatelessWidget {
 class NoteBody extends StatelessWidget {
   const NoteBody({
     super.key,
-    required this.content,
-    required this.dateTime,
-    required this.color,
+    required this.note,
     required this.titleFontSize,
     required this.contentFontSize,
     required this.dateTimeFontSize,
     required this.showMoreFontSize,
   });
 
-  final String content;
-  final String dateTime;
-  final Color color;
+  final NoteModel note;
   final double titleFontSize;
   final double contentFontSize;
   final double showMoreFontSize;
@@ -99,7 +90,7 @@ class NoteBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              S.of(context).note_title,
+              note.title,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -114,14 +105,14 @@ class NoteBody extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: AppConstants.getTruncatedText(text: content),
+                    text: AppConstants.getTruncatedText(text: note.content),
                     style: TextStyle(
                       fontSize: contentFontSize,
                       color: Colors.black45,
                       fontFamily: fontFamily,
                     ),
                   ),
-                  if (content.length >
+                  if (note.content.length >
                       AppConstants.maxLengthOfContentNoteInHomeView)
                     TextSpan(
                       text: "  Show more",
@@ -138,7 +129,7 @@ class NoteBody extends StatelessWidget {
             Align(
               alignment: AlignmentDirectional.bottomEnd,
               child: Text(
-                dateTime,
+                note.createdAt,
                 style: TextStyle(
                   color: Colors.grey[700],
                   fontSize: dateTimeFontSize,
@@ -156,8 +147,8 @@ class NoteBody extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               customBorder: const CircleBorder(),
-              highlightColor: color.withValues(alpha: 0.3),
-              splashColor: color.withValues(alpha: 0.3),
+              highlightColor: Color(note.color).withValues(alpha: 0.3),
+              splashColor: Color(note.color).withValues(alpha: 0.3),
               child: Ink(
                 padding: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
@@ -165,9 +156,9 @@ class NoteBody extends StatelessWidget {
                   color: Colors.white.withValues(alpha: 0.2),
                 ),
                 child: Icon(
-                  IconlyLight.heart,
+                  note.isFavorite ? IconlyBold.heart : IconlyLight.heart,
                   size: 28,
-                  color: color,
+                  color: Color(note.color),
                 ),
               ),
             ),

@@ -1,6 +1,5 @@
-
-
 import 'package:hive/hive.dart';
+import 'package:uuid/uuid.dart';
 
 part 'note_model.g.dart';
 
@@ -15,7 +14,7 @@ class NoteModel extends HiveObject {
   @HiveField(3)
   final String createdAt;
   @HiveField(4)
-  final int color;
+  int color;
   @HiveField(5)
   final bool isHighlight;
   @HiveField(6)
@@ -24,7 +23,7 @@ class NoteModel extends HiveObject {
   final bool isFavorite;
 
   NoteModel({
-    required this.id,
+    String? id,
     required this.title,
     required this.content,
     required this.createdAt,
@@ -32,7 +31,7 @@ class NoteModel extends HiveObject {
     this.isHighlight = false,
     this.isPinned = false,
     this.isFavorite = false,
-  });
+  }) : id = id ?? const Uuid().v4();
 
   /// Convert NoteModel to JSON
   Map<String, dynamic> toJson() {

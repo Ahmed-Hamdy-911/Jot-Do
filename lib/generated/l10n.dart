@@ -938,6 +938,26 @@ class S {
   String get light {
     return Intl.message('Light', name: 'light', desc: '', args: []);
   }
+
+  /// `No notes yet!`
+  String get no_notes_yet {
+    return Intl.message(
+      'No notes yet!',
+      name: 'no_notes_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No tasks yet!`
+  String get no_tasks_yet {
+    return Intl.message(
+      'No tasks yet!',
+      name: 'no_tasks_yet',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

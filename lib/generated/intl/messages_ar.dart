@@ -118,7 +118,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "no_notes_found": MessageLookupByLibrary.simpleMessage("لا توجد ملاحظات"),
+    "no_notes_yet": MessageLookupByLibrary.simpleMessage(
+      "لا توجد ملاحظات بعد!",
+    ),
     "no_tasks_found": MessageLookupByLibrary.simpleMessage("لا توجد مهام"),
+    "no_tasks_yet": MessageLookupByLibrary.simpleMessage("لا توجد مهام بعد!"),
     "note_content": MessageLookupByLibrary.simpleMessage("محتوى الملاحظة"),
     "note_deleted": MessageLookupByLibrary.simpleMessage(
       "تم حذف الملاحظة بنجاح",
