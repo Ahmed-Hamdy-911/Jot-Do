@@ -1,11 +1,26 @@
-class NoteModel {
+
+
+import 'package:hive/hive.dart';
+
+part 'note_model.g.dart';
+
+@HiveType(typeId: 0)
+class NoteModel extends HiveObject {
+  @HiveField(0)
   final String? id;
+  @HiveField(1)
   final String title;
+  @HiveField(2)
   final String content;
+  @HiveField(3)
   final String createdAt;
+  @HiveField(4)
   final int color;
+  @HiveField(5)
   final bool isHighlight;
+  @HiveField(6)
   final bool isPinned;
+  @HiveField(7)
   final bool isFavorite;
 
   NoteModel({

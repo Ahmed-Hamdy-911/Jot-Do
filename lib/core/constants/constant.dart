@@ -139,4 +139,7 @@ class AppConstants {
   // add Note color
   static Color addNoteBGColor = noteColors[0];
   static double kRadius = 16;
+
+  // note
+  static const String notesStorage = 'notes';
 }
