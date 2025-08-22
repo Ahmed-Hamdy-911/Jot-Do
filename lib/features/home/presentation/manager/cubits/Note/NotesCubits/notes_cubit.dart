@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 
 import '../../../../../data/models/note_model.dart';
@@ -9,6 +11,7 @@ class NotesCubit extends Cubit<NotesStates> {
 
   final smartNoteRepository = SmartNoteRepository();
   List<NoteModel>? notesList;
+
   Future<void> getNotes([int index = 0]) async {
     emit(NotesLoadingState());
     try {
@@ -19,6 +22,7 @@ class NotesCubit extends Cubit<NotesStates> {
       // }
       emit(GetAllNotesSuccessState());
     } on Exception catch (e) {
+      log(e.toString());
       emit(GetAllNotesErrorState(e.toString()));
     }
   }

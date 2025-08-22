@@ -48,12 +48,13 @@ class NoteBody extends StatelessWidget {
       listeners: [
         BlocListener<NotesCubit, NotesStates>(
           listener: (context, state) {
-            if (state is GetAllNotesSuccessState) {
-            } else if (state is ToggleNoteActionsPinSuccessState ||
+            if (state is ToggleNoteActionsPinSuccessState ||
                 state is ToggleNoteActionsArchiveSuccessState ||
                 state is ToggleNoteFavoriteSuccessState ||
                 state is NoteActionsDeleteSuccessState) {
-              BlocProvider.of<NotesCubit>(context).getNotes();
+              context.read<NotesCubit>().getNotes(
+                    context.read<SelectionCubit>().state.selectedIndex,
+                  );
             }
           },
         ),
@@ -66,55 +67,38 @@ class NoteBody extends StatelessWidget {
       child: Column(
         children: [
           FilterViewBuilder(filterList: noteFilters),
-          BlocBuilder<NotesCubit, NotesStates>(
-            builder: (context, state) {
-              if (state is NotesLoadingState)
-                return const Center(child: CircularProgressIndicator());
-              List<NoteModel> noteList =
-                  BlocProvider.of<NotesCubit>(context).notesList ?? [];
-              if (noteList.isEmpty)
-                return EmptyWidget(
-                  text: S.of(context).no_notes_yet,
-                );
-              return BodyBuilder(
-                noteList: noteList,
-              );
-            },
-          ),
+          NoteLayoutBuilder()
         ],
       ),
     );
   }
 }
 
-class BodyBuilder extends StatelessWidget {
-  const BodyBuilder({super.key, required this.noteList});
-  final List<NoteModel> noteList;
-  @override
-  Widget build(BuildContext context) {
-    return NoteLayout(noteList: noteList);
-  }
-}
-
-class NoteLayout extends StatelessWidget {
-  const NoteLayout({
+class NoteLayoutBuilder extends StatelessWidget {
+  const NoteLayoutBuilder({
     super.key,
-    required this.noteList,
   });
-
-  final List<NoteModel> noteList;
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     return BlocBuilder<NotesCubit, NotesStates>(
       builder: (context, state) {
+        if (state is NotesLoadingState)
+          return const Center(child: CircularProgressIndicator());
+        List<NoteModel> noteList =
+            BlocProvider.of<NotesCubit>(context).notesList ?? [];
+        if (noteList.isEmpty)
+          return EmptyWidget(
+            text: S.of(context).no_notes_yet,
+          );
         return Expanded(
-            child: screenWidth >= 600
-                ? NoteGridView(noteList: noteList)
-                : NoteListView(
-                    noteList: noteList,
-                  ));
+          child: screenWidth >= 600
+              ? NoteGridView(noteList: noteList)
+              : NoteListView(
+                  noteList: noteList,
+                ),
+        );
       },
     );
   }

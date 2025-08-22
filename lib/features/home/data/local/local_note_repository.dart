@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/constants/constant.dart';
 import '../models/note_model.dart';
@@ -65,56 +66,59 @@ class LocalNoteRepository implements NoteRepository {
   }
 
   List<NoteModel> getAllNotesAtLessWeek(List<NoteModel> notes) {
-    notes.removeWhere((element) => element.isArchived);
-    notes.removeWhere((element) =>
-        DateTime.now().difference(DateTime.parse(element.createdAt)).inDays >
-        7);
-    notes.sort(
-      (a, b) {
-        if (a.isPinned && !b.isPinned) return -1;
-        if (!a.isPinned && b.isPinned) return 1;
-        return b.createdAt.compareTo(a.createdAt);
-      },
-    );
-    return notes;
+    final dateFormat = DateFormat("d/M/yyyy h:mm a");
+    return notes.where((element) {
+      final createdDate = dateFormat.parse(element.createdAt);
+      return DateTime.now().difference(createdDate).inDays < 7 &&
+          !element.isArchived;
+    }).toList()
+      ..sort(
+        (a, b) {
+          final dateA = dateFormat.parse(a.createdAt);
+          final dateB = dateFormat.parse(b.createdAt);
+
+          if (a.isPinned && !b.isPinned) return -1;
+          if (!a.isPinned && b.isPinned) return 1;
+          return dateB.compareTo(dateA);
+        },
+      );
   }
 
   List<NoteModel> getAllFavoriteNotes(List<NoteModel> notes) {
-    notes.removeWhere((element) => element.isArchived);
-    notes.removeWhere((element) => !element.isFavorite);
-    notes.sort(
-      (a, b) {
-        if (a.isPinned && !b.isPinned) return -1;
-        if (!a.isPinned && b.isPinned) return 1;
-        return b.createdAt.compareTo(a.createdAt);
-      },
-    );
-    return notes;
+    return notes
+        .where((element) => element.isFavorite && !element.isArchived)
+        .toList()
+      ..sort(
+        (a, b) {
+          if (a.isPinned && !b.isPinned) return -1;
+          if (!a.isPinned && b.isPinned) return 1;
+          return b.createdAt.compareTo(a.createdAt);
+        },
+      );
   }
 
   List<NoteModel> getAllPinnedNotes(List<NoteModel> notes) {
-    notes.removeWhere((element) => !element.isPinned);
-    notes.removeWhere((element) => element.isArchived);
-    notes.sort(
-      (a, b) {
-        if (a.isPinned && !b.isPinned) return -1;
-        if (!a.isPinned && b.isPinned) return 1;
-        return b.createdAt.compareTo(a.createdAt);
-      },
-    );
-    return notes;
+    return notes
+        .where((element) => element.isPinned && !element.isArchived)
+        .toList()
+      ..sort(
+        (a, b) {
+          if (a.isPinned && !b.isPinned) return -1;
+          if (!a.isPinned && b.isPinned) return 1;
+          return b.createdAt.compareTo(a.createdAt);
+        },
+      );
   }
 
   List<NoteModel> getAllArchivedNotes(List<NoteModel> notes) {
-    notes.removeWhere((element) => !element.isArchived);
-    notes.sort(
-      (a, b) {
-        if (a.isPinned && !b.isPinned) return -1;
-        if (!a.isPinned && b.isPinned) return 1;
-        return b.createdAt.compareTo(a.createdAt);
-      },
-    );
-    return notes;
+    return notes.where((element) => element.isArchived).toList()
+      ..sort(
+        (a, b) {
+          if (a.isPinned && !b.isPinned) return -1;
+          if (!a.isPinned && b.isPinned) return 1;
+          return b.createdAt.compareTo(a.createdAt);
+        },
+      );
   }
 
   List<NoteModel> getAllNotesWithoutArchived(List<NoteModel> notes) {
