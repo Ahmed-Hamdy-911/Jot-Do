@@ -23,12 +23,19 @@ class SmartNoteRepository implements LocalNoteRepository {
   }
 
   @override
-  Future<void> deleteNote(String id) {
-    throw UnimplementedError();
+  Future<void> deleteNote(String id, [NoteModel? noteModel]) async {
+    try {
+      if (isOnline) {
+      } else {
+        return localNoteRepo.deleteNote(id, noteModel);
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
-  Future<List<NoteModel>> getNotes() async {
+  Future<List<NoteModel>> getNotes([int index = 0]) async {
     try {
       if (isOnline) {
         return [];
@@ -41,7 +48,14 @@ class SmartNoteRepository implements LocalNoteRepository {
   }
 
   @override
-  Future<void> updateNote(String id, NoteModel noteModel) {
-    throw UnimplementedError();
+  Future<void> updateNote(String id, NoteModel noteModel) async {
+    try {
+      if (isOnline) {
+      } else {
+        await localNoteRepo.updateNote(id, noteModel);
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconly/iconly.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../data/models/note_model.dart';
+import '../../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
 import 'slidable_actions.dart';
 
 class NoteItem extends StatelessWidget {
@@ -22,8 +24,8 @@ class NoteItem extends StatelessWidget {
     final color = note.color;
     return Slidable(
       key: ValueKey(index),
-      startActionPane: onDismissibleStartAction(context),
-      endActionPane: onDismissibleEndAction(context),
+      startActionPane: onDismissibleStartAction(context, note: note),
+      endActionPane: onDismissibleEndAction(context, note: note),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(context, AppRoutes.noteDetails);
@@ -142,29 +144,69 @@ class NoteBody extends StatelessWidget {
         PositionedDirectional(
           top: 0,
           end: 0,
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {},
-              customBorder: const CircleBorder(),
-              highlightColor: Color(note.color).withValues(alpha: 0.3),
-              splashColor: Color(note.color).withValues(alpha: 0.3),
-              child: Ink(
-                padding: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withValues(alpha: 0.2),
-                ),
-                child: Icon(
-                  note.isFavorite ? IconlyBold.heart : IconlyLight.heart,
-                  size: 28,
-                  color: Color(note.color),
-                ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              CustomIcon(
+                note: note,
+                icon: note.isFavorite ? IconlyBold.heart : IconlyLight.heart,
+                onTap: () {
+                  context.read<NotesCubit>().toggleFavoriteNote(note.id!, note);
+                },
               ),
-            ),
+              const SizedBox(
+                width: 8,
+              ),
+              if (note.isPinned)
+                CustomIcon(
+                  note: note,
+                  icon: Icons.push_pin,
+                  onTap: () {
+                    context.read<NotesCubit>().togglePinNote(note.id!, note);
+                  },
+                ),
+            ],
           ),
         )
       ],
+    );
+  }
+}
+
+class CustomIcon extends StatelessWidget {
+  const CustomIcon({
+    super.key,
+    required this.note,
+    this.onTap,
+    required this.icon,
+  });
+
+  final NoteModel note;
+  final void Function()? onTap;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        customBorder: const CircleBorder(),
+        highlightColor: Color(note.color).withValues(alpha: 0.3),
+        splashColor: Color(note.color).withValues(alpha: 0.3),
+        child: Ink(
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white.withValues(alpha: 0.2),
+          ),
+          child: Icon(
+            icon,
+            size: 28,
+            color: Color(note.color),
+          ),
+        ),
+      ),
     );
   }
 }

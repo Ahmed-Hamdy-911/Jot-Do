@@ -22,7 +22,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       content: fields[2] as String,
       createdAt: fields[3] as String,
       color: fields[4] as int,
-      isHighlight: fields[5] as bool,
+      isArchived: fields[5] as bool,
       isPinned: fields[6] as bool,
       isFavorite: fields[7] as bool,
     );
@@ -43,7 +43,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..writeByte(4)
       ..write(obj.color)
       ..writeByte(5)
-      ..write(obj.isHighlight)
+      ..write(obj.isArchived)
       ..writeByte(6)
       ..write(obj.isPinned)
       ..writeByte(7)

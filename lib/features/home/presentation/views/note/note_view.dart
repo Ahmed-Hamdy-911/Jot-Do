@@ -5,8 +5,8 @@ import '../../../../../core/widgets/filter_view_builder.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/cubits/selectionCubit/selection_cubit.dart';
 import '../../../data/models/note_model.dart';
-import '../../manager/cubits/NoteCubits/cubit/notes_cubit.dart';
-import '../../manager/cubits/NoteCubits/cubit/notes_state.dart';
+import '../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
+import '../../manager/cubits/Note/NotesCubits/notes_state.dart';
 import 'widgets/note_grid_view.dart';
 import 'widgets/note_list_view.dart';
 
@@ -32,7 +32,11 @@ class NoteBody extends StatelessWidget {
     return BlocConsumer<NotesCubit, NotesStates>(
       listener: (context, state) {
         if (state is GetAllNotesSuccessState) {
-          print("Success");
+        } else if (state is ToggleNoteActionsPinSuccessState ||
+            state is ToggleNoteActionsArchiveSuccessState ||
+            state is ToggleNoteFavoriteSuccessState ||
+            state is NoteActionsDeleteSuccessState) {
+          BlocProvider.of<NotesCubit>(context).getNotes();
         }
       },
       builder: (context, state) {
@@ -64,21 +68,40 @@ class BodyBuilder extends StatelessWidget {
       S.of(context).filter_archived,
       S.of(context).filter_pined,
     ];
-    var screenWidth = MediaQuery.sizeOf(context).width;
+
     return BlocProvider(
       create: (context) => SelectionCubit(),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           FilterViewBuilder(filterList: noteFilters),
-          Expanded(
-              child: screenWidth >= 600
-                  ? NoteGridView(noteList: noteList)
-                  : NoteListView(
-                      noteList: noteList,
-                    )),
+          NoteLayout(noteList: noteList),
         ],
       ),
+    );
+  }
+}
+
+class NoteLayout extends StatelessWidget {
+  const NoteLayout({
+    super.key,
+    required this.noteList,
+  });
+
+  final List<NoteModel> noteList;
+
+  @override
+  Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.sizeOf(context).width;
+    return BlocBuilder<NotesCubit, NotesStates>(
+      builder: (context, state) {
+        return Expanded(
+            child: screenWidth >= 600
+                ? NoteGridView(noteList: noteList)
+                : NoteListView(
+                    noteList: noteList,
+                  ));
+      },
     );
   }
 }

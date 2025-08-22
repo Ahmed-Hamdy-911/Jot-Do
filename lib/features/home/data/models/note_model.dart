@@ -6,7 +6,7 @@ part 'note_model.g.dart';
 @HiveType(typeId: 0)
 class NoteModel extends HiveObject {
   @HiveField(0)
-  final String? id;
+  String? id;
   @HiveField(1)
   final String title;
   @HiveField(2)
@@ -16,11 +16,11 @@ class NoteModel extends HiveObject {
   @HiveField(4)
   int color;
   @HiveField(5)
-  final bool isHighlight;
+  bool isArchived;
   @HiveField(6)
-  final bool isPinned;
+  bool isPinned;
   @HiveField(7)
-  final bool isFavorite;
+  bool isFavorite;
 
   NoteModel({
     String? id,
@@ -28,10 +28,10 @@ class NoteModel extends HiveObject {
     required this.content,
     required this.createdAt,
     required this.color,
-    this.isHighlight = false,
+    this.isArchived = false,
     this.isPinned = false,
     this.isFavorite = false,
-  }) : id = id ?? const Uuid().v4();
+  }) : this.id = id ?? const Uuid().v4();
 
   /// Convert NoteModel to JSON
   Map<String, dynamic> toJson() {
@@ -41,7 +41,7 @@ class NoteModel extends HiveObject {
       'content': content,
       'created_at': createdAt,
       'color': color,
-      'is_highlight': isHighlight,
+      'is_archived': isArchived,
       'is_pinned': isPinned,
       'is_favorite': isFavorite,
     };
@@ -55,7 +55,7 @@ class NoteModel extends HiveObject {
       content: json['content'],
       createdAt: json['created_at'],
       color: json['color'],
-      isHighlight: json['is_highlight'] ?? false,
+      isArchived: json['is_archived'] ?? false,
       isPinned: json['is_pinned'] ?? false,
       isFavorite: json['is_favorite'] ?? false,
     );
