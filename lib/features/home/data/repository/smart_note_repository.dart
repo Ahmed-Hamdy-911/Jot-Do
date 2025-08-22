@@ -40,7 +40,7 @@ class SmartNoteRepository implements LocalNoteRepository {
       if (isOnline) {
         return [];
       } else {
-        return localNoteRepo.getNotes();
+        return localNoteRepo.getNotes(index);
       }
     } catch (e) {
       rethrow;
@@ -57,5 +57,30 @@ class SmartNoteRepository implements LocalNoteRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  @override
+  List<NoteModel> getAllArchivedNotes(List<NoteModel> notes) {
+    throw UnimplementedError();
+  }
+
+  @override
+  List<NoteModel> getAllFavoriteNotes(List<NoteModel> notes) {
+    throw UnimplementedError();
+  }
+
+  @override
+  List<NoteModel> getAllNotesAtLessWeek(List<NoteModel> notes) {
+    throw UnimplementedError();
+  }
+
+  @override
+  List<NoteModel> getAllNotesWithoutArchived(List<NoteModel> notes) {
+    throw UnimplementedError();
+  }
+
+  @override
+  List<NoteModel> getAllPinnedNotes(List<NoteModel> notes) {
+    throw UnimplementedError();
   }
 }

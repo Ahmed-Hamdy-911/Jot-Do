@@ -34,19 +34,99 @@ class LocalNoteRepository implements NoteRepository {
     try {
       var box = Hive.box<NoteModel>(AppConstants.notesStorage);
       var notes = box.values.toList();
-      // check if the note is not archived
-      notes.removeWhere((element) => element.isArchived);
-      notes.sort(
-        (a, b) {
-          if (a.isPinned && !b.isPinned) return -1;
-          if (!a.isPinned && b.isPinned) return 1;
-          return b.createdAt.compareTo(a.createdAt);
-        },
-      );
+      switch (index) {
+        case 0:
+          // check if the note is not archived
+          notes = getAllNotesWithoutArchived(notes);
+          break;
+        case 1:
+          // check if the note is new with less than 7 days
+          notes = getAllNotesAtLessWeek(notes);
+          break;
+        case 2: // check if the note is favorite
+          notes = getAllFavoriteNotes(notes);
+
+          break;
+        case 3:
+          // check if the note is archived
+          notes = getAllArchivedNotes(notes);
+          break;
+        case 4:
+          // check if the note is pinned
+          notes = getAllPinnedNotes(notes);
+          break;
+        default:
+          notes = getAllNotesWithoutArchived(notes);
+      }
       return notes;
     } catch (e) {
       rethrow;
     }
+  }
+
+  List<NoteModel> getAllNotesAtLessWeek(List<NoteModel> notes) {
+    notes.removeWhere((element) => element.isArchived);
+    notes.removeWhere((element) =>
+        DateTime.now().difference(DateTime.parse(element.createdAt)).inDays >
+        7);
+    notes.sort(
+      (a, b) {
+        if (a.isPinned && !b.isPinned) return -1;
+        if (!a.isPinned && b.isPinned) return 1;
+        return b.createdAt.compareTo(a.createdAt);
+      },
+    );
+    return notes;
+  }
+
+  List<NoteModel> getAllFavoriteNotes(List<NoteModel> notes) {
+    notes.removeWhere((element) => element.isArchived);
+    notes.removeWhere((element) => !element.isFavorite);
+    notes.sort(
+      (a, b) {
+        if (a.isPinned && !b.isPinned) return -1;
+        if (!a.isPinned && b.isPinned) return 1;
+        return b.createdAt.compareTo(a.createdAt);
+      },
+    );
+    return notes;
+  }
+
+  List<NoteModel> getAllPinnedNotes(List<NoteModel> notes) {
+    notes.removeWhere((element) => !element.isPinned);
+    notes.removeWhere((element) => element.isArchived);
+    notes.sort(
+      (a, b) {
+        if (a.isPinned && !b.isPinned) return -1;
+        if (!a.isPinned && b.isPinned) return 1;
+        return b.createdAt.compareTo(a.createdAt);
+      },
+    );
+    return notes;
+  }
+
+  List<NoteModel> getAllArchivedNotes(List<NoteModel> notes) {
+    notes.removeWhere((element) => !element.isArchived);
+    notes.sort(
+      (a, b) {
+        if (a.isPinned && !b.isPinned) return -1;
+        if (!a.isPinned && b.isPinned) return 1;
+        return b.createdAt.compareTo(a.createdAt);
+      },
+    );
+    return notes;
+  }
+
+  List<NoteModel> getAllNotesWithoutArchived(List<NoteModel> notes) {
+    notes.removeWhere((element) => element.isArchived);
+    notes.sort(
+      (a, b) {
+        if (a.isPinned && !b.isPinned) return -1;
+        if (!a.isPinned && b.isPinned) return 1;
+        return b.createdAt.compareTo(a.createdAt);
+      },
+    );
+    return notes;
   }
 
   @override

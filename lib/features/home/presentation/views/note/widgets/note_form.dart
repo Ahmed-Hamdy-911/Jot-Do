@@ -11,7 +11,6 @@ import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/note_model.dart';
 import '../../../manager/cubits/Note/AddNote/add_note_cubit.dart';
 import '../../../manager/cubits/Note/AddNote/add_note_state.dart';
-import '../../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
 import '../../../manager/cubits/PickColor/pick_color_cubit.dart';
 import '../../../widgets/pick_color_grid_view.dart';
 

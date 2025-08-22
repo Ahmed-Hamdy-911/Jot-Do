@@ -1,4 +1,5 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'selection_state.dart';
 
 class SelectionCubit extends Cubit<SelectionState> {
@@ -6,10 +7,13 @@ class SelectionCubit extends Cubit<SelectionState> {
       : super(const SelectionState(
           selectedIndex: 0,
         ));
+
   int currentIndex = 0;
+
   void switchSelection(int index) {
     currentIndex = index;
     emit(SelectionState(selectedIndex: index));
+
   }
 
   void resetSelection() {
