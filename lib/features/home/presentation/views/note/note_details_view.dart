@@ -4,9 +4,11 @@ import 'package:iconly/iconly.dart';
 import '../../../../../core/constants/constant.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/note_model.dart';
 
 class NoteDetailsView extends StatefulWidget {
-  const NoteDetailsView({super.key});
+  final NoteModel noteModel;
+  const NoteDetailsView({super.key, required this.noteModel});
 
   @override
   State<NoteDetailsView> createState() => _NoteDetailsViewState();
@@ -32,7 +34,7 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    final dateTime = AppConstants.formatDateTime(DateTime.now());
+    final dateTime = widget.noteModel.createdAt;
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
@@ -49,7 +51,7 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
               )
             ],
             title:
-                _isSliverAppBarExpanded ? Text(S.of(context).note_title) : null,
+                _isSliverAppBarExpanded ? Text(widget.noteModel.title) : null,
             flexibleSpace: FlexibleSpaceBar(
               title: !_isSliverAppBarExpanded
                   ? Text(
@@ -62,23 +64,23 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
                   Text(
-                    S.of(context).note_title,
+                    widget.noteModel.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: screenWidth > 600 ? 30 : 20,
                     ),
                   ),
-                  const MediumSpace(),
+                  const SmallSpace(),
                   Text(
-                    S.of(context).note_content,
+                    widget.noteModel.content,
                     style: TextStyle(
                       fontSize: screenWidth > 600 ? 22 : 18,
-                      color: Colors.grey,
+                      color: Colors.grey[600],
                     ),
                   ),
                   const LargeSpace(),

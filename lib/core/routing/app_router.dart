@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../features/home/data/models/note_model.dart';
 import '../../features/home/presentation/views/note/add_note_view.dart';
 import '../../features/home/presentation/views/note/note_details_view.dart';
 import '../../features/home/presentation/views/task/add_task_view.dart';
@@ -49,7 +50,10 @@ class AppRouter {
       case AppRoutes.addNote:
         return MaterialPageRoute(builder: (_) => const AddNoteView());
       case AppRoutes.noteDetails:
-        return MaterialPageRoute(builder: (_) => const NoteDetailsView());
+        final note = settings.arguments as NoteModel;
+        return MaterialPageRoute(
+          builder: (_) => NoteDetailsView(noteModel: note),
+        );
       case AppRoutes.addTask:
         return MaterialPageRoute(builder: (_) => const AddTaskView());
       default:

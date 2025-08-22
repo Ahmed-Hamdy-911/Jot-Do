@@ -28,7 +28,11 @@ class NoteItem extends StatelessWidget {
       endActionPane: onDismissibleEndAction(context, note: note),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, AppRoutes.noteDetails);
+          Navigator.pushNamed(
+            context,
+            AppRoutes.noteDetails,
+            arguments: note,
+          );
         },
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
         highlightColor: Color(color).withValues(alpha: 0.3),
