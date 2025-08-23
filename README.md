@@ -1,24 +1,40 @@
 # Jot & Do 📝✅
 
-**Jot & Do** is a modern mobile application designed to help users seamlessly combine note-taking with task management. Whether you want to quickly jot down ideas or manage your to-do list, this app is crafted for efficiency and simplicity.
+**Jot & Do** is a modern Flutter-based mobile application that seamlessly blends **note-taking** and **task management** in one place.  
+With an intuitive UI and powerful features, it helps you **capture ideas, organize tasks, and stay productive**.
 
 ---
 
-## 🚀 Project Status
+## ✨ Features
 
-> 🧱 Initial setup in progress...
+- 📝 **Create & Edit Notes** – Add rich notes with title & content.  
+- 📌 **Pin Notes** – Keep important notes always at the top.  
+- ⭐ **Favorite Notes** – Mark notes you love for quick access.  
+- 📂 **Archive Notes** – Hide completed or old notes without deleting them.  
+- ⏳ **Recent Notes Filter** – View notes created within the last 7 days.  
+- 🗑 **Delete & Update** – Manage notes safely and keep your workspace clean.  
+- 🎨 **Beautiful UI** – Adaptive layout with **List/Grid** views.  
+- 💾 **Local Storage** – Powered by **Hive** for fast, offline-first experience.  
 
-We are currently in the early stages of development, focused on preparing the project environment and assets.
+---
+
+## 🚀 Tech Stack
+
+- **Flutter** (cross-platform mobile development)  
+- **Bloc / Cubit** for state management  
+- **Hive** for local database & offline storage  
+- **Custom Theming** with prepared fonts, icons, and assets  
 
 ---
 
-## 📦 Current Progress
+## 📦 Project Status
 
-- ✅ Flutter project initialized
-- ✅ Assets folder structure created
-- ✅ Fonts, icons, and images prepared
-- ✅ Primary and secondary colors defined
-- ✅ Initial design direction discussed
-- ⏳ UI development coming next...
+> ✅ Core functionality implemented  
+> 🎨 UI in progress  
+> 🔜 Upcoming: task management integration, cloud sync, and reminders  
 
 ---
+
+## 📸 Screenshots (Coming Soon)
+
+*App preview images will be added once UI polishing is complete.*  
