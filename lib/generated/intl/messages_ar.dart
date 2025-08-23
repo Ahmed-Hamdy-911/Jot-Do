@@ -53,7 +53,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_note": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
     "delete_task": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
-    "edit_note": MessageLookupByLibrary.simpleMessage("تعديل الملاحظة"),
     "edit_task": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
@@ -101,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "last_updated": MessageLookupByLibrary.simpleMessage("تم التحديث في: "),
     "light": MessageLookupByLibrary.simpleMessage("فاتح"),
     "logging_in": MessageLookupByLibrary.simpleMessage("جاري تسجيل الدخول..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -207,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تعديل المهمة بنجاح",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
+    "update_note": MessageLookupByLibrary.simpleMessage("تعديل الملاحظة"),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا لك رابطًا للتحقق من عنوان بريدك الإلكتروني.\n إلى ",
     ),

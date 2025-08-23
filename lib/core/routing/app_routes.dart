@@ -21,7 +21,7 @@ class AppRoutes {
   static const String error = '/error';
   static const String addNote = '/add-note';
   static const String notes = '/notes';
-  static const String editNote = '/edit-note';
+  static const String updateNote = '/update-note';
   static const String noteDetails = '/note-details';
   static const String addTask = '/add-task';
   static const String tasks = '/tasks';

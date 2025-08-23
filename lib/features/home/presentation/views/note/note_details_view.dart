@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
-import '../../../../../core/constants/constant.dart';
+import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/note_model.dart';
@@ -34,7 +34,9 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    final dateTime = widget.noteModel.createdAt;
+    var screenHeight = MediaQuery.of(context).size.height;
+    final createdAt = widget.noteModel.createdAt;
+    final lastUpdated = widget.noteModel.lastUpdatedAt;
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
@@ -43,10 +45,16 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
             expandedHeight: 150,
             pinned: true,
             floating: false,
-            backgroundColor: AppConstants.noteColors[0],
+            backgroundColor: Color(widget.noteModel.color),
             actions: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.updateNote,
+                    arguments: widget.noteModel,
+                  );
+                },
                 icon: const Icon(IconlyBold.edit),
               )
             ],
@@ -57,7 +65,7 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
                   ? Text(
                       S.of(context).note_details,
                       style: TextStyle(
-                        fontSize: screenWidth > 600 ? 30 : 20,
+                        fontSize: screenWidth > 600 ? 22 : 18,
                       ),
                     )
                   : null,
@@ -72,40 +80,73 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
                     widget.noteModel.title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: screenWidth > 600 ? 30 : 20,
-                    ),
-                  ),
-                  const SmallSpace(),
-                  Text(
-                    widget.noteModel.content,
-                    style: TextStyle(
                       fontSize: screenWidth > 600 ? 22 : 18,
-                      color: Colors.grey[600],
                     ),
                   ),
-                  const LargeSpace(),
-                  Row(
-                    children: [
-                      Text(
-                        S.of(context).created_at,
-                        style: TextStyle(
-                          fontSize: screenWidth > 600 ? 18 : 16,
+                  customDivider(),
+                  if (widget.noteModel.content.isNotEmpty)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SmallSpace(),
+                        Text(
+                          widget.noteModel.content,
+                          style: TextStyle(
+                            fontSize: screenWidth > 600 ? 18 : 15,
+                            color: Colors.grey[600],
+                          ),
                         ),
-                      ),
-                      Text(
-                        dateTime,
-                        style: TextStyle(
-                          fontSize: screenWidth > 600 ? 18 : 16,
-                        ),
-                      ),
-                    ],
-                  ),
+                        customDivider(),
+                      ],
+                    ),
+                  if (widget.noteModel.lastUpdatedAt != null)
+                    customShowTime(
+                        context, S.of(context).last_updated, lastUpdated!),
+                  customShowTime(context, S.of(context).created_at, createdAt),
+                  if (widget.noteModel.content.isEmpty ||
+                      widget.noteModel.content.length < 500)
+                    SizedBox(
+                      height: screenWidth > 600
+                          ? screenWidth * 0.31
+                          : screenHeight * 0.51,
+                    ),
+                  if (widget.noteModel.content.isEmpty ||
+                      widget.noteModel.content.length < 1500)
+                    SizedBox(
+                      height: screenWidth > 600
+                          ? screenWidth * 0.06
+                          : screenHeight * 0.26,
+                    ),
                 ],
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget customDivider() => const Divider(
+        height: 30,
+      );
+
+  Widget customShowTime(context, String text, String dateTime) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    return Row(
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: screenWidth > 600 ? 16 : 14,
+          ),
+        ),
+        Text(
+          dateTime,
+          style: TextStyle(
+            fontSize: screenWidth > 600 ? 16 : 14,
+          ),
+        ),
+      ],
     );
   }
 }

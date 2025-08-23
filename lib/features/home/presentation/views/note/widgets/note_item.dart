@@ -5,6 +5,7 @@ import 'package:iconly/iconly.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../../../core/widgets/custom_icon.dart';
 import '../../../../data/models/note_model.dart';
 import '../../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
 import 'slidable_actions.dart';
@@ -174,43 +175,6 @@ class NoteBody extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
-}
-
-class CustomIcon extends StatelessWidget {
-  const CustomIcon({
-    super.key,
-    required this.note,
-    this.onTap,
-    required this.icon,
-  });
-
-  final NoteModel note;
-  final void Function()? onTap;
-  final IconData icon;
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        customBorder: const CircleBorder(),
-        highlightColor: Color(note.color).withValues(alpha: 0.3),
-        splashColor: Color(note.color).withValues(alpha: 0.3),
-        child: Ink(
-          padding: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white.withValues(alpha: 0.2),
-          ),
-          child: Icon(
-            icon,
-            size: 28,
-            color: Color(note.color),
-          ),
-        ),
-      ),
     );
   }
 }

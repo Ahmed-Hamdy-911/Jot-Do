@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../features/home/data/models/note_model.dart';
-import '../../features/home/presentation/views/note/add_note_view.dart';
+import '../../features/home/presentation/views/note/addNote/add_note_view.dart';
 import '../../features/home/presentation/views/note/note_details_view.dart';
+import '../../features/home/presentation/views/note/updateNote/update_note_view.dart';
 import '../../features/home/presentation/views/task/add_task_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/login_view.dart';
@@ -53,6 +54,11 @@ class AppRouter {
         final note = settings.arguments as NoteModel;
         return MaterialPageRoute(
           builder: (_) => NoteDetailsView(noteModel: note),
+        );
+      case AppRoutes.updateNote:
+        final note = settings.arguments as NoteModel;
+        return MaterialPageRoute(
+          builder: (_) => UpdateNoteView(noteModel: note),
         );
       case AppRoutes.addTask:
         return MaterialPageRoute(builder: (_) => const AddTaskView());

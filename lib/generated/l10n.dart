@@ -574,6 +574,16 @@ class S {
     return Intl.message('Created At: ', name: 'created_at', desc: '', args: []);
   }
 
+  /// `Last Updated: `
+  String get last_updated {
+    return Intl.message(
+      'Last Updated: ',
+      name: 'last_updated',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Note`
   String get add_note {
     return Intl.message('Add Note', name: 'add_note', desc: '', args: []);
@@ -599,9 +609,9 @@ class S {
     return Intl.message('Save Note', name: 'save_note', desc: '', args: []);
   }
 
-  /// `Edit Note`
-  String get edit_note {
-    return Intl.message('Edit Note', name: 'edit_note', desc: '', args: []);
+  /// `Update Note`
+  String get update_note {
+    return Intl.message('Update Note', name: 'update_note', desc: '', args: []);
   }
 
   /// `Delete Note`

@@ -53,16 +53,13 @@ class _NoteFormState extends State<NoteForm> {
     return BlocConsumer<AddNoteCubit, AddNoteStates>(
       listener: (context, state) {
         if (state is AddNoteSuccessState) {
-          log("Success");
           Navigator.pushNamedAndRemoveUntil(
             context,
             AppRoutes.home,
             (route) => false,
           );
         }
-        if (state is AddNoteErrorState) {
-          log("Error");
-        }
+ 
       },
       builder: (context, state) {
         return Form(

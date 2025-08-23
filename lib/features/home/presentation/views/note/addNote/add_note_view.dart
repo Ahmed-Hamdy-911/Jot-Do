@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../manager/cubits/Note/AddNote/add_note_cubit.dart';
-import '../../manager/cubits/Note/AddNote/add_note_state.dart';
-import '../../manager/cubits/PickColor/pick_color_cubit.dart';
-import '../../manager/cubits/PickColor/pick_color_state.dart';
-import '../../../../../generated/l10n.dart';
-import 'widgets/note_form.dart';
+import '../../../manager/cubits/Note/AddNote/add_note_cubit.dart';
+import '../../../manager/cubits/Note/AddNote/add_note_state.dart';
+import '../../../manager/cubits/PickColor/pick_color_cubit.dart';
+import '../../../manager/cubits/PickColor/pick_color_state.dart';
+import '../../../../../../generated/l10n.dart';
+import 'note_form.dart';
 
 class AddNoteView extends StatelessWidget {
   const AddNoteView({super.key});
@@ -39,6 +39,12 @@ class AddNoteScaffold extends StatelessWidget {
             appBar: AppBar(
               title: Text(S.of(context).add_note),
               backgroundColor: state.selectedColor,
+              leading:
+                  context.watch<AddNoteCubit>().state is AddNoteLoadingState
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : const BackButton(),
             ),
             body: AbsorbPointer(
               absorbing:

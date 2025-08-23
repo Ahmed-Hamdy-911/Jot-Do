@@ -51,7 +51,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "dont_have_account": MessageLookupByLibrary.simpleMessage(
       "Don’t have an account?",
     ),
-    "edit_note": MessageLookupByLibrary.simpleMessage("Edit Note"),
     "edit_task": MessageLookupByLibrary.simpleMessage("Edit Task"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
@@ -95,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "last_updated": MessageLookupByLibrary.simpleMessage("Last Updated: "),
     "light": MessageLookupByLibrary.simpleMessage("Light"),
     "logging_in": MessageLookupByLibrary.simpleMessage("Logging in..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -201,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Task updated successfully",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "update_note": MessageLookupByLibrary.simpleMessage("Update Note"),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "We have sent you a link to verify your email address.\n to ",
     ),

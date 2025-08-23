@@ -7,7 +7,6 @@ class PickColorCubit extends Cubit<PickColorState> {
   PickColorCubit()
       : super(PickColorState(
           selectedColor: const Color(0xff26C281),
-          selectedIndex: 0,
         ));
   final List<Color> noteColors = const [
     Color(0xff26C281),
@@ -29,7 +28,7 @@ class PickColorCubit extends Cubit<PickColorState> {
     Color(0xff4EF2C0),
     Color(0xffA0F51C),
   ];
-  pickColor(int index, Color color) {
-    emit(PickColorState(selectedIndex: index, selectedColor: color));
+  pickColor(Color color) {
+    emit(PickColorState(selectedColor: color));
   }
 }

@@ -8,11 +8,11 @@ class PickColorItem extends StatelessWidget {
   const PickColorItem({
     super.key,
     required this.color,
-    required this.colorIndex,
+    this.onTap,
   });
-  final int colorIndex;
-  final Color color;
 
+  final Color color;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
@@ -20,17 +20,17 @@ class PickColorItem extends StatelessWidget {
     return BlocBuilder<PickColorCubit, PickColorState>(
       builder: (context, state) {
         var pickColorCubit = context.watch<PickColorCubit>();
-        bool isSelected = pickColorCubit.state.selectedIndex == colorIndex;
+        bool isSelected = pickColorCubit.state.selectedColor == color;
         return Padding(
           padding: const EdgeInsets.all(2.0),
           child: Material(
             color: Colors.transparent,
             shape: const CircleBorder(),
             child: InkWell(
-              onTap: () {
-                context.read<PickColorCubit>().pickColor(colorIndex, color);
-                AppConstants.addNoteBGColor = color;
-              },
+              onTap:
+                  () {
+                    context.read<PickColorCubit>().pickColor(color);
+                  },
               highlightColor: Colors.white.withValues(alpha: 0.3),
               customBorder: const CircleBorder(),
               child: Stack(

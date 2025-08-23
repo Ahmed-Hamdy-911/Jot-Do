@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/widgets/constants_spaces_widgets.dart';
-import '../manager/cubits/PickColor/pick_color_cubit.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../core/constants/constant.dart';
-import 'pick_color_item.dart';
 
-class PickColorGridView extends StatelessWidget {
-  const PickColorGridView({
+import '../../../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../../../../generated/l10n.dart';
+import '../../../../../data/models/note_model.dart';
+import '../../../../manager/cubits/PickColor/pick_color_cubit.dart';
+import '../../../../widgets/pick_color_item.dart';
+
+class UpdateNotePicColors extends StatelessWidget {
+  const UpdateNotePicColors({
     super.key,
+    required this.note,
   });
-
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;

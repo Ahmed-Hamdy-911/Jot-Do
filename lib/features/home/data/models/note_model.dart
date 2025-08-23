@@ -8,11 +8,11 @@ class NoteModel extends HiveObject {
   @HiveField(0)
   String? id;
   @HiveField(1)
-  final String title;
+  String title;
   @HiveField(2)
-  final String content;
+  String content;
   @HiveField(3)
-  final String createdAt;
+  String createdAt;
   @HiveField(4)
   int color;
   @HiveField(5)
@@ -21,6 +21,8 @@ class NoteModel extends HiveObject {
   bool isPinned;
   @HiveField(7)
   bool isFavorite;
+  @HiveField(8)
+  String? lastUpdatedAt;
 
   NoteModel({
     String? id,
@@ -31,6 +33,7 @@ class NoteModel extends HiveObject {
     this.isArchived = false,
     this.isPinned = false,
     this.isFavorite = false,
+    this.lastUpdatedAt,
   }) : this.id = id ?? const Uuid().v4();
 
   /// Convert NoteModel to JSON
@@ -44,6 +47,7 @@ class NoteModel extends HiveObject {
       'is_archived': isArchived,
       'is_pinned': isPinned,
       'is_favorite': isFavorite,
+      'last_updated_at': lastUpdatedAt
     };
   }
 
@@ -58,6 +62,7 @@ class NoteModel extends HiveObject {
       isArchived: json['is_archived'] ?? false,
       isPinned: json['is_pinned'] ?? false,
       isFavorite: json['is_favorite'] ?? false,
+      lastUpdatedAt: json['last_updated_at'],
     );
   }
 }
