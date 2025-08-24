@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 
 class AuthExcitedText extends StatelessWidget {
@@ -20,7 +20,7 @@ class AuthExcitedText extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: AppConstants.colorScheme,
+              color: AppColor.colorScheme,
               fontWeight: FontWeight.bold,
               fontSize:
                   screenWidth < 600 ? screenWidth * 0.045 : screenWidth * 0.03,

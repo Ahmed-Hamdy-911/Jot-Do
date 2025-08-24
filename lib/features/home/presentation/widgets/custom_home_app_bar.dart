@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/constant.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/colors/app_colors.dart';
+import '../../../../core/cubits/Settings/setting_cubit.dart';
 import '../../../../generated/l10n.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
@@ -7,17 +9,20 @@ class CustomHomeAppBar extends StatelessWidget {
   final TabController tabController;
   @override
   Widget build(BuildContext context) {
+    var isDarkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
     return AppBar(
       elevation: 0,
-      backgroundColor: AppConstants.mainLightColor.withValues(alpha: 0.9),
+      backgroundColor:
+          isDarkMode ? AppColor.mainDarkColor : AppColor.mainLightColor,
       bottom: TabBar(
-        dividerColor: Colors.transparent,
+        dividerColor: AppColor.transparentColor,
         indicatorSize: TabBarIndicatorSize.label,
         controller: tabController,
-        unselectedLabelColor: AppConstants.mainDarkColor.withValues(alpha: 0.9),
-        labelColor: Colors.white,
-        indicatorColor: AppConstants.colorScheme.shade800,
-        labelStyle: const TextStyle(fontSize: 16),
+        unselectedLabelColor: AppColor.greyColor,
+        labelColor: isDarkMode ? AppColor.white70 : AppColor.whiteColor,
+        indicatorColor: isDarkMode ? AppColor.white70 : AppColor.whiteColor,
+        labelStyle: const TextStyle(fontSize: 15),
         tabs: [
           Tab(
             text: S.of(context).your_notes,

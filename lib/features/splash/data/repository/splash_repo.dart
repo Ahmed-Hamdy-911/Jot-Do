@@ -6,12 +6,11 @@ import '../../../home/presentation/views/home_view.dart';
 import '../../../on_boarding/presentation/views/on_boarding_view.dart';
 
 class SplashRepo {
-  static CacheHelper cacheHelper = CacheHelper();
 
   static Widget afterSplash() {
-    bool onboardingFinished = cacheHelper.getData(key: 'onBoarding') ?? false;
+    bool onboardingFinished = CacheHelper.getData(key: 'onBoarding') ?? false;
     bool skipAuthentication =
-        cacheHelper.getData(key: 'skipAuthentication') ?? false;
+        CacheHelper.getData(key: 'skipAuthentication') ?? false;
     if (onboardingFinished == true && skipAuthentication == true) {
       return const HomeView();
     } else if (onboardingFinished == true) {

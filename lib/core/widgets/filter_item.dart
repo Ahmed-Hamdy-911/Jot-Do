@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../constants/constant.dart';
-import '../cubits/selectionCubit/selection_cubit.dart';
+import '../constants/colors/app_colors.dart';
+import '../cubits/Selection/selection_cubit.dart';
 
 class FilterItem extends StatelessWidget {
   const FilterItem({
@@ -38,7 +38,7 @@ class FilterItem extends StatelessWidget {
               ),
             ),
             backgroundColor: WidgetStatePropertyAll(
-                isSelected ? AppConstants.mainLightColor : Colors.white)),
+                isSelected ? AppColor.mainLightColor : Colors.white)),
         child: Text(
           title,
           style: TextStyle(

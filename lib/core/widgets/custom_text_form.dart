@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../generated/l10n.dart';
 
-import '../constants/constant.dart';
+import '../constants/colors/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -99,7 +99,7 @@ class CustomTextFormField extends StatelessWidget {
       enabled: enabled,
       readOnly: readOnly,
       maxLength: maxLength,
-      cursorColor: AppConstants.colorScheme,
+      cursorColor: AppColor.colorScheme,
       decoration: InputDecoration(
         filled: filled,
         fillColor: fillColor,
@@ -127,7 +127,7 @@ class CustomTextFormField extends StatelessWidget {
         focusedBorder: customBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
-              borderSide: const BorderSide(color: AppConstants.colorScheme),
+              borderSide: const BorderSide(color: AppColor.colorScheme),
             ),
         enabledBorder: customBorder ??
             OutlineInputBorder(

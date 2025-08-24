@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/assets/app_assets.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
-import '../../../../core/constants/constant.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/on_boarding_model.dart';
@@ -25,17 +26,17 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       OnBoardingModel(
         title: S.of(context).onBoardingTitle1,
         description: S.of(context).onBoardingDesc1,
-        image: AppConstants.imageOnBoardingPath1,
+        image: AppAssets.onBoarding1,
       ),
       OnBoardingModel(
         title: S.of(context).onBoardingTitle2,
         description: S.of(context).onBoardingDesc2,
-        image: AppConstants.imageOnBoardingPath2,
+        image: AppAssets.onBoarding2,
       ),
       OnBoardingModel(
         title: S.of(context).onBoardingTitle3,
         description: S.of(context).onBoardingDesc3,
-        image: AppConstants.imageOnBoardingPath3,
+        image: AppAssets.onBoarding3,
       ),
     ];
     return BlocProvider(
@@ -59,14 +60,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 child: Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        begin: AlignmentDirectional.centerStart,
-                        end: AlignmentDirectional.centerEnd,
-                        colors: [
-                          Color(0xffa724ec),
-                          Colors.white,
-                        ]),
+                      begin: AlignmentDirectional.centerStart,
+                      end: AlignmentDirectional.centerEnd,
+                      colors: AppColor.onBoardingColorsList,
+                    ),
                   ),
                   child: SafeArea(
                     child: Column(

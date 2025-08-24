@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/constant.dart';
+import '../constants/colors/app_colors.dart';
 
 class CustomTextAndTextButton extends StatelessWidget {
   const CustomTextAndTextButton({
@@ -28,7 +28,7 @@ class CustomTextAndTextButton extends StatelessWidget {
             fontSize: MediaQuery.sizeOf(context).width < 600
                 ? MediaQuery.sizeOf(context).width * 0.035
                 : MediaQuery.sizeOf(context).width * 0.015,
-            color: AppConstants.mainLightColor,
+            color: AppColor.mainLightColor,
           ),
         ),
         TextButton(
@@ -39,7 +39,7 @@ class CustomTextAndTextButton extends StatelessWidget {
               decoration: decoration ?? TextDecoration.underline,
               fontSize: fontSize ?? 15,
               fontWeight: fontWeight,
-              color: AppConstants.colorScheme,
+              color: AppColor.colorScheme,
             ),
           ),
         )

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/constant.dart';
+import '../../../../../core/constants/colors/app_colors.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -59,7 +59,7 @@ class VerificationBody extends StatelessWidget {
                         ? MediaQuery.sizeOf(context).width * 0.065
                         : MediaQuery.sizeOf(context).width * 0.04,
                     fontWeight: FontWeight.bold,
-                    color: AppConstants.colorScheme,
+                    color: AppColor.colorScheme,
                   ),
                 ),
               ),
@@ -103,7 +103,7 @@ class VerificationBody extends StatelessWidget {
                         decoration: TextDecoration.underline,
                         height: 0.7,
                         fontSize: 16,
-                        color: AppConstants.colorScheme,
+                        color:AppColor.colorScheme,
                       ),
                     ),
                   )

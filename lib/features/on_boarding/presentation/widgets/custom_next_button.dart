@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../data/models/on_boarding_model.dart';
 import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
 
@@ -44,10 +44,10 @@ class CustomNextButton extends StatelessWidget {
         animationDuration: 300,
         center: const Icon(
           Icons.arrow_forward_ios,
-          color: AppConstants.colorScheme,
+          color: AppColor.colorScheme,
           size: 18,
         ),
-        progressColor: AppConstants.colorScheme,
+        progressColor: AppColor.colorScheme,
         backgroundColor: Colors.white.withValues(alpha: 0.3),
       ),
     );

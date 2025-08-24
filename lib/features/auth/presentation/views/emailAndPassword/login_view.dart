@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/constants/constant.dart';
+import '../../../../../core/constants/colors/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
@@ -56,7 +56,7 @@ class LoginView extends StatelessWidget {
                                 height:
                                     MediaQuery.of(context).size.height * 0.5,
                                 child: VerticalDivider(
-                                  color: AppConstants.colorScheme.shade100,
+                                  color: AppColor.colorScheme.shade100,
                                   indent: 30,
                                   endIndent: 20,
                                   thickness: 2,

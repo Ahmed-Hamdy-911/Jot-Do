@@ -464,6 +464,11 @@ class S {
     );
   }
 
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
   /// `Reset Password`
   String get reset_password {
     return Intl.message(

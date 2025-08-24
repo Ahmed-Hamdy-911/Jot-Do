@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/constants/constant.dart';
@@ -11,7 +12,7 @@ class CustomFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: AppConstants.mainLightColor.withValues(alpha: 0.8),
+      backgroundColor: AppColor.mainLightColor.withValues(alpha: 0.8),
       foregroundColor: Colors.white,
       onPressed: () {
         final currentIndex = AppConstants.homeBodyIndex;

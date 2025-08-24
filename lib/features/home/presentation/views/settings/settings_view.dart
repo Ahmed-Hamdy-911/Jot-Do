@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:iconly/iconly.dart';
+import '../../../../../core/constants/colors/app_colors.dart';
 import '../../../../../core/constants/constant.dart';
+import '../../../../../core/cubits/Settings/setting_cubit.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/language_model.dart';
@@ -25,6 +29,14 @@ class SettingsView extends StatelessWidget {
       }
     }
 
+    Locale currentLocale = context.watch<SettingCubit>().state.locale ??
+        Localizations.localeOf(context);
+
+    LanguageModel selectedLanguage = languages.firstWhere(
+      (lang) => lang.locale == currentLocale.languageCode,
+      orElse: () => languages[0], // Default to the first language
+    );
+    const cardColor = AppColor.white70;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -34,52 +46,93 @@ class SettingsView extends StatelessWidget {
           const SizedBox(
             height: kToolbarHeight,
           ),
-          CustomSettingItem(
-            title: S.of(context).backup_sync,
-            leadingIcon: Icons.backup_outlined,
-            trailing: const Icon(Icons.restore),
-            onTap: () {},
-          ),
-          const MediumSpace(),
-          CustomSettingItem(
-            title: S.of(context).language,
-            leadingIcon: Icons.language,
-            trailing: DropdownButton<LanguageModel>(
-              value: languages[0],
-              items: languages.map((element) {
-                return DropdownMenuItem(
-                  value: element,
-                  child: Text(
-                      "${element.flag} ${getLocalizedLanguageName(context, element.key)}"),
-                );
-              }).toList(),
-              onChanged: (value) {},
-            ),
-            onTap: () {},
-          ),
-          const MediumSpace(),
-          CustomSettingItem(
-            title: S.of(context).theme,
-            subTitle: S.of(context).light,
-            leadingIcon: Icons.brightness_6_outlined,
-            trailing: Switch(
-              value: false,
-              onChanged: (value) {},
+          Card(
+            color: cardColor,
+            child: Column(
+              children: [
+                CustomSettingItem(
+                  title: S.of(context).account,
+                  leadingIcon: IconlyLight.profile,
+                  onTap: () {},
+                ),
+                CustomSettingItem(
+                  title: S.of(context).backup_sync,
+                  leadingIcon: Icons.backup_outlined,
+                  trailing: const Icon(Icons.restore),
+                  onTap: () {},
+                ),
+                CustomSettingItem(
+                  title: S.of(context).logout,
+                  leadingIcon: IconlyLight.logout,
+                  onTap: () {},
+                ),
+              ],
             ),
           ),
-          const MediumSpace(),
-          CustomSettingItem(
-            title: S.of(context).notification_settings,
-            leadingIcon: IconlyBroken.notification,
-            onTap: () {},
+          const SmallSpace(),
+          Card(
+            color: cardColor,
+            child: Column(
+              children: [
+                CustomSettingItem(
+                  title: S.of(context).language,
+                  leadingIcon: Icons.language,
+                  trailing: DropdownButton<LanguageModel>(
+                    value: context.watch<SettingCubit>().state.locale ==
+                            const Locale(
+                              "en",
+                            )
+                        ? languages[0]
+                        : languages[1],
+                    items: languages.map((element) {
+                      return DropdownMenuItem(
+                        value: element,
+                        child: Text(
+                            "${element.flag} ${getLocalizedLanguageName(context, element.key)}"),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      context
+                          .read<SettingCubit>()
+                          .toggleLanguage(Locale(value!.locale));
+                    },
+                  ),
+                ),
+                const MediumSpace(),
+                CustomSettingItem(
+                  title: S.of(context).theme,
+                  subTitle: S.of(context).light,
+                  leadingIcon: Icons.brightness_6_outlined,
+                  trailing: Switch(
+                    value: context.watch<SettingCubit>().state.themeMode ==
+                        ThemeMode.dark,
+                    onChanged: (value) {
+                      context.read<SettingCubit>().toggleTheme();
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-          const MediumSpace(),
-          CustomSettingItem(
-            title: S.of(context).about_app,
-            leadingIcon: Icons.info_outline_rounded,
-            onTap: () {},
+          const SmallSpace(),
+          Card(
+            color: cardColor,
+            child: CustomSettingItem(
+              title: S.of(context).notification_settings,
+              leadingIcon: IconlyBroken.notification,
+              onTap: () {},
+            ),
           ),
-          const MediumSpace(),
+          const SmallSpace(),
+          Card(
+            color: cardColor,
+            child: CustomSettingItem(
+              title: S.of(context).about_app,
+              leadingIcon: Icons.info_outline_rounded,
+              onTap: () {},
+            ),
+          ),
+          const SmallSpace(),
         ],
       ),
     );
@@ -103,17 +156,12 @@ class CustomSettingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(AppConstants.kRadius),
-          side: const BorderSide(
-            width: 1,
-            color: Colors.black54,
-          )),
       leading: Icon(leadingIcon),
       title: Text(title),
       subtitle: subTitle != null ? Text(subTitle!) : null,
-      trailing:
-          trailing == null ? const Icon(Icons.arrow_forward_ios_sharp) : trailing,
+      trailing: trailing == null
+          ? const Icon(Icons.arrow_forward_ios_sharp)
+          : trailing,
       onTap: onTap,
     );
   }

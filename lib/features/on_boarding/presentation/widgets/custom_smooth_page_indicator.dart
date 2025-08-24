@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../data/models/on_boarding_model.dart';
 
 class CustomSmoothPageIndicator extends StatelessWidget {
@@ -34,7 +34,7 @@ class CustomSmoothPageIndicator extends StatelessWidget {
               dotHeight: 12,
               dotWidth: 12,
               dotColor: Colors.white70,
-              activeDotColor: AppConstants.colorScheme),
+              activeDotColor: AppColor.colorScheme),
         ),
       ),
     );

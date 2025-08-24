@@ -116,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "login_welcome": MessageLookupByLibrary.simpleMessage(
       "مرحباً بعودتك! هل أنت مستعد لإنجاز المهام؟",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "no_notes_found": MessageLookupByLibrary.simpleMessage("لا توجد ملاحظات"),
     "no_notes_yet": MessageLookupByLibrary.simpleMessage(

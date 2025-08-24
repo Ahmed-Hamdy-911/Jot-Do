@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/cubits/selectionCubit/selection_state.dart';
+import '../../../../../core/cubits/Selection/selection_state.dart';
 import '../../../../../core/widgets/empty_widget.dart';
 import '../../../../../core/widgets/filter_view_builder.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/cubits/selectionCubit/selection_cubit.dart';
+import '../../../../../core/cubits/Selection/selection_cubit.dart';
 import '../../../data/models/note_model.dart';
 import '../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
 import '../../manager/cubits/Note/NotesCubits/notes_state.dart';
@@ -67,7 +67,7 @@ class NoteBody extends StatelessWidget {
       child: Column(
         children: [
           FilterViewBuilder(filterList: noteFilters),
-          NoteLayoutBuilder()
+          const NoteLayoutBuilder()
         ],
       ),
     );

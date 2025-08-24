@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../../../core/constants/constant.dart';
 import '../manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
 
@@ -34,7 +35,7 @@ class BottomAppBarItem extends StatelessWidget {
                     ? LinearGradient(
                         begin: AlignmentDirectional.centerStart,
                         end: AlignmentDirectional.centerEnd,
-                        colors: AppConstants.splashColorsList,
+                        colors: AppColor.splashColorsList,
                       )
                     : null,
               ),
@@ -58,8 +59,7 @@ class BottomAppBarItem extends StatelessWidget {
                           isSelected ? iconSelected : iconUnSelected,
                           color: isSelected
                               ? Colors.white
-                              : AppConstants.mainDarkColor
-                                  .withValues(alpha: 0.9),
+                              : AppColor.mainDarkColor.withValues(alpha: 0.9),
                           size: isSelected ? 28 : 26,
                         ),
                         SizedBox(width: screenWidth * 0.03),
@@ -69,8 +69,7 @@ class BottomAppBarItem extends StatelessWidget {
                             fontSize: isSelected ? 17 : 15,
                             color: isSelected
                                 ? Colors.white
-                                : AppConstants.mainDarkColor
-                                    .withValues(alpha: 0.9),
+                                : AppColor.mainDarkColor.withValues(alpha: 0.9),
                           ),
                         ),
                       ],

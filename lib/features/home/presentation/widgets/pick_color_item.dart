@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../manager/cubits/PickColor/pick_color_cubit.dart';
 import '../manager/cubits/PickColor/pick_color_state.dart';
-import '../../../../core/constants/constant.dart';
 
 class PickColorItem extends StatelessWidget {
   const PickColorItem({
@@ -46,7 +46,7 @@ class PickColorItem extends StatelessWidget {
                       color: color,
                       border: Border.all(
                         color: isSelected
-                            ? AppConstants.colorScheme.shade900
+                            ? AppColor.colorScheme.shade900
                             : Colors.transparent,
                         width: 2.5,
                       ),

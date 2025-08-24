@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconly/iconly.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/constants/constant.dart';
+import '../../../../../../core/services/format_service.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../../core/widgets/custom_icon.dart';
 import '../../../../data/models/note_model.dart';
@@ -112,7 +113,7 @@ class NoteBody extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: AppConstants.getTruncatedText(text: note.content),
+                    text: FormatService.getTruncatedText(text: note.content),
                     style: TextStyle(
                       fontSize: contentFontSize,
                       color: Colors.black45,

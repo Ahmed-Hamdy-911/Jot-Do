@@ -1,11 +1,12 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/assets/app_assets.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../generated/l10n.dart';
 import 'package:page_transition/page_transition.dart';
 import '../manager/SplashCubit/splash_cubit.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({
@@ -40,7 +41,7 @@ class SplashBody extends StatelessWidget {
           gradient: RadialGradient(
         center: Alignment.center,
         radius: 1.4,
-        colors: AppConstants.splashColorsList,
+        colors: AppColor.splashColorsList,
       )),
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth >= 600) {
@@ -64,7 +65,7 @@ class SplashBody extends StatelessWidget {
                       alignment: Alignment.center,
                       duration: const Duration(milliseconds: 1000),
                       firstChild: Image.asset(
-                        AppConstants.imageSplashPath,
+                        AppAssets.splash,
                         fit: BoxFit.contain,
                       ),
                       secondChild: Container(
@@ -125,7 +126,7 @@ class SplashBody extends StatelessWidget {
                     crossFadeState: CrossFadeState.showFirst,
                     duration: const Duration(milliseconds: 1000),
                     firstChild: Image.asset(
-                      AppConstants.imageSplashPath,
+                      AppAssets.splash,
                       width: screenWidth,
                     ),
                     secondChild: Container(

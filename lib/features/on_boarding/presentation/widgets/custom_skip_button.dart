@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../core/constants/constant.dart';
 
 class CustomSkipButton extends StatelessWidget {
   const CustomSkipButton({
@@ -20,11 +20,11 @@ class CustomSkipButton extends StatelessWidget {
             onPressed: onPressed,
             child: Text(
               S.of(context).skip,
-              style: const TextStyle(
-                color: AppConstants.colorScheme,
+              style:  const TextStyle(
+                color: AppColor.colorScheme,
                 fontSize: 16,
                 decoration: TextDecoration.underline,
-                decorationColor: AppConstants.colorScheme,
+                decorationColor: AppColor.colorScheme,
                 fontWeight: FontWeight.bold,
               ),
             )),

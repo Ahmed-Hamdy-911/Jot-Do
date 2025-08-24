@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/colors/app_colors.dart';
 import '../constants/constant.dart';
 
 class CustomMaterialButton extends StatelessWidget {
@@ -38,7 +39,7 @@ class CustomMaterialButton extends StatelessWidget {
         ),
         height: screenWidth > 600 ? screenHeight * 0.08 : screenHeight * 0.07,
         minWidth: minWidth ?? screenWidth,
-        color: color ?? AppConstants.colorScheme,
+        color: color ?? AppColor.colorScheme,
         child: isLoading == true
             ? const CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),

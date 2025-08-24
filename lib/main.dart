@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/constant.dart';
+import 'core/constants/theme/app_themes.dart';
+import 'core/cubits/Settings/setting_cubit.dart';
+import 'core/cubits/Settings/setting_state.dart';
 import 'core/routing/app_routes.dart';
 import 'core/cubits/bloc_observer.dart';
 import 'core/routing/app_router.dart';
@@ -12,7 +15,10 @@ void main() async {
 
   await LocalStorageService.init();
 
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => SettingCubit(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,17 +26,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Jot&Do',
-      debugShowCheckedModeBanner: false,
-      theme: AppConstants.lightTheme,
-      darkTheme: AppConstants.darkTheme,
-      themeMode: ThemeMode.light,
-      localeResolutionCallback: AppConstants.localeResolutionCallback,
-      supportedLocales: AppConstants.supportedLocales,
-      localizationsDelegates: AppConstants.localizationsDelegates,
-      initialRoute: AppRoutes.splash,
-      onGenerateRoute: AppRouter.onGenerateRoute,
+    return BlocBuilder<SettingCubit, SettingState>(
+      builder: (context, state) {
+        return MaterialApp(
+          title: 'Jot&Do',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: state.themeMode,
+          locale: state.locale,
+          localeResolutionCallback: AppConstants.localeResolutionCallback,
+          supportedLocales: AppConstants.supportedLocales,
+          localizationsDelegates: AppConstants.localizationsDelegates,
+          initialRoute: AppRoutes.splash,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+        );
+      },
     );
   }
 }

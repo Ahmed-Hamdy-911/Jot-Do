@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/colors/app_colors.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../core/widgets/custom_material_button.dart';
@@ -75,7 +75,7 @@ class _LoginFormState extends State<LoginForm> {
                   Text(
                     S.of(context).remember_me,
                     style: TextStyle(
-                      color: AppConstants.colorScheme,
+                      color: AppColor.colorScheme,
                       fontSize: screenWidth < 600
                           ? screenWidth * 0.035
                           : screenWidth * 0.012,
