@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:iconly/iconly.dart';
 import '../../../../../core/constants/colors/app_colors.dart';
-import '../../../../../core/constants/constant.dart';
 import '../../../../../core/cubits/Settings/setting_cubit.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
@@ -29,13 +27,6 @@ class SettingsView extends StatelessWidget {
       }
     }
 
-    Locale currentLocale = context.watch<SettingCubit>().state.locale ??
-        Localizations.localeOf(context);
-
-    LanguageModel selectedLanguage = languages.firstWhere(
-      (lang) => lang.locale == currentLocale.languageCode,
-      orElse: () => languages[0], // Default to the first language
-    );
     const cardColor = AppColor.white70;
     return Padding(
       padding: const EdgeInsets.all(16.0),
