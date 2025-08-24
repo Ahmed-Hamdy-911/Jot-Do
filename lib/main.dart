@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/constant.dart';
 import 'core/routing/app_routes.dart';
-import 'core/blocObserver/bloc_observer.dart';
+import 'core/cubits/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 import 'core/services/local_storage_service.dart';
 
