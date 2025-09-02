@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = S.of(context).login_welcome;
+    String title = S.of(context).welcome_back;
     String subtitle = S.of(context).login_call_to_action;
     return Scaffold(
       body: SafeArea(
