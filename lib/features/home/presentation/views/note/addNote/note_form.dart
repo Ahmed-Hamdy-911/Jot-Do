@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/routing/app_routes.dart';
-import '../../../../../../core/services/format_service.dart';
 import '../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../../core/constants/constant.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
@@ -48,7 +47,7 @@ class _NoteFormState extends State<NoteForm> {
     var screenWidth = MediaQuery.sizeOf(context).width;
     final isWideScreen = screenWidth > 600;
     var selectedColor = context.watch<PickColorCubit>().state.selectedColor;
-    var dateTime = FormatService.formatDateTime(DateTime.now());
+    var dateTime = DateTime.now().toIso8601String();
     return BlocConsumer<AddNoteCubit, AddNoteStates>(
       listener: (context, state) {
         if (state is AddNoteSuccessState) {
@@ -58,7 +57,6 @@ class _NoteFormState extends State<NoteForm> {
             (route) => false,
           );
         }
- 
       },
       builder: (context, state) {
         return Form(

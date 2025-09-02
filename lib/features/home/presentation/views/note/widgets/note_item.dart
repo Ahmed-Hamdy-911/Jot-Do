@@ -91,6 +91,8 @@ class NoteBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const fontFamily = "Tajawal";
+    final dateTime = FormatService.formatDateTime(note.createdAt);
+
     return Stack(
       children: [
         Column(
@@ -137,7 +139,7 @@ class NoteBody extends StatelessWidget {
             Align(
               alignment: AlignmentDirectional.bottomEnd,
               child: Text(
-                note.createdAt,
+                dateTime,
                 style: TextStyle(
                   color: Colors.grey[700],
                   fontSize: dateTimeFontSize,
@@ -155,7 +157,7 @@ class NoteBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CustomIcon(
-                note: note,
+                noteColor: Color(note.color),
                 icon: note.isFavorite ? IconlyBold.heart : IconlyLight.heart,
                 onTap: () {
                   context.read<NotesCubit>().toggleFavoriteNote(note.id!, note);
@@ -166,7 +168,7 @@ class NoteBody extends StatelessWidget {
               ),
               if (note.isPinned)
                 CustomIcon(
-                  note: note,
+                  noteColor: Color(note.color),
                   icon: Icons.push_pin,
                   onTap: () {
                     context.read<NotesCubit>().togglePinNote(note.id!, note);

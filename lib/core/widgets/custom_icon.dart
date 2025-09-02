@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../features/home/data/models/note_model.dart';
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({
     super.key,
-    required this.note,
+    required this.noteColor,
     this.onTap,
     required this.icon,
     this.withValuesAlpha = 0.2,
   });
 
-  final NoteModel note;
+  final Color noteColor;
   final void Function()? onTap;
   final IconData icon;
   final double? withValuesAlpha;
@@ -22,8 +21,8 @@ class CustomIcon extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         customBorder: const CircleBorder(),
-        highlightColor: Color(note.color).withValues(alpha: 0.3),
-        splashColor: Color(note.color).withValues(alpha: 0.3),
+        highlightColor: noteColor.withValues(alpha: 0.3),
+        splashColor: noteColor.withValues(alpha: 0.3),
         child: Ink(
           padding: const EdgeInsets.all(2),
           decoration: BoxDecoration(
@@ -33,7 +32,7 @@ class CustomIcon extends StatelessWidget {
           child: Icon(
             icon,
             size: 28,
-            color: Color(note.color),
+            color: noteColor,
           ),
         ),
       ),

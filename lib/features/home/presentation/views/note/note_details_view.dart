@@ -132,21 +132,12 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
 
   Widget customShowTime(context, String text, String dateTime) {
     var screenWidth = MediaQuery.of(context).size.width;
-    return Row(
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: screenWidth > 600 ? 16 : 14,
-          ),
-        ),
-        Text(
-          dateTime,
-          style: TextStyle(
-            fontSize: screenWidth > 600 ? 16 : 14,
-          ),
-        ),
-      ],
+    return Text(
+      textAlign: TextAlign.start,
+      text+ dateTime,
+      style: TextStyle(
+        fontSize: screenWidth > 600 ? 16 : 14,
+      ),
     );
   }
 }

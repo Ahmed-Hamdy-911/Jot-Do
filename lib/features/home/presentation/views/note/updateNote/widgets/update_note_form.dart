@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../core/routing/app_routes.dart';
-import '../../../../../../../core/services/format_service.dart';
 import '../../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../data/models/note_model.dart';
@@ -52,7 +51,7 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
       },
       builder: (context, state) {
         var selectedColor = context.watch<PickColorCubit>().state.selectedColor;
-        var dateTime = FormatService.formatDateTime(DateTime.now());
+       var dateTime = DateTime.now().toIso8601String();
         return Column(
           children: [
             Form(

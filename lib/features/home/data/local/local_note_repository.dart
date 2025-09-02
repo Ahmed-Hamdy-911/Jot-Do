@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/constants/constant.dart';
 import '../models/note_model.dart';
@@ -66,16 +65,17 @@ class LocalNoteRepository implements NoteRepository {
   }
 
   List<NoteModel> getAllNotesAtLessWeek(List<NoteModel> notes) {
-    final dateFormat = DateFormat("d/M/yyyy h:mm a");
     return notes.where((element) {
-      final createdDate = dateFormat.parse(element.createdAt);
+      final createdDate = DateTime.tryParse(element.createdAt);
+      if (createdDate == null) return false;
+
       return DateTime.now().difference(createdDate).inDays < 7 &&
           !element.isArchived;
     }).toList()
       ..sort(
         (a, b) {
-          final dateA = dateFormat.parse(a.createdAt);
-          final dateB = dateFormat.parse(b.createdAt);
+          final dateA = DateTime.tryParse(a.createdAt) ?? DateTime(1970);
+          final dateB = DateTime.tryParse(b.createdAt) ?? DateTime(1970);
 
           if (a.isPinned && !b.isPinned) return -1;
           if (!a.isPinned && b.isPinned) return 1;
