@@ -27,104 +27,98 @@ class SettingsView extends StatelessWidget {
       }
     }
 
-    const cardColor = AppColor.white70;
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: kToolbarHeight,
-          ),
-          Card(
-            color: cardColor,
-            child: Column(
-              children: [
-                CustomSettingItem(
-                  title: S.of(context).account,
-                  leadingIcon: IconlyLight.profile,
-                  onTap: () {},
-                ),
-                CustomSettingItem(
-                  title: S.of(context).backup_sync,
-                  leadingIcon: Icons.backup_outlined,
-                  trailing: const Icon(Icons.restore),
-                  onTap: () {},
-                ),
-                CustomSettingItem(
-                  title: S.of(context).logout,
-                  leadingIcon: IconlyLight.logout,
-                  onTap: () {},
-                ),
-              ],
-            ),
-          ),
-          const SmallSpace(),
-          Card(
-            color: cardColor,
-            child: Column(
-              children: [
-                CustomSettingItem(
-                  title: S.of(context).language,
-                  leadingIcon: Icons.language,
-                  trailing: DropdownButton<LanguageModel>(
-                    value: context.watch<SettingCubit>().state.locale ==
-                            const Locale(
-                              "en",
-                            )
-                        ? languages[0]
-                        : languages[1],
-                    items: languages.map((element) {
-                      return DropdownMenuItem(
-                        value: element,
-                        child: Text(
-                            "${element.flag} ${getLocalizedLanguageName(context, element.key)}"),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      context
-                          .read<SettingCubit>()
-                          .toggleLanguage(Locale(value!.locale));
-                    },
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomSettingCard(
+              child: Column(
+                children: [
+                  CustomSettingItem(
+                    title: S.of(context).account,
+                    leadingIcon: IconlyLight.profile,
+                    onTap: () {},
                   ),
-                ),
-                const MediumSpace(),
-                CustomSettingItem(
-                  title: S.of(context).theme,
-                  subTitle: S.of(context).light,
-                  leadingIcon: Icons.brightness_6_outlined,
-                  trailing: Switch(
-                    value: context.watch<SettingCubit>().state.themeMode ==
-                        ThemeMode.dark,
-                    onChanged: (value) {
-                      context.read<SettingCubit>().toggleTheme();
-                    },
+                  CustomSettingItem(
+                    title: S.of(context).backup_sync,
+                    leadingIcon: Icons.backup_outlined,
+                    trailing: const Icon(Icons.restore),
+                    onTap: () {},
                   ),
-                ),
-              ],
+                  CustomSettingItem(
+                    title: S.of(context).logout,
+                    leadingIcon: IconlyLight.logout,
+                    onTap: () {},
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SmallSpace(),
-          Card(
-            color: cardColor,
-            child: CustomSettingItem(
-              title: S.of(context).notification_settings,
-              leadingIcon: IconlyBroken.notification,
-              onTap: () {},
+            const SmallSpace(),
+            CustomSettingCard(
+              child: Column(
+                children: [
+                  CustomSettingItem(
+                    title: S.of(context).language,
+                    leadingIcon: Icons.language,
+                    trailing: DropdownButton<LanguageModel>(
+                      value: context.watch<SettingCubit>().state.locale ==
+                              const Locale(
+                                "en",
+                              )
+                          ? languages[0]
+                          : languages[1],
+                      items: languages.map((element) {
+                        return DropdownMenuItem(
+                          value: element,
+                          child: Text(
+                              "${element.flag} ${getLocalizedLanguageName(context, element.key)}"),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        context
+                            .read<SettingCubit>()
+                            .toggleLanguage(Locale(value!.locale));
+                      },
+                    ),
+                  ),
+                  const MediumSpace(),
+                  CustomSettingItem(
+                    title: S.of(context).theme,
+                    subTitle: S.of(context).light,
+                    leadingIcon: Icons.brightness_6_outlined,
+                    trailing: Switch(
+                      value: context.watch<SettingCubit>().state.themeMode ==
+                          ThemeMode.dark,
+                      onChanged: (value) {
+                        context.read<SettingCubit>().toggleTheme();
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SmallSpace(),
-          Card(
-            color: cardColor,
-            child: CustomSettingItem(
-              title: S.of(context).about_app,
-              leadingIcon: Icons.info_outline_rounded,
-              onTap: () {},
+            const SmallSpace(),
+            CustomSettingCard(
+              child: CustomSettingItem(
+                title: S.of(context).notification_settings,
+                leadingIcon: IconlyBroken.notification,
+                onTap: () {},
+              ),
             ),
-          ),
-          const SmallSpace(),
-        ],
+            const SmallSpace(),
+            CustomSettingCard(
+              child: CustomSettingItem(
+                title: S.of(context).about_app,
+                leadingIcon: Icons.info_outline_rounded,
+                onTap: () {},
+              ),
+            ),
+            const SmallSpace(),
+          ],
+        ),
       ),
     );
   }
@@ -154,6 +148,21 @@ class CustomSettingItem extends StatelessWidget {
           ? const Icon(Icons.arrow_forward_ios_sharp)
           : trailing,
       onTap: onTap,
+    );
+  }
+}
+
+class CustomSettingCard extends StatelessWidget {
+  const CustomSettingCard({super.key, required this.child});
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: AppColor.white70,
+      child: Padding(
+        padding: const EdgeInsetsDirectional.symmetric(vertical: 6.0),
+        child: child,
+      ),
     );
   }
 }
