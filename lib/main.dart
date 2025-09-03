@@ -9,6 +9,11 @@ import 'core/cubits/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 import 'core/services/local_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'features/auth/data/repository/auth_repo_impl.dart';
+import 'features/auth/data/usecase/check_verification_usecase.dart';
+import 'features/auth/data/usecase/login_user_usecase.dart';
+import 'features/auth/data/usecase/register_user_usecase.dart';
+import 'features/auth/presentation/cubit/auth_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -19,8 +24,20 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(BlocProvider(
-    create: (context) => SettingCubit(),
+  final authRepoImpl = AuthRepoImpl();
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => SettingCubit(),
+      ),
+      BlocProvider(
+        create: (context) => AuthCubit(
+          RegisterUserUseCase(authRepoImpl),
+          LoginUserUseCase(authRepoImpl),
+          CheckVerificationUseCase(authRepoImpl),
+        ),
+      ),
+    ],
     child: const MyApp(),
   ));
 }

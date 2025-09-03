@@ -40,10 +40,10 @@ class AuthRepoImpl implements AuthRepository {
       );
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on login from AuthRepo: ${e.code}");
-      rethrow;
+      throw e.code;
     } catch (e) {
       debugPrint("Exception on login from AuthRepo: ${e.toString()}");
-      rethrow;
+      throw e;
     }
   }
 
@@ -77,5 +77,11 @@ class AuthRepoImpl implements AuthRepository {
     final user = _firebaseAuth.currentUser;
     await user?.reload();
     return user?.emailVerified ?? false;
+  }
+
+  @override
+  Future<bool> checkUserStatus() async {
+    final user = _firebaseAuth.currentUser;
+    return user != null && user.emailVerified;
   }
 }

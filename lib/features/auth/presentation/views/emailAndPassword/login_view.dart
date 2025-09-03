@@ -17,86 +17,79 @@ class LoginView extends StatelessWidget {
     String title = S.of(context).welcome_back;
     String subtitle = S.of(context).login_call_to_action;
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child: CustomSkipButton(
-                onPressed: () {
-                  CacheAuthRepo.skipAuthentication();
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    AppRoutes.home,
-                    (route) => false,
-                  );
-                },
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Align(
+                alignment: AlignmentDirectional.bottomEnd,
+                child: CustomSkipButton(
+                  onPressed: () {
+                    CacheAuthRepo.skipAuthentication();
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.home,
+                      (route) => false,
+                    );
+                  },
+                ),
               ),
-            ),
-            LayoutBuilder(builder: (context, constraints) {
-              if (constraints.maxWidth >= 600) {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          AuthExcitedText(
-                            title: title,
-                            subtitle: subtitle,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Expanded(
-                                flex: 1,
-                                child: LoginForm(),
+              LayoutBuilder(builder: (context, constraints) {
+                if (constraints.maxWidth >= 600) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        AuthExcitedText(
+                          title: title,
+                          subtitle: subtitle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Expanded(
+                              flex: 1,
+                              child: LoginForm(),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.5,
+                              child: VerticalDivider(
+                                color: AppColor.colorScheme.shade100,
+                                indent: 30,
+                                endIndent: 20,
+                                thickness: 2,
+                                width: 50,
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.5,
-                                child: VerticalDivider(
-                                  color: AppColor.colorScheme.shade100,
-                                  indent: 30,
-                                  endIndent: 20,
-                                  thickness: 2,
-                                  width: 50,
-                                ),
-                              ),
-                              const Expanded(
-                                flex: 1,
-                                child: LoginExtrasWidget(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                            const Expanded(
+                              flex: 1,
+                              child: LoginExtrasWidget(),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                );
-              } else {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AuthExcitedText(
-                            title: title,
-                            subtitle: subtitle,
-                          ),
-                          const LoginForm(),
-                          const MediumSpace(),
-                          const LoginExtrasWidget(),
-                        ],
-                      ),
+                  );
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AuthExcitedText(
+                          title: title,
+                          subtitle: subtitle,
+                        ),
+                        const LoginForm(),
+                        const MediumSpace(),
+                        const LoginExtrasWidget(),
+                      ],
                     ),
-                  ),
-                );
-              }
-            }),
-          ],
+                  );
+                }
+              }),
+            ],
+          ),
         ),
       ),
     );
