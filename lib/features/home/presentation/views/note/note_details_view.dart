@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../../../../core/routing/app_routes.dart';
+import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/note_model.dart';
@@ -132,9 +133,10 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
 
   Widget customShowTime(context, String text, String dateTime) {
     var screenWidth = MediaQuery.of(context).size.width;
+    final formattedDateTime = FormatService.formatDateTime(dateTime);
     return Text(
       textAlign: TextAlign.start,
-      text+ dateTime,
+      text + formattedDateTime,
       style: TextStyle(
         fontSize: screenWidth > 600 ? 16 : 14,
       ),
