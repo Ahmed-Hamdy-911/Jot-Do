@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import '../../generated/l10n.dart';
 
 import '../constants/colors/app_colors.dart';
+import '../constants/constant.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -126,16 +127,16 @@ class CustomTextFormField extends StatelessWidget {
             Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 14),
         focusedBorder: customBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(AppConstants.kRadius),
               borderSide: const BorderSide(color: AppColor.colorScheme),
             ),
         enabledBorder: customBorder ??
             OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(AppConstants.kRadius),
                 borderSide: BorderSide(color: Colors.grey[300]!)),
         border: customBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(AppConstants.kRadius),
             ),
       ),
     );
