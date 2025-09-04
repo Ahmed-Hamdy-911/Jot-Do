@@ -28,6 +28,12 @@ class AuthEmailVerificationNeeded extends AuthStates {
   AuthEmailVerificationNeeded(this.message);
 }
 
+class GoVerificationState extends AuthStates {
+  final String email;
+  final String? message;
+  GoVerificationState({required this.email, this.message});
+}
+
 class AuthEmailVerified extends AuthStates {}
 
 class AuthLoggedOut extends AuthStates {}

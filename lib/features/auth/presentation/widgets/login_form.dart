@@ -26,127 +26,103 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-    return BlocConsumer<AuthCubit, AuthStates>(
-      listener: (context, state) {
-        debugPrint("Listener triggered with state: $state");
-        if (state is AuthSuccess) {
-          Navigator.pushReplacementNamed(context, AppRoutes.home);
-        } else if (state is AuthEmailVerificationNeeded) {
-          Navigator.pushNamed(
-            context,
-            AppRoutes.verifyEmail,
-            arguments: emailController.text,
-          );
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
-        } else if (state is AuthFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
-          );
-        }
-      },
-      builder: (context, state) {
-        return AbsorbPointer(
-          absorbing: state is AuthLoadingState,
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return AbsorbPointer(
+      absorbing: context.watch<AuthCubit>().state is AuthLoadingState,
+      child: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomEmailField(emailController: emailController),
+            const MediumSpace(),
+            Text(
+              S.of(context).password,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize:
+                    screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
+              ),
+            ),
+            const SmallSpace(),
+            CustomTextFormField(
+              hintText: S.of(context).enter_password,
+              controller: passwordController,
+              keyboardType: TextInputType.text,
+              obscureText: false,
+              suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.visibility_off_outlined,
+                      color: Color(0xffADB5BD))),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return S.of(context).error_required_field;
+                }
+                if (value.length < 8) {
+                  return S.of(context).error_short_password;
+                }
+                return null;
+              },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomEmailField(emailController: emailController),
-                const MediumSpace(),
-                Text(
-                  S.of(context).password,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontSize: screenWidth < 600
-                        ? screenWidth * 0.04
-                        : screenWidth * 0.02,
-                  ),
-                ),
-                const SmallSpace(),
-                CustomTextFormField(
-                  hintText: S.of(context).enter_password,
-                  controller: passwordController,
-                  keyboardType: TextInputType.text,
-                  obscureText: false,
-                  suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.visibility_off_outlined,
-                          color: Color(0xffADB5BD))),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return S.of(context).error_required_field;
-                    }
-                    if (value.length < 8) {
-                      return S.of(context).error_short_password;
-                    }
-                    return null;
-                  },
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: false,
-                          checkColor: Colors.white,
-                          side: const BorderSide(color: Colors.grey),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5)),
-                          onChanged: (value) {},
-                        ),
-                        Text(
-                          S.of(context).remember_me,
-                          style: TextStyle(
-                            color: AppColor.colorScheme,
-                            fontSize: screenWidth < 600
-                                ? screenWidth * 0.035
-                                : screenWidth * 0.012,
-                          ),
-                        ),
-                      ],
+                    Checkbox(
+                      value: false,
+                      checkColor: Colors.white,
+                      side: const BorderSide(color: Colors.grey),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      onChanged: (value) {},
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.forgotPassword,
-                        );
-                      },
-                      child: Text(
-                        S.of(context).forgot_password,
-                        style: TextStyle(
-                          color: Colors.red.shade900,
-                          fontSize: screenWidth < 600
-                              ? screenWidth * 0.035
-                              : screenWidth * 0.012,
-                        ),
+                    Text(
+                      S.of(context).remember_me,
+                      style: TextStyle(
+                        color: AppColor.colorScheme,
+                        fontSize: screenWidth < 600
+                            ? screenWidth * 0.035
+                            : screenWidth * 0.012,
                       ),
                     ),
                   ],
                 ),
-                const SmallSpace(),
-                CustomMaterialButton(
-                  isLoading: state is AuthLoadingState,
-                  onPressed: () async {
-                    if (formKey.currentState!.validate()) {
-                      context.read<AuthCubit>().login(
-                            email: emailController.text,
-                            password: passwordController.text,
-                          );
-                    }
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.forgotPassword,
+                    );
                   },
-                  text: S.of(context).login,
+                  child: Text(
+                    S.of(context).forgot_password,
+                    style: TextStyle(
+                      color: Colors.red.shade900,
+                      fontSize: screenWidth < 600
+                          ? screenWidth * 0.035
+                          : screenWidth * 0.012,
+                    ),
+                  ),
                 ),
               ],
             ),
-          ),
-        );
-      },
+            const SmallSpace(),
+            CustomMaterialButton(
+              isLoading: context.watch<AuthCubit>().state is AuthLoadingState,
+              onPressed: () async {
+                if (formKey.currentState!.validate()) {
+                  context.read<AuthCubit>().login(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                }
+              },
+              text: S.of(context).login,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

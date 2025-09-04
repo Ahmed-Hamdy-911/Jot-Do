@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors/app_colors.dart';
-import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -48,101 +47,85 @@ class VerificationBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthStates>(
-      listenWhen: (previous, current) =>
-          current is AuthVerificationLoading || current is AuthEmailVerified,
-      listener: (context, state) {
-        if (state is AuthEmailVerified) {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            AppRoutes.home,
-            (route) => false,
-          );
-        } else if (state is AuthEmailVerificationSent) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
-        }
-      },
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      S.of(context).verify_email_title,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  S.of(context).verify_email_title,
+                  style: TextStyle(
+                    fontSize: MediaQuery.sizeOf(context).width < 600
+                        ? MediaQuery.sizeOf(context).width * 0.065
+                        : MediaQuery.sizeOf(context).width * 0.04,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.colorScheme,
+                  ),
+                ),
+              ),
+              const SmallSpace(),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(children: [
+                  TextSpan(
+                      text: S.of(context).verify_email_message,
                       style: TextStyle(
+                        color: Colors.black54,
                         fontSize: MediaQuery.sizeOf(context).width < 600
-                            ? MediaQuery.sizeOf(context).width * 0.065
-                            : MediaQuery.sizeOf(context).width * 0.04,
-                        fontWeight: FontWeight.bold,
+                            ? MediaQuery.sizeOf(context).width * 0.035
+                            : MediaQuery.sizeOf(context).width * 0.015,
+                      )),
+                  TextSpan(
+                    text: email,
+                    style: TextStyle(
+                      color: Colors.blue,
+                      height: 1.7,
+                      fontSize: MediaQuery.sizeOf(context).width < 600
+                          ? MediaQuery.sizeOf(context).width * 0.04
+                          : MediaQuery.sizeOf(context).width * 0.017,
+                    ),
+                  ),
+                ]),
+              ),
+              const MediumSpace(),
+              CustomMaterialButton(
+                onPressed: () async {
+                  await context.read<AuthCubit>().checkEmailVerification();
+                },
+                isLoading:
+                    context.watch<AuthCubit>().state is AuthVerificationLoading,
+                text: S.of(context).continue_text,
+              ),
+              const MediumSpace(),
+              Row(
+                children: [
+                  TextButton(
+                    onPressed: () async {
+                      await context.read<AuthCubit>().resendVerificationEmail();
+                    },
+                    child: Text(
+                      S.of(context).resend_code,
+                      style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        height: 0.7,
+                        fontSize: 16,
                         color: AppColor.colorScheme,
                       ),
                     ),
-                  ),
-                  const SmallSpace(),
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(children: [
-                      TextSpan(
-                          text: S.of(context).verify_email_message,
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: MediaQuery.sizeOf(context).width < 600
-                                ? MediaQuery.sizeOf(context).width * 0.035
-                                : MediaQuery.sizeOf(context).width * 0.015,
-                          )),
-                      TextSpan(
-                        text: email,
-                        style: TextStyle(
-                          color: Colors.blue,
-                          height: 1.7,
-                          fontSize: MediaQuery.sizeOf(context).width < 600
-                              ? MediaQuery.sizeOf(context).width * 0.04
-                              : MediaQuery.sizeOf(context).width * 0.017,
-                        ),
-                      ),
-                    ]),
-                  ),
-                  const MediumSpace(),
-                  CustomMaterialButton(
-                    onPressed: () {
-                      context.read<AuthCubit>().checkEmailVerification();
-                    },
-                    isLoading: state is AuthVerificationLoading,
-                    text: S.of(context).continue_text,
-                  ),
-                  const MediumSpace(),
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          S.of(context).resend_code,
-                          style: const TextStyle(
-                            decoration: TextDecoration.underline,
-                            height: 0.7,
-                            fontSize: 16,
-                            color: AppColor.colorScheme,
-                          ),
-                        ),
-                      )
-                    ],
                   )
                 ],
-              ),
-            ),
+              )
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

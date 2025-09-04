@@ -32,7 +32,9 @@ class AuthCubit extends Cubit<AuthStates> {
     emit(AuthLoadingState());
     try {
       await _registerUserUseCase.call(email: email, password: password);
-      emit(AuthSuccess());
+      emit(GoVerificationState(
+          email: email,
+          message: "Verification email sent. Please verify your email."));
     } catch (e) {
       if (e is FirebaseAuthException) {
         switch (e.code) {
@@ -61,11 +63,10 @@ class AuthCubit extends Cubit<AuthStates> {
       await _loginUserUseCase.call(email: email, password: password);
       final isVerified = await _checkVerificationUseCase.call();
       if (!isVerified) {
-        emit(AuthEmailVerificationNeeded(
-            "Email not verified. Please check your inbox."));
+        emit(GoVerificationState(
+            email: email,
+            message: "Email not verified. Please check your inbox."));
         _loginUserUseCase.sendEmailVerification();
-        emit(AuthEmailVerificationSent(
-            "Verification email sent. Please verify your email."));
         return;
       } else {
         final isLoggedIn = await _checkAuthUseCase.call();
@@ -93,6 +94,17 @@ class AuthCubit extends Cubit<AuthStates> {
       }
     } catch (e) {
       emit(AuthFailure("Failed to check email verification: $e"));
+    }
+  }
+
+  Future<void> resendVerificationEmail() async {
+    emit(AuthLoadingState());
+    try {
+      await _loginUserUseCase.sendEmailVerification();
+      emit(AuthEmailVerificationSent(
+          "Verification email resent. Please check your inbox."));
+    } catch (e) {
+      emit(AuthFailure("Failed to resend verification email: $e"));
     }
   }
 
