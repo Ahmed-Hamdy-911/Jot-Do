@@ -153,6 +153,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "pin": MessageLookupByLibrary.simpleMessage("Pin"),
+    "please_login_first": MessageLookupByLibrary.simpleMessage(
+      "Please login first",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "Create your account and unlock exclusive features.",

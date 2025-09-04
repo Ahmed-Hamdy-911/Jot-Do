@@ -28,9 +28,10 @@ class _LoginFormState extends State<LoginForm> {
     var screenWidth = MediaQuery.sizeOf(context).width;
     return BlocConsumer<AuthCubit, AuthStates>(
       listener: (context, state) {
+        debugPrint("Listener triggered with state: $state");
         if (state is AuthSuccess) {
           Navigator.pushReplacementNamed(context, AppRoutes.home);
-        } else if (state is AuthEmailVerificationSent) {
+        } else if (state is AuthEmailVerificationNeeded) {
           Navigator.pushNamed(
             context,
             AppRoutes.verifyEmail,

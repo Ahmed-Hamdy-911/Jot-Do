@@ -157,6 +157,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "pin": MessageLookupByLibrary.simpleMessage("تثبيت"),
+    "please_login_first": MessageLookupByLibrary.simpleMessage(
+      "من فضلك قم بتسجيل الدخول أولاً",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "قم بإنشاء حسابك وافتح الميزات الحصرية.",

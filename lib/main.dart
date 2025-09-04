@@ -10,7 +10,9 @@ import 'core/routing/app_router.dart';
 import 'core/services/local_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'features/auth/data/repository/auth_repo_impl.dart';
+import 'features/auth/data/usecase/check_auth_usecase.dart';
 import 'features/auth/data/usecase/check_verification_usecase.dart';
+import 'features/auth/data/usecase/forgot_password_usecase.dart';
 import 'features/auth/data/usecase/login_user_usecase.dart';
 import 'features/auth/data/usecase/register_user_usecase.dart';
 import 'features/auth/presentation/cubit/auth_cubit.dart';
@@ -18,8 +20,11 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = MyBlocObserver();
 
+  assert(() {
+    Bloc.observer = MyBlocObserver();
+    return true;
+  }());
   await LocalStorageService.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -35,6 +40,8 @@ void main() async {
           RegisterUserUseCase(authRepoImpl),
           LoginUserUseCase(authRepoImpl),
           CheckVerificationUseCase(authRepoImpl),
+          CheckAuthUseCase(authRepoImpl),
+          ForgotPasswordUseCase(authRepoImpl),
         ),
       ),
     ],

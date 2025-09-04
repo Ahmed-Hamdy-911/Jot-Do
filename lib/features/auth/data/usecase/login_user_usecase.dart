@@ -11,4 +11,8 @@ class LoginUserUseCase {
   }) async {
     return await _authRepository.login(email: email, password: password);
   }
+
+  Future<void> sendEmailVerification() async {
+    return await _authRepository.sendEmailVerification();
+  }
 }

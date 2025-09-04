@@ -33,7 +33,10 @@ class SplashBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    Widget nextScreen() => context.read<SplashCubit>().checkNextScreen();
+    Widget nextScreen() {
+      return context.read<SplashCubit>().checkNextScreen();
+    }
+
     return Container(
       height: screenHeight,
       width: screenWidth,

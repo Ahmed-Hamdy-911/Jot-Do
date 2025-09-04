@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_states.dart';
@@ -32,12 +34,11 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-    return BlocConsumer<AuthCubit, AuthStates>(
+    return BlocListener<AuthCubit, AuthStates>(
+
       listener: (context, state) {
-        if (state is AuthEmailVerificationSent) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
+        debugPrint("Listener triggered with state: $state");
+        if (state is AuthSuccess) {
           Navigator.pushNamed(
             context,
             AppRoutes.verifyEmail,
@@ -54,83 +55,80 @@ class _RegisterFormState extends State<RegisterForm> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.error)),
           );
+          log("AuthFailure: ${state.error}");
         }
       },
-      builder: (context, state) {
-        return AbsorbPointer(
-          absorbing: state is AuthLoadingState,
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                AuthExcitedText(
-                    title: S.of(context).create_account,
-                    subtitle: S.of(context).register_excited_text),
-                const MediumSpace(),
-                Text(
-                  S.of(context).name,
-                  style: TextStyle(
-                    fontSize: screenWidth < 600
-                        ? screenWidth * 0.04
-                        : screenWidth * 0.02,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
+      child: AbsorbPointer(
+        absorbing: context.watch<AuthCubit>().state is AuthLoadingState,
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              AuthExcitedText(
+                  title: S.of(context).create_account,
+                  subtitle: S.of(context).register_excited_text),
+              const MediumSpace(),
+              Text(
+                S.of(context).name,
+                style: TextStyle(
+                  fontSize: screenWidth < 600
+                      ? screenWidth * 0.04
+                      : screenWidth * 0.02,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
                 ),
-                const SmallSpace(),
-                CustomTextFormField(
-                  hintText: S.of(context).enter_name,
-                  controller: _nameController,
-                  keyboardType: TextInputType.text,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return S.of(context).error_required_field;
-                    } else if (value.length < 3) {
-                      return S.of(context).error_short_name;
-                    } else if (value.startsWith(RegExp(r'^[0-9]'))) {
-                      return S.of(context).error_name_starts_with_number;
-                    } else if (value.contains(RegExp(r'^.*[@/$!%*?&]'))) {
-                      return S
-                          .of(context)
-                          .error_name_contains_special_characters;
-                    }
-                    return null;
-                  },
-                ),
-                const MediumSpace(),
-                CustomEmailField(emailController: _emailController),
-                const MediumSpace(),
-                CustomPasswordAndConfirmPasswordWidget(
-                    passwordController: _passwordController,
-                    confirmPasswordController: _confirmPasswordController),
-                const MediumSpace(),
-                CustomMaterialButton(
-                  isLoading: state is AuthLoadingState,
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      context.read<AuthCubit>().register(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                          );
-                    }
-                  },
-                  text: S.of(context).register,
-                ),
-                const SmallSpace(),
-                CustomTextAndTextButton(
-                  textTitle: S.of(context).already_have_account,
-                  textButtonTitle: S.of(context).login,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                )
-              ],
-            ),
+              ),
+              const SmallSpace(),
+              CustomTextFormField(
+                hintText: S.of(context).enter_name,
+                controller: _nameController,
+                keyboardType: TextInputType.text,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return S.of(context).error_required_field;
+                  } else if (value.length < 3) {
+                    return S.of(context).error_short_name;
+                  } else if (value.startsWith(RegExp(r'^[0-9]'))) {
+                    return S.of(context).error_name_starts_with_number;
+                  } else if (value.contains(RegExp(r'^.*[@/$!%*?&]'))) {
+                    return S.of(context).error_name_contains_special_characters;
+                  }
+                  return null;
+                },
+              ),
+              const MediumSpace(),
+              CustomEmailField(emailController: _emailController),
+              const MediumSpace(),
+              CustomPasswordAndConfirmPasswordWidget(
+                  passwordController: _passwordController,
+                  confirmPasswordController: _confirmPasswordController),
+              const MediumSpace(),
+              CustomMaterialButton(
+                isLoading: context.watch<AuthCubit>().state is AuthLoadingState,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<AuthCubit>().register(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
+                  }
+                },
+                text: S.of(context).register,
+              ),
+              const SmallSpace(),
+              CustomTextAndTextButton(
+                textTitle: S.of(context).already_have_account,
+                textButtonTitle: S.of(context).login,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

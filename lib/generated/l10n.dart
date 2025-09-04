@@ -973,6 +973,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Please login first`
+  String get please_login_first {
+    return Intl.message(
+      'Please login first',
+      name: 'please_login_first',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

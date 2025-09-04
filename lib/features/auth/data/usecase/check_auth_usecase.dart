@@ -8,4 +8,8 @@ class CheckAuthUseCase {
   Future<bool> call() async {
     return await authRepository.checkUserStatus();
   }
+
+  Future<void> logout() async {
+    return await authRepository.logout();
+  }
 }

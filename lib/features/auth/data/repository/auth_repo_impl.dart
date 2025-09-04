@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../domain/auth_repository.dart';
 
 class AuthRepoImpl implements AuthRepository {
   var _firebaseAuth = FirebaseAuth.instance;
-
+  @override
+  String? get currentUserEmail => _firebaseAuth.currentUser?.email;
   // Define your authentication methods here
   @override
   Future<void> register({
@@ -40,18 +42,26 @@ class AuthRepoImpl implements AuthRepository {
       );
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on login from AuthRepo: ${e.code}");
-      throw e.code;
+      rethrow;
     } catch (e) {
       debugPrint("Exception on login from AuthRepo: ${e.toString()}");
-      throw e;
+      rethrow;
     }
+  }
+
+  @override
+  Future<void> signInWithGoogle() async {
+    // Implement Google sign-in logic
   }
 
   @override
   Future<void> logout() async {
     // Implement sign-out logic
     try {
-      await _firebaseAuth.signOut();
+      var user = _firebaseAuth.currentUser;
+      if (user != null) {
+        await _firebaseAuth.signOut();
+      } else {}
     } catch (e) {
       debugPrint("Exception on sign out from AuthRepo: ${e.toString()}");
       rethrow;
@@ -71,17 +81,36 @@ class AuthRepoImpl implements AuthRepository {
       rethrow;
     }
   }
-
+@override
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      debugPrint(
+          "FirebaseAuthException on sendPasswordResetEmail from AuthRepo: ${e.code}");
+      rethrow;
+    } catch (e) {
+      debugPrint(
+          "Exception on sendPasswordResetEmail from AuthRepo: ${e.toString()}");
+      rethrow;
+    }
+  }
   @override
   Future<bool> isEmailVerified() async {
     final user = _firebaseAuth.currentUser;
-    await user?.reload();
-    return user?.emailVerified ?? false;
+    if (user != null) {
+      await user.reload();
+      return user.emailVerified;
+    }
+    return false;
   }
 
   @override
   Future<bool> checkUserStatus() async {
     final user = _firebaseAuth.currentUser;
-    return user != null && user.emailVerified;
+    if (user != null && user.emailVerified) {
+      return true;
+    }
+    return false;
   }
 }

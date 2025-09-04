@@ -111,5 +111,6 @@
     "dark": "Dark",
     "light": "Light",
     "no_notes_yet": "No notes yet!",
-    "no_tasks_yet": "No tasks yet!"
+    "no_tasks_yet": "No tasks yet!",
+    "please_login_first": "Please login first"
 }

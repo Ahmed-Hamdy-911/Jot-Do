@@ -4,6 +4,8 @@ class AuthInitialState extends AuthStates {}
 
 class AuthLoadingState extends AuthStates {}
 
+class AuthVerificationLoading extends AuthStates {}
+
 class AuthSuccess extends AuthStates {}
 
 class AuthFailure extends AuthStates {
@@ -21,4 +23,23 @@ class AuthEmailVerificationSent extends AuthStates {
   AuthEmailVerificationSent(this.message);
 }
 
+class AuthEmailVerificationNeeded extends AuthStates {
+  final String? message;
+  AuthEmailVerificationNeeded(this.message);
+}
+
 class AuthEmailVerified extends AuthStates {}
+
+class AuthLoggedOut extends AuthStates {}
+
+class AuthGoogleSignInSuccess extends AuthStates {}
+
+class AuthGoogleSignInFailure extends AuthStates {
+  final String error;
+  AuthGoogleSignInFailure(this.error);
+}
+
+class AuthPasswordResetEmailSent extends AuthStates {
+  final String? message;
+  AuthPasswordResetEmailSent(this.message);
+}

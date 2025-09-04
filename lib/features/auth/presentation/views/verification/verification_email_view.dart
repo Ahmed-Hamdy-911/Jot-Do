@@ -18,7 +18,11 @@ class VerificationEmailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: BackButton(
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth >= 600) {
           return Center(
@@ -45,6 +49,8 @@ class VerificationBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthStates>(
+      listenWhen: (previous, current) =>
+          current is AuthVerificationLoading || current is AuthEmailVerified,
       listener: (context, state) {
         if (state is AuthEmailVerified) {
           Navigator.pushNamedAndRemoveUntil(
@@ -52,10 +58,9 @@ class VerificationBody extends StatelessWidget {
             AppRoutes.home,
             (route) => false,
           );
-        }
-        if (state is AuthFailure) {
+        } else if (state is AuthEmailVerificationSent) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
+            SnackBar(content: Text(state.message!)),
           );
         }
       },
@@ -112,7 +117,7 @@ class VerificationBody extends StatelessWidget {
                     onPressed: () {
                       context.read<AuthCubit>().checkEmailVerification();
                     },
-                    isLoading: state is AuthLoadingState,
+                    isLoading: state is AuthVerificationLoading,
                     text: S.of(context).continue_text,
                   ),
                   const MediumSpace(),
