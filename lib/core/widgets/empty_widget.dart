@@ -16,7 +16,9 @@ class EmptyWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(child: Lottie.asset("assets/animations/empty.json")),
+                SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    child: Lottie.asset("assets/animations/empty.json")),
                 Text(
                   text,
                   style: const TextStyle(
@@ -31,6 +33,9 @@ class EmptyWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.06,
+              ),
               SizedBox(
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: Lottie.asset("assets/animations/empty.json")),
