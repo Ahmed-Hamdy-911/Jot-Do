@@ -4,7 +4,6 @@ import '../../../../core/helper/cache_helper.dart';
 import '../../../auth/data/domain/auth_repository.dart';
 import '../../../auth/presentation/views/emailAndPassword/login_view.dart';
 import '../../../home/presentation/views/home_view.dart';
-import '../../../on_boarding/presentation/views/on_boarding_view.dart';
 
 class SplashRepo {
   final AuthRepository authRepository;

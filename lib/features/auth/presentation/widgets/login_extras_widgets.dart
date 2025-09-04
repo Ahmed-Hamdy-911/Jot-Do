@@ -22,8 +22,7 @@ class LoginExtrasWidget extends StatelessWidget {
         CustomTextAndTextButton(
             textTitle: S.of(context).dont_have_account,
             textButtonTitle: S.of(context).register,
-            fontSize:
-                screenWidth < 600 ? screenWidth * 0.035 : screenWidth * 0.015,
+            fontSize: screenWidth < 600 ? 15 : 17,
             onPressed: () {
               Navigator.pushNamed(context, AppRoutes.register);
             }),
