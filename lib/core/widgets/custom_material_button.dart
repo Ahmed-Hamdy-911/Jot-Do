@@ -10,7 +10,6 @@ class CustomMaterialButton extends StatelessWidget {
     this.color,
     this.minWidth,
     this.height,
-    this.radius = 50,
     this.customBorderSide,
     this.isLoading = false,
   });
@@ -21,38 +20,67 @@ class CustomMaterialButton extends StatelessWidget {
   final bool? isLoading;
   final double? minWidth;
   final double? height;
-  final double? radius;
+
   final BorderSide? customBorderSide;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-    return Center(
-      child: MaterialButton(
-        onPressed: onPressed,
-        splashColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppConstants.kRadius),
-          side: customBorderSide ?? BorderSide.none,
-        ),
-        height: 55,
-        minWidth: minWidth ?? screenWidth,
-        color: color ?? AppColor.colorScheme,
-        child: isLoading == true
-            ? const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              )
-            : Text(
-                text,
-                style: TextStyle(
-                  fontSize: screenWidth > 600
-                      ? screenWidth * 0.02
-                      : screenWidth * 0.04,
-                  color: Colors.white,
-                ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth >= 600) {
+          return Center(
+            child: MaterialButton(
+              onPressed: onPressed,
+              splashColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppConstants.kRadius),
+                side: customBorderSide ?? BorderSide.none,
               ),
-      ),
+              height: 60,
+              minWidth: screenWidth * 0.5,
+              color: color ?? AppColor.colorScheme,
+              child: isLoading == true
+                  ? const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    )
+                  : Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),
+                    ),
+            ),
+          );
+        }
+        return Center(
+          child: MaterialButton(
+            onPressed: onPressed,
+            splashColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppConstants.kRadius),
+              side: customBorderSide ?? BorderSide.none,
+            ),
+            height: 55,
+            minWidth: minWidth ?? screenWidth,
+            color: color ?? AppColor.colorScheme,
+            child: isLoading == true
+                ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  )
+                : Text(
+                    text,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                    ),
+                  ),
+          ),
+        );
+      },
     );
   }
 }
