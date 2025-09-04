@@ -21,7 +21,7 @@ class SocialAuthWidget extends StatelessWidget {
             height: 55,
             child: SignInButton(
               Buttons.GoogleDark,
-              width: screenWidth < 600 ? screenWidth * 0.55 : screenWidth * 0.5,
+              width: screenWidth,
               text: S.of(context).google,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppConstants.kRadius),
@@ -35,6 +35,7 @@ class SocialAuthWidget extends StatelessWidget {
             height: 55,
             child: SignInButton(
               Buttons.Apple,
+              width: screenWidth,
               text: S.of(context).apple,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppConstants.kRadius),

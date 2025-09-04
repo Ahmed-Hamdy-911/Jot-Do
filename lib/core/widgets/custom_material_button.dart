@@ -26,7 +26,6 @@ class CustomMaterialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-    var screenHeight = MediaQuery.sizeOf(context).height;
     return Center(
       child: MaterialButton(
         onPressed: onPressed,
@@ -37,7 +36,7 @@ class CustomMaterialButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppConstants.kRadius),
           side: customBorderSide ?? BorderSide.none,
         ),
-        height: screenWidth > 600 ? screenHeight * 0.08 : screenHeight * 0.07,
+        height: 55,
         minWidth: minWidth ?? screenWidth,
         color: color ?? AppColor.colorScheme,
         child: isLoading == true
