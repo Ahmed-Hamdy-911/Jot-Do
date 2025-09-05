@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/colors/app_colors.dart';
-import '../manager/cubits/PickColor/pick_color_cubit.dart';
-import '../manager/cubits/PickColor/pick_color_state.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../manager/cubits/pick_color/pick_color_cubit.dart';
+import '../manager/cubits/pick_color/pick_color_state.dart';
 
 class PickColorItem extends StatelessWidget {
   const PickColorItem({

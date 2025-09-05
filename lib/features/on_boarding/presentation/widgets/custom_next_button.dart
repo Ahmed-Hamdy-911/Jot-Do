@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import '../../../../core/constants/colors/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../data/models/on_boarding_model.dart';
-import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
+import '../cubits/on_boarding_cubit.dart';
 
 class CustomNextButton extends StatelessWidget {
   const CustomNextButton({

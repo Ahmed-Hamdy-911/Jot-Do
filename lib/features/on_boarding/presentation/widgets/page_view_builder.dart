@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/models/on_boarding_model.dart';
-import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
+import '../cubits/on_boarding_cubit.dart';
 import 'on_boarding_item.dart';
 
 class PageViewBuilder extends StatelessWidget {

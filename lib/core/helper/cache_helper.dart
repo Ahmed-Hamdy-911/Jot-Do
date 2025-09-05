@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-import '../constants/constant.dart';
+import '../constants/app_constants.dart';
 
 class CacheHelper {
   static dynamic saveData({required String key, required dynamic value}) {

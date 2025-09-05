@@ -1,12 +1,12 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/assets/app_assets.dart';
+import '../../../../core/constants/app_assets.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../generated/l10n.dart';
 import 'package:page_transition/page_transition.dart';
-import '../manager/SplashCubit/splash_cubit.dart';
-import '../../../../core/constants/colors/app_colors.dart';
+import '../manager/cubit/splash_cubit.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({

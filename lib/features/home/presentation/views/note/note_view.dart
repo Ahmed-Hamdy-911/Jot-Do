@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/cubits/Selection/selection_state.dart';
+import '../../../../../core/cubits/selection/selection_state.dart';
 import '../../../../../core/widgets/empty_widget.dart';
 import '../../../../../core/widgets/filter_view_builder.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/cubits/Selection/selection_cubit.dart';
+import '../../../../../core/cubits/selection/selection_cubit.dart';
 import '../../../data/models/note_model.dart';
-import '../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
-import '../../manager/cubits/Note/NotesCubits/notes_state.dart';
+import '../../manager/cubits/notes/get/notes_cubit.dart';
+import '../../manager/cubits/notes/get/notes_state.dart';
 import 'widgets/note_grid_view.dart';
 import 'widgets/note_list_view.dart';
 

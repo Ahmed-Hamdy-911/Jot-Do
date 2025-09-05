@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../colors/app_colors.dart';
+import 'app_colors.dart';
 
 class AppTheme {
   // light theme

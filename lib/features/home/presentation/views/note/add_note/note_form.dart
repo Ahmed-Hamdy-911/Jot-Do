@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/widgets/custom_material_button.dart';
-import '../../../../../../core/constants/constant.dart';
+import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/note_model.dart';
-import '../../../manager/cubits/Note/AddNote/add_note_cubit.dart';
-import '../../../manager/cubits/Note/AddNote/add_note_state.dart';
-import '../../../manager/cubits/PickColor/pick_color_cubit.dart';
+import '../../../manager/cubits/notes/add/add_note_cubit.dart';
+import '../../../manager/cubits/notes/add/add_note_state.dart';
+import '../../../manager/cubits/pick_color/pick_color_cubit.dart';
 import '../../../widgets/pick_color_grid_view.dart';
 
 class NoteForm extends StatefulWidget {

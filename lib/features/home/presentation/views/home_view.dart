@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../manager/cubits/BottomNavi/bottom_navi_cubit_cubit.dart';
+import '../manager/cubits/bottom_navi/bottom_navi_cubit_cubit.dart';
 import 'settings/settings_view.dart';
 import '../widgets/home_body.dart';
 
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../widgets/custom_bottom_navigation_bar.dart';
 import '../widgets/custom_floating_button.dart';
 import '../widgets/custom_home_app_bar.dart';

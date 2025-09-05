@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../manager/cubits/Note/AddNote/add_note_cubit.dart';
-import '../../../manager/cubits/Note/AddNote/add_note_state.dart';
-import '../../../manager/cubits/PickColor/pick_color_cubit.dart';
-import '../../../manager/cubits/PickColor/pick_color_state.dart';
+import '../../../manager/cubits/notes/add/add_note_cubit.dart';
+import '../../../manager/cubits/notes/add/add_note_state.dart';
+import '../../../manager/cubits/pick_color/pick_color_cubit.dart';
+import '../../../manager/cubits/pick_color/pick_color_state.dart';
 import '../../../../../../generated/l10n.dart';
 import 'note_form.dart';
 

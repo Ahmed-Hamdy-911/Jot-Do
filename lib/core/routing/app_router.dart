@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../features/home/data/models/note_model.dart';
-import '../../features/home/presentation/views/note/addNote/add_note_view.dart';
+import '../../features/home/presentation/views/note/add_note/add_note_view.dart';
 import '../../features/home/presentation/views/note/note_details_view.dart';
-import '../../features/home/presentation/views/note/updateNote/update_note_view.dart';
+import '../../features/home/presentation/views/note/update_note/update_note_view.dart';
 import '../../features/home/presentation/views/task/add_task_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../../features/auth/presentation/views/emailAndPassword/login_view.dart';

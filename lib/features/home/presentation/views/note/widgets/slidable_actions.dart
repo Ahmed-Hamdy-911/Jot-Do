@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import '../../../../../../core/constants/constant.dart';
+import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/note_model.dart';
-import '../../../manager/cubits/Note/NotesCubits/notes_cubit.dart';
+import '../../../manager/cubits/notes/get/notes_cubit.dart';
 
 ActionPane onDismissibleStartAction(context, {required NoteModel note}) {
   var borderRadius = BorderRadius.only(

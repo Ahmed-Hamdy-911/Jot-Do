@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/constants/colors/app_colors.dart';
+import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';

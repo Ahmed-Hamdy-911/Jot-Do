@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/colors/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/app_constants.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   const CustomFloatingButton({

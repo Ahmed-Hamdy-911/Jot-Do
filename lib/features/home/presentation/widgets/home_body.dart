@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/app_constants.dart';
 
 
 class HomeBody extends StatelessWidget {

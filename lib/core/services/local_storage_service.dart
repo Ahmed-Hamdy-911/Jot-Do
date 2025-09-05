@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../features/home/data/models/note_model.dart';
-import '../constants/constant.dart';
+import '../constants/app_constants.dart';
 
 class LocalStorageService {
   // note

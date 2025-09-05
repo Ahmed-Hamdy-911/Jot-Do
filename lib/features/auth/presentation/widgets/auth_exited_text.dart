@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/colors/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 
 class AuthExcitedText extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import '../../../../core/constants/colors/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import 'bottom_app_bar_item.dart';
 

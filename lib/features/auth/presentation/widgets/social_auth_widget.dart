@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/assets/app_assets.dart';
-import '../../../../core/constants/colors/app_colors.dart';
-import '../../../../core/constants/constant.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';

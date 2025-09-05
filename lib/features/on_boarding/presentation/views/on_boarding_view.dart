@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/assets/app_assets.dart';
-import '../../../../core/constants/colors/app_colors.dart';
-import '../manager/cubits/onBoarding/on_boarding_cubit.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../cubits/on_boarding_cubit.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/on_boarding_model.dart';

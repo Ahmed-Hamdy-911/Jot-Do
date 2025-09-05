@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../../data/repository/on_boarding_repo.dart';
+import '../../data/repository/on_boarding_repo.dart';
 part 'on_boarding_state.dart';
 
 class OnBoardingCubit extends Cubit<OnBoardingStates> {
