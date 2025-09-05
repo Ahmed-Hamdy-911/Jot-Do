@@ -8,6 +8,7 @@ import '../../data/usecase/check_verification_usecase.dart';
 import '../../data/usecase/forgot_password_usecase.dart';
 import '../../data/usecase/login_user_usecase.dart';
 import '../../data/usecase/register_user_usecase.dart';
+import '../../data/usecase/social_user_usecase.dart';
 import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
@@ -16,13 +17,15 @@ class AuthCubit extends Cubit<AuthStates> {
   final CheckVerificationUseCase _checkVerificationUseCase;
   final CheckAuthUseCase _checkAuthUseCase;
   final ForgotPasswordUseCase _forgotPasswordUseCase;
+  final SocialUserUseCase _socialUserUseCase;
 
   AuthCubit(
       this._registerUserUseCase,
       this._loginUserUseCase,
       this._checkVerificationUseCase,
       this._checkAuthUseCase,
-      this._forgotPasswordUseCase)
+      this._forgotPasswordUseCase,
+      this._socialUserUseCase)
       : super(AuthInitialState());
 
   void register({
@@ -128,6 +131,16 @@ class AuthCubit extends Cubit<AuthStates> {
           "Password reset email sent. Please check your inbox."));
     } catch (e) {
       emit(AuthFailure("Failed to send password reset email: $e"));
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(AuthLoadingGoogleSignIn());
+    try {
+      await _socialUserUseCase.signInWithGoogle();
+      emit(AuthGoogleSignInSuccess());
+    } catch (e) {
+      emit(AuthGoogleSignInFailure("Google sign-in failed: $e"));
     }
   }
 }

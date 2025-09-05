@@ -38,6 +38,8 @@ class AuthEmailVerified extends AuthStates {}
 
 class AuthLoggedOut extends AuthStates {}
 
+class AuthLoadingGoogleSignIn extends AuthStates {}
+
 class AuthGoogleSignInSuccess extends AuthStates {}
 
 class AuthGoogleSignInFailure extends AuthStates {

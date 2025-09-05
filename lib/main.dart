@@ -15,6 +15,7 @@ import 'features/auth/data/usecase/check_verification_usecase.dart';
 import 'features/auth/data/usecase/forgot_password_usecase.dart';
 import 'features/auth/data/usecase/login_user_usecase.dart';
 import 'features/auth/data/usecase/register_user_usecase.dart';
+import 'features/auth/data/usecase/social_user_usecase.dart';
 import 'features/auth/presentation/cubit/auth_cubit.dart';
 import 'firebase_options.dart';
 
@@ -42,6 +43,7 @@ void main() async {
           CheckVerificationUseCase(authRepoImpl),
           CheckAuthUseCase(authRepoImpl),
           ForgotPasswordUseCase(authRepoImpl),
+          SocialUserUseCase(authRepoImpl),
         ),
       ),
     ],

@@ -9,4 +9,7 @@ class AppAssets {
 
   // home
   static const String emptyAnimation = 'assets/animations/empty.json';
+
+  // auth
+  static const String googleLogo = 'assets/icons/google.png';
 }

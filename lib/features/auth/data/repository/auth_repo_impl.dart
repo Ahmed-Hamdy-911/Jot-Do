@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../domain/auth_repository.dart';
 
@@ -49,8 +51,42 @@ class AuthRepoImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signInWithGoogle() async {
-    // Implement Google sign-in logic
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      if (kIsWeb) {
+        final googleProvider = GoogleAuthProvider();
+        return await _firebaseAuth.signInWithPopup(googleProvider);
+      } else {
+        final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+
+        await googleSignIn.initialize(
+          serverClientId:
+              "73016899489-s5tdbae62pm8ofu3ple9f98e67pb6j52.apps.googleusercontent.com",
+        );
+
+        final GoogleSignInAccount? account = await googleSignIn.authenticate();
+        if (account == null) return null;
+
+        final GoogleSignInAuthentication googleAuth =
+            await account.authentication;
+
+        if (googleAuth.idToken == null) return null;
+
+        final credential = GoogleAuthProvider.credential(
+          idToken: googleAuth.idToken,
+        );
+
+        return await _firebaseAuth.signInWithCredential(credential);
+      }
+    } on FirebaseAuthException catch (e) {
+      debugPrint(
+          "FirebaseAuthException on signInWithGoogle from AuthRepo: ${e.code}");
+      rethrow;
+    } catch (e) {
+      debugPrint(
+          "Exception on signInWithGoogle from AuthRepo: ${e.toString()}");
+      rethrow;
+    }
   }
 
   @override
@@ -58,9 +94,13 @@ class AuthRepoImpl implements AuthRepository {
     // Implement sign-out logic
     try {
       var user = _firebaseAuth.currentUser;
+      var googleUser = GoogleSignIn.instance;
       if (user != null) {
         await _firebaseAuth.signOut();
-      } else {}
+      } else {
+        await googleUser.disconnect();
+        await googleUser.signOut();
+      }
     } catch (e) {
       debugPrint("Exception on sign out from AuthRepo: ${e.toString()}");
       rethrow;
@@ -80,7 +120,8 @@ class AuthRepoImpl implements AuthRepository {
       rethrow;
     }
   }
-@override
+
+  @override
   Future<void> sendPasswordResetEmail({required String email}) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
@@ -94,6 +135,7 @@ class AuthRepoImpl implements AuthRepository {
       rethrow;
     }
   }
+
   @override
   Future<bool> isEmailVerified() async {
     final user = _firebaseAuth.currentUser;
