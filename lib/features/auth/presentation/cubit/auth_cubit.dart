@@ -138,6 +138,8 @@ class AuthCubit extends Cubit<AuthStates> {
     emit(AuthLoadingGoogleSignIn());
     try {
       await _socialUserUseCase.signInWithGoogle();
+      final isLoggedIn = await _checkAuthUseCase.call();
+      CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
       emit(AuthGoogleSignInSuccess());
     } catch (e) {
       emit(AuthGoogleSignInFailure("Google sign-in failed: $e"));
