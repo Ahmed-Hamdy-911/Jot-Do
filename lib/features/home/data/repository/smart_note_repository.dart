@@ -1,4 +1,4 @@
-import '../local/local_note_repository.dart';
+import 'local/local_note_repository.dart';
 import '../models/note_model.dart';
 
 class SmartNoteRepository implements LocalNoteRepository {

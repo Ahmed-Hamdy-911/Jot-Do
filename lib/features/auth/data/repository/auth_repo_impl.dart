@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../domain/auth_repository.dart';
+import 'auth_repository.dart';
 
 class AuthRepoImpl implements AuthRepository {
   var _firebaseAuth = FirebaseAuth.instance;

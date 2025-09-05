@@ -3,30 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../core/helper/cache_helper.dart';
-import '../../data/usecase/check_auth_usecase.dart';
-import '../../data/usecase/check_verification_usecase.dart';
-import '../../data/usecase/forgot_password_usecase.dart';
-import '../../data/usecase/login_user_usecase.dart';
-import '../../data/usecase/register_user_usecase.dart';
-import '../../data/usecase/social_user_usecase.dart';
+import '../../data/repository/auth_repository.dart';
+
 import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
-  final RegisterUserUseCase _registerUserUseCase;
-  final LoginUserUseCase _loginUserUseCase;
-  final CheckVerificationUseCase _checkVerificationUseCase;
-  final CheckAuthUseCase _checkAuthUseCase;
-  final ForgotPasswordUseCase _forgotPasswordUseCase;
-  final SocialUserUseCase _socialUserUseCase;
-
+  final AuthRepository _authRepository;
   AuthCubit(
-      this._registerUserUseCase,
-      this._loginUserUseCase,
-      this._checkVerificationUseCase,
-      this._checkAuthUseCase,
-      this._forgotPasswordUseCase,
-      this._socialUserUseCase)
-      : super(AuthInitialState());
+    this._authRepository,
+  ) : super(AuthInitialState());
 
   void register({
     required String email,
@@ -34,7 +19,8 @@ class AuthCubit extends Cubit<AuthStates> {
   }) async {
     emit(AuthLoadingState());
     try {
-      await _registerUserUseCase.call(email: email, password: password);
+      await _authRepository.register(email: email, password: password);
+      await _authRepository.sendEmailVerification();
       emit(GoVerificationState(
           email: email,
           message: "Verification email sent. Please verify your email."));
@@ -63,16 +49,16 @@ class AuthCubit extends Cubit<AuthStates> {
   }) async {
     emit(AuthLoadingState());
     try {
-      await _loginUserUseCase.call(email: email, password: password);
-      final isVerified = await _checkVerificationUseCase.call();
+      await _authRepository.login(email: email, password: password);
+      final isVerified = await _authRepository.isEmailVerified();
       if (!isVerified) {
         emit(GoVerificationState(
             email: email,
             message: "Email not verified. Please check your inbox."));
-        _loginUserUseCase.sendEmailVerification();
+        await _authRepository.sendEmailVerification();
         return;
       } else {
-        final isLoggedIn = await _checkAuthUseCase.call();
+        final isLoggedIn = await _authRepository.checkUserStatus();
         CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
         emit(AuthSuccess());
       }
@@ -85,9 +71,9 @@ class AuthCubit extends Cubit<AuthStates> {
     emit(AuthVerificationLoading());
 
     try {
-      final isVerified = await _checkVerificationUseCase.call();
+      final isVerified = await _authRepository.isEmailVerified();
       if (isVerified) {
-        final isLoggedIn = await _checkAuthUseCase.call();
+        final isLoggedIn = await _authRepository.checkUserStatus();
         CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
         emit(AuthEmailVerified());
       } else {
@@ -103,7 +89,7 @@ class AuthCubit extends Cubit<AuthStates> {
   Future<void> resendVerificationEmail() async {
     emit(AuthLoadingState());
     try {
-      await _loginUserUseCase.sendEmailVerification();
+      await _authRepository.sendEmailVerification();
       emit(AuthEmailVerificationSent(
           "Verification email resent. Please check your inbox."));
     } catch (e) {
@@ -114,8 +100,8 @@ class AuthCubit extends Cubit<AuthStates> {
   Future<void> logout() async {
     emit(AuthLoadingState());
     try {
-      await _checkAuthUseCase.logout();
-      final isLoggedIn = await _checkAuthUseCase.call();
+      await _authRepository.logout();
+      final isLoggedIn = await _authRepository.checkUserStatus();
       CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
       emit(AuthLoggedOut());
     } catch (e) {
@@ -126,7 +112,7 @@ class AuthCubit extends Cubit<AuthStates> {
   Future<void> forgotPassword({required String email}) async {
     emit(AuthLoadingState());
     try {
-      await _forgotPasswordUseCase.call(email: email);
+      await _authRepository.sendPasswordResetEmail(email: email);
       emit(AuthPasswordResetEmailSent(
           "Password reset email sent. Please check your inbox."));
     } catch (e) {
@@ -137,8 +123,8 @@ class AuthCubit extends Cubit<AuthStates> {
   Future<void> signInWithGoogle() async {
     emit(AuthLoadingGoogleSignIn());
     try {
-      await _socialUserUseCase.signInWithGoogle();
-      final isLoggedIn = await _checkAuthUseCase.call();
+      await _authRepository.signInWithGoogle();
+      final isLoggedIn = await _authRepository.checkUserStatus();
       CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
       emit(AuthGoogleSignInSuccess());
     } catch (e) {
