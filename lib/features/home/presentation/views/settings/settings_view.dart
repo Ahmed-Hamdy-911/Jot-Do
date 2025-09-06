@@ -104,6 +104,7 @@ class SettingsView extends StatelessWidget {
                         title: S.of(context).language,
                         leadingIcon: Icons.language,
                         trailing: DropdownButton<LanguageModel>(
+                          underline: const SizedBox(),
                           value: context.watch<SettingCubit>().state.locale ==
                                   const Locale(
                                     "en",
