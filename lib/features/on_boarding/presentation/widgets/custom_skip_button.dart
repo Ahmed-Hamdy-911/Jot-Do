@@ -20,11 +20,11 @@ class CustomSkipButton extends StatelessWidget {
             onPressed: onPressed,
             child: Text(
               S.of(context).skip,
-              style:  const TextStyle(
-                color: AppColor.colorScheme,
+              style:   TextStyle(
+                color: AppColor.blueDarkColor,
                 fontSize: 16,
                 decoration: TextDecoration.underline,
-                decorationColor: AppColor.colorScheme,
+                decorationColor: AppColor.blueDarkColor,
                 fontWeight: FontWeight.bold,
               ),
             )),

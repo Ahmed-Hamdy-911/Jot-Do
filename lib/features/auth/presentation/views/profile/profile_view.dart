@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -108,9 +111,16 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).profile),
+        title: Text(S.of(context).profile,
+            style: TextStyle(color: textColor, fontSize: 16)),
+        leading: BackButton(
+          color: darkMode ? AppColor.whiteColor : AppColor.blackColor,
+        ),
         actions: [
           if (_isEditing)
             Padding(
@@ -165,6 +175,20 @@ class _ProfileViewState extends State<ProfileView> {
                     controller: _nameController,
                     focusNode: _nameFocusNode,
                     labelText: S.of(context).name,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return S.of(context).error_required_field;
+                      } else if (value.length < 3) {
+                        return S.of(context).error_short_name;
+                      } else if (value.startsWith(RegExp(r'^[0-9]'))) {
+                        return S.of(context).error_name_starts_with_number;
+                      } else if (value.contains(RegExp(r'^.*[@/$!%*?&]'))) {
+                        return S
+                            .of(context)
+                            .error_name_contains_special_characters;
+                      }
+                      return null;
+                    },
                     onTap: () {
                       _nameFocusNode.requestFocus();
                     },

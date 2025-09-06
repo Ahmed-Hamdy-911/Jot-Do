@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../constants/app_colors.dart';
 import '../cubits/selection/selection_cubit.dart';
+import '../cubits/settings/setting_cubit.dart';
 
 class FilterViewBuilder extends StatelessWidget {
   const FilterViewBuilder({
@@ -58,6 +59,10 @@ class FilterItem extends StatelessWidget {
     var segmentCubit = context.read<SelectionCubit>();
     bool isSelected =
         context.watch<SelectionCubit>().state.selectedIndex == filerIndex;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var selectedBGColor = darkMode ? AppColor.grey600 : AppColor.whiteColor;
+    var selectedTextColor = darkMode ? AppColor.white70 : AppColor.blackColor;
     return OutlinedButton(
         onPressed: () {
           segmentCubit.switchSelection(filerIndex);
@@ -78,11 +83,11 @@ class FilterItem extends StatelessWidget {
               ),
             ),
             backgroundColor: WidgetStatePropertyAll(
-                isSelected ? AppColor.mainLightColor : Colors.white)),
+                isSelected ? AppColor.mainLightColor : selectedBGColor)),
         child: Text(
           title,
           style: TextStyle(
-            color: isSelected ? Colors.white70 : Colors.grey[800]!,
+            color: isSelected ? AppColor.whiteColor : selectedTextColor,
             fontSize: screenW > 600 ? 17 : 14,
           ),
         ));

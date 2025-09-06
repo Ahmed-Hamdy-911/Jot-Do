@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
@@ -38,6 +41,12 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
     var screenHeight = MediaQuery.of(context).size.height;
     final createdAt = widget.noteModel.createdAt;
     final lastUpdated = widget.noteModel.lastUpdatedAt;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+
+    var titleColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+    var contentColor = darkMode ? AppColor.grey300 : AppColor.grey600;
+    var dateColor = darkMode ? AppColor.grey300 : AppColor.grey600;
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
@@ -82,6 +91,7 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: screenWidth > 600 ? 22 : 18,
+                      color: titleColor,
                     ),
                   ),
                   customDivider(),
@@ -94,7 +104,7 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
                           widget.noteModel.content,
                           style: TextStyle(
                             fontSize: screenWidth > 600 ? 18 : 15,
-                            color: Colors.grey[600],
+                            color: contentColor,
                           ),
                         ),
                         customDivider(),
@@ -102,8 +112,10 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
                     ),
                   if (widget.noteModel.lastUpdatedAt != null)
                     customShowTime(
-                        context, S.of(context).last_updated, lastUpdated!),
-                  customShowTime(context, S.of(context).created_at, createdAt),
+                        context, S.of(context).last_updated, lastUpdated!,
+                        dateColor: dateColor),
+                  customShowTime(context, S.of(context).created_at, createdAt,
+                      dateColor: dateColor),
                   if (widget.noteModel.content.isEmpty ||
                       widget.noteModel.content.length < 500)
                     SizedBox(
@@ -131,7 +143,8 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
         height: 30,
       );
 
-  Widget customShowTime(context, String text, String dateTime) {
+  Widget customShowTime(context, String text, String dateTime,
+      {Color? dateColor}) {
     var screenWidth = MediaQuery.of(context).size.width;
     final formattedDateTime = FormatService.formatDateTime(dateTime);
     return Text(
@@ -139,6 +152,7 @@ class _NoteDetailsViewState extends State<NoteDetailsView> {
       text + formattedDateTime,
       style: TextStyle(
         fontSize: screenWidth > 600 ? 16 : 14,
+        color: dateColor,
       ),
     );
   }

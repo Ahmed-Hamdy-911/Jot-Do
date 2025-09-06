@@ -13,13 +13,12 @@ class CustomHomeAppBar extends StatelessWidget {
         context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
     return AppBar(
       elevation: 0,
-      backgroundColor:
-          isDarkMode ? AppColor.mainDarkColor : AppColor.mainLightColor,
+      backgroundColor: AppColor.mainLightColor,
       bottom: TabBar(
         dividerColor: AppColor.transparentColor,
         indicatorSize: TabBarIndicatorSize.label,
         controller: tabController,
-        unselectedLabelColor: AppColor.greyColor,
+        unselectedLabelColor: AppColor.white70,
         labelColor: isDarkMode ? AppColor.white70 : AppColor.whiteColor,
         indicatorColor: isDarkMode ? AppColor.white70 : AppColor.whiteColor,
         labelStyle: const TextStyle(fontSize: 15),

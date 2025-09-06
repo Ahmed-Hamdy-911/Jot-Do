@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../constants/app_colors.dart';
+import '../cubits/settings/setting_cubit.dart';
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({
@@ -16,6 +19,8 @@ class CustomIcon extends StatelessWidget {
   final double? withValuesAlpha;
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -27,7 +32,9 @@ class CustomIcon extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white.withValues(alpha: withValuesAlpha),
+            color: darkMode
+                ? AppColor.whiteColor.withValues(alpha: 0.3)
+                : AppColor.whiteColor.withValues(alpha: withValuesAlpha),
           ),
           child: Icon(
             icon,

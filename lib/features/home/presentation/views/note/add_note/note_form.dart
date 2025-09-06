@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../../core/constants/app_constants.dart';
@@ -28,10 +30,7 @@ class _NoteFormState extends State<NoteForm> {
     borderRadius: BorderRadius.circular(AppConstants.kRadius),
     borderSide: BorderSide.none,
   );
-  final TextStyle customInputStyle = const TextStyle(
-    color: Colors.black,
-    fontSize: 19,
-  );
+
   final bool filled = true;
   final Color fillColor = Colors.grey.withValues(alpha: 0.1);
 
@@ -45,6 +44,14 @@ class _NoteFormState extends State<NoteForm> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+    final TextStyle customInputStyle = TextStyle(
+      color: textColor,
+      fontSize: 18,
+    );
+
     final isWideScreen = screenWidth > 600;
     var selectedColor = context.watch<PickColorCubit>().state.selectedColor;
     var dateTime = DateTime.now().toIso8601String();

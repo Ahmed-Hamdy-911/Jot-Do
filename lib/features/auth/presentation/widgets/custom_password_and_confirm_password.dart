@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../generated/l10n.dart';
 
@@ -21,15 +24,18 @@ class _CustomPasswordAndConfirmPasswordWidgetState
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-      return Column(
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var iconColor = darkMode ? AppColor.white70 : AppColor.greyColor;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           S.of(context).password,
           style: TextStyle(
-            fontSize:
-                screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
-            color: Colors.black,
+            fontSize: screenWidth < 600 ? 16 : 18,
+            color: textColor,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -41,8 +47,7 @@ class _CustomPasswordAndConfirmPasswordWidgetState
           obscureText: false,
           suffixIcon: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.visibility_off_outlined,
-                  color: Color(0xffADB5BD))),
+              icon: Icon(Icons.visibility_off_outlined, color: iconColor)),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;
@@ -58,9 +63,8 @@ class _CustomPasswordAndConfirmPasswordWidgetState
         Text(
           S.of(context).confirm_password,
           style: TextStyle(
-            fontSize:
-                screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
-            color: Colors.black,
+            fontSize: screenWidth < 600 ? 16 : 18,
+            color: textColor,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -72,8 +76,7 @@ class _CustomPasswordAndConfirmPasswordWidgetState
           obscureText: true,
           suffixIcon: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.visibility_off_outlined,
-                  color: Color(0xffADB5BD))),
+              icon: Icon(Icons.visibility_off_outlined, color: iconColor)),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;

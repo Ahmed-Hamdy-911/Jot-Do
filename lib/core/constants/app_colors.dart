@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-class AppColor  {
+class AppColor {
   // light Colors
   static Color mainLightColor = const Color(0xff7e66ee).withValues(alpha: 0.9);
   static const colorScheme = Colors.purple;
@@ -21,6 +20,19 @@ class AppColor  {
 
   //grey
   static const greyColor = Colors.grey;
+  static Color grey800 = Colors.grey.shade800;
+  static Color grey600 = Colors.grey.shade600;
+  static Color grey300 = Colors.grey.shade300;
+
+  // red
+  static const redColor = Colors.red;
+  static const redLightColor = Color(0xffff4d4d);
+  static const redDarkColor = Color(0xffb00020);
+
+  // blue
+  static const blueColor = Colors.blue;
+  static const blueLightColor = Color(0xff4fc3f7);
+  static Color blueDarkColor = Colors.blue.shade800;
 
   // splash
   static List<Color> splashColorsList = const [

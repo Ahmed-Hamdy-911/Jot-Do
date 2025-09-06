@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../manager/cubits/pick_color/pick_color_cubit.dart';
 import '../manager/cubits/pick_color/pick_color_state.dart';
 
@@ -17,6 +18,9 @@ class PickColorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     final isWideScreen = screenWidth > 600;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+
     return BlocBuilder<PickColorCubit, PickColorState>(
       builder: (context, state) {
         var pickColorCubit = context.watch<PickColorCubit>();
@@ -27,10 +31,9 @@ class PickColorItem extends StatelessWidget {
             color: Colors.transparent,
             shape: const CircleBorder(),
             child: InkWell(
-              onTap:
-                  () {
-                    context.read<PickColorCubit>().pickColor(color);
-                  },
+              onTap: () {
+                context.read<PickColorCubit>().pickColor(color);
+              },
               highlightColor: Colors.white.withValues(alpha: 0.3),
               customBorder: const CircleBorder(),
               child: Stack(
@@ -46,7 +49,9 @@ class PickColorItem extends StatelessWidget {
                       color: color,
                       border: Border.all(
                         color: isSelected
-                            ? AppColor.colorScheme.shade900
+                            ? darkMode
+                                ? AppColor.white70
+                                : AppColor.colorScheme.shade900
                             : Colors.transparent,
                         width: 2.5,
                       ),

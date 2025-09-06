@@ -64,7 +64,7 @@ class CustomMaterialButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppConstants.kRadius),
               side: customBorderSide ?? BorderSide.none,
             ),
-            height: 55,
+            height: AppConstants.kMaterialButtonHeight,
             minWidth: minWidth ?? screenWidth,
             color: color ?? AppColor.colorScheme,
             child: isLoading == true

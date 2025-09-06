@@ -44,6 +44,7 @@ class AppConstants {
   static int maxLengthOfContentNoteInHomeView = 500;
 
   static double kRadius = 16;
+  static double kMaterialButtonHeight = 55;
 
   // note
   static const String notesStorage = 'notes';

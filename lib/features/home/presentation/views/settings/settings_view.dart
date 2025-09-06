@@ -31,6 +31,9 @@ class SettingsView extends StatelessWidget {
       }
     }
 
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var color = darkMode ? AppColor.grey600 : AppColor.whiteColor;
     bool isLoggedIn = CacheHelper.getData(key: "isLoggedIn") ?? false;
 
     return BlocListener<AuthCubit, AuthStates>(
@@ -104,6 +107,7 @@ class SettingsView extends StatelessWidget {
                         title: S.of(context).language,
                         leadingIcon: Icons.language,
                         trailing: DropdownButton<LanguageModel>(
+                          dropdownColor: color,
                           underline: const SizedBox(),
                           value: context.watch<SettingCubit>().state.locale ==
                                   const Locale(
@@ -184,12 +188,17 @@ class CustomSettingItem extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var color = darkMode ? AppColor.white70 : AppColor.blackColor;
     return ListTile(
-      leading: Icon(leadingIcon),
-      title: Text(title),
-      subtitle: subTitle != null ? Text(subTitle!) : null,
+      leading: Icon(leadingIcon, color: color),
+      title: Text(title, style: TextStyle(color: color)),
+      subtitle: subTitle != null
+          ? Text(subTitle!, style: TextStyle(color: color))
+          : null,
       trailing: trailing == null
-          ? const Icon(Icons.arrow_forward_ios_sharp)
+          ? Icon(Icons.arrow_forward_ios_sharp, color: color)
           : trailing,
       onTap: onTap,
     );
@@ -201,8 +210,10 @@ class CustomSettingCard extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
     return Card(
-      color: AppColor.white70,
+      color: darkMode ? AppColor.grey600 : AppColor.white70,
       child: Padding(
         padding: const EdgeInsetsDirectional.symmetric(vertical: 6.0),
         child: child,

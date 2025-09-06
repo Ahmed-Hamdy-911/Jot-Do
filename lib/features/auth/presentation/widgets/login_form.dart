@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../core/widgets/custom_material_button.dart';
@@ -26,6 +27,10 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var iconColor = darkMode ? AppColor.white70 : AppColor.greyColor;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
     return AbsorbPointer(
       absorbing: context.watch<AuthCubit>().state is AuthLoadingState,
       child: Form(
@@ -38,10 +43,9 @@ class _LoginFormState extends State<LoginForm> {
             Text(
               S.of(context).password,
               style: TextStyle(
-                color: Colors.black,
+                color: textColor,
                 fontWeight: FontWeight.w500,
-                fontSize:
-                    screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
+                fontSize: screenWidth < 600 ? 16 : 18,
               ),
             ),
             const SmallSpace(),
@@ -52,8 +56,7 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: false,
               suffixIcon: IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.visibility_off_outlined,
-                      color: Color(0xffADB5BD))),
+                  icon: Icon(Icons.visibility_off_outlined, color: iconColor)),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).error_required_field;
@@ -71,8 +74,8 @@ class _LoginFormState extends State<LoginForm> {
                   children: [
                     Checkbox(
                       value: false,
-                      checkColor: Colors.white,
-                      side: const BorderSide(color: Colors.grey),
+                      checkColor: AppColor.whiteColor,
+                      side: const BorderSide(color: AppColor.greyColor),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
                       onChanged: (value) {},
@@ -80,10 +83,8 @@ class _LoginFormState extends State<LoginForm> {
                     Text(
                       S.of(context).remember_me,
                       style: TextStyle(
-                        color: AppColor.colorScheme,
-                        fontSize: screenWidth < 600
-                            ? screenWidth * 0.035
-                            : screenWidth * 0.012,
+                        color: AppColor.mainLightColor,
+                        fontSize: screenWidth < 600 ? 15 : 17,
                       ),
                     ),
                   ],
@@ -98,10 +99,9 @@ class _LoginFormState extends State<LoginForm> {
                   child: Text(
                     S.of(context).forgot_password,
                     style: TextStyle(
-                      color: Colors.red.shade900,
-                      fontSize: screenWidth < 600
-                          ? screenWidth * 0.035
-                          : screenWidth * 0.012,
+                      color:
+                          darkMode ? AppColor.redLightColor : AppColor.redColor,
+                      fontSize: screenWidth < 600 ? 15 : 17,
                     ),
                   ),
                 ),

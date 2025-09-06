@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../generated/l10n.dart';
 
 import '../constants/app_colors.dart';
 import '../constants/app_constants.dart';
+import '../cubits/settings/setting_cubit.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -71,6 +73,14 @@ class CustomTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var textColor = darkMode ? AppColor.whiteColor : AppColor.blackColor;
+    var inputTextColor = enabled == false
+        ? darkMode
+            ? AppColor.white70
+            : AppColor.grey800
+        : textColor;
     return TextFormField(
       validator: validator ??
           (value) {
@@ -86,9 +96,9 @@ class CustomTextFormField extends StatelessWidget {
       minLines: minLines,
       initialValue: initialValue,
       style: customInputStyle ??
-          const TextStyle(
+          TextStyle(
             fontSize: 16,
-            color: Colors.black,
+            color: inputTextColor,
           ),
       onTapOutside: onTapOutside ??
           (event) {
@@ -107,26 +117,34 @@ class CustomTextFormField extends StatelessWidget {
         filled: filled,
         fillColor: fillColor,
         labelText: labelText,
-        labelStyle: labelStyle,
+        labelStyle: TextStyle(
+          color: enabled == false
+              ? darkMode
+                  ? AppColor.white70
+                  : AppColor.grey800
+              : darkMode
+                  ? AppColor.whiteColor
+                  : AppColor.grey800,
+        ),
         contentPadding: contentPadding ??
             const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         hintText: hintText,
         hintStyle: customHintStyle ??
             TextStyle(
               fontSize: 14,
-              color: Colors.grey[800],
+              color: darkMode ? AppColor.white70 : AppColor.grey800,
             ),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         suffix: suffixWidget,
-        errorStyle: const TextStyle(
-          color: Colors.red,
+        errorStyle: TextStyle(
+          color: darkMode ? AppColor.redLightColor : AppColor.redColor,
           fontSize: 12,
         ),
         helperText: helperText,
         helperMaxLines: 2,
         helperStyle:
-            Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 14),
+            TextStyle(color: darkMode ? AppColor.white70 : AppColor.blackColor),
         focusedBorder: customBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppConstants.kRadius),
@@ -135,7 +153,7 @@ class CustomTextFormField extends StatelessWidget {
         enabledBorder: customBorder ??
             OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppConstants.kRadius),
-                borderSide: BorderSide(color: Colors.grey[300]!)),
+                borderSide: BorderSide(color: AppColor.grey300)),
         border: customBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppConstants.kRadius),

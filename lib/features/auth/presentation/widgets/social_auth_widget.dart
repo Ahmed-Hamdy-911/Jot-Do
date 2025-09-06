@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';
@@ -15,13 +16,16 @@ class SocialAuthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var googleBGColor = darkMode ? AppColor.blueDarkColor : AppColor.blueColor;
     return Center(
       child: Column(
         children: [
           SocialCard(
             widget: Image.asset(AppAssets.googleLogo, height: 35),
             text: S.of(context).google,
-            color: Colors.blue,
+            color: googleBGColor,
             textColor: AppColor.whiteColor,
             onPressed: () async {
               await context.read<AuthCubit>().signInWithGoogle();
@@ -50,25 +54,30 @@ class SocialCard extends StatelessWidget {
     required this.text,
     required this.isLoading,
     this.onPressed,
-    this.color = AppColor.whiteColor,
+    this.color,
     this.textColor = AppColor.blackColor,
   });
   final Widget widget;
   final String text;
   final void Function()? onPressed;
-  final Color color;
+  final Color? color;
   final Color textColor;
   final bool isLoading;
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var backgroundColor = darkMode ? AppColor.grey600 : AppColor.whiteColor;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+
     return MaterialButton(
       onPressed: onPressed,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppConstants.kRadius)),
-      color: color,
+      color: color ?? backgroundColor,
       minWidth: screenWidth < 600 ? screenWidth : screenWidth * 0.6,
-      height: 55,
+      height: AppConstants.kMaterialButtonHeight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

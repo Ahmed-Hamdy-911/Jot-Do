@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../features/auth/presentation/views/account/profile_view.dart';
+import '../../features/auth/presentation/views/profile/profile_view.dart';
 import '../../features/home/data/models/note_model.dart';
 import '../../features/home/presentation/views/note/add_note/add_note_view.dart';
 import '../../features/home/presentation/views/note/note_details_view.dart';

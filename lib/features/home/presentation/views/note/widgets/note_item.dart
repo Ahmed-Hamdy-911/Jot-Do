@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:iconly/iconly.dart';
+import '../../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../core/services/format_service.dart';
@@ -24,6 +26,9 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     final color = note.color;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+
     return Slidable(
       key: ValueKey(index),
       startActionPane: onDismissibleStartAction(context, note: note),
@@ -45,12 +50,17 @@ class NoteItem extends StatelessWidget {
               gradient: LinearGradient(
                   begin: AlignmentDirectional.topStart,
                   end: AlignmentDirectional.bottomEnd,
-                  colors: [
-                    Color(color).withValues(alpha: 0.9),
-                    Color(color).withValues(alpha: 0.7),
-                    Color(color).withValues(alpha: 0.5),
-                    Color(color).withValues(alpha: 0.3)
-                  ])),
+                  colors: darkMode
+                      ? [
+                          Color(color),
+                          Color(color),
+                        ]
+                      : [
+                          Color(color).withValues(alpha: 0.9),
+                          Color(color).withValues(alpha: 0.7),
+                          Color(color).withValues(alpha: 0.5),
+                          Color(color).withValues(alpha: 0.3)
+                        ])),
           child: screenWidth > 600
               ? NoteBody(
                   note: note,
@@ -92,7 +102,8 @@ class NoteBody extends StatelessWidget {
   Widget build(BuildContext context) {
     const fontFamily = "Tajawal";
     final dateTime = FormatService.formatDateTime(note.createdAt);
-
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
     return Stack(
       children: [
         Column(
@@ -141,7 +152,7 @@ class NoteBody extends StatelessWidget {
               child: Text(
                 dateTime,
                 style: TextStyle(
-                  color: Colors.grey[700],
+                  color: darkMode ? AppColor.white70 : AppColor.grey600,
                   fontSize: dateTimeFontSize,
                   fontFamily: fontFamily,
                 ),

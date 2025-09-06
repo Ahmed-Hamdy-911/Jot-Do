@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
@@ -38,11 +41,14 @@ class CustomOrWithWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var color = darkMode ? AppColor.white70 : AppColor.blackColor;
     return Row(
       children: [
         Expanded(
           child: Divider(
-            color: Colors.grey.shade300,
+            color: AppColor.grey300,
             endIndent: 20,
             indent: 10,
           ),
@@ -51,12 +57,12 @@ class CustomOrWithWidget extends StatelessWidget {
           S.of(context).or_continue_with,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey.shade600,
+            color: color,
           ),
         ),
         Expanded(
           child: Divider(
-            color: Colors.grey.shade300,
+            color: AppColor.grey300,
             indent: 20,
             endIndent: 10,
           ),

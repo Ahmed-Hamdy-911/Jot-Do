@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_states.dart';
 import 'auth_exited_text.dart';
@@ -31,6 +33,9 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
     return AbsorbPointer(
       absorbing: context.watch<AuthCubit>().state is AuthLoadingState,
       child: Form(
@@ -46,9 +51,8 @@ class _RegisterFormState extends State<RegisterForm> {
             Text(
               S.of(context).name,
               style: TextStyle(
-                fontSize:
-                    screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.02,
-                color: Colors.black,
+                fontSize: screenWidth < 600 ? 16 : 18,
+                color: textColor,
                 fontWeight: FontWeight.w500,
               ),
             ),

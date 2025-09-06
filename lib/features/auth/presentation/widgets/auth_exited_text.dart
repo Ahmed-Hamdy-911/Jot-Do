@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 
 class AuthExcitedText extends StatelessWidget {
@@ -13,6 +15,9 @@ class AuthExcitedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
     return Center(
       child: Column(
         children: [
@@ -29,7 +34,7 @@ class AuthExcitedText extends StatelessWidget {
           Text(
             subtitle,
             style: TextStyle(
-              color: Colors.black54,
+              color: textColor,
               fontSize:
                   screenWidth < 600 ? screenWidth * 0.035 : screenWidth * 0.02,
             ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../../core/constants/app_colors.dart';
 import '../../../../../../../core/constants/app_constants.dart';
+import '../../../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../../../generated/l10n.dart';
@@ -22,9 +25,12 @@ class UpdateFormBody extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppConstants.kRadius),
       borderSide: BorderSide.none,
     );
-    final TextStyle customInputStyle = const TextStyle(
-      color: Colors.black,
-      fontSize: 19,
+    var darkMode =
+        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
+    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+    final TextStyle customInputStyle = TextStyle(
+      color: textColor,
+      fontSize: 18,
     );
     final bool filled = true;
     final Color fillColor = Colors.grey.withValues(alpha: 0.1);
