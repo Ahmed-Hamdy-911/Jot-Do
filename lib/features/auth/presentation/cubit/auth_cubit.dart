@@ -136,13 +136,21 @@ class AuthCubit extends Cubit<AuthStates> {
     try {
       await _authRepository.signInWithGoogle();
       var firebaseUser = _authRepository.user;
-      var user = UserModel(
-        id: firebaseUser.uid,
-        email: firebaseUser.email!,
-        name: firebaseUser.displayName,
-        createdAt: DateTime.now().toIso8601String(),
-      );
-      await _userRepository.saveUser(user);
+
+      // check if user exists
+      var existingUser = await _userRepository.getUserById(firebaseUser.uid);
+
+      if (existingUser == null) {
+        // user not found -> create new one
+        var newUser = UserModel(
+          id: firebaseUser.uid,
+          email: firebaseUser.email!,
+          name: firebaseUser.displayName,
+          createdAt: DateTime.now().toIso8601String(),
+        );
+        await _userRepository.saveUser(newUser);
+      } else {}
+
       final isLoggedIn = await _authRepository.checkUserStatus();
       CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
       emit(AuthGoogleSignInSuccess());
