@@ -10,6 +10,7 @@ class SplashCubit extends Cubit<SplashStates> {
 
   Widget checkNextScreen() {
     emit(ChangeSplashNavigationState());
-    return SplashRepo(AuthRepoImpl()).checkNextScreen();
+    final authRepoImpl = AuthRepoImpl();
+    return SplashRepo(authRepoImpl).checkNextScreen();
   }
 }

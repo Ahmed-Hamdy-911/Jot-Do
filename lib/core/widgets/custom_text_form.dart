@@ -37,6 +37,7 @@ class CustomTextFormField extends StatelessWidget {
     this.helperText,
     this.onChanged,
     this.customInputStyle,
+    this.focusNode,
   });
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -67,6 +68,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool? filled;
   final Color? fillColor;
   final String? helperText;
+  final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
     return TextFormField(

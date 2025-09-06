@@ -23,7 +23,6 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_app": MessageLookupByLibrary.simpleMessage("About App"),
-    "account": MessageLookupByLibrary.simpleMessage("Account"),
     "add_note": MessageLookupByLibrary.simpleMessage("Add Note"),
     "add_note_or_task": MessageLookupByLibrary.simpleMessage(
       "Add note or task",
@@ -62,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enter_password": MessageLookupByLibrary.simpleMessage(
       "Enter your password",
     ),
+    "error": MessageLookupByLibrary.simpleMessage("Something went wrong"),
     "error_invalid_email": MessageLookupByLibrary.simpleMessage(
       "Invalid email address",
     ),
@@ -156,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_login_first": MessageLookupByLibrary.simpleMessage(
       "Please login first",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "Create your account and unlock exclusive features.",

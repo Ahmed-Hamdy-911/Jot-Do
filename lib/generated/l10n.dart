@@ -924,9 +924,9 @@ class S {
     return Intl.message('Theme', name: 'theme', desc: '', args: []);
   }
 
-  /// `Account`
-  String get account {
-    return Intl.message('Account', name: 'account', desc: '', args: []);
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 
   /// `About App`
@@ -979,6 +979,16 @@ class S {
     return Intl.message(
       'Please login first',
       name: 'please_login_first',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get error {
+    return Intl.message(
+      'Something went wrong',
+      name: 'error',
       desc: '',
       args: [],
     );

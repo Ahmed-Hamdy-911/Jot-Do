@@ -7,5 +7,5 @@ abstract class AuthRepository {
   Future<void> sendPasswordResetEmail({required String email});
   Future<bool> isEmailVerified();
   Future<bool> checkUserStatus();
-  String? get currentUserEmail;
+  dynamic get user;
 }

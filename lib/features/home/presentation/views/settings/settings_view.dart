@@ -46,117 +46,120 @@ class SettingsView extends StatelessWidget {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomSettingCard(
-                child: Column(
-                  children: [
-                    CustomSettingItem(
-                      title: S.of(context).account,
-                      leadingIcon: IconlyLight.profile,
-                      onTap: () {
-                        if (isLoggedIn) {
-                          Navigator.pushNamed(context, AppRoutes.profile);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              closeIconColor: Colors.red,
-                              showCloseIcon: true,
-                              content: Text(S.of(context).please_login_first),
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                    CustomSettingItem(
-                      title: S.of(context).backup_sync,
-                      leadingIcon: Icons.backup_outlined,
-                      trailing: const Icon(Icons.restore),
-                      onTap: () {},
-                    ),
-                    CustomSettingItem(
-                      title: isLoggedIn
-                          ? S.of(context).logout
-                          : S.of(context).login,
-                      leadingIcon:
-                          isLoggedIn ? IconlyLight.logout : IconlyLight.login,
-                      onTap: () async {
-                        if (isLoggedIn) {
-                          await context.read<AuthCubit>().logout();
-                        } else {
-                          CacheHelper.saveData(
-                              key: "skipAuthentication", value: false);
-                          Navigator.pushNamed(context, AppRoutes.login);
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              const SmallSpace(),
-              CustomSettingCard(
-                child: Column(
-                  children: [
-                    CustomSettingItem(
-                      title: S.of(context).language,
-                      leadingIcon: Icons.language,
-                      trailing: DropdownButton<LanguageModel>(
-                        value: context.watch<SettingCubit>().state.locale ==
-                                const Locale(
-                                  "en",
-                                )
-                            ? languages[0]
-                            : languages[1],
-                        items: languages.map((element) {
-                          return DropdownMenuItem(
-                            value: element,
-                            child: Text(
-                                "${element.flag} ${getLocalizedLanguageName(context, element.key)}"),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          context
-                              .read<SettingCubit>()
-                              .toggleLanguage(Locale(value!.locale));
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomSettingCard(
+                  child: Column(
+                    children: [
+                      CustomSettingItem(
+                        title: S.of(context).profile,
+                        leadingIcon: IconlyLight.profile,
+                        onTap: () {
+                          if (isLoggedIn) {
+                            Navigator.pushNamed(context, AppRoutes.profile);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                closeIconColor: Colors.red,
+                                showCloseIcon: true,
+                                content: Text(S.of(context).please_login_first),
+                              ),
+                            );
+                          }
                         },
                       ),
-                    ),
-                    const MediumSpace(),
-                    CustomSettingItem(
-                      title: S.of(context).theme,
-                      subTitle: S.of(context).light,
-                      leadingIcon: Icons.brightness_6_outlined,
-                      trailing: Switch(
-                        value: context.watch<SettingCubit>().state.themeMode ==
-                            ThemeMode.dark,
-                        onChanged: (value) {
-                          context.read<SettingCubit>().toggleTheme();
+                      CustomSettingItem(
+                        title: S.of(context).backup_sync,
+                        leadingIcon: Icons.backup_outlined,
+                        trailing: const Icon(Icons.restore),
+                        onTap: () {},
+                      ),
+                      CustomSettingItem(
+                        title: isLoggedIn
+                            ? S.of(context).logout
+                            : S.of(context).login,
+                        leadingIcon:
+                            isLoggedIn ? IconlyLight.logout : IconlyLight.login,
+                        onTap: () async {
+                          if (isLoggedIn) {
+                            await context.read<AuthCubit>().logout();
+                          } else {
+                            CacheHelper.saveData(
+                                key: "skipAuthentication", value: false);
+                            Navigator.pushNamed(context, AppRoutes.login);
+                          }
                         },
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const SmallSpace(),
-              CustomSettingCard(
-                child: CustomSettingItem(
-                  title: S.of(context).notification_settings,
-                  leadingIcon: IconlyBroken.notification,
-                  onTap: () {},
+                const SmallSpace(),
+                CustomSettingCard(
+                  child: Column(
+                    children: [
+                      CustomSettingItem(
+                        title: S.of(context).language,
+                        leadingIcon: Icons.language,
+                        trailing: DropdownButton<LanguageModel>(
+                          value: context.watch<SettingCubit>().state.locale ==
+                                  const Locale(
+                                    "en",
+                                  )
+                              ? languages[0]
+                              : languages[1],
+                          items: languages.map((element) {
+                            return DropdownMenuItem(
+                              value: element,
+                              child: Text(
+                                  "${element.flag} ${getLocalizedLanguageName(context, element.key)}"),
+                            );
+                          }).toList(),
+                          onChanged: (value) {
+                            context
+                                .read<SettingCubit>()
+                                .toggleLanguage(Locale(value!.locale));
+                          },
+                        ),
+                      ),
+                      const MediumSpace(),
+                      CustomSettingItem(
+                        title: S.of(context).theme,
+                        subTitle: S.of(context).light,
+                        leadingIcon: Icons.brightness_6_outlined,
+                        trailing: Switch(
+                          value:
+                              context.watch<SettingCubit>().state.themeMode ==
+                                  ThemeMode.dark,
+                          onChanged: (value) {
+                            context.read<SettingCubit>().toggleTheme();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const SmallSpace(),
-              CustomSettingCard(
-                child: CustomSettingItem(
-                  title: S.of(context).about_app,
-                  leadingIcon: Icons.info_outline_rounded,
-                  onTap: () {},
+                const SmallSpace(),
+                CustomSettingCard(
+                  child: CustomSettingItem(
+                    title: S.of(context).notification_settings,
+                    leadingIcon: IconlyBroken.notification,
+                    onTap: () {},
+                  ),
                 ),
-              ),
-              const SmallSpace(),
-            ],
+                const SmallSpace(),
+                CustomSettingCard(
+                  child: CustomSettingItem(
+                    title: S.of(context).about_app,
+                    leadingIcon: Icons.info_outline_rounded,
+                    onTap: () {},
+                  ),
+                ),
+                const SmallSpace(),
+              ],
+            ),
           ),
         ),
       ),

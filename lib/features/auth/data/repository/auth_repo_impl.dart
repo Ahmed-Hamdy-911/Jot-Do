@@ -8,7 +8,8 @@ import 'auth_repository.dart';
 class AuthRepoImpl implements AuthRepository {
   var _firebaseAuth = FirebaseAuth.instance;
   @override
-  String? get currentUserEmail => _firebaseAuth.currentUser?.email;
+  dynamic get user => _firebaseAuth.currentUser;
+
   // Define your authentication methods here
   @override
   Future<void> register({
@@ -69,7 +70,6 @@ class AuthRepoImpl implements AuthRepository {
 
         final GoogleSignInAuthentication googleAuth =
             await account.authentication;
-
         if (googleAuth.idToken == null) return null;
 
         final credential = GoogleAuthProvider.credential(

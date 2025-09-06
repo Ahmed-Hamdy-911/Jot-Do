@@ -3,23 +3,34 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../core/helper/cache_helper.dart';
+import '../../data/models/user_model.dart';
 import '../../data/repository/auth_repository.dart';
 
+import '../../data/repository/user_repo_impl.dart';
+import '../../data/repository/user_repository.dart';
 import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
   final AuthRepository _authRepository;
+  final UserRepository _userRepository = UserRepoImpl();
   AuthCubit(
     this._authRepository,
   ) : super(AuthInitialState());
 
   void register({
+    required String name,
     required String email,
     required String password,
   }) async {
     emit(AuthLoadingState());
     try {
       await _authRepository.register(email: email, password: password);
+      var user = UserModel(
+          id: _authRepository.user.uid!,
+          email: email,
+          name: name,
+          createdAt: DateTime.now().toIso8601String());
+      await _userRepository.saveUser(user);
       await _authRepository.sendEmailVerification();
       emit(GoVerificationState(
           email: email,
@@ -124,10 +135,19 @@ class AuthCubit extends Cubit<AuthStates> {
     emit(AuthLoadingGoogleSignIn());
     try {
       await _authRepository.signInWithGoogle();
+      var firebaseUser = _authRepository.user;
+      var user = UserModel(
+        id: firebaseUser.uid,
+        email: firebaseUser.email!,
+        name: firebaseUser.displayName,
+        createdAt: DateTime.now().toIso8601String(),
+      );
+      await _userRepository.saveUser(user);
       final isLoggedIn = await _authRepository.checkUserStatus();
       CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
       emit(AuthGoogleSignInSuccess());
     } catch (e) {
+      debugPrint("Google sign-in failed: $e");
       emit(AuthGoogleSignInFailure("Google sign-in failed: $e"));
     }
   }

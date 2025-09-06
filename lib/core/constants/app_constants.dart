@@ -53,4 +53,7 @@ class AppConstants {
   // theme
   static const themeKey = "theme";
   static const localeKey = "locale";
+
+  // auth
+  static const String userCollection = 'users';
 }

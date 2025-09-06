@@ -104,7 +104,7 @@
     "notification_settings": "Notification Settings",
     "language": "Language",
     "theme": "Theme",
-    "account": "Account",
+    "profile": "Profile",
     "about_app": "About App",
     "english": "English",
     "arabic": "Arabic",
@@ -112,5 +112,6 @@
     "light": "Light",
     "no_notes_yet": "No notes yet!",
     "no_tasks_yet": "No tasks yet!",
-    "please_login_first": "Please login first"
+    "please_login_first": "Please login first",
+    "error": "Something went wrong"
 }

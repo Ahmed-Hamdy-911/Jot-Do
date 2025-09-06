@@ -23,7 +23,6 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
-    "account": MessageLookupByLibrary.simpleMessage("الحساب"),
     "add_note": MessageLookupByLibrary.simpleMessage("إضافة ملاحظة"),
     "add_note_or_task": MessageLookupByLibrary.simpleMessage(
       "إضافة ملاحظة أو مهمة",
@@ -64,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enter_name": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
     "enter_password": MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور"),
+    "error": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
     "error_invalid_email": MessageLookupByLibrary.simpleMessage(
       "البريد الإلكتروني غير صالح",
     ),
@@ -160,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_login_first": MessageLookupByLibrary.simpleMessage(
       "من فضلك قم بتسجيل الدخول أولاً",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "قم بإنشاء حسابك وافتح الميزات الحصرية.",

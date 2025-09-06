@@ -104,7 +104,7 @@
     "notification_settings": "إعدادات الإشعارات",
     "language": "اللغة",
     "theme": "المظهر",
-    "account": "الحساب",
+    "profile": "الملف الشخصي",
     "about_app": "حول التطبيق",
     "english": "الإنجليزية",
     "arabic": "العربية",
@@ -112,5 +112,6 @@
     "light": "فاتح",
     "no_notes_yet": "لا توجد ملاحظات بعد!",
     "no_tasks_yet": "لا توجد مهام بعد!",
-    "please_login_first": "من فضلك قم بتسجيل الدخول أولاً"
+    "please_login_first": "من فضلك قم بتسجيل الدخول أولاً",
+    "error": "حدث خطأ ما"
 }
