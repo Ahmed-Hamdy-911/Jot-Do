@@ -6,7 +6,7 @@ import '../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/repository/user_repo_impl.dart';
-import 'package:jot_do/features/auth/data/models/user_model.dart';
+import '../../../data/models/user_model.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
