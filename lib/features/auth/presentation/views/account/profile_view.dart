@@ -149,7 +149,9 @@ class _ProfileViewState extends State<ProfileView> {
             _nameController.text = _originalName!;
           }
           final formatCreatedAt = FormatService.formatDateTime(user.createdAt);
-          final formatUpdatedAt = FormatService.formatDateTime(user.updatedAt!);
+          final formatUpdatedAt = user.updatedAt != null
+              ? FormatService.formatDateTime(user.updatedAt!)
+              : null;
 
           return Padding(
             padding: const EdgeInsets.all(16.0).copyWith(
