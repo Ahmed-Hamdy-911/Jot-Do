@@ -6,6 +6,11 @@ class AuthTogglePasswordVisibility extends AuthStates {}
 
 class AuthToggleConfirmPasswordVisibility extends AuthStates {}
 
+class AuthRememberMeChanged extends AuthStates {
+  final bool rememberMe;
+  AuthRememberMeChanged(this.rememberMe);
+}
+
 class AuthLoadingState extends AuthStates {}
 
 class AuthVerificationLoading extends AuthStates {}

@@ -19,6 +19,13 @@ class AuthCubit extends Cubit<AuthStates> {
 
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
+  bool rememberMe = false;
+
+  void toggleRememberMe(bool value) {
+    rememberMe = value;
+    CacheHelper.saveData(key: 'rememberMe', value: value);
+    emit(AuthRememberMeChanged(rememberMe));
+  }
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
@@ -81,17 +88,28 @@ class AuthCubit extends Cubit<AuthStates> {
     try {
       await _authRepository.login(email: email, password: password);
       final isVerified = await _authRepository.isEmailVerified();
+
       if (!isVerified) {
         emit(GoVerificationState(
-            email: email,
-            message: "Email not verified. Please check your inbox."));
+          email: email,
+          message: "Email not verified. Please check your inbox.",
+        ));
         await _authRepository.sendEmailVerification();
         return;
-      } else {
-        final isLoggedIn = await _authRepository.checkUserStatus();
-        CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
-        emit(AuthSuccess());
       }
+
+      final isLoggedIn = await _authRepository.checkUserStatus();
+      CacheHelper.saveData(key: 'isLoggedIn', value: isLoggedIn);
+
+      if (rememberMe) {
+        CacheHelper.saveData(key: 'userEmail', value: email);
+        CacheHelper.saveData(key: 'userPassword', value: password);
+      } else {
+        CacheHelper.saveData(key: 'userEmail', value: null);
+        CacheHelper.saveData(key: 'userPassword', value: null);
+      }
+
+      emit(AuthSuccess());
     } catch (e) {
       emit(AuthFailure("Login failed"));
     }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/cubits/settings/setting_cubit.dart';
+import '../../../../core/helper/cache_helper.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../core/widgets/custom_material_button.dart';
@@ -25,13 +26,33 @@ class _LoginFormState extends State<LoginForm> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedCredentials();
+  }
+
+  Future<void> _loadSavedCredentials() async {
+    final cubit = context.read<AuthCubit>();
+    final savedEmail = CacheHelper.getData(key: 'userEmail');
+    final savedPassword = CacheHelper.getData(key: 'userPassword');
+    final savedRemember = CacheHelper.getData(key: 'rememberMe') ?? false;
+
+    if (savedEmail != null) emailController.text = savedEmail;
+    if (savedPassword != null) passwordController.text = savedPassword;
+
+    cubit.rememberMe = savedRemember;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     var darkMode =
         context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var iconColor = darkMode ? AppColor.white70 : AppColor.greyColor;
     var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+
     return AbsorbPointer(
       absorbing: context.watch<AuthCubit>().state is AuthLoadingState,
       child: Form(
@@ -54,7 +75,7 @@ class _LoginFormState extends State<LoginForm> {
               hintText: S.of(context).enter_password,
               controller: passwordController,
               keyboardType: TextInputType.text,
-              obscureText: false,
+              obscureText: !context.watch<AuthCubit>().isPasswordVisible,
               suffixIcon:
                   const TogglePasswordVisibilityIcon(isConfirmField: false),
               validator: (value) {
@@ -72,13 +93,20 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 Row(
                   children: [
-                    Checkbox(
-                      value: false,
-                      checkColor: AppColor.whiteColor,
-                      side: const BorderSide(color: AppColor.greyColor),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                      onChanged: (value) {},
+                    BlocBuilder<AuthCubit, AuthStates>(
+                      builder: (context, state) {
+                        final cubit = context.read<AuthCubit>();
+                        return Checkbox(
+                          value: cubit.rememberMe,
+                          checkColor: AppColor.whiteColor,
+                          side: const BorderSide(color: AppColor.greyColor),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          onChanged: (value) {
+                            cubit.toggleRememberMe(value ?? false);
+                          },
+                        );
+                      },
                     ),
                     Text(
                       S.of(context).remember_me,
@@ -112,10 +140,12 @@ class _LoginFormState extends State<LoginForm> {
               isLoading: context.watch<AuthCubit>().state is AuthLoadingState,
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  context.read<AuthCubit>().login(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
+                  final cubit = context.read<AuthCubit>();
+
+                  cubit.login(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
                 }
               },
               text: S.of(context).login,
