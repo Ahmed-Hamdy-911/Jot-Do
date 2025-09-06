@@ -17,6 +17,25 @@ class AuthCubit extends Cubit<AuthStates> {
     this._authRepository,
   ) : super(AuthInitialState());
 
+  bool isPasswordVisible = false;
+  bool isConfirmPasswordVisible = false;
+
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
+    emit(AuthTogglePasswordVisibility());
+  }
+
+  void toggleConfirmPasswordVisibility() {
+    isConfirmPasswordVisible = !isConfirmPasswordVisible;
+    emit(AuthToggleConfirmPasswordVisibility());
+  }
+
+  void resetPasswordVisibility() {
+    isPasswordVisible = false;
+    isConfirmPasswordVisible = false;
+    emit(AuthInitialState());
+  }
+
   void register({
     required String name,
     required String email,

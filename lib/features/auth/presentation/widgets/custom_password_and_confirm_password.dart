@@ -6,14 +6,19 @@ import '../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../generated/l10n.dart';
 
 import '../../../../../core/widgets/custom_text_form.dart';
+import '../cubit/auth_cubit.dart';
+import 'toggle_password_visibility_icon.dart';
 
 class CustomPasswordAndConfirmPasswordWidget extends StatefulWidget {
-  const CustomPasswordAndConfirmPasswordWidget(
-      {super.key,
-      required this.passwordController,
-      required this.confirmPasswordController});
+  const CustomPasswordAndConfirmPasswordWidget({
+    super.key,
+    required this.passwordController,
+    required this.confirmPasswordController,
+  });
+
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
+
   @override
   State<CustomPasswordAndConfirmPasswordWidget> createState() =>
       _CustomPasswordAndConfirmPasswordWidgetState();
@@ -22,12 +27,25 @@ class CustomPasswordAndConfirmPasswordWidget extends StatefulWidget {
 class _CustomPasswordAndConfirmPasswordWidgetState
     extends State<CustomPasswordAndConfirmPasswordWidget> {
   @override
+  void initState() {
+    super.initState();
+    context.read<AuthCubit>().resetPasswordVisibility();
+  }
+
+  @override
+  void dispose() {
+    widget.passwordController.dispose();
+    widget.confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
     var darkMode =
         context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var iconColor = darkMode ? AppColor.white70 : AppColor.greyColor;
     var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -44,10 +62,8 @@ class _CustomPasswordAndConfirmPasswordWidgetState
           hintText: S.of(context).enter_password,
           controller: widget.passwordController,
           keyboardType: TextInputType.text,
-          obscureText: false,
-          suffixIcon: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.visibility_off_outlined, color: iconColor)),
+          obscureText: !context.watch<AuthCubit>().isPasswordVisible,
+          suffixIcon: const TogglePasswordVisibilityIcon(isConfirmField: false),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;
@@ -55,7 +71,6 @@ class _CustomPasswordAndConfirmPasswordWidgetState
             if (value.length < 8) {
               return S.of(context).error_short_password;
             }
-
             return null;
           },
         ),
@@ -73,10 +88,8 @@ class _CustomPasswordAndConfirmPasswordWidgetState
           hintText: S.of(context).enter_confirm_password,
           controller: widget.confirmPasswordController,
           keyboardType: TextInputType.text,
-          obscureText: true,
-          suffixIcon: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.visibility_off_outlined, color: iconColor)),
+          obscureText: !context.watch<AuthCubit>().isConfirmPasswordVisible,
+          suffixIcon: const TogglePasswordVisibilityIcon(isConfirmField: true),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;

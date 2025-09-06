@@ -10,6 +10,7 @@ import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_states.dart';
 import 'custom_email_field.dart';
+import 'toggle_password_visibility_icon.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -54,9 +55,8 @@ class _LoginFormState extends State<LoginForm> {
               controller: passwordController,
               keyboardType: TextInputType.text,
               obscureText: false,
-              suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.visibility_off_outlined, color: iconColor)),
+              suffixIcon:
+                  const TogglePasswordVisibilityIcon(isConfirmField: false),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return S.of(context).error_required_field;
