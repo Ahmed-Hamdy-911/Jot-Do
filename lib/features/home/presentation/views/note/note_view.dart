@@ -6,8 +6,8 @@ import '../../../../../core/widgets/filter_view_builder.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/cubits/selection/selection_cubit.dart';
 import '../../../data/models/note_model.dart';
-import '../../manager/cubits/notes/get/notes_cubit.dart';
-import '../../manager/cubits/notes/get/notes_state.dart';
+import '../../cubits/notes/get/notes_cubit.dart';
+import '../../cubits/notes/get/notes_state.dart';
 import 'widgets/note_grid_view.dart';
 import 'widgets/note_list_view.dart';
 
@@ -87,7 +87,7 @@ class NoteLayoutBuilder extends StatelessWidget {
         if (state is NotesLoadingState)
           return const Center(child: CircularProgressIndicator());
         List<NoteModel> noteList =
-            BlocProvider.of<NotesCubit>(context).notesList ?? [];
+            BlocProvider.of<NotesCubit>(context).notesList;
         if (noteList.isEmpty)
           return EmptyWidget(
             text: S.of(context).no_notes_yet,

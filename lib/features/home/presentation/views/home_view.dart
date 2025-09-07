@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../manager/cubits/bottom_navi/bottom_navi_cubit_cubit.dart';
+import '../cubits/bottom_navi/bottom_navi_cubit_cubit.dart';
 import 'settings/settings_view.dart';
 import '../widgets/home_body.dart';
 

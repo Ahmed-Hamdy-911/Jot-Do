@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../generated/l10n.dart';
 import '../../../../../data/models/note_model.dart';
-import '../../../../manager/cubits/notes/update/update_note_cubit.dart';
-import '../../../../manager/cubits/notes/update/update_note_state.dart';
-import '../../../../manager/cubits/pick_color/pick_color_cubit.dart';
-import '../../../../manager/cubits/pick_color/pick_color_state.dart';
+import '../../../../cubits/notes/update/update_note_cubit.dart';
+import '../../../../cubits/notes/update/update_note_state.dart';
+import '../../../../cubits/pick_color/pick_color_cubit.dart';
+import '../../../../cubits/pick_color/pick_color_state.dart';
 import 'update_note_form.dart';
 
 class UpdateNoteBody extends StatelessWidget {

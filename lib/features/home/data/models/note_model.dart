@@ -23,6 +23,10 @@ class NoteModel extends HiveObject {
   bool isFavorite;
   @HiveField(8)
   String? lastUpdatedAt;
+  @HiveField(9)
+  String? deletedAt;
+  @HiveField(10)
+  bool? isSynced;
 
   NoteModel({
     String? id,
@@ -34,6 +38,8 @@ class NoteModel extends HiveObject {
     this.isPinned = false,
     this.isFavorite = false,
     this.lastUpdatedAt,
+    this.deletedAt,
+    this.isSynced = true,
   }) : this.id = id ?? const Uuid().v4();
 
   /// Convert NoteModel to JSON
@@ -47,7 +53,9 @@ class NoteModel extends HiveObject {
       'is_archived': isArchived,
       'is_pinned': isPinned,
       'is_favorite': isFavorite,
-      'last_updated_at': lastUpdatedAt
+      'last_updated_at': lastUpdatedAt,
+      'is_synced': isSynced,
+      'deleted_at': deletedAt
     };
   }
 
@@ -63,6 +71,35 @@ class NoteModel extends HiveObject {
       isPinned: json['is_pinned'] ?? false,
       isFavorite: json['is_favorite'] ?? false,
       lastUpdatedAt: json['last_updated_at'],
+      isSynced: json['is_synced'] ?? true,
+      deletedAt: json['deleted_at'],
+    );
+  }
+
+  //
+  NoteModel copyWith({
+    String? title,
+    String? content,
+    int? color,
+    bool? isArchived,
+    bool? isPinned,
+    bool? isFavorite,
+    String? lastUpdatedAt,
+    bool? isSynced,
+    String? deletedAt,
+  }) {
+    return NoteModel(
+      id: id,
+      title: title ?? this.title,
+      content: content ?? this.content,
+      createdAt: createdAt,
+      color: color ?? this.color,
+      isArchived: isArchived ?? this.isArchived,
+      isPinned: isPinned ?? this.isPinned,
+      isFavorite: isFavorite ?? this.isFavorite,
+      lastUpdatedAt: lastUpdatedAt ?? this.lastUpdatedAt,
+      isSynced: isSynced ?? this.isSynced,
+      deletedAt: deletedAt ?? this.deletedAt,
     );
   }
 }

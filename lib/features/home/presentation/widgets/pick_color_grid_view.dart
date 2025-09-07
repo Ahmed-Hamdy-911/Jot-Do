@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
-import '../manager/cubits/pick_color/pick_color_cubit.dart';
+import '../cubits/pick_color/pick_color_cubit.dart';
 import '../../../../generated/l10n.dart';
 import 'pick_color_item.dart';
 

@@ -10,7 +10,7 @@ import '../../../../../../core/services/format_service.dart';
 import '../../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../../core/widgets/custom_icon.dart';
 import '../../../../data/models/note_model.dart';
-import '../../../manager/cubits/notes/get/notes_cubit.dart';
+import '../../../cubits/notes/get/notes_cubit.dart';
 import 'slidable_actions.dart';
 
 class NoteItem extends StatelessWidget {

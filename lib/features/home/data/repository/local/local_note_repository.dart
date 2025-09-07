@@ -16,8 +16,13 @@ class LocalNoteRepository implements NoteRepository {
   }
 
   @override
-  Future<void> deleteAllNotes() {
-    throw UnimplementedError();
+  Future<void> deleteAllNotes() async {
+    try {
+      var box = Hive.box<NoteModel>(AppConstants.notesStorage);
+      await box.clear();
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override
@@ -136,7 +141,11 @@ class LocalNoteRepository implements NoteRepository {
   @override
   Future<void> updateNote(String id, NoteModel noteModel) async {
     try {
-      await noteModel.save();
+      var box = Hive.box<NoteModel>(AppConstants.notesStorage);
+      final index = box.values.toList().indexWhere((note) => note.id == id);
+      if (index != -1) {
+        await box.putAt(index, noteModel);
+      }
     } catch (e) {
       rethrow;
     }
