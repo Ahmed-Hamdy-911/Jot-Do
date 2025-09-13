@@ -984,11 +984,276 @@ class S {
     );
   }
 
+  /// `Delete all data`
+  String get delete_all_data {
+    return Intl.message(
+      'Delete all data',
+      name: 'delete_all_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This option will delete all your data...`
+  String get warn_delete_1 {
+    return Intl.message(
+      'This option will delete all your data...',
+      name: 'warn_delete_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More Options`
+  String get more_options {
+    return Intl.message(
+      'More Options',
+      name: 'more_options',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More Details`
+  String get more_details {
+    return Intl.message(
+      'More Details',
+      name: 'more_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete all data?`
+  String get warn_delete_all_data {
+    return Intl.message(
+      'Are you sure you want to delete all data?',
+      name: 'warn_delete_all_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message('Yes', name: 'yes', desc: '', args: []);
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message('No', name: 'no', desc: '', args: []);
+  }
+
+  /// `All data deleted successfully`
+  String get delete_all_data_success {
+    return Intl.message(
+      'All data deleted successfully',
+      name: 'delete_all_data_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete all data`
+  String get delete_all_data_failed {
+    return Intl.message(
+      'Failed to delete all data',
+      name: 'delete_all_data_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Something went wrong`
   String get error {
     return Intl.message(
       'Something went wrong',
       name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Automatic backup & sync`
+  String get automatically_backup_sync {
+    return Intl.message(
+      'Automatic backup & sync',
+      name: 'automatically_backup_sync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable`
+  String get enable {
+    return Intl.message('Enable', name: 'enable', desc: '', args: []);
+  }
+
+  /// `Disable`
+  String get disable {
+    return Intl.message('Disable', name: 'disable', desc: '', args: []);
+  }
+
+  /// `This note has not yet been synced.`
+  String get note_not_synced {
+    return Intl.message(
+      'This note has not yet been synced.',
+      name: 'note_not_synced',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Automatically`
+  String get automatically {
+    return Intl.message(
+      'Automatically',
+      name: 'automatically',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not yet`
+  String get not_yet {
+    return Intl.message('Not yet', name: 'not_yet', desc: '', args: []);
+  }
+
+  /// `Never`
+  String get never {
+    return Intl.message('Never', name: 'never', desc: '', args: []);
+  }
+
+  /// `Every 5 minutes`
+  String get every_5_minutes {
+    return Intl.message(
+      'Every 5 minutes',
+      name: 'every_5_minutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every 12 hour`
+  String get every_12_hour {
+    return Intl.message(
+      'Every 12 hour',
+      name: 'every_12_hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every 1 day`
+  String get every_1_day {
+    return Intl.message('Every 1 day', name: 'every_1_day', desc: '', args: []);
+  }
+
+  /// `Every 1 week`
+  String get every_1_week {
+    return Intl.message(
+      'Every 1 week',
+      name: 'every_1_week',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every 1 month`
+  String get every_1_month {
+    return Intl.message(
+      'Every 1 month',
+      name: 'every_1_month',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every 1 year`
+  String get every_1_year {
+    return Intl.message(
+      'Every 1 year',
+      name: 'every_1_year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup synced successfully`
+  String get backup_synced_successfully {
+    return Intl.message(
+      'Backup synced successfully',
+      name: 'backup_synced_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup synced failed`
+  String get backup_synced_failed {
+    return Intl.message(
+      'Backup synced failed',
+      name: 'backup_synced_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep your notes safe`
+  String get sync_banner_title {
+    return Intl.message(
+      'Keep your notes safe',
+      name: 'sync_banner_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable sync to backup your notes online`
+  String get sync_banner_subtitle {
+    return Intl.message(
+      'Enable sync to backup your notes online',
+      name: 'sync_banner_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Sync`
+  String get sync_banner_enable {
+    return Intl.message(
+      'Enable Sync',
+      name: 'sync_banner_enable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ignore`
+  String get sync_banner_ignore {
+    return Intl.message(
+      'Ignore',
+      name: 'sync_banner_ignore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup found, restoring your notes...`
+  String get restoringBackup {
+    return Intl.message(
+      'Backup found, restoring your notes...',
+      name: 'restoringBackup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `⚠️ You have out-of-sync notes! Turn on auto-transcription first..`
+  String get unsyncedNotesMessage {
+    return Intl.message(
+      '⚠️ You have out-of-sync notes! Turn on auto-transcription first..',
+      name: 'unsyncedNotesMessage',
       desc: '',
       args: [],
     );

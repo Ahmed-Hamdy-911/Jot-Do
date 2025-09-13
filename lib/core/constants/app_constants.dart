@@ -46,8 +46,14 @@ class AppConstants {
   static double kRadius = 16;
   static double kMaterialButtonHeight = 55;
 
+  // onboarding
+  static const String onboardingFinished = 'onboardingFinished';
+
   // note
   static const String notesStorage = 'notes';
+  static const String privateNotesStorage = 'private_notes';
+  static const String publicNotesStorage = 'public_notes';
+  static const String sharedNotesStorage = 'shared_notes';
 
   // settings
   static const String settingsStorage = 'settings';
@@ -57,4 +63,9 @@ class AppConstants {
 
   // auth
   static const String userCollection = 'users';
+  static const String isLoggedIn = 'isLoggedIn';
+  static const String skipAuthentication = 'skipAuthentication';
+
+  // backup 
+  static const String isAutoBackup = 'isAutoBackup';
 }

@@ -35,11 +35,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "apple": MessageLookupByLibrary.simpleMessage("تسجيل الدخول باستخدام آبل"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "archive": MessageLookupByLibrary.simpleMessage("أرشفة"),
+    "automatically": MessageLookupByLibrary.simpleMessage("تلقائياً"),
+    "automatically_backup_sync": MessageLookupByLibrary.simpleMessage(
+      "النسخ الاحتياطي والمزامنة تلقائياً",
+    ),
     "back_to_login": MessageLookupByLibrary.simpleMessage(
       "العودة لتسجيل الدخول",
     ),
     "backup_sync": MessageLookupByLibrary.simpleMessage(
       "النسخ الاحتياطي والمزامنة",
+    ),
+    "backup_synced_failed": MessageLookupByLibrary.simpleMessage(
+      "فشل نسخ ومزامنة البيانات",
+    ),
+    "backup_synced_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم نسخ ومزامنة البيانات بنجاح",
     ),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
@@ -49,11 +59,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "created_at": MessageLookupByLibrary.simpleMessage("تم الانشاء في: "),
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "delete_all_data": MessageLookupByLibrary.simpleMessage(
+      "حذف جميع البيانات",
+    ),
+    "delete_all_data_failed": MessageLookupByLibrary.simpleMessage(
+      "فشل حذف جميع البيانات",
+    ),
+    "delete_all_data_success": MessageLookupByLibrary.simpleMessage(
+      "تم حذف جميع البيانات بنجاح",
+    ),
     "delete_note": MessageLookupByLibrary.simpleMessage("حذف الملاحظة"),
     "delete_task": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
+    "disable": MessageLookupByLibrary.simpleMessage("تعطيل"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "edit_task": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "enable": MessageLookupByLibrary.simpleMessage("تمكين"),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "أعد إدخال كلمة المرور",
@@ -86,6 +107,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_short_password": MessageLookupByLibrary.simpleMessage(
       "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
     ),
+    "every_12_hour": MessageLookupByLibrary.simpleMessage("كل 12 ساعة"),
+    "every_1_day": MessageLookupByLibrary.simpleMessage("كل يوم"),
+    "every_1_month": MessageLookupByLibrary.simpleMessage("كل شهر"),
+    "every_1_week": MessageLookupByLibrary.simpleMessage("كل اسبوع"),
+    "every_1_year": MessageLookupByLibrary.simpleMessage("كل سنة"),
+    "every_5_minutes": MessageLookupByLibrary.simpleMessage("كل 5 دقايق"),
     "filter_all": MessageLookupByLibrary.simpleMessage("الكل"),
     "filter_archived": MessageLookupByLibrary.simpleMessage("مؤرشف"),
     "filter_favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),
@@ -117,18 +144,26 @@ class MessageLookup extends MessageLookupByLibrary {
       "مرحباً بعودتك! هل أنت مستعد لإنجاز المهام؟",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "more_details": MessageLookupByLibrary.simpleMessage("المزيد من التفاصيل"),
+    "more_options": MessageLookupByLibrary.simpleMessage("خيارات اخرى"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "never": MessageLookupByLibrary.simpleMessage("أبدًا"),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
     "no_notes_found": MessageLookupByLibrary.simpleMessage("لا توجد ملاحظات"),
     "no_notes_yet": MessageLookupByLibrary.simpleMessage(
       "لا توجد ملاحظات بعد!",
     ),
     "no_tasks_found": MessageLookupByLibrary.simpleMessage("لا توجد مهام"),
     "no_tasks_yet": MessageLookupByLibrary.simpleMessage("لا توجد مهام بعد!"),
+    "not_yet": MessageLookupByLibrary.simpleMessage("لا يوجد بعد"),
     "note_content": MessageLookupByLibrary.simpleMessage("محتوى الملاحظة"),
     "note_deleted": MessageLookupByLibrary.simpleMessage(
       "تم حذف الملاحظة بنجاح",
     ),
     "note_details": MessageLookupByLibrary.simpleMessage("تفاصيل الملاحظة"),
+    "note_not_synced": MessageLookupByLibrary.simpleMessage(
+      "لم تتم مزامنة هذه الملاحظة بعد.",
+    ),
     "note_saved": MessageLookupByLibrary.simpleMessage("تم حفظ الملاحظة بنجاح"),
     "note_title": MessageLookupByLibrary.simpleMessage("عنوان الملاحظة"),
     "note_updated": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +209,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
+    "restoringBackup": MessageLookupByLibrary.simpleMessage(
+      "تم العثور على نسخة احتياطية، جاري الاستعادة...",
+    ),
     "save_note": MessageLookupByLibrary.simpleMessage("حفظ الملاحظة"),
     "save_task": MessageLookupByLibrary.simpleMessage("حفظ المهمة"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
@@ -197,6 +235,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "تم إنشاء الحساب بنجاح",
     ),
+    "sync_banner_enable": MessageLookupByLibrary.simpleMessage(
+      "تفعيل المزامنة",
+    ),
+    "sync_banner_ignore": MessageLookupByLibrary.simpleMessage("تجاهل"),
+    "sync_banner_subtitle": MessageLookupByLibrary.simpleMessage(
+      "فعّل المزامنة لعمل نسخة احتياطية أونلاين",
+    ),
+    "sync_banner_title": MessageLookupByLibrary.simpleMessage(
+      "احفظ ملاحظاتك بأمان",
+    ),
     "task_archived": MessageLookupByLibrary.simpleMessage(
       "لم يتم إنجاز المهمة",
     ),
@@ -212,6 +260,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تعديل المهمة بنجاح",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
+    "unsyncedNotesMessage": MessageLookupByLibrary.simpleMessage(
+      "⚠️ لديك ملاحظات غير متزامنة! فعّل النسخ التلقائي أولاً.",
+    ),
     "update_note": MessageLookupByLibrary.simpleMessage("تعديل الملاحظة"),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا لك رابطًا للتحقق من عنوان بريدك الإلكتروني.\n إلى ",
@@ -219,7 +270,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "verify_email_title": MessageLookupByLibrary.simpleMessage(
       "تحقق من بريدك الإلكتروني...",
     ),
+    "warn_delete_1": MessageLookupByLibrary.simpleMessage(
+      "سيؤدي هذا الخيار إلى حذف جميع بياناتك...",
+    ),
+    "warn_delete_all_data": MessageLookupByLibrary.simpleMessage(
+      "هل تريد حذف جميع البيانات؟",
+    ),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "your_notes": MessageLookupByLibrary.simpleMessage("ملاحظاتك"),
     "your_tasks": MessageLookupByLibrary.simpleMessage("مهامك"),
   };

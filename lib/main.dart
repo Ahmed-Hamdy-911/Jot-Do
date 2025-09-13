@@ -32,7 +32,7 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => AuthCubit(
-          authRepoImpl,
+          authRepoImpl, 
         ),
       ),
     ],
