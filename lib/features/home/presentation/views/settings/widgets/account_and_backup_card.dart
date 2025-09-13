@@ -5,7 +5,6 @@ import 'package:iconly/iconly.dart';
 import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../core/helper/cache_helper.dart';
 import '../../../../../../core/routing/app_routes.dart';
-import '../../../../../../core/widgets/custom_bottom_sheet.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../auth/presentation/cubit/auth_cubit.dart';
 import '../../../../../auth/presentation/cubit/auth_states.dart';
@@ -90,21 +89,7 @@ class AccountAndBackupSettingsCard extends StatelessWidget {
               title: isLoggedIn ? S.of(context).logout : S.of(context).login,
               leadingIcon: isLoggedIn ? IconlyLight.logout : IconlyLight.login,
               onTap: () async {
-                if (isLoggedIn) {
-                  showMultiSelectBottomSheet(
-                    context,
-                    title: "Backup Options",
-                    options: [
-                      "Backup Online",
-                      "Backup Offline",
-                    ],
-                    onConfirm: (selectedItems) {
-                      debugPrint("Selected: $selectedItems");
-                    },
-                  );
-                } else {
-                  Navigator.pushNamed(context, AppRoutes.login);
-                }
+                context.read<AuthCubit>().logout();
               },
             ),
           ],

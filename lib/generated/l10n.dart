@@ -1074,6 +1074,41 @@ class S {
     );
   }
 
+  /// `Success`
+  String get success {
+    return Intl.message('Success', name: 'success', desc: '', args: []);
+  }
+
+  /// `Information`
+  String get info {
+    return Intl.message('Information', name: 'info', desc: '', args: []);
+  }
+
+  /// `Warning`
+  String get warning {
+    return Intl.message('Warning', name: 'warning', desc: '', args: []);
+  }
+
+  /// `No internet connection`
+  String get noInternet {
+    return Intl.message(
+      'No internet connection',
+      name: 'noInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internet connection has been restored.`
+  String get connectedInternet {
+    return Intl.message(
+      'Internet connection has been restored.',
+      name: 'connectedInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Automatic backup & sync`
   String get automatically_backup_sync {
     return Intl.message(

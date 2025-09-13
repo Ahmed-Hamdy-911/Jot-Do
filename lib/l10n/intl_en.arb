@@ -123,6 +123,11 @@
     "delete_all_data_success": "All data deleted successfully",
     "delete_all_data_failed": "Failed to delete all data",
     "error": "Something went wrong",
+    "success": "Success",
+    "info": "Information",
+    "warning": "Warning",
+    "noInternet": "No internet connection",
+    "connectedInternet": "Internet connection has been restored.",
     "automatically_backup_sync": "Automatic backup & sync",
     "enable": "Enable",
     "disable": "Disable",
@@ -142,6 +147,6 @@
     "sync_banner_subtitle": "Enable sync to backup your notes online",
     "sync_banner_enable": "Enable Sync",
     "sync_banner_ignore": "Ignore",
-     "restoringBackup": "Backup found, restoring your notes...",
+    "restoringBackup": "Backup found, restoring your notes...",
     "unsyncedNotesMessage": "⚠️ You have out-of-sync notes! Turn on auto-transcription first.."
 }

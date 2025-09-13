@@ -50,6 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "connectedInternet": MessageLookupByLibrary.simpleMessage(
+      "Internet connection has been restored.",
+    ),
     "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
     "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
     "created_at": MessageLookupByLibrary.simpleMessage("Created At: "),
@@ -118,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "info": MessageLookupByLibrary.simpleMessage("Information"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "last_updated": MessageLookupByLibrary.simpleMessage("Last Updated: "),
     "light": MessageLookupByLibrary.simpleMessage("Light"),
@@ -141,6 +145,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "never": MessageLookupByLibrary.simpleMessage("Never"),
     "no": MessageLookupByLibrary.simpleMessage("No"),
+    "noInternet": MessageLookupByLibrary.simpleMessage(
+      "No internet connection",
+    ),
     "no_notes_found": MessageLookupByLibrary.simpleMessage("No notes found"),
     "no_notes_yet": MessageLookupByLibrary.simpleMessage("No notes yet!"),
     "no_tasks_found": MessageLookupByLibrary.simpleMessage("No tasks found"),
@@ -219,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "splashText1": MessageLookupByLibrary.simpleMessage("Welcome to Jot&Do"),
     "splashText2": MessageLookupByLibrary.simpleMessage("Plan. Note. Do."),
+    "success": MessageLookupByLibrary.simpleMessage("Success"),
     "success_login": MessageLookupByLibrary.simpleMessage("Login successful"),
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "Registration successful",
@@ -266,6 +274,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "warn_delete_all_data": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete all data?",
     ),
+    "warning": MessageLookupByLibrary.simpleMessage("Warning"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "your_notes": MessageLookupByLibrary.simpleMessage("Your Notes"),

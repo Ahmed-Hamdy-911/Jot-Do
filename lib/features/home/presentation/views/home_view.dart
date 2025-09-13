@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/cubits/connectivity/connectivity_cubit.dart';
+import '../../../../core/cubits/connectivity/connectivity_state.dart';
+import '../../../../core/models/message_type.dart';
+import '../../../../core/widgets/custom_snackbar.dart';
+import '../../../../generated/l10n.dart';
 import '../cubits/bottom_navi/bottom_navi_cubit_cubit.dart';
 import 'settings/settings_view.dart';
 import '../widgets/home_body.dart';
@@ -14,9 +19,26 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BottomNaviCubit(),
-      child: const HomeScaffold(),
+    return BlocListener<ConnectivityCubit, ConnectivityStates>(
+      listener: (context, state) {
+        if (state is ConnectivityDisconnected) {
+          CustomSnackBar.showSnackBar(
+            S.of(context).noInternet,
+            context,
+            MessageType.warning,
+          );
+        } else if (state is ConnectivityReconnected) {
+          CustomSnackBar.showSnackBar(
+            S.of(context).connectedInternet,
+            context,
+            MessageType.success,
+          );
+        }
+      },
+      child: BlocProvider(
+        create: (context) => BottomNaviCubit(),
+        child: const HomeScaffold(),
+      ),
     );
   }
 }

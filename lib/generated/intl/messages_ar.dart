@@ -54,6 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "connectedInternet": MessageLookupByLibrary.simpleMessage(
+      "تم استعادة الاتصال بالإنترنت",
+    ),
     "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب جديد"),
     "created_at": MessageLookupByLibrary.simpleMessage("تم الانشاء في: "),
@@ -126,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تسجيل الدخول باستخدام جوجل",
     ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "info": MessageLookupByLibrary.simpleMessage("معلومة"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "last_updated": MessageLookupByLibrary.simpleMessage("تم التحديث في: "),
     "light": MessageLookupByLibrary.simpleMessage("فاتح"),
@@ -149,6 +153,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "never": MessageLookupByLibrary.simpleMessage("أبدًا"),
     "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "noInternet": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد اتصال بالإنترنت",
+    ),
     "no_notes_found": MessageLookupByLibrary.simpleMessage("لا توجد ملاحظات"),
     "no_notes_yet": MessageLookupByLibrary.simpleMessage(
       "لا توجد ملاحظات بعد!",
@@ -229,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "مرحبًا بك في دوّن و نفذ",
     ),
     "splashText2": MessageLookupByLibrary.simpleMessage("خطط. دوّن. نفّذ."),
+    "success": MessageLookupByLibrary.simpleMessage("نجاح"),
     "success_login": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
     ),
@@ -276,6 +284,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "warn_delete_all_data": MessageLookupByLibrary.simpleMessage(
       "هل تريد حذف جميع البيانات؟",
     ),
+    "warning": MessageLookupByLibrary.simpleMessage("تحذير"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "your_notes": MessageLookupByLibrary.simpleMessage("ملاحظاتك"),

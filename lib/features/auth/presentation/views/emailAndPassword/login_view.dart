@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/cubits/connectivity/connectivity_cubit.dart';
+import '../../../../../core/cubits/connectivity/connectivity_state.dart';
+import '../../../../../core/models/message_type.dart';
+import '../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
@@ -19,39 +23,62 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     String title = S.of(context).welcome_back;
     String subtitle = S.of(context).login_call_to_action;
-    return BlocListener<AuthCubit, AuthStates>(
-      listener: (context, state) {
-        debugPrint("Listener triggered with state: $state");
-        if (state is AuthSuccess ||
-            state is AuthEmailVerified ||
-            state is AuthGoogleSignInSuccess) {
-          Navigator.pushReplacementNamed(context, AppRoutes.home);
-        } else if (state is GoVerificationState) {
-          Navigator.pushNamed(
-            context,
-            AppRoutes.verifyEmail,
-            arguments: state.email,
-          );
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
-        }
-        if (state is AuthFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
-          );
-        }
-        if (state is AuthEmailVerificationSent) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
-        }
-        if (state is AuthEmailVerificationNeeded) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message!)),
-          );
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthCubit, AuthStates>(
+          listener: (context, state) {
+            debugPrint("Listener triggered with state: //");
+            if (state is AuthSuccess ||
+                state is AuthEmailVerified ||
+                state is AuthGoogleSignInSuccess) {
+              Navigator.pushReplacementNamed(context, AppRoutes.home);
+            } else if (state is GoVerificationState) {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.verifyEmail,
+                arguments: state.email,
+              );
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message!)),
+              );
+            }
+            if (state is AuthFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+            }
+            if (state is AuthEmailVerificationSent) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message!)),
+              );
+            }
+            if (state is AuthEmailVerificationNeeded) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.message!)),
+              );
+            }
+          },
+        ),
+        BlocListener<ConnectivityCubit, ConnectivityStates>(
+          listenWhen: (previous, current) =>
+              previous.runtimeType != current.runtimeType,
+          listener: (context, state) {
+            if (state is ConnectivityDisconnected) {
+              CustomSnackBar.showSnackBar(
+                S.of(context).noInternet,
+                context,
+                MessageType.warning,
+              );
+            } else if (state is ConnectivityReconnected) {
+              CustomSnackBar.showSnackBar(
+                S.of(context).connectedInternet,
+                context,
+                MessageType.success,
+              );
+            }
+          },
+        ),
+      ],
       child: AbsorbPointer(
         absorbing: context.watch<AuthCubit>().state is AuthLoadingState ||
             context.watch<AuthCubit>().state is AuthLoadingGoogleSignIn,
