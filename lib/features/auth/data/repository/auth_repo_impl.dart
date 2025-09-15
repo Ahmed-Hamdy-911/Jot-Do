@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -24,7 +27,22 @@ class AuthRepoImpl implements AuthRepository {
       );
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on register from AuthRepo: ${e.code}");
-      rethrow;
+      if (e.code == "network-request-failed") {
+        throw ("No internet connection");
+      }
+
+      switch (e.code) {
+        case "email-already-in-use":
+          throw ("This email is already in use. Please try again.");
+
+        case "weak-password":
+          throw ("Password is too weak. Please try again.");
+
+        default:
+          throw ("Something went wrong. Please try again.");
+      }
+    } on TimeoutException catch (_) {
+      throw ("No internet connection");
     } catch (e) {
       debugPrint("Exception on register from AuthRepo: ${e.toString()}");
       rethrow;
@@ -42,8 +60,13 @@ class AuthRepoImpl implements AuthRepository {
         email: email,
         password: password,
       );
+    } on TimeoutException catch (_) {
+      throw ("Time out No internet connection");
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on login from AuthRepo: ${e.code}");
+      if (e.code == "network-request-failed") {
+        throw ("No internet connection");
+      }
       rethrow;
     } catch (e) {
       debugPrint("Exception on login from AuthRepo: ${e.toString()}");
@@ -57,6 +80,9 @@ class AuthRepoImpl implements AuthRepository {
       if (kIsWeb) {
         final googleProvider = GoogleAuthProvider();
         return await _firebaseAuth.signInWithPopup(googleProvider);
+      } else if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+        throw UnimplementedError(
+            "Google Sign-In not supported on this platform.");
       } else {
         final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
@@ -78,14 +104,19 @@ class AuthRepoImpl implements AuthRepository {
 
         return await _firebaseAuth.signInWithCredential(credential);
       }
-    } on FirebaseAuthException catch (e) {
+    } on GoogleSignInException catch (e) {
       debugPrint(
-          "FirebaseAuthException on signInWithGoogle from AuthRepo: ${e.code}");
-      rethrow;
-    } catch (e) {
-      debugPrint(
-          "Exception on signInWithGoogle from AuthRepo: ${e.toString()}");
-      rethrow;
+          "GoogleSignInException on signInWithGoogle from AuthRepo: ${e.code}");
+      if (e.code == "network-request-failed") {
+        throw ("No internet connection");
+      }
+      if (e.code == "GoogleSignInExceptionCode.canceled") {
+        return null;
+      } else if (e.code == "GoogleSignInExceptionCode.networkError") {
+        throw ("No internet connection");
+      } else {
+        rethrow;
+      }
     }
   }
 
@@ -101,6 +132,15 @@ class AuthRepoImpl implements AuthRepository {
         await googleUser.disconnect();
         await googleUser.signOut();
       }
+    } on FirebaseAuthException catch (e) {
+      debugPrint("FirebaseAuthException on sign out from AuthRepo: ${e.code}");
+      if (e.code == "network-request-failed") {
+        throw ("No internet connection");
+      }
+      if (e.code == "NetworkError") {
+        throw ("No internet connection");
+      }
+      rethrow;
     } catch (e) {
       debugPrint("Exception on sign out from AuthRepo: ${e.toString()}");
       rethrow;
@@ -128,6 +168,9 @@ class AuthRepoImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       debugPrint(
           "FirebaseAuthException on sendPasswordResetEmail from AuthRepo: ${e.code}");
+      if (e.code == "network-request-failed") {
+        throw ("No internet connection");
+      }
       rethrow;
     } catch (e) {
       debugPrint(

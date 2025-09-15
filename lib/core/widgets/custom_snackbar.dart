@@ -27,10 +27,14 @@ class CustomSnackBar {
         elevation: 0,
         behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.transparent,
+        duration: const Duration(seconds: 3),
+        dismissDirection: DismissDirection.horizontal,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         content: AwesomeSnackbarContent(
-            title: _returnTitle(messageType, context),
-            message: message,
-            contentType: _mapToContentType(messageType)),
+          title: _returnTitle(messageType, context),
+          message: message,
+          contentType: _mapToContentType(messageType),
+        ),
       ),
     );
   }

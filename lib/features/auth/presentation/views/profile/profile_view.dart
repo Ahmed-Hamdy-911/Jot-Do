@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/cubits/settings/setting_cubit.dart';
+import '../../../../../core/models/message_type.dart';
 import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
+import '../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/repository/user_repo_impl.dart';
@@ -63,8 +65,10 @@ class _ProfileViewState extends State<ProfileView> {
   Future<void> _submitName() async {
     final newName = _nameController.text.trim();
     if (newName.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(S.of(context).error)),
+      CustomSnackBar.showSnackBar(
+        S.of(context).error,
+        context,
+        MessageType.error,
       );
       return;
     }
@@ -84,7 +88,7 @@ class _ProfileViewState extends State<ProfileView> {
         email: currentUser.email,
         name: newName,
         createdAt: currentUser.createdAt,
-        updatedAt: DateTime.now().toIso8601String(),
+        updatedAt: DateTime.now().millisecondsSinceEpoch.toString(),
       );
 
       await _userRepo.updateUser(updatedUser);
@@ -95,13 +99,17 @@ class _ProfileViewState extends State<ProfileView> {
         _isEditing = false;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Profile updated successfully")),
+      CustomSnackBar.showSnackBar(
+        S.of(context).profile_updated_success,
+        context,
+        MessageType.success,
       );
     } catch (e) {
       debugPrint('Update name error: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(S.of(context).error)),
+      CustomSnackBar.showSnackBar(
+        S.of(context).profile_updated_failed,
+        context,
+        MessageType.error,
       );
     } finally {
       setState(() => _isUpdating = false);
@@ -124,18 +132,21 @@ class _ProfileViewState extends State<ProfileView> {
         actions: [
           if (_isEditing)
             Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsetsDirectional.only(start: 16.0),
               child: _isUpdating
                   ? const Center(
                       child: SizedBox(
                         width: 24,
                         height: 24,
-                        child: CircularProgressIndicator(strokeWidth: 2),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 3,
+                          color: AppColor.greenColor,
+                        ),
                       ),
                     )
                   : IconButton(
                       onPressed: _submitName,
-                      icon: const Icon(Icons.done, color: Colors.green),
+                      icon: const Icon(Icons.done, color: AppColor.greenColor),
                     ),
             ),
         ],
@@ -225,7 +236,13 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                   const LargeSpace(),
                   CustomMaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      CustomSnackBar.showSnackBar(
+                        "لسا بخلص فحاجات اهم الله ارحموني",
+                        context,
+                        MessageType.info,
+                      );
+                    },
                     text: S.of(context).delete,
                     color: Colors.red,
                   ),

@@ -148,5 +148,8 @@
     "sync_banner_enable": "تفعيل المزامنة",
     "sync_banner_ignore": "تجاهل",
     "restoringBackup": "تم العثور على نسخة احتياطية، جاري الاستعادة...",
-    "unsyncedNotesMessage": "⚠️ لديك ملاحظات غير متزامنة! فعّل النسخ التلقائي أولاً."
+    "unsyncedNotesMessage": "⚠️ لديك ملاحظات غير متزامنة! فعّل النسخ التلقائي أولاً.",
+    "comingSoon": "قريباً",
+    "profile_updated_failed": "فشل تحديث الملف الشخصي",
+    "profile_updated_success": "تم تحديث الملف الشخصي بنجاح"
 }

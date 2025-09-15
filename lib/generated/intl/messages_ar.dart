@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "backup_synced_successfully": MessageLookupByLibrary.simpleMessage(
       "تم نسخ ومزامنة البيانات بنجاح",
     ),
+    "comingSoon": MessageLookupByLibrary.simpleMessage("قريباً"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -203,6 +204,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "من فضلك قم بتسجيل الدخول أولاً",
     ),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "profile_updated_failed": MessageLookupByLibrary.simpleMessage(
+      "فشل تحديث الملف الشخصي",
+    ),
+    "profile_updated_success": MessageLookupByLibrary.simpleMessage(
+      "تم تحديث الملف الشخصي بنجاح",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "قم بإنشاء حسابك وافتح الميزات الحصرية.",

@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/app_constants.dart';
 import 'core/constants/app_themes.dart';
-import 'core/cubits/connectivity/connectivity_cubit.dart';
+import 'core/cubits/connectivity/connection_cubit.dart';
 import 'core/cubits/settings/setting_cubit.dart';
 import 'core/cubits/settings/setting_state.dart';
 import 'core/routing/app_routes.dart';
 import 'core/cubits/bloc_observer.dart';
 import 'core/routing/app_router.dart';
-import 'core/services/connectivity_service.dart';
 import 'core/services/local_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'features/auth/data/repository/auth_repo_impl.dart';
@@ -37,9 +36,7 @@ void main() async {
         ),
       ),
       BlocProvider(
-        create: (context) => ConnectivityCubit(
-          ConnectivityService(),
-        ),
+        create: (context) => ConnectionCubit(),
       )
     ],
     child: const MyApp(),

@@ -4,7 +4,9 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/cubits/settings/setting_cubit.dart';
+import '../../../../core/models/message_type.dart';
 import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../core/widgets/custom_snackbar.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/auth_cubit.dart';
 import '../cubit/auth_states.dart';
@@ -38,7 +40,10 @@ class SocialAuthWidget extends StatelessWidget {
             widget: const Icon(Icons.apple_rounded,
                 size: 35, color: AppColor.blackColor),
             text: S.of(context).apple,
-            onPressed: () async {},
+            onPressed: () {
+              CustomSnackBar.showSnackBar(
+                  S.of(context).comingSoon, context, MessageType.info);
+            },
             isLoading: false,
           ),
         ],

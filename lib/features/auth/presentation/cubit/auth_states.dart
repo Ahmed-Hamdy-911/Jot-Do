@@ -56,6 +56,8 @@ class AuthGoogleSignInFailure extends AuthStates {
   AuthGoogleSignInFailure(this.error);
 }
 
+class AuthGoogleSignInCanceled extends AuthStates {}
+
 class AuthPasswordResetEmailSent extends AuthStates {
   final String? message;
   AuthPasswordResetEmailSent(this.message);

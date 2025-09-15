@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/helper/cache_helper.dart';
 import '../../../auth/data/repository/auth_repository.dart';
 import '../../../auth/presentation/views/emailAndPassword/login_view.dart';
@@ -12,12 +13,13 @@ class SplashRepo {
   SplashRepo(this.authRepository);
 
   Widget checkNextScreen() {
-    bool onboardingFinished = CacheHelper.getData(key: 'onBoarding') ?? false;
+    bool onboardingFinished =
+        CacheHelper.getData(key: AppConstants.onboardingFinished) ?? false;
     bool skipAuthentication =
-        CacheHelper.getData(key: 'skipAuthentication') ?? false;
+        CacheHelper.getData(key: AppConstants.skipAuthentication) ?? false;
 
-    final isLoggedIn = CacheHelper.getData(key: 'isLoggedIn') ?? false;
-
+    final isLoggedIn =
+        CacheHelper.getData(key: AppConstants.isLoggedIn) ?? false;
     if (!onboardingFinished) {
       return const OnBoardingView();
     }

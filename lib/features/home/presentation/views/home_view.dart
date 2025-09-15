@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/cubits/connectivity/connectivity_cubit.dart';
-import '../../../../core/cubits/connectivity/connectivity_state.dart';
+import '../../../../core/cubits/connectivity/connection_cubit.dart';
+import '../../../../core/cubits/connectivity/connection_state.dart';
 import '../../../../core/models/message_type.dart';
 import '../../../../core/widgets/custom_snackbar.dart';
 import '../../../../generated/l10n.dart';
@@ -19,15 +19,22 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ConnectivityCubit, ConnectivityStates>(
+    return BlocListener<ConnectionCubit, ConnectionStates>(
       listener: (context, state) {
-        if (state is ConnectivityDisconnected) {
+        if (state is ConnectionTimeOut) {
+          CustomSnackBar.showSnackBar(
+            state.message,
+            context,
+            MessageType.info,
+          );
+        }
+        if (state is ConnectionDisconnected) {
           CustomSnackBar.showSnackBar(
             S.of(context).noInternet,
             context,
             MessageType.warning,
           );
-        } else if (state is ConnectivityReconnected) {
+        } else if (state is ConnectionReconnected) {
           CustomSnackBar.showSnackBar(
             S.of(context).connectedInternet,
             context,

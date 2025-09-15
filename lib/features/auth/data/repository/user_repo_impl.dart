@@ -58,7 +58,7 @@ class UserRepoImpl implements UserRepository {
   @override
   Future<void> updateUser(UserModel user) {
     try {
-      user.updatedAt = DateTime.now().toIso8601String();
+      user.updatedAt = DateTime.now().millisecondsSinceEpoch.toString();
       return _firestore
           .collection(userCollectionName)
           .doc(user.id)

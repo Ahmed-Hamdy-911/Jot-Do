@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/cubits/connectivity/connectivity_cubit.dart';
-import '../../../../../core/cubits/connectivity/connectivity_state.dart';
+import '../../../../../core/cubits/connectivity/connection_cubit.dart';
+import '../../../../../core/cubits/connectivity/connection_state.dart';
 import '../../../../../core/models/message_type.dart';
 import '../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../generated/l10n.dart';
@@ -27,49 +27,69 @@ class LoginView extends StatelessWidget {
       listeners: [
         BlocListener<AuthCubit, AuthStates>(
           listener: (context, state) {
-            debugPrint("Listener triggered with state: //");
+            debugPrint("Listener triggered with state: //$state");
             if (state is AuthSuccess ||
                 state is AuthEmailVerified ||
                 state is AuthGoogleSignInSuccess) {
               Navigator.pushReplacementNamed(context, AppRoutes.home);
             } else if (state is GoVerificationState) {
+              CustomSnackBar.showSnackBar(
+                state.message!,
+                context,
+                MessageType.warning,
+              );
               Navigator.pushNamed(
                 context,
                 AppRoutes.verifyEmail,
                 arguments: state.email,
               );
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message!)),
-              );
             }
             if (state is AuthFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.error)),
+              CustomSnackBar.showSnackBar(
+                state.error,
+                context,
+                MessageType.error,
               );
             }
             if (state is AuthEmailVerificationSent) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message!)),
+              CustomSnackBar.showSnackBar(
+                state.message!,
+                context,
+                MessageType.success,
               );
             }
             if (state is AuthEmailVerificationNeeded) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message!)),
+              CustomSnackBar.showSnackBar(
+                state.message!,
+                context,
+                MessageType.warning,
+              );
+            }
+            if (state is AuthGoogleSignInFailure) {
+              CustomSnackBar.showSnackBar(
+                state.error,
+                context,
+                MessageType.error,
               );
             }
           },
         ),
-        BlocListener<ConnectivityCubit, ConnectivityStates>(
-          listenWhen: (previous, current) =>
-              previous.runtimeType != current.runtimeType,
+        BlocListener<ConnectionCubit, ConnectionStates>(
+          listenWhen: (previous, current) => previous != current,
           listener: (context, state) {
-            if (state is ConnectivityDisconnected) {
+            if (state is ConnectionDisconnected) {
               CustomSnackBar.showSnackBar(
                 S.of(context).noInternet,
                 context,
-                MessageType.warning,
+                MessageType.error,
               );
-            } else if (state is ConnectivityReconnected) {
+            } else if (state is ConnectionTimeOut) {
+              CustomSnackBar.showSnackBar(
+                S.of(context).noInternet,
+                context,
+                MessageType.info,
+              );
+            } else if (state is ConnectionReconnected) {
               CustomSnackBar.showSnackBar(
                 S.of(context).connectedInternet,
                 context,
@@ -92,11 +112,7 @@ class LoginView extends StatelessWidget {
                     child: CustomSkipButton(
                       onPressed: () {
                         CacheAuthRepo.skipAuthentication();
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          AppRoutes.home,
-                          (route) => false,
-                        );
+                        Navigator.pushReplacementNamed(context, AppRoutes.home);
                       },
                     ),
                   ),

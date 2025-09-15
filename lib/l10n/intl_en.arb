@@ -148,5 +148,8 @@
     "sync_banner_enable": "Enable Sync",
     "sync_banner_ignore": "Ignore",
     "restoringBackup": "Backup found, restoring your notes...",
-    "unsyncedNotesMessage": "⚠️ You have out-of-sync notes! Turn on auto-transcription first.."
+    "unsyncedNotesMessage": "⚠️ You have out-of-sync notes! Turn on auto-transcription first..",
+    "comingSoon": "Coming soon",
+    "profile_updated_failed": "Failed to update profile",
+    "profile_updated_success": "Profile updated successfully"
 }

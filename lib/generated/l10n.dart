@@ -1293,6 +1293,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Coming soon`
+  String get comingSoon {
+    return Intl.message('Coming soon', name: 'comingSoon', desc: '', args: []);
+  }
+
+  /// `Failed to update profile`
+  String get profile_updated_failed {
+    return Intl.message(
+      'Failed to update profile',
+      name: 'profile_updated_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully`
+  String get profile_updated_success {
+    return Intl.message(
+      'Profile updated successfully',
+      name: 'profile_updated_success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

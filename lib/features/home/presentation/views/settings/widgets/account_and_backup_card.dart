@@ -4,7 +4,9 @@ import 'package:iconly/iconly.dart';
 
 import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../core/helper/cache_helper.dart';
+import '../../../../../../core/models/message_type.dart';
 import '../../../../../../core/routing/app_routes.dart';
+import '../../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../auth/presentation/cubit/auth_cubit.dart';
 import '../../../../../auth/presentation/cubit/auth_states.dart';
@@ -26,6 +28,13 @@ class AccountAndBackupSettingsCard extends StatelessWidget {
             context,
             AppRoutes.splash,
             (route) => false,
+          );
+        }
+        if (state is AuthFailure) {
+          CustomSnackBar.showSnackBar(
+            state.error,
+            context,
+            MessageType.error,
           );
         }
       },
@@ -88,8 +97,20 @@ class AccountAndBackupSettingsCard extends StatelessWidget {
             CustomSettingItem(
               title: isLoggedIn ? S.of(context).logout : S.of(context).login,
               leadingIcon: isLoggedIn ? IconlyLight.logout : IconlyLight.login,
+              trailing: context.watch<AuthCubit>().state is AuthLoadingState
+                  ? const CircularProgressIndicator(
+                      padding: EdgeInsets.all(12),
+                      strokeWidth: 4,
+                    )
+                  : null,
               onTap: () async {
-                context.read<AuthCubit>().logout();
+                if (isLoggedIn) {
+                  await context.read<AuthCubit>().logout();
+                } else {
+                  CacheHelper.saveData(
+                      key: AppConstants.skipAuthentication, value: false);
+                  Navigator.pushNamed(context, AppRoutes.login);
+                }
               },
             ),
           ],

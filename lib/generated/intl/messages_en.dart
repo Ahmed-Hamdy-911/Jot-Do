@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "backup_synced_successfully": MessageLookupByLibrary.simpleMessage(
       "Backup synced successfully",
     ),
+    "comingSoon": MessageLookupByLibrary.simpleMessage("Coming soon"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
@@ -197,6 +198,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please login first",
     ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "profile_updated_failed": MessageLookupByLibrary.simpleMessage(
+      "Failed to update profile",
+    ),
+    "profile_updated_success": MessageLookupByLibrary.simpleMessage(
+      "Profile updated successfully",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "Create your account and unlock exclusive features.",

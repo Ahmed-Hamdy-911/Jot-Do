@@ -39,6 +39,11 @@ class AppColor {
   static const amberLightColor = Color(0xffffc107);
   static const amberDarkColor = Color(0xffc0a800);
 
+  // green
+  static const greenColor = Colors.green;
+  static const greenLightColor = Color(0xff26C281);
+  static const greenDarkColor = Color.fromARGB(255, 7, 122, 74);
+
   // blue
   static const blueColor = Colors.blue;
   static const blueLightColor = Color(0xff4fc3f7);
