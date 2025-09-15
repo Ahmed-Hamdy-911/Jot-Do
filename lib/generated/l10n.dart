@@ -519,10 +519,10 @@ class S {
     return Intl.message('Continue', name: 'continue_text', desc: '', args: []);
   }
 
-  /// `Resend Code?`
+  /// `Resend email?`
   String get resend_code {
     return Intl.message(
-      'Resend Code?',
+      'Resend email?',
       name: 'resend_code',
       desc: '',
       args: [],

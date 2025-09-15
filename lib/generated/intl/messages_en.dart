@@ -213,7 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "registering": MessageLookupByLibrary.simpleMessage("Registering..."),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember Me"),
-    "resend_code": MessageLookupByLibrary.simpleMessage("Resend Code?"),
+    "resend_code": MessageLookupByLibrary.simpleMessage("Resend email?"),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "restoringBackup": MessageLookupByLibrary.simpleMessage(
       "Backup found, restoring your notes...",

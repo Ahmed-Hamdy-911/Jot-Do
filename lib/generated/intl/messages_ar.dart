@@ -219,7 +219,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "registering": MessageLookupByLibrary.simpleMessage("جاري إنشاء الحساب..."),
     "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),
-    "resend_code": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز؟"),
+    "resend_code": MessageLookupByLibrary.simpleMessage(
+      "اعادة ارسال البريد الألكتروني؟",
+    ),
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),

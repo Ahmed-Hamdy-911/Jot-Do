@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/views/profile/profile_view.dart';
 import '../../features/home/data/models/note_model.dart';
 import '../../features/home/presentation/views/note/add_note/add_note_view.dart';
@@ -12,6 +13,8 @@ import '../../features/auth/presentation/views/forgot_password/forgot_password_v
 import '../../features/auth/presentation/views/verification/verification_email_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/on_boarding/presentation/views/on_boarding_view.dart';
+import '../cubits/countdown_timer/countdown_timer_cubit.dart';
+import '../services/countdown_timer_service.dart';
 import 'app_routes.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -40,7 +43,10 @@ class AppRouter {
         final email = settings.arguments as String;
         return PageTransition(
           type: PageTransitionType.fade,
-          child: VerificationEmailView(email: email),
+          child: BlocProvider(
+            create: (_) => CountdownTimerCubit(CountdownTimerService()),
+            child: VerificationEmailView(email: email),
+          ),
           settings: settings,
         );
       case AppRoutes.profile:

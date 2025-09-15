@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/cubits/countdown_timer/countdown_timer_cubit.dart';
+import '../../../../../core/cubits/countdown_timer/countdown_timer_state.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -37,13 +39,24 @@ class VerificationEmailView extends StatelessWidget {
   }
 }
 
-class VerificationBody extends StatelessWidget {
+class VerificationBody extends StatefulWidget {
   const VerificationBody({
     super.key,
     required this.email,
   });
 
   final String email;
+
+  @override
+  State<VerificationBody> createState() => _VerificationBodyState();
+}
+
+class _VerificationBodyState extends State<VerificationBody> {
+  @override
+  void initState() {
+    context.read<CountdownTimerCubit>().startTimer(fromSeconds: 120);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +96,7 @@ class VerificationBody extends StatelessWidget {
                             : MediaQuery.sizeOf(context).width * 0.015,
                       )),
                   TextSpan(
-                    text: email,
+                    text: widget.email,
                     style: TextStyle(
                       color: Colors.blue,
                       height: 1.7,
@@ -104,23 +117,52 @@ class VerificationBody extends StatelessWidget {
                 text: S.of(context).continue_text,
               ),
               const MediumSpace(),
-              Row(
-                children: [
-                  TextButton(
-                    onPressed: () async {
-                      await context.read<AuthCubit>().resendVerificationEmail();
-                    },
-                    child: Text(
-                      S.of(context).resend_code,
-                      style: const TextStyle(
-                        decoration: TextDecoration.underline,
-                        height: 0.7,
-                        fontSize: 16,
-                        color: AppColor.colorScheme,
-                      ),
-                    ),
-                  )
-                ],
+              BlocBuilder<CountdownTimerCubit, CountdownTimerState>(
+                builder: (context, state) {
+                  return Row(
+                    children: [
+                      state.isCompleted
+                          ? TextButton(
+                              onPressed: () async {
+                                await context
+                                    .read<AuthCubit>()
+                                    .resendVerificationEmail();
+                                context
+                                    .read<CountdownTimerCubit>()
+                                    .startTimer(fromSeconds: 120);
+                              },
+                              child: Text(
+                                S.of(context).resend_code,
+                                style: const TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  height: 0.7,
+                                  fontSize: 16,
+                                  color: AppColor.colorScheme,
+                                ),
+                              ),
+                            )
+                          : RichText(
+                              text: TextSpan(
+                              text: S.of(context).resend_code,
+                              style: const TextStyle(
+                                height: 0.7,
+                                fontSize: 16,
+                                color: AppColor.colorScheme,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: state.secondLeft.toString(),
+                                  style: const TextStyle(
+                                    height: 0.7,
+                                    fontSize: 16,
+                                    color: AppColor.colorScheme,
+                                  ),
+                                ),
+                              ],
+                            )),
+                    ],
+                  );
+                },
               )
             ],
           ),
