@@ -98,9 +98,12 @@ class AccountAndBackupSettingsCard extends StatelessWidget {
               title: isLoggedIn ? S.of(context).logout : S.of(context).login,
               leadingIcon: isLoggedIn ? IconlyLight.logout : IconlyLight.login,
               trailing: context.watch<AuthCubit>().state is AuthLoadingState
-                  ? const CircularProgressIndicator(
-                      padding: EdgeInsets.all(12),
-                      strokeWidth: 4,
+                  ? const SizedBox(
+                      height: 28,
+                      width: 28,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                      ),
                     )
                   : null,
               onTap: () async {

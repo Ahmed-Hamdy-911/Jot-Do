@@ -22,7 +22,14 @@ class FormatService {
       return formatter.format(dateTime);
     } else if (dateTime is String) {
       try {
-        return formatter.format(DateTime.parse(dateTime));
+        // ✅ لو String رقم (millisecondsSinceEpoch)
+        if (RegExp(r'^\d+$').hasMatch(dateTime)) {
+          return formatter.format(
+              DateTime.fromMillisecondsSinceEpoch(int.parse(dateTime))
+                  .toLocal());
+        }
+        // ✅ لو String ISO
+        return formatter.format(DateTime.parse(dateTime).toLocal());
       } catch (e) {
         return dateTime;
       }

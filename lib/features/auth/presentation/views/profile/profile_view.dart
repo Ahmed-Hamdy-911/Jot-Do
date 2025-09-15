@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/cubits/connectivity/connection_cubit.dart';
 import '../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../core/models/message_type.dart';
 import '../../../../../core/services/format_service.dart';
@@ -56,6 +57,7 @@ class _ProfileViewState extends State<ProfileView> {
     super.dispose();
   }
 
+  Future<bool> get hasInternet => ConnectionCubit().checkConnection();
   Future<void> _refreshUser() async {
     setState(() {
       _userFuture = _userRepo.getUserById(_userId);
@@ -63,6 +65,14 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Future<void> _submitName() async {
+    if (!await hasInternet) {
+      CustomSnackBar.showSnackBar(
+        S.of(context).noInternet,
+        context,
+        MessageType.error,
+      );
+      return;
+    }
     final newName = _nameController.text.trim();
     if (newName.isEmpty) {
       CustomSnackBar.showSnackBar(
@@ -132,7 +142,7 @@ class _ProfileViewState extends State<ProfileView> {
         actions: [
           if (_isEditing)
             Padding(
-              padding: const EdgeInsetsDirectional.only(start: 16.0),
+              padding: const EdgeInsetsDirectional.only(end: 16.0),
               child: _isUpdating
                   ? const Center(
                       child: SizedBox(
