@@ -69,10 +69,10 @@ class S {
     );
   }
 
-  /// `Plan. Note. Do.`
+  /// `Plan. Jot. Do.`
   String get splashText2 {
     return Intl.message(
-      'Plan. Note. Do.',
+      'Plan. Jot. Do.',
       name: 'splashText2',
       desc: '',
       args: [],
@@ -89,50 +89,50 @@ class S {
     );
   }
 
-  /// `Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.`
+  /// `Never lose an idea again — capture your thoughts in seconds, anytime, anywhere.`
   String get onBoardingDesc1 {
     return Intl.message(
-      'Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.',
+      'Never lose an idea again — capture your thoughts in seconds, anytime, anywhere.',
       name: 'onBoardingDesc1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Set Deadlines Easily`
+  /// `Set Deadlines with Ease`
   String get onBoardingTitle2 {
     return Intl.message(
-      'Set Deadlines Easily',
+      'Set Deadlines with Ease',
       name: 'onBoardingTitle2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Categorize, color-code, and set dates to keep your notes neat and easy to find.`
+  /// `Categorize, color-code, and set dates to keep your notes organized and accessible.`
   String get onBoardingDesc2 {
     return Intl.message(
-      'Categorize, color-code, and set dates to keep your notes neat and easy to find.',
+      'Categorize, color-code, and set dates to keep your notes organized and accessible.',
       name: 'onBoardingDesc2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sync Your Notes`
+  /// `Sync Across Devices`
   String get onBoardingTitle3 {
     return Intl.message(
-      'Sync Your Notes',
+      'Sync Across Devices',
       name: 'onBoardingTitle3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Save your data locally or back it up to the cloud, all in one tap.`
+  /// `Save locally or back up to the cloud — all with a single tap.`
   String get onBoardingDesc3 {
     return Intl.message(
-      'Save your data locally or back it up to the cloud, all in one tap.',
+      'Save locally or back up to the cloud — all with a single tap.',
       name: 'onBoardingDesc3',
       desc: '',
       args: [],
@@ -154,30 +154,30 @@ class S {
     );
   }
 
-  /// `Welcome back! Ready to get things done?`
+  /// `Good to see you again! Ready to be productive?`
   String get login_welcome {
     return Intl.message(
-      'Welcome back! Ready to get things done?',
+      'Good to see you again! Ready to be productive?',
       name: 'login_welcome',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sign up now to unlock more features and stay productive!`
+  /// `Create your account now and unlock powerful features!`
   String get register_welcome {
     return Intl.message(
-      'Sign up now to unlock more features and stay productive!',
+      'Create your account now and unlock powerful features!',
       name: 'register_welcome',
       desc: '',
       args: [],
     );
   }
 
-  /// `What are you waiting for? Log in now!`
+  /// `Don’t wait — log in now!`
   String get login_call_to_action {
     return Intl.message(
-      'What are you waiting for? Log in now!',
+      'Don’t wait — log in now!',
       name: 'login_call_to_action',
       desc: '',
       args: [],
@@ -254,10 +254,10 @@ class S {
     return Intl.message('Register', name: 'register', desc: '', args: []);
   }
 
-  /// `Create an Account`
+  /// `Create Account`
   String get create_account {
     return Intl.message(
-      'Create an Account',
+      'Create Account',
       name: 'create_account',
       desc: '',
       args: [],
@@ -294,10 +294,10 @@ class S {
     );
   }
 
-  /// `Enter your password again`
+  /// `Re-enter your password`
   String get enter_confirm_password {
     return Intl.message(
-      'Enter your password again',
+      'Re-enter your password',
       name: 'enter_confirm_password',
       desc: '',
       args: [],
@@ -314,20 +314,20 @@ class S {
     );
   }
 
-  /// `Sign in with Google`
+  /// `Continue with Google`
   String get google {
     return Intl.message(
-      'Sign in with Google',
+      'Continue with Google',
       name: 'google',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sign in with Apple`
+  /// `Continue with Apple`
   String get apple {
     return Intl.message(
-      'Sign in with Apple',
+      'Continue with Apple',
       name: 'apple',
       desc: '',
       args: [],
@@ -364,10 +364,10 @@ class S {
     );
   }
 
-  /// `Invalid email address`
+  /// `Please enter a valid email`
   String get error_invalid_email {
     return Intl.message(
-      'Invalid email address',
+      'Please enter a valid email',
       name: 'error_invalid_email',
       desc: '',
       args: [],
@@ -479,10 +479,10 @@ class S {
     );
   }
 
-  /// `We will send you an email to change your password.`
+  /// `We’ll send you an email to reset your password.`
   String get send_password_reset {
     return Intl.message(
-      'We will send you an email to change your password.',
+      'We’ll send you an email to reset your password.',
       name: 'send_password_reset',
       desc: '',
       args: [],
@@ -494,20 +494,20 @@ class S {
     return Intl.message('Send', name: 'send', desc: '', args: []);
   }
 
-  /// `Verify Your Email...`
+  /// `Verify Your Email`
   String get verify_email_title {
     return Intl.message(
-      'Verify Your Email...',
+      'Verify Your Email',
       name: 'verify_email_title',
       desc: '',
       args: [],
     );
   }
 
-  /// `We have sent you a link to verify your email address.\n to `
+  /// `We’ve sent a verification link to your email:\n`
   String get verify_email_message {
     return Intl.message(
-      'We have sent you a link to verify your email address.\n to ',
+      'We’ve sent a verification link to your email:\n',
       name: 'verify_email_message',
       desc: '',
       args: [],
@@ -549,10 +549,10 @@ class S {
     );
   }
 
-  /// `Create your account and unlock exclusive features.`
+  /// `Sign up and unlock exclusive features.`
   String get register_excited_text {
     return Intl.message(
-      'Create your account and unlock exclusive features.',
+      'Sign up and unlock exclusive features.',
       name: 'register_excited_text',
       desc: '',
       args: [],
@@ -574,15 +574,15 @@ class S {
     );
   }
 
-  /// `Created At: `
+  /// `Created at: `
   String get created_at {
-    return Intl.message('Created At: ', name: 'created_at', desc: '', args: []);
+    return Intl.message('Created at: ', name: 'created_at', desc: '', args: []);
   }
 
-  /// `Last Updated: `
+  /// `Last updated: `
   String get last_updated {
     return Intl.message(
-      'Last Updated: ',
+      'Last updated: ',
       name: 'last_updated',
       desc: '',
       args: [],
@@ -664,10 +664,10 @@ class S {
     );
   }
 
-  /// `Search Notes`
+  /// `Search notes`
   String get search_notes {
     return Intl.message(
-      'Search Notes',
+      'Search notes',
       name: 'search_notes',
       desc: '',
       args: [],
@@ -689,10 +689,10 @@ class S {
     );
   }
 
-  /// `Select note color`
+  /// `Choose note color`
   String get selectColorNote {
     return Intl.message(
-      'Select note color',
+      'Choose note color',
       name: 'selectColorNote',
       desc: '',
       args: [],
@@ -794,10 +794,10 @@ class S {
     );
   }
 
-  /// `Task not completed`
+  /// `Task archived`
   String get task_archived {
     return Intl.message(
-      'Task not completed',
+      'Task archived',
       name: 'task_archived',
       desc: '',
       args: [],
@@ -814,10 +814,10 @@ class S {
     );
   }
 
-  /// `In Progress`
+  /// `In progress`
   String get task_in_progress {
     return Intl.message(
-      'In Progress',
+      'In progress',
       name: 'task_in_progress',
       desc: '',
       args: [],
@@ -844,20 +844,20 @@ class S {
     return Intl.message('New', name: 'filter_new', desc: '', args: []);
   }
 
-  /// `Favorite`
+  /// `Favorites`
   String get filter_favorite {
     return Intl.message(
-      'Favorite',
+      'Favorites',
       name: 'filter_favorite',
       desc: '',
       args: [],
     );
   }
 
-  /// `Highlight`
+  /// `Highlights`
   String get filter_highlight {
     return Intl.message(
-      'Highlight',
+      'Highlights',
       name: 'filter_highlight',
       desc: '',
       args: [],
@@ -874,9 +874,9 @@ class S {
     );
   }
 
-  /// `Pined`
+  /// `Pinned`
   String get filter_pined {
-    return Intl.message('Pined', name: 'filter_pined', desc: '', args: []);
+    return Intl.message('Pinned', name: 'filter_pined', desc: '', args: []);
   }
 
   /// `Pin`
@@ -884,9 +884,19 @@ class S {
     return Intl.message('Pin', name: 'pin', desc: '', args: []);
   }
 
+  /// `Unpin`
+  String get unpin {
+    return Intl.message('Unpin', name: 'unpin', desc: '', args: []);
+  }
+
   /// `Archive`
   String get archive {
     return Intl.message('Archive', name: 'archive', desc: '', args: []);
+  }
+
+  /// `Unarchive`
+  String get un_archive {
+    return Intl.message('Unarchive', name: 'un_archive', desc: '', args: []);
   }
 
   /// `Delete`
@@ -984,20 +994,20 @@ class S {
     );
   }
 
-  /// `Delete all data`
+  /// `Delete All Data`
   String get delete_all_data {
     return Intl.message(
-      'Delete all data',
+      'Delete All Data',
       name: 'delete_all_data',
       desc: '',
       args: [],
     );
   }
 
-  /// `This option will delete all your data...`
+  /// `This action will delete all your data permanently.`
   String get warn_delete_1 {
     return Intl.message(
-      'This option will delete all your data...',
+      'This action will delete all your data permanently.',
       name: 'warn_delete_1',
       desc: '',
       args: [],
@@ -1054,10 +1064,10 @@ class S {
     );
   }
 
-  /// `Failed to delete all data`
+  /// `Failed to delete data`
   String get delete_all_data_failed {
     return Intl.message(
-      'Failed to delete all data',
+      'Failed to delete data',
       name: 'delete_all_data_failed',
       desc: '',
       args: [],
@@ -1079,9 +1089,9 @@ class S {
     return Intl.message('Success', name: 'success', desc: '', args: []);
   }
 
-  /// `Information`
+  /// `Info`
   String get info {
-    return Intl.message('Information', name: 'info', desc: '', args: []);
+    return Intl.message('Info', name: 'info', desc: '', args: []);
   }
 
   /// `Warning`
@@ -1099,10 +1109,10 @@ class S {
     );
   }
 
-  /// `Internet connection has been restored.`
+  /// `Internet connection restored`
   String get connectedInternet {
     return Intl.message(
-      'Internet connection has been restored.',
+      'Internet connection restored',
       name: 'connectedInternet',
       desc: '',
       args: [],
@@ -1129,10 +1139,10 @@ class S {
     return Intl.message('Disable', name: 'disable', desc: '', args: []);
   }
 
-  /// `This note has not yet been synced.`
+  /// `This note hasn’t been synced yet.`
   String get note_not_synced {
     return Intl.message(
-      'This note has not yet been synced.',
+      'This note hasn’t been synced yet.',
       name: 'note_not_synced',
       desc: '',
       args: [],
@@ -1169,49 +1179,39 @@ class S {
     );
   }
 
-  /// `Every 12 hour`
+  /// `Every 12 hours`
   String get every_12_hour {
     return Intl.message(
-      'Every 12 hour',
+      'Every 12 hours',
       name: 'every_12_hour',
       desc: '',
       args: [],
     );
   }
 
-  /// `Every 1 day`
+  /// `Every day`
   String get every_1_day {
-    return Intl.message('Every 1 day', name: 'every_1_day', desc: '', args: []);
+    return Intl.message('Every day', name: 'every_1_day', desc: '', args: []);
   }
 
-  /// `Every 1 week`
+  /// `Every week`
   String get every_1_week {
-    return Intl.message(
-      'Every 1 week',
-      name: 'every_1_week',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Every week', name: 'every_1_week', desc: '', args: []);
   }
 
-  /// `Every 1 month`
+  /// `Every month`
   String get every_1_month {
     return Intl.message(
-      'Every 1 month',
+      'Every month',
       name: 'every_1_month',
       desc: '',
       args: [],
     );
   }
 
-  /// `Every 1 year`
+  /// `Every year`
   String get every_1_year {
-    return Intl.message(
-      'Every 1 year',
-      name: 'every_1_year',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Every year', name: 'every_1_year', desc: '', args: []);
   }
 
   /// `Backup synced successfully`
@@ -1224,10 +1224,10 @@ class S {
     );
   }
 
-  /// `Backup synced failed`
+  /// `Backup sync failed`
   String get backup_synced_failed {
     return Intl.message(
-      'Backup synced failed',
+      'Backup sync failed',
       name: 'backup_synced_failed',
       desc: '',
       args: [],
@@ -1274,20 +1274,20 @@ class S {
     );
   }
 
-  /// `Backup found, restoring your notes...`
+  /// `Backup found — restoring your notes...`
   String get restoringBackup {
     return Intl.message(
-      'Backup found, restoring your notes...',
+      'Backup found — restoring your notes...',
       name: 'restoringBackup',
       desc: '',
       args: [],
     );
   }
 
-  /// `⚠️ You have out-of-sync notes! Turn on auto-transcription first..`
+  /// `⚠️ You have unsynced notes. Enable auto-backup first.`
   String get unsyncedNotesMessage {
     return Intl.message(
-      '⚠️ You have out-of-sync notes! Turn on auto-transcription first..',
+      '⚠️ You have unsynced notes. Enable auto-backup first.',
       name: 'unsyncedNotesMessage',
       desc: '',
       args: [],
@@ -1299,10 +1299,10 @@ class S {
     return Intl.message('Coming soon', name: 'comingSoon', desc: '', args: []);
   }
 
-  /// `Failed to update profile`
+  /// `Profile update failed`
   String get profile_updated_failed {
     return Intl.message(
-      'Failed to update profile',
+      'Profile update failed',
       name: 'profile_updated_failed',
       desc: '',
       args: [],
@@ -1314,6 +1314,131 @@ class S {
     return Intl.message(
       'Profile updated successfully',
       name: 'profile_updated_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sync Now`
+  String get syncNow {
+    return Intl.message('Sync Now', name: 'syncNow', desc: '', args: []);
+  }
+
+  /// `Synced`
+  String get synced {
+    return Intl.message('Synced', name: 'synced', desc: '', args: []);
+  }
+
+  /// `Synced at: `
+  String get syncedAt {
+    return Intl.message('Synced at: ', name: 'syncedAt', desc: '', args: []);
+  }
+
+  /// `Synced at: `
+  String get syncedAtTime {
+    return Intl.message(
+      'Synced at: ',
+      name: 'syncedAtTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retrying...`
+  String get retrying {
+    return Intl.message('Retrying...', name: 'retrying', desc: '', args: []);
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `Retry failed. Please try again.`
+  String get retryingFailedMessage {
+    return Intl.message(
+      'Retry failed. Please try again.',
+      name: 'retryingFailedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ensure auto backup & sync is enabled before retrying.`
+  String get checkAutoBackupAndSync {
+    return Intl.message(
+      'Ensure auto backup & sync is enabled before retrying.',
+      name: 'checkAutoBackupAndSync',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Now`
+  String get enable_now {
+    return Intl.message('Enable Now', name: 'enable_now', desc: '', args: []);
+  }
+
+  /// `Added to favorites`
+  String get favorited {
+    return Intl.message(
+      'Added to favorites',
+      name: 'favorited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Removed from favorites`
+  String get unfavorited {
+    return Intl.message(
+      'Removed from favorites',
+      name: 'unfavorited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note archived`
+  String get note_archived {
+    return Intl.message(
+      'Note archived',
+      name: 'note_archived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note unarchived`
+  String get note_unarchived {
+    return Intl.message(
+      'Note unarchived',
+      name: 'note_unarchived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note unpinned`
+  String get note_unpined {
+    return Intl.message(
+      'Note unpinned',
+      name: 'note_unpined',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note pinned`
+  String get note_pined {
+    return Intl.message('Note pinned', name: 'note_pined', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to delete this note?`
+  String get delete_note_confirmation {
+    return Intl.message(
+      'Are you sure you want to delete this note?',
+      name: 'delete_note_confirmation',
       desc: '',
       args: [],
     );

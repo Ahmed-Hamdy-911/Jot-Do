@@ -2,27 +2,34 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'selection_state.dart';
 
-class SelectionCubit extends Cubit<SelectionState> {
-  SelectionCubit()
-      : super(const SelectionState(
-          selectedIndex: 0,
-        ));
+class SelectionCubit<T> extends Cubit<SelectionState<T>> {
+  SelectionCubit() : super(SelectionState<T>());
 
-  int currentIndex = 0;
-
-  void switchSelection(int index) {
-    currentIndex = index;
-    emit(SelectionState(selectedIndex: index));
-
+  void enterSelectionMode(T item) {
+    emit(state.copyWith(
+      isSelectionMode: true,
+      selectedItems: [item],
+    ));
   }
 
-  void resetSelection() {
-    emit(const SelectionState(selectedIndex: 0));
+  void toggleSelection(T item) {
+    final updated = List<T>.from(state.selectedItems);
+    if (updated.contains(item)) {
+      updated.remove(item);
+    } else {
+      updated.add(item);
+    }
+    if (updated.isEmpty) {
+      emit(SelectionState<T>());
+    } else {
+      emit(state.copyWith(
+        isSelectionMode: true,
+        selectedItems: updated,
+      ));
+    }
   }
 
-  @override
-  Future<void> close() {
-    resetSelection();
-    return super.close();
+  void clearSelection() {
+    emit(SelectionState<T>());
   }
 }

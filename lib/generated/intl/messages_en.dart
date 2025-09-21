@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Already have an account?",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("Jot&Do"),
-    "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
+    "apple": MessageLookupByLibrary.simpleMessage("Continue with Apple"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "archive": MessageLookupByLibrary.simpleMessage("Archive"),
     "automatically": MessageLookupByLibrary.simpleMessage("Automatically"),
@@ -42,31 +42,37 @@ class MessageLookup extends MessageLookupByLibrary {
     "back_to_login": MessageLookupByLibrary.simpleMessage("Back to Login"),
     "backup_sync": MessageLookupByLibrary.simpleMessage("Backup & Sync"),
     "backup_synced_failed": MessageLookupByLibrary.simpleMessage(
-      "Backup synced failed",
+      "Backup sync failed",
     ),
     "backup_synced_successfully": MessageLookupByLibrary.simpleMessage(
       "Backup synced successfully",
+    ),
+    "checkAutoBackupAndSync": MessageLookupByLibrary.simpleMessage(
+      "Ensure auto backup & sync is enabled before retrying.",
     ),
     "comingSoon": MessageLookupByLibrary.simpleMessage("Coming soon"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
     "connectedInternet": MessageLookupByLibrary.simpleMessage(
-      "Internet connection has been restored.",
+      "Internet connection restored",
     ),
     "continue_text": MessageLookupByLibrary.simpleMessage("Continue"),
-    "create_account": MessageLookupByLibrary.simpleMessage("Create an Account"),
-    "created_at": MessageLookupByLibrary.simpleMessage("Created At: "),
+    "create_account": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "created_at": MessageLookupByLibrary.simpleMessage("Created at: "),
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-    "delete_all_data": MessageLookupByLibrary.simpleMessage("Delete all data"),
+    "delete_all_data": MessageLookupByLibrary.simpleMessage("Delete All Data"),
     "delete_all_data_failed": MessageLookupByLibrary.simpleMessage(
-      "Failed to delete all data",
+      "Failed to delete data",
     ),
     "delete_all_data_success": MessageLookupByLibrary.simpleMessage(
       "All data deleted successfully",
     ),
     "delete_note": MessageLookupByLibrary.simpleMessage("Delete Note"),
+    "delete_note_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this note?",
+    ),
     "delete_task": MessageLookupByLibrary.simpleMessage("Delete Task"),
     "disable": MessageLookupByLibrary.simpleMessage("Disable"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage(
@@ -75,9 +81,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_task": MessageLookupByLibrary.simpleMessage("Edit Task"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "enable": MessageLookupByLibrary.simpleMessage("Enable"),
+    "enable_now": MessageLookupByLibrary.simpleMessage("Enable Now"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
-      "Enter your password again",
+      "Re-enter your password",
     ),
     "enter_email": MessageLookupByLibrary.simpleMessage("Enter your email"),
     "enter_name": MessageLookupByLibrary.simpleMessage("Enter your name"),
@@ -86,7 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "error": MessageLookupByLibrary.simpleMessage("Something went wrong"),
     "error_invalid_email": MessageLookupByLibrary.simpleMessage(
-      "Invalid email address",
+      "Please enter a valid email",
     ),
     "error_name_contains_special_characters":
         MessageLookupByLibrary.simpleMessage(
@@ -107,29 +114,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_short_password": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 6 characters",
     ),
-    "every_12_hour": MessageLookupByLibrary.simpleMessage("Every 12 hour"),
-    "every_1_day": MessageLookupByLibrary.simpleMessage("Every 1 day"),
-    "every_1_month": MessageLookupByLibrary.simpleMessage("Every 1 month"),
-    "every_1_week": MessageLookupByLibrary.simpleMessage("Every 1 week"),
-    "every_1_year": MessageLookupByLibrary.simpleMessage("Every 1 year"),
+    "every_12_hour": MessageLookupByLibrary.simpleMessage("Every 12 hours"),
+    "every_1_day": MessageLookupByLibrary.simpleMessage("Every day"),
+    "every_1_month": MessageLookupByLibrary.simpleMessage("Every month"),
+    "every_1_week": MessageLookupByLibrary.simpleMessage("Every week"),
+    "every_1_year": MessageLookupByLibrary.simpleMessage("Every year"),
     "every_5_minutes": MessageLookupByLibrary.simpleMessage("Every 5 minutes"),
+    "favorited": MessageLookupByLibrary.simpleMessage("Added to favorites"),
     "filter_all": MessageLookupByLibrary.simpleMessage("All"),
     "filter_archived": MessageLookupByLibrary.simpleMessage("Archived"),
-    "filter_favorite": MessageLookupByLibrary.simpleMessage("Favorite"),
-    "filter_highlight": MessageLookupByLibrary.simpleMessage("Highlight"),
+    "filter_favorite": MessageLookupByLibrary.simpleMessage("Favorites"),
+    "filter_highlight": MessageLookupByLibrary.simpleMessage("Highlights"),
     "filter_new": MessageLookupByLibrary.simpleMessage("New"),
-    "filter_pined": MessageLookupByLibrary.simpleMessage("Pined"),
+    "filter_pined": MessageLookupByLibrary.simpleMessage("Pinned"),
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
-    "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+    "google": MessageLookupByLibrary.simpleMessage("Continue with Google"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
-    "info": MessageLookupByLibrary.simpleMessage("Information"),
+    "info": MessageLookupByLibrary.simpleMessage("Info"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
-    "last_updated": MessageLookupByLibrary.simpleMessage("Last Updated: "),
+    "last_updated": MessageLookupByLibrary.simpleMessage("Last updated: "),
     "light": MessageLookupByLibrary.simpleMessage("Light"),
     "logging_in": MessageLookupByLibrary.simpleMessage("Logging in..."),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "login_call_to_action": MessageLookupByLibrary.simpleMessage(
-      "What are you waiting for? Log in now!",
+      "Don’t wait — log in now!",
     ),
     "login_excited_text": MessageLookupByLibrary.simpleMessage(
       "Happy to see you again!",
@@ -138,7 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Login to continue",
     ),
     "login_welcome": MessageLookupByLibrary.simpleMessage(
-      "Welcome back! Ready to get things done?",
+      "Good to see you again! Ready to be productive?",
     ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "more_details": MessageLookupByLibrary.simpleMessage("More Details"),
@@ -154,18 +162,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_tasks_found": MessageLookupByLibrary.simpleMessage("No tasks found"),
     "no_tasks_yet": MessageLookupByLibrary.simpleMessage("No tasks yet!"),
     "not_yet": MessageLookupByLibrary.simpleMessage("Not yet"),
+    "note_archived": MessageLookupByLibrary.simpleMessage("Note archived"),
     "note_content": MessageLookupByLibrary.simpleMessage("Note Content"),
     "note_deleted": MessageLookupByLibrary.simpleMessage(
       "Note deleted successfully",
     ),
     "note_details": MessageLookupByLibrary.simpleMessage("Note Details"),
     "note_not_synced": MessageLookupByLibrary.simpleMessage(
-      "This note has not yet been synced.",
+      "This note hasn’t been synced yet.",
     ),
+    "note_pined": MessageLookupByLibrary.simpleMessage("Note pinned"),
     "note_saved": MessageLookupByLibrary.simpleMessage(
       "Note saved successfully",
     ),
     "note_title": MessageLookupByLibrary.simpleMessage("Note Title"),
+    "note_unarchived": MessageLookupByLibrary.simpleMessage("Note unarchived"),
+    "note_unpined": MessageLookupByLibrary.simpleMessage("Note unpinned"),
     "note_updated": MessageLookupByLibrary.simpleMessage(
       "Note updated successfully",
     ),
@@ -173,21 +185,23 @@ class MessageLookup extends MessageLookupByLibrary {
       "Notification Settings",
     ),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
-      "Never let a thought slip away — jot down your ideas in seconds, anywhere, anytime.",
+      "Never lose an idea again — capture your thoughts in seconds, anytime, anywhere.",
     ),
     "onBoardingDesc2": MessageLookupByLibrary.simpleMessage(
-      "Categorize, color-code, and set dates to keep your notes neat and easy to find.",
+      "Categorize, color-code, and set dates to keep your notes organized and accessible.",
     ),
     "onBoardingDesc3": MessageLookupByLibrary.simpleMessage(
-      "Save your data locally or back it up to the cloud, all in one tap.",
+      "Save locally or back up to the cloud — all with a single tap.",
     ),
     "onBoardingTitle1": MessageLookupByLibrary.simpleMessage(
       "Organize Your Thoughts",
     ),
     "onBoardingTitle2": MessageLookupByLibrary.simpleMessage(
-      "Set Deadlines Easily",
+      "Set Deadlines with Ease",
     ),
-    "onBoardingTitle3": MessageLookupByLibrary.simpleMessage("Sync Your Notes"),
+    "onBoardingTitle3": MessageLookupByLibrary.simpleMessage(
+      "Sync Across Devices",
+    ),
     "or_continue_with": MessageLookupByLibrary.simpleMessage(
       "Or continue with",
     ),
@@ -199,45 +213,51 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profile_updated_failed": MessageLookupByLibrary.simpleMessage(
-      "Failed to update profile",
+      "Profile update failed",
     ),
     "profile_updated_success": MessageLookupByLibrary.simpleMessage(
       "Profile updated successfully",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
-      "Create your account and unlock exclusive features.",
+      "Sign up and unlock exclusive features.",
     ),
     "register_welcome": MessageLookupByLibrary.simpleMessage(
-      "Sign up now to unlock more features and stay productive!",
+      "Create your account now and unlock powerful features!",
     ),
     "registering": MessageLookupByLibrary.simpleMessage("Registering..."),
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember Me"),
     "resend_code": MessageLookupByLibrary.simpleMessage("Resend email?"),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "restoringBackup": MessageLookupByLibrary.simpleMessage(
-      "Backup found, restoring your notes...",
+      "Backup found — restoring your notes...",
+    ),
+    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+    "retrying": MessageLookupByLibrary.simpleMessage("Retrying..."),
+    "retryingFailedMessage": MessageLookupByLibrary.simpleMessage(
+      "Retry failed. Please try again.",
     ),
     "save_note": MessageLookupByLibrary.simpleMessage("Save Note"),
     "save_task": MessageLookupByLibrary.simpleMessage("Save Task"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
-    "search_notes": MessageLookupByLibrary.simpleMessage("Search Notes"),
+    "search_notes": MessageLookupByLibrary.simpleMessage("Search notes"),
     "selectColorNote": MessageLookupByLibrary.simpleMessage(
-      "Select note color",
+      "Choose note color",
     ),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "send_password_reset": MessageLookupByLibrary.simpleMessage(
-      "We will send you an email to change your password.",
+      "We’ll send you an email to reset your password.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "splashText1": MessageLookupByLibrary.simpleMessage("Welcome to Jot&Do"),
-    "splashText2": MessageLookupByLibrary.simpleMessage("Plan. Note. Do."),
+    "splashText2": MessageLookupByLibrary.simpleMessage("Plan. Jot. Do."),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
     "success_login": MessageLookupByLibrary.simpleMessage("Login successful"),
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "Registration successful",
     ),
+    "syncNow": MessageLookupByLibrary.simpleMessage("Sync Now"),
     "sync_banner_enable": MessageLookupByLibrary.simpleMessage("Enable Sync"),
     "sync_banner_ignore": MessageLookupByLibrary.simpleMessage("Ignore"),
     "sync_banner_subtitle": MessageLookupByLibrary.simpleMessage(
@@ -246,7 +266,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "sync_banner_title": MessageLookupByLibrary.simpleMessage(
       "Keep your notes safe",
     ),
-    "task_archived": MessageLookupByLibrary.simpleMessage("Task not completed"),
+    "synced": MessageLookupByLibrary.simpleMessage("Synced"),
+    "syncedAt": MessageLookupByLibrary.simpleMessage("Synced at: "),
+    "syncedAtTime": MessageLookupByLibrary.simpleMessage("Synced at: "),
+    "task_archived": MessageLookupByLibrary.simpleMessage("Task archived"),
     "task_completed": MessageLookupByLibrary.simpleMessage("Task completed"),
     "task_deleted": MessageLookupByLibrary.simpleMessage(
       "Task deleted successfully",
@@ -255,7 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Task Description",
     ),
     "task_due_date": MessageLookupByLibrary.simpleMessage("Due Date"),
-    "task_in_progress": MessageLookupByLibrary.simpleMessage("In Progress"),
+    "task_in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
     "task_pending": MessageLookupByLibrary.simpleMessage("Task pending"),
     "task_saved": MessageLookupByLibrary.simpleMessage(
       "Task saved successfully",
@@ -265,18 +288,23 @@ class MessageLookup extends MessageLookupByLibrary {
       "Task updated successfully",
     ),
     "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "un_archive": MessageLookupByLibrary.simpleMessage("Unarchive"),
+    "unfavorited": MessageLookupByLibrary.simpleMessage(
+      "Removed from favorites",
+    ),
+    "unpin": MessageLookupByLibrary.simpleMessage("Unpin"),
     "unsyncedNotesMessage": MessageLookupByLibrary.simpleMessage(
-      "⚠️ You have out-of-sync notes! Turn on auto-transcription first..",
+      "⚠️ You have unsynced notes. Enable auto-backup first.",
     ),
     "update_note": MessageLookupByLibrary.simpleMessage("Update Note"),
     "verify_email_message": MessageLookupByLibrary.simpleMessage(
-      "We have sent you a link to verify your email address.\n to ",
+      "We’ve sent a verification link to your email:\n",
     ),
     "verify_email_title": MessageLookupByLibrary.simpleMessage(
-      "Verify Your Email...",
+      "Verify Your Email",
     ),
     "warn_delete_1": MessageLookupByLibrary.simpleMessage(
-      "This option will delete all your data...",
+      "This action will delete all your data permanently.",
     ),
     "warn_delete_all_data": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete all data?",

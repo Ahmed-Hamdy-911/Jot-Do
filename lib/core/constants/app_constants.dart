@@ -32,7 +32,7 @@ class AppConstants {
   };
 
   static bool isArabic() {
-    return Intl.getCurrentLocale().startsWith('ar');
+    return Intl.getCurrentLocale() == 'ar';
   }
 
   // home
@@ -51,6 +51,7 @@ class AppConstants {
 
   // note
   static const String notesStorage = 'notes';
+  static const String remoteNotesStorage = 'remote_notes';
   static const String privateNotesStorage = 'private_notes';
   static const String publicNotesStorage = 'public_notes';
   static const String sharedNotesStorage = 'shared_notes';
@@ -66,6 +67,15 @@ class AppConstants {
   static const String isLoggedIn = 'isLoggedIn';
   static const String skipAuthentication = 'skipAuthentication';
 
-  // backup 
-  static const String isAutoBackup = 'isAutoBackup';
+  // backup
+  static const String isAutoBackupAndSync = 'isAutoBackupAndSync';
+
+  // sync
+  static const String isSync = 'isSync';
+
+  // backup and sync
+  static const String BackupAndSync = 'BackupAndSync';
+
+  // app service
+  static var appService;
 }

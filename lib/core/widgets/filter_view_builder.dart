@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../constants/app_colors.dart';
-import '../cubits/selection/selection_cubit.dart';
+import '../cubits/filter/filter_cubit.dart';
 import '../cubits/settings/setting_cubit.dart';
 
 class FilterViewBuilder extends StatelessWidget {
@@ -56,9 +56,9 @@ class FilterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenW = MediaQuery.of(context).size.width;
-    var segmentCubit = context.read<SelectionCubit>();
+    var segmentCubit = context.read<FilterCubit>();
     bool isSelected =
-        context.watch<SelectionCubit>().state.selectedIndex == filerIndex;
+        context.watch<FilterCubit>().state.selectedIndex == filerIndex;
     var darkMode =
         context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
     var selectedBGColor = darkMode ? AppColor.grey600 : AppColor.whiteColor;

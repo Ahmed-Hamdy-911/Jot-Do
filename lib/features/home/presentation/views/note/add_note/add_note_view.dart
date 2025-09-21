@@ -8,7 +8,9 @@ import '../../../../../../generated/l10n.dart';
 import 'note_form.dart';
 
 class AddNoteView extends StatelessWidget {
-  const AddNoteView({super.key});
+  const AddNoteView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +41,7 @@ class AddNoteScaffold extends StatelessWidget {
             appBar: AppBar(
               title: Text(S.of(context).add_note),
               backgroundColor: state.selectedColor,
-              leading:
-                  context.watch<AddNoteCubit>().state is AddNoteLoadingState
-                      ? const CircularProgressIndicator(
-                          color: Colors.white,
-                        )
-                      : const BackButton(),
+              leading: const BackButton(),
             ),
             body: AbsorbPointer(
               absorbing:

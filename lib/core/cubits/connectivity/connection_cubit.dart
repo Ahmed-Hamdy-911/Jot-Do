@@ -1,110 +1,95 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import '../../constants/app_constants.dart';
+import '../../services/app_service.dart';
 import 'connection_state.dart';
 
 class ConnectionCubit extends Cubit<ConnectionStates> {
   final Connectivity _connectivity = Connectivity();
+  final AppService appService = AppConstants.appService;
 
-  late StreamSubscription<ConnectivityResult> _subscription;
-
-  DateTime? _lastCheckTime;
+  late final StreamSubscription<ConnectivityResult> _connectivitySub;
+  late final StreamSubscription<InternetStatus> _internetSub;
+  Timer? _timeoutTimer;
   bool _wasDisconnected = false;
-  bool _lastCheckResult = false;
-  Timer? _timer;
+
   ConnectionCubit() : super(ConnectionInitial()) {
-    _subscription = _connectivity.onConnectivityChanged
+    _connectivitySub = _connectivity.onConnectivityChanged
         .map(
           (results) =>
               results.isNotEmpty ? results.first : ConnectivityResult.none,
         )
-        .listen(_onResult);
+        .listen(_onConnectivityChanged);
+    ;
+
+    _internetSub =
+        InternetConnection().onStatusChange.listen(_onInternetStatusChanged);
+
     _checkInitialStatus();
-    _timer =
-        Timer.periodic(const Duration(seconds: 5), (_) => checkConnection());
   }
 
-  void _onResult(ConnectivityResult result) {
-    ConnectionStates newState;
-    if (result == ConnectivityResult.wifi ||
-        result == ConnectivityResult.mobile) {
-      if (_wasDisconnected) {
-        newState = ConnectionReconnected();
-        _wasDisconnected = false;
-      } else {
-        newState = ConnectionConnected();
-      }
-    } else {
-      newState = ConnectionDisconnected();
+  void _onConnectivityChanged(ConnectivityResult result) {
+    // log('Connectivity changed: $result');
+
+    if (result == ConnectivityResult.none) {
+      _timeoutTimer?.cancel();
+      appService.isOnline = false;
       _wasDisconnected = true;
+      _emitIfChanged(ConnectionDisconnected());
+      return;
     }
-    if (state.runtimeType != newState.runtimeType) {
-      emit(newState);
+
+    _timeoutTimer?.cancel();
+    _timeoutTimer = Timer(const Duration(seconds: 5), () {
+      if (!appService.isOnline) {
+        _emitIfChanged(
+            ConnectionTimeOut("Network available but no internet (timeout)"));
+      }
+    });
+
+    if (_wasDisconnected) {
+      _emitIfChanged(ConnectionReconnected());
+      _wasDisconnected = false;
     }
   }
 
-  Future<bool> checkConnection() async {
-    if (_lastCheckTime != null &&
-        DateTime.now().difference(_lastCheckTime!) <
-            const Duration(seconds: 5)) {
-      return _lastCheckResult;
+  void _onInternetStatusChanged(InternetStatus status) {
+    // log('InternetStatus changed: $status');
+    _timeoutTimer?.cancel();
+
+    if (status == InternetStatus.connected) {
+      appService.isOnline = true;
+      _emitIfChanged(ConnectionConnected());
+    } else {
+      appService.isOnline = false;
+      _emitIfChanged(ConnectionDisconnected());
     }
 
-    final testUrls = [
-      Uri.parse("https://clients3.google.com/generate_204"),
-      Uri.parse("https://www.gstatic.com/generate_204"),
-      Uri.parse("https://www.google.com"),
-    ];
-
-    for (final url in testUrls) {
-      try {
-        final request =
-            await HttpClient().getUrl(url).timeout(const Duration(seconds: 2));
-        final response =
-            await request.close().timeout(const Duration(seconds: 2));
-
-        if (response.statusCode == 204 || response.statusCode == 200) {
-          _lastCheckTime = DateTime.now();
-          _lastCheckResult = true;
-          debugPrint("✅ Internet available via ${url.host}");
-          return true;
-        }
-      } on SocketException {
-        continue;
-      } on TimeoutException {
-        continue;
-      } catch (e) {
-        continue;
-      }
-    }
-
-    debugPrint("❌ No internet connection");
-    if (state is! ConnectionTimeOut && state is! ConnectionDisconnected) {
-      emit(ConnectionTimeOut("No internet connection"));
-    }
-    _lastCheckTime = DateTime.now();
-    _lastCheckResult = false;
-    return false;
+    debugPrint(appService.isOnline.toString());
   }
 
   Future<void> _checkInitialStatus() async {
-    final result = await Connectivity().checkConnectivity();
-    final hasConnection =
-        result.isNotEmpty && result.first != ConnectivityResult.none;
-    final newState =
-        hasConnection ? ConnectionConnected() : ConnectionDisconnected();
+    final hasInternet = await InternetConnection().hasInternetAccess;
+    appService.isOnline = hasInternet;
+    _wasDisconnected = !hasInternet;
+    _emitIfChanged(
+        hasInternet ? ConnectionConnected() : ConnectionDisconnected());
+  }
+
+  void _emitIfChanged(ConnectionStates newState) {
     if (state.runtimeType != newState.runtimeType) {
       emit(newState);
     }
-    _wasDisconnected = !hasConnection;
   }
 
   @override
   Future<void> close() {
-    _subscription.cancel();
-    _timer?.cancel();
+    _connectivitySub.cancel();
+    _internetSub.cancel();
+    _timeoutTimer?.cancel();
     return super.close();
   }
 }

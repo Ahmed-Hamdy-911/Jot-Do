@@ -28,7 +28,11 @@ class LocalNoteRepository implements NoteRepository {
   @override
   Future<void> deleteNote(String id, [NoteModel? noteModel]) async {
     try {
-      noteModel?.delete();
+      var box = Hive.box<NoteModel>(AppConstants.notesStorage);
+      final index = box.values.toList().indexWhere((note) => note.id == id);
+      if (index != -1) {
+        await box.deleteAt(index);
+      }
     } catch (e) {
       rethrow;
     }

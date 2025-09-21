@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/cubits/connectivity/connection_cubit.dart';
 import '../../../../../core/cubits/settings/setting_cubit.dart';
 import '../../../../../core/models/message_type.dart';
+import '../../../../../core/services/app_service.dart';
 import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/constants_spaces_widgets.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -57,7 +57,6 @@ class _ProfileViewState extends State<ProfileView> {
     super.dispose();
   }
 
-  Future<bool> get hasInternet => ConnectionCubit().checkConnection();
   Future<void> _refreshUser() async {
     setState(() {
       _userFuture = _userRepo.getUserById(_userId);
@@ -65,7 +64,7 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Future<void> _submitName() async {
-    if (!await hasInternet) {
+    if (AppService().isOnline == false) {
       CustomSnackBar.showSnackBar(
         S.of(context).noInternet,
         context,

@@ -7,7 +7,7 @@ import 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteStates> {
   AddNoteCubit() : super(AddNoteInitialState());
-  final smartNoteRepository = SmartNoteRepository();
+  late SmartNoteRepository smartNoteRepository = SmartNoteRepository();
 
   void addNote(NoteModel noteModel) async {
     emit(AddNoteLoadingState());

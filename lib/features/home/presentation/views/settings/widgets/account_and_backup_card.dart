@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../../../../../core/constants/app_constants.dart';
+import '../../../../../../core/cubits/backup/backup_cubit.dart';
+import '../../../../../../core/cubits/backup/backup_state.dart';
 import '../../../../../../core/helper/cache_helper.dart';
 import '../../../../../../core/models/message_type.dart';
 import '../../../../../../core/routing/app_routes.dart';
+import '../../../../../../core/services/app_service.dart';
 import '../../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../auth/presentation/cubit/auth_cubit.dart';
@@ -61,36 +64,44 @@ class AccountAndBackupSettingsCard extends StatelessWidget {
                     }
                   },
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomSettingItem(
-                      title: S.of(context).backup_sync,
-                      enabled: isLoggedIn,
-                      leadingIcon: Icons.backup_outlined,
-                      trailing: const Icon(Icons.restore),
-                      subTitleText: isLoggedIn
-                          ? S.of(context).automatically
-                          : S.of(context).not_yet,
-                      onTap: () {
-                        // context.read<BackupCubit>().syncNotes();
-                      },
-                    ),
-                  ],
-                ),
-                CustomSettingItem(
-                  title: S.of(context).automatically_backup_sync,
-                  leadingIcon: Icons.auto_mode_outlined,
-                  trailing: Switch(
-                    value: false,
-                    onChanged: (value) {
-                      if (isLoggedIn) {
-                        // context.read<BackupCubit>().toggleAutoBackup(value);
-                      }
-                    },
-                  ),
-                  subTitleText:
-                      isLoggedIn ? S.of(context).enable : S.of(context).disable,
+                BlocBuilder<BackupCubit, BackupStates>(
+                  builder: (context, state) {
+                    AppService appService = AppConstants.appService;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomSettingItem(
+                          title: S.of(context).backup_sync,
+                          enabled: appService.isAutoBackupAndSync,
+                          leadingIcon: Icons.backup_outlined,
+                          trailing: const Icon(Icons.restore),
+                          subTitleText: appService.isAutoBackupAndSync
+                              ? S.of(context).automatically
+                              : S.of(context).not_yet,
+                          onTap: () {
+                            // context.read<BackupCubit>().syncNotes();
+                          },
+                        ),
+                        CustomSettingItem(
+                          title: S.of(context).automatically_backup_sync,
+                          leadingIcon: Icons.auto_mode_outlined,
+                          trailing: Switch(
+                            value: appService.isAutoBackupAndSync,
+                            onChanged: (value) {
+                              if (isLoggedIn) {
+                                context
+                                    .read<BackupCubit>()
+                                    .toggleAutoBackup(value);
+                              }
+                            },
+                          ),
+                          subTitleText: appService.isAutoBackupAndSync
+                              ? S.of(context).enable
+                              : S.of(context).disable,
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),
