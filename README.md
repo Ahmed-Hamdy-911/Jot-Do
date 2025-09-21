@@ -38,3 +38,7 @@ With an intuitive UI and powerful features, it helps you **capture ideas, organi
 ## 📸 Screenshots (Coming Soon)
 
 *App preview images will be added once UI polishing is complete.*  
+
+---
+
+## New Update To UI
