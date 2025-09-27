@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../core/cubits/connectivity/connection_cubit.dart';
 import '../../../../core/cubits/connectivity/connection_state.dart';
 import '../../../../core/models/message_type.dart';
 import '../../../../core/widgets/custom_snackbar.dart';
 import '../../../../generated/l10n.dart';
-import '../cubits/bottom_navi/bottom_navi_cubit_cubit.dart';
-import 'settings/settings_view.dart';
-import '../widgets/home_body.dart';
+import '../cubits/top_body_navi/top_body_navi_cubit_.dart';
+import 'widgets/home_body.dart';
 
-import '../../../../core/constants/app_constants.dart';
-import '../widgets/custom_bottom_navigation_bar.dart';
-import '../widgets/custom_floating_button.dart';
-import '../widgets/custom_home_app_bar.dart';
+import 'widgets/custom_floating_button.dart';
+import 'widgets/custom_home_app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -42,66 +40,53 @@ class HomeView extends StatelessWidget {
           );
         }
       },
-      child: BlocProvider(
-        create: (context) => BottomNaviCubit(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => TopBodyNaviCubit(),
+          ),
+        ],
         child: const HomeScaffold(),
       ),
     );
   }
 }
 
-class HomeScaffold extends StatefulWidget {
+class HomeScaffold extends StatelessWidget {
   const HomeScaffold({
     super.key,
   });
 
   @override
-  State<HomeScaffold> createState() => _HomeScaffoldState();
-}
-
-class _HomeScaffoldState extends State<HomeScaffold>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(() {
-      AppConstants.homeBodyIndex = _tabController.index;
-    });
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    List<Widget> screens = [
-      HomeBody(tabController: _tabController),
-      const SettingsView(),
-    ];
-    var bottomCubit = BlocProvider.of<BottomNaviCubit>(context);
-    bool isHome = context.watch<BottomNaviCubit>().state == 0;
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        extendBody: true,
-        appBar: isHome
-            ? PreferredSize(
-                preferredSize: const Size.fromHeight(kToolbarHeight),
-                child: CustomHomeAppBar(
-                  tabController: _tabController,
-                ),
-              )
-            : null,
-        body: screens[bottomCubit.currentIndex],
-        bottomNavigationBar: const CustomBottomNaviAppBar(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: const CustomFloatingButton(),
+    var colors = SmartAppColor(context);
+    return Scaffold(
+      extendBody: true,
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: CustomHomeAppBar(
+            // notesLength: context.watch<NotesCubit>().notesList.length,
+            ),
+      ),
+      body: HomeBody(
+        homeContext: context,
+      ),
+      bottomNavigationBar: Container(
+        height: 40,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          colors: [
+            colors.backgroundScreen.withValues(alpha: 0.4),
+            colors.backgroundScreen.withValues(alpha: 0.8),
+            colors.backgroundScreen,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        )),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: CustomFloatingButton(
+        currentPage: context.watch<TopBodyNaviCubit>().state,
       ),
     );
   }

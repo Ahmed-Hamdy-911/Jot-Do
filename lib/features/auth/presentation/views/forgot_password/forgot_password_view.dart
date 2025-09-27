@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/custom_loading.dart';
 import '../../cubit/auth_cubit.dart';
 import '../../cubit/auth_states.dart';
 import '../../widgets/auth_exited_text.dart';
@@ -9,16 +12,9 @@ import '../../../../../core/widgets/custom_material_button.dart';
 
 import '../../widgets/custom_email_field.dart';
 
-class ForgotPasswordView extends StatefulWidget {
+class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({super.key});
 
-  @override
-  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
-}
-
-class _ForgotPasswordViewState extends State<ForgotPasswordView> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,72 +33,81 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           }
         },
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: LayoutBuilder(builder: (context, constraints) {
-              if (constraints.maxWidth >= 600) {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: SizedBox(
-                      width: constraints.maxWidth * 0.5,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          AuthExcitedText(
-                            title: S.of(context).reset_password,
-                            subtitle: S.of(context).send_password_reset,
-                          ),
-                          Form(
-                            key: _formKey,
-                            child: CustomEmailField(
-                                emailController: _emailController),
-                          ),
-                          const MediumSpace(),
-                          CustomMaterialButton(
-                            isLoading: state is AuthLoadingState,
-                            onPressed: () {
-                              forgotPasswordMethod(context);
-                            },
-                            text: S.of(context).send,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              }
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AuthExcitedText(
-                      title: S.of(context).forgot_password,
-                      subtitle: S.of(context).send_password_reset),
-                  Form(
-                    key: _formKey,
-                    child: CustomEmailField(emailController: _emailController),
-                  ),
-                  const MediumSpace(),
-                  CustomMaterialButton(
-                    isLoading: state is AuthLoadingState,
-                    onPressed: () {
-                      forgotPasswordMethod(context);
-                    },
-                    text: S.of(context).send,
-                  )
-                ],
-              );
-            }),
+          var value = state is AuthLoadingState;
+          if (state is AuthLoadingState) {
+            return CustomLoading(child: const SizedBox.expand(), state: value);
+          }
+
+          return Column(
+            children: [
+              AppComponents.smallVerticalSpace(),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: LayoutBuilder(builder: (context, constraints) {
+                  if (constraints.maxWidth >= 600) {
+                    return Center(
+                      child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 600),
+                          child: const ForgotPasswordForm()),
+                    );
+                  }
+                  return const ForgotPasswordForm();
+                }),
+              ),
+            ],
           );
         },
       ),
     );
   }
+}
 
+class ForgotPasswordForm extends StatefulWidget {
+  const ForgotPasswordForm({super.key});
+
+  @override
+  State<ForgotPasswordForm> createState() => _ForgotPasswordFormState();
+}
+
+class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
   void forgotPasswordMethod(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       context.read<AuthCubit>().forgotPassword(
             email: _emailController.text,
           );
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: SmartAppColor(context).border),
+        borderRadius: BorderRadius.circular(AppConstants.kRadius),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AuthExcitedText(
+              title: S.of(context).forgot_password,
+              subtitle: S.of(context).send_password_reset),
+          Form(
+            key: _formKey,
+            child: CustomEmailField(emailController: _emailController),
+          ),
+          AppComponents.largeVerticalSpace(),
+          CustomMaterialButton(
+            onPressed: () {
+              forgotPasswordMethod(context);
+            },
+            text: S.of(context).send,
+          )
+        ],
+      ),
+    );
   }
 }

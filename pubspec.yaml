@@ -44,7 +44,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  flutter_slidable: ^4.0.0
+  flutter_screenutil: ^5.9.3
   google_sign_in: ^7.1.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
@@ -53,7 +53,6 @@ dependencies:
   intl: any
   lottie: ^3.3.1
   page_transition: ^2.2.1
-  percent_indicator: ^4.2.5
   smooth_page_indicator: ^1.2.1
   toastification: ^3.0.3
   uuid: ^4.5.1
@@ -122,6 +121,9 @@ flutter:
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal-Regular.ttf
+    - family: Kalam
+      fonts:
+        - asset: assets/fonts/Kalam-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

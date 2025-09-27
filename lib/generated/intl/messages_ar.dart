@@ -22,7 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "aboutBackups": MessageLookupByLibrary.simpleMessage("حول النسخ الاحتياطي"),
     "about_app": MessageLookupByLibrary.simpleMessage("حول التطبيق"),
+    "add_filter": MessageLookupByLibrary.simpleMessage("اضافة تصفية"),
     "add_note": MessageLookupByLibrary.simpleMessage("إضافة ملاحظة"),
     "add_note_or_task": MessageLookupByLibrary.simpleMessage(
       "إضافة ملاحظة أو مهمة",
@@ -31,16 +33,49 @@ class MessageLookup extends MessageLookupByLibrary {
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "لديك حساب بالفعل؟",
     ),
+    "appDescription": MessageLookupByLibrary.simpleMessage(
+      "أفكارك، منظمة ومتزامنة عبر جميع الأجهزة",
+    ),
     "appName": MessageLookupByLibrary.simpleMessage("دوّن ونفّذ"),
+    "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
     "apple": MessageLookupByLibrary.simpleMessage("تابع باستخدام آبل"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "archive": MessageLookupByLibrary.simpleMessage("أرشفة"),
+    "autoBackup": MessageLookupByLibrary.simpleMessage("نسخ احتياطي تلقائي"),
+    "autoBackupDescription": MessageLookupByLibrary.simpleMessage(
+      "نسخ احتياطي تلقائي للملاحظات والمهام إلى السحابة",
+    ),
+    "autoSync": MessageLookupByLibrary.simpleMessage("مزامنة تلقائية"),
+    "autoSyncBackup": MessageLookupByLibrary.simpleMessage(
+      "مزامنة ونسخ احتياطي تلقائي",
+    ),
+    "autoSyncDescription": MessageLookupByLibrary.simpleMessage(
+      "مزامنة الملاحظات والمهام تلقائيًا مع جهازك عند الاتصال بالإنترنت",
+    ),
     "automatically": MessageLookupByLibrary.simpleMessage("تلقائيًا"),
     "automatically_backup_sync": MessageLookupByLibrary.simpleMessage(
       "نسخ احتياطي ومزامنة تلقائية",
     ),
     "back_to_login": MessageLookupByLibrary.simpleMessage(
       "العودة لتسجيل الدخول",
+    ),
+    "backupFeature1": MessageLookupByLibrary.simpleMessage(
+      "يتم تشفير النسخ الاحتياطي السحابي وتخزينه بأمان",
+    ),
+    "backupFeature2": MessageLookupByLibrary.simpleMessage(
+      "يمكن تخزين الصادرات المحلية على جهازك أو التخزين السحابي",
+    ),
+    "backupFeature3": MessageLookupByLibrary.simpleMessage(
+      "تحدث النسخ الاحتياطي التلقائي عند التمكين في الإعدادات",
+    ),
+    "backupFeature4": MessageLookupByLibrary.simpleMessage(
+      "الاستعادة ستمزج مع البيانات الموجودة، لن تحل محلها",
+    ),
+    "backupStatus": MessageLookupByLibrary.simpleMessage(
+      "حالة النسخ الاحتياطي",
+    ),
+    "backup_and_restore": MessageLookupByLibrary.simpleMessage(
+      "النسخ الاحتياطي والاستعادة",
     ),
     "backup_sync": MessageLookupByLibrary.simpleMessage(
       "النسخ الاحتياطي والمزامنة",
@@ -51,9 +86,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "backup_synced_successfully": MessageLookupByLibrary.simpleMessage(
       "تم النسخ والمزامنة بنجاح",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+    "charactersCounter": MessageLookupByLibrary.simpleMessage("/20 حرفًا"),
     "checkAutoBackupAndSync": MessageLookupByLibrary.simpleMessage(
       "تأكد من تفعيل النسخ الاحتياطي والمزامنة قبل إعادة المحاولة.",
     ),
+    "color": MessageLookupByLibrary.simpleMessage("اللون"),
     "comingSoon": MessageLookupByLibrary.simpleMessage("قريبًا"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
@@ -61,10 +99,31 @@ class MessageLookup extends MessageLookupByLibrary {
     "connectedInternet": MessageLookupByLibrary.simpleMessage(
       "تمت استعادة الاتصال بالإنترنت",
     ),
+    "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "المتابعة مع جوجل",
+    ),
+    "continueWithoutAccount": MessageLookupByLibrary.simpleMessage(
+      "المتابعة بدون حساب",
+    ),
     "continue_text": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "createBackup": MessageLookupByLibrary.simpleMessage("إنشاء نسخ احتياطي"),
+    "createFilter": MessageLookupByLibrary.simpleMessage("إنشاء عامل التصفية"),
+    "createFilterDescription": MessageLookupByLibrary.simpleMessage(
+      "أنشئ عامل تصفية مخصص لتنظيم ملاحظاتك حسب معايير محددة.",
+    ),
+    "createNoteFilter": MessageLookupByLibrary.simpleMessage(
+      "إنشاء عامل تصفية الملاحظات",
+    ),
     "create_account": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "created_at": MessageLookupByLibrary.simpleMessage("تم الإنشاء في: "),
+    "custom_filters": MessageLookupByLibrary.simpleMessage("تصفيات مخصصة"),
     "dark": MessageLookupByLibrary.simpleMessage("داكن"),
+    "dataReadyForBackup": MessageLookupByLibrary.simpleMessage(
+      "بيانات جاهزة للنسخ الاحتياطي",
+    ),
+    "default_filters": MessageLookupByLibrary.simpleMessage(
+      "التصفيات الافتراضية",
+    ),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "delete_all_data": MessageLookupByLibrary.simpleMessage(
       "حذف جميع البيانات",
@@ -82,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_task": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
     "disable": MessageLookupByLibrary.simpleMessage("تعطيل"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "edit_task": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "enable": MessageLookupByLibrary.simpleMessage("تفعيل"),
@@ -124,22 +184,42 @@ class MessageLookup extends MessageLookupByLibrary {
     "every_1_week": MessageLookupByLibrary.simpleMessage("كل أسبوع"),
     "every_1_year": MessageLookupByLibrary.simpleMessage("كل سنة"),
     "every_5_minutes": MessageLookupByLibrary.simpleMessage("كل 5 دقائق"),
+    "exportData": MessageLookupByLibrary.simpleMessage("تصدير البيانات"),
+    "exportDescription": MessageLookupByLibrary.simpleMessage(
+      "تنزيل جميع بياناتك كملف نسخ احتياطي",
+    ),
+    "exportNotes": MessageLookupByLibrary.simpleMessage("تصدير البيانات"),
     "favorited": MessageLookupByLibrary.simpleMessage("أُضيف إلى المفضلة"),
+    "favorites": MessageLookupByLibrary.simpleMessage("ضف في المفضلة"),
+    "filterName": MessageLookupByLibrary.simpleMessage("اسم عامل التصفية"),
+    "filterNamePlaceholder": MessageLookupByLibrary.simpleMessage(
+      "مثال: عمل، شخصي",
+    ),
     "filter_all": MessageLookupByLibrary.simpleMessage("الكل"),
     "filter_archived": MessageLookupByLibrary.simpleMessage("مؤرشفة"),
     "filter_favorite": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "filter_highlight": MessageLookupByLibrary.simpleMessage("مميزة"),
     "filter_new": MessageLookupByLibrary.simpleMessage("جديد"),
+    "filter_notes": MessageLookupByLibrary.simpleMessage("تصفية الملاحظات"),
     "filter_pined": MessageLookupByLibrary.simpleMessage("مثبتة"),
+    "filter_tasks": MessageLookupByLibrary.simpleMessage("تصفية المهام"),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
     "google": MessageLookupByLibrary.simpleMessage("تابع باستخدام جوجل"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "importData": MessageLookupByLibrary.simpleMessage("استيراد البيانات"),
+    "importDescription": MessageLookupByLibrary.simpleMessage(
+      "استعادة البيانات من ملف النسخ الاحتياطي",
+    ),
+    "importNotes": MessageLookupByLibrary.simpleMessage("استيراد البيانات"),
     "info": MessageLookupByLibrary.simpleMessage("معلومة"),
+    "json": MessageLookupByLibrary.simpleMessage(" (.json)"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "lastBackup": MessageLookupByLibrary.simpleMessage("آخر نسخ احتياطي"),
     "last_updated": MessageLookupByLibrary.simpleMessage("آخر تحديث: "),
     "light": MessageLookupByLibrary.simpleMessage("فاتح"),
+    "localBackup": MessageLookupByLibrary.simpleMessage("نسخ احتياطي محلي"),
     "logging_in": MessageLookupByLibrary.simpleMessage("جاري تسجيل الدخول..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "login_call_to_action": MessageLookupByLibrary.simpleMessage(
@@ -191,8 +271,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "note_updated": MessageLookupByLibrary.simpleMessage(
       "تم تحديث الملاحظة بنجاح",
     ),
-    "notification_settings": MessageLookupByLibrary.simpleMessage(
-      "إعدادات الإشعارات",
+    "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "offlineDescription": MessageLookupByLibrary.simpleMessage(
+      "الوصول إلى ملاحظاتك في أي مكان وزمان",
     ),
     "onBoardingDesc1": MessageLookupByLibrary.simpleMessage(
       "لا تدع فكرة تضيع منك — دوّن أفكارك في ثوانٍ، أينما كنت ومتى شئت.",
@@ -217,12 +299,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_login_first": MessageLookupByLibrary.simpleMessage(
       "من فضلك، سجّل الدخول أولاً",
     ),
+    "preview": MessageLookupByLibrary.simpleMessage("معاينة"),
+    "previewFilterName": MessageLookupByLibrary.simpleMessage(
+      "اسم عامل التصفية",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profile_updated_failed": MessageLookupByLibrary.simpleMessage(
       "فشل تحديث الملف الشخصي",
     ),
     "profile_updated_success": MessageLookupByLibrary.simpleMessage(
       "تم تحديث الملف الشخصي بنجاح",
+    ),
+    "push_notification": MessageLookupByLibrary.simpleMessage(
+      "الاشعارات النقلية",
+    ),
+    "push_notification_description": MessageLookupByLibrary.simpleMessage(
+      "الحصول على اشعارات جديدة للملاحظات والمهام.",
     ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
@@ -237,6 +329,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
+    "restoreFromBackup": MessageLookupByLibrary.simpleMessage(
+      "استعادة من النسخ الاحتياطي",
+    ),
     "restoringBackup": MessageLookupByLibrary.simpleMessage(
       "تم العثور على نسخة احتياطية — جاري الاستعادة...",
     ),
@@ -248,7 +343,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "save_note": MessageLookupByLibrary.simpleMessage("حفظ الملاحظة"),
     "save_task": MessageLookupByLibrary.simpleMessage("حفظ المهمة"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
+    "search_note": MessageLookupByLibrary.simpleMessage("بحث عن ملاحظات..."),
     "search_notes": MessageLookupByLibrary.simpleMessage("بحث في الملاحظات"),
+    "search_task": MessageLookupByLibrary.simpleMessage("بحث عن مهام..."),
+    "securePrivate": MessageLookupByLibrary.simpleMessage("آمن وخاص"),
+    "securityDescription": MessageLookupByLibrary.simpleMessage(
+      "بياناتك مشفرة ومحمية",
+    ),
+    "select": MessageLookupByLibrary.simpleMessage("حدد"),
     "selectColorNote": MessageLookupByLibrary.simpleMessage(
       "اختر لون الملاحظة",
     ),
@@ -257,6 +359,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "سنرسل لك بريدًا إلكترونيًا لإعادة تعيين كلمة المرور.",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "signInWithEmail": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول باستخدام البريد الإلكتروني",
+    ),
+    "signOutConfirmation": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد تسجيل الخروج؟ ملاحظاتك المحلية ستبقى على هذا الجهاز، لكن لن تتمكن من المزامنة مع الأجهزة الأخرى حتى تسجل الدخول مرة أخرى.",
+    ),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "splashText1": MessageLookupByLibrary.simpleMessage(
       "مرحبًا بك في دوّن ونفّذ",
@@ -269,7 +377,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "success_registration": MessageLookupByLibrary.simpleMessage(
       "تم التسجيل بنجاح",
     ),
+    "syncDescription": MessageLookupByLibrary.simpleMessage(
+      "لا تفقد ملاحظاتك المهمة أبدًا",
+    ),
     "syncNow": MessageLookupByLibrary.simpleMessage("مزامنة الآن"),
+    "sync_and_backup": MessageLookupByLibrary.simpleMessage(
+      "المزامنة والنسخ الاحتياطي",
+    ),
     "sync_banner_enable": MessageLookupByLibrary.simpleMessage(
       "تفعيل المزامنة",
     ),
@@ -295,8 +409,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "task_updated": MessageLookupByLibrary.simpleMessage(
       "تم تعديل المهمة بنجاح",
     ),
+    "tasks": MessageLookupByLibrary.simpleMessage("مهام"),
+    "termsAgreement": MessageLookupByLibrary.simpleMessage(
+      "بالمتابعة، فإنك توافق على شروط الخدمة وسياسة الخصوصية",
+    ),
     "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
     "un_archive": MessageLookupByLibrary.simpleMessage("الغاء الأرشفة"),
+    "un_favorites": MessageLookupByLibrary.simpleMessage("حذف من المفضلة"),
+    "un_pin": MessageLookupByLibrary.simpleMessage("الغاء التثبيت"),
     "unfavorited": MessageLookupByLibrary.simpleMessage(
       "تمت إزالته من المفضلة",
     ),
@@ -318,6 +438,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "warning": MessageLookupByLibrary.simpleMessage("تحذير"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
+    "worksOffline": MessageLookupByLibrary.simpleMessage("يعمل دون اتصال"),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "your_notes": MessageLookupByLibrary.simpleMessage("ملاحظاتك"),
     "your_tasks": MessageLookupByLibrary.simpleMessage("مهامك"),

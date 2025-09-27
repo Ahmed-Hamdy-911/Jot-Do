@@ -54,9 +54,79 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Jot&Do`
+  /// `Jot & Do`
   String get appName {
-    return Intl.message('Jot&Do', name: 'appName', desc: '', args: []);
+    return Intl.message('Jot & Do', name: 'appName', desc: '', args: []);
+  }
+
+  /// `Your thoughts, organized and synced across all devices`
+  String get appDescription {
+    return Intl.message(
+      'Your thoughts, organized and synced across all devices',
+      name: 'appDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Works offline`
+  String get worksOffline {
+    return Intl.message(
+      'Works offline',
+      name: 'worksOffline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access your notes anywhere, anytime`
+  String get offlineDescription {
+    return Intl.message(
+      'Access your notes anywhere, anytime',
+      name: 'offlineDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto sync & backup`
+  String get autoSyncBackup {
+    return Intl.message(
+      'Auto sync & backup',
+      name: 'autoSyncBackup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Never lose your important notes`
+  String get syncDescription {
+    return Intl.message(
+      'Never lose your important notes',
+      name: 'syncDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Secure & private`
+  String get securePrivate {
+    return Intl.message(
+      'Secure & private',
+      name: 'securePrivate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your data is encrypted and protected`
+  String get securityDescription {
+    return Intl.message(
+      'Your data is encrypted and protected',
+      name: 'securityDescription',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Welcome to Jot&Do`
@@ -142,6 +212,46 @@ class S {
   /// `Skip`
   String get skip {
     return Intl.message('Skip', name: 'skip', desc: '', args: []);
+  }
+
+  /// `Continue with Google`
+  String get continueWithGoogle {
+    return Intl.message(
+      'Continue with Google',
+      name: 'continueWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Email`
+  String get signInWithEmail {
+    return Intl.message(
+      'Sign in with Email',
+      name: 'signInWithEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue without account`
+  String get continueWithoutAccount {
+    return Intl.message(
+      'Continue without account',
+      name: 'continueWithoutAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By continuing, you agree to our Terms of Service and Privacy Policy`
+  String get termsAgreement {
+    return Intl.message(
+      'By continuing, you agree to our Terms of Service and Privacy Policy',
+      name: 'termsAgreement',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Welcome Back`
@@ -469,6 +579,16 @@ class S {
     return Intl.message('Logout', name: 'logout', desc: '', args: []);
   }
 
+  /// `Are you sure you want to sign out? Your local notes will remain on this device, but you won't be able to sync with other devices until you sign back in.`
+  String get signOutConfirmation {
+    return Intl.message(
+      'Are you sure you want to sign out? Your local notes will remain on this device, but you won\'t be able to sync with other devices until you sign back in.',
+      name: 'signOutConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Reset Password`
   String get reset_password {
     return Intl.message(
@@ -699,6 +819,36 @@ class S {
     );
   }
 
+  /// `Notes`
+  String get notes {
+    return Intl.message('Notes', name: 'notes', desc: '', args: []);
+  }
+
+  /// `Tasks`
+  String get tasks {
+    return Intl.message('Tasks', name: 'tasks', desc: '', args: []);
+  }
+
+  /// `Search notes...`
+  String get search_note {
+    return Intl.message(
+      'Search notes...',
+      name: 'search_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search tasks...`
+  String get search_task {
+    return Intl.message(
+      'Search tasks...',
+      name: 'search_task',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your Tasks`
   String get your_tasks {
     return Intl.message('Your Tasks', name: 'your_tasks', desc: '', args: []);
@@ -834,6 +984,181 @@ class S {
     return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
+  /// `Appearance`
+  String get appearance {
+    return Intl.message('Appearance', name: 'appearance', desc: '', args: []);
+  }
+
+  /// `Sync & Backup`
+  String get sync_and_backup {
+    return Intl.message(
+      'Sync & Backup',
+      name: 'sync_and_backup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto Sync`
+  String get autoSync {
+    return Intl.message('Auto Sync', name: 'autoSync', desc: '', args: []);
+  }
+
+  /// `Auto Backup`
+  String get autoBackup {
+    return Intl.message('Auto Backup', name: 'autoBackup', desc: '', args: []);
+  }
+
+  /// `Automatically sync notes and tasks to your device when online.`
+  String get autoSyncDescription {
+    return Intl.message(
+      'Automatically sync notes and tasks to your device when online.',
+      name: 'autoSyncDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Automatically backup notes and tasks to the cloud.`
+  String get autoBackupDescription {
+    return Intl.message(
+      'Automatically backup notes and tasks to the cloud.',
+      name: 'autoBackupDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup & Restore`
+  String get backup_and_restore {
+    return Intl.message(
+      'Backup & Restore',
+      name: 'backup_and_restore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter Notes`
+  String get filter_notes {
+    return Intl.message(
+      'Filter Notes',
+      name: 'filter_notes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter Tasks`
+  String get filter_tasks {
+    return Intl.message(
+      'Filter Tasks',
+      name: 'filter_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DEFAULT FILTERS`
+  String get default_filters {
+    return Intl.message(
+      'DEFAULT FILTERS',
+      name: 'default_filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CUSTOM FILTERS`
+  String get custom_filters {
+    return Intl.message(
+      'CUSTOM FILTERS',
+      name: 'custom_filters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Filter`
+  String get add_filter {
+    return Intl.message('Add Filter', name: 'add_filter', desc: '', args: []);
+  }
+
+  /// `Create Note Filter`
+  String get createNoteFilter {
+    return Intl.message(
+      'Create Note Filter',
+      name: 'createNoteFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a custom filter to organize your notes by specific criteria.`
+  String get createFilterDescription {
+    return Intl.message(
+      'Create a custom filter to organize your notes by specific criteria.',
+      name: 'createFilterDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter Name`
+  String get filterName {
+    return Intl.message('Filter Name', name: 'filterName', desc: '', args: []);
+  }
+
+  /// `e.g., Work, Personal`
+  String get filterNamePlaceholder {
+    return Intl.message(
+      'e.g., Work, Personal',
+      name: 'filterNamePlaceholder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `/20 characters`
+  String get charactersCounter {
+    return Intl.message(
+      '/20 characters',
+      name: 'charactersCounter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Color`
+  String get color {
+    return Intl.message('Color', name: 'color', desc: '', args: []);
+  }
+
+  /// `Preview`
+  String get preview {
+    return Intl.message('Preview', name: 'preview', desc: '', args: []);
+  }
+
+  /// `Filter Name`
+  String get previewFilterName {
+    return Intl.message(
+      'Filter Name',
+      name: 'previewFilterName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Filter`
+  String get createFilter {
+    return Intl.message(
+      'Create Filter',
+      name: 'createFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `All`
   String get filter_all {
     return Intl.message('All', name: 'filter_all', desc: '', args: []);
@@ -885,8 +1210,8 @@ class S {
   }
 
   /// `Unpin`
-  String get unpin {
-    return Intl.message('Unpin', name: 'unpin', desc: '', args: []);
+  String get un_pin {
+    return Intl.message('Unpin', name: 'un_pin', desc: '', args: []);
   }
 
   /// `Archive`
@@ -904,6 +1229,21 @@ class S {
     return Intl.message('Delete', name: 'delete', desc: '', args: []);
   }
 
+  /// `Select`
+  String get select {
+    return Intl.message('Select', name: 'select', desc: '', args: []);
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message('Edit', name: 'edit', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
   /// `Backup & Sync`
   String get backup_sync {
     return Intl.message(
@@ -914,11 +1254,31 @@ class S {
     );
   }
 
-  /// `Notification Settings`
-  String get notification_settings {
+  /// `Notifications`
+  String get notifications {
     return Intl.message(
-      'Notification Settings',
-      name: 'notification_settings',
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Push Notifications`
+  String get push_notification {
+    return Intl.message(
+      'Push Notifications',
+      name: 'push_notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive notifications for new notes and tasks.`
+  String get push_notification_description {
+    return Intl.message(
+      'Receive notifications for new notes and tasks.',
+      name: 'push_notification_description',
       desc: '',
       args: [],
     );
@@ -1379,6 +1739,26 @@ class S {
     return Intl.message('Enable Now', name: 'enable_now', desc: '', args: []);
   }
 
+  /// `Add to favorites`
+  String get favorites {
+    return Intl.message(
+      'Add to favorites',
+      name: 'favorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove from favorites`
+  String get un_favorites {
+    return Intl.message(
+      'Remove from favorites',
+      name: 'un_favorites',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Added to favorites`
   String get favorited {
     return Intl.message(
@@ -1409,10 +1789,10 @@ class S {
     );
   }
 
-  /// `Note unarchived`
+  /// `Note unarchive`
   String get note_unarchived {
     return Intl.message(
-      'Note unarchived',
+      'Note unarchive',
       name: 'note_unarchived',
       desc: '',
       args: [],
@@ -1439,6 +1819,156 @@ class S {
     return Intl.message(
       'Are you sure you want to delete this note?',
       name: 'delete_note_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Backup Status`
+  String get backupStatus {
+    return Intl.message(
+      'Backup Status',
+      name: 'backupStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `data ready for backup`
+  String get dataReadyForBackup {
+    return Intl.message(
+      'data ready for backup',
+      name: 'dataReadyForBackup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last backup`
+  String get lastBackup {
+    return Intl.message('Last backup', name: 'lastBackup', desc: '', args: []);
+  }
+
+  /// `Create Backup`
+  String get createBackup {
+    return Intl.message(
+      'Create Backup',
+      name: 'createBackup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore from Backup`
+  String get restoreFromBackup {
+    return Intl.message(
+      'Restore from Backup',
+      name: 'restoreFromBackup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local Backup`
+  String get localBackup {
+    return Intl.message(
+      'Local Backup',
+      name: 'localBackup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export Data`
+  String get exportData {
+    return Intl.message('Export Data', name: 'exportData', desc: '', args: []);
+  }
+
+  /// `Download all your data as a backup file`
+  String get exportDescription {
+    return Intl.message(
+      'Download all your data as a backup file',
+      name: 'exportDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export Data`
+  String get exportNotes {
+    return Intl.message('Export Data', name: 'exportNotes', desc: '', args: []);
+  }
+
+  /// ` (.json)`
+  String get json {
+    return Intl.message(' (.json)', name: 'json', desc: '', args: []);
+  }
+
+  /// `Import Data`
+  String get importData {
+    return Intl.message('Import Data', name: 'importData', desc: '', args: []);
+  }
+
+  /// `Restore data from a backup file`
+  String get importDescription {
+    return Intl.message(
+      'Restore data from a backup file',
+      name: 'importDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Import Data`
+  String get importNotes {
+    return Intl.message('Import Data', name: 'importNotes', desc: '', args: []);
+  }
+
+  /// `About Backups`
+  String get aboutBackups {
+    return Intl.message(
+      'About Backups',
+      name: 'aboutBackups',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cloud backups are encrypted and stored securely`
+  String get backupFeature1 {
+    return Intl.message(
+      'Cloud backups are encrypted and stored securely',
+      name: 'backupFeature1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Local exports can be stored on your device or cloud storage`
+  String get backupFeature2 {
+    return Intl.message(
+      'Local exports can be stored on your device or cloud storage',
+      name: 'backupFeature2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Automatic backups happen when enabled in settings`
+  String get backupFeature3 {
+    return Intl.message(
+      'Automatic backups happen when enabled in settings',
+      name: 'backupFeature3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restoring will merge with existing data, not replace them`
+  String get backupFeature4 {
+    return Intl.message(
+      'Restoring will merge with existing data, not replace them',
+      name: 'backupFeature4',
       desc: '',
       args: [],
     );

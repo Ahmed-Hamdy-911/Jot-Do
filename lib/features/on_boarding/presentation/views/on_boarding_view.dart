@@ -1,91 +1,167 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/app_assets.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../cubits/on_boarding_cubit.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../core/cubits/connectivity/connection_cubit.dart';
+import '../../../../core/cubits/connectivity/connection_state.dart';
+import '../../../../core/models/message_type.dart';
 import '../../../../core/routing/app_routes.dart';
+import '../../../../core/widgets/app_logo.dart';
+import '../../../../core/widgets/components.dart';
+import '../../../../core/widgets/custom_loading.dart';
+import '../../../../core/widgets/custom_snackbar.dart';
 import '../../../../generated/l10n.dart';
-import '../../data/models/on_boarding_model.dart';
-import '../widgets/custom_next_button.dart';
-import '../widgets/custom_skip_button.dart';
-import '../widgets/custom_smooth_page_indicator.dart';
-import '../widgets/page_view_builder.dart';
+import '../../../auth/presentation/cubit/auth_cubit.dart';
+import '../../../auth/presentation/cubit/auth_states.dart';
+import 'widgets/auth_option.dart';
+import 'widgets/on_boarding_builder.dart';
 
-class OnBoardingView extends StatefulWidget {
+class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
 
   @override
-  State<OnBoardingView> createState() => _OnBoardingViewState();
-}
-
-class _OnBoardingViewState extends State<OnBoardingView> {
-  @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController();
-    final List<OnBoardingModel> _pages = [
-      OnBoardingModel(
-        title: S.of(context).onBoardingTitle1,
-        description: S.of(context).onBoardingDesc1,
-        image: AppAssets.onBoarding1,
-      ),
-      OnBoardingModel(
-        title: S.of(context).onBoardingTitle2,
-        description: S.of(context).onBoardingDesc2,
-        image: AppAssets.onBoarding2,
-      ),
-      OnBoardingModel(
-        title: S.of(context).onBoardingTitle3,
-        description: S.of(context).onBoardingDesc3,
-        image: AppAssets.onBoarding3,
-      ),
-    ];
-    return BlocProvider(
-      create: (context) => OnBoardingCubit(),
-      child: Builder(builder: (context) {
-        return BlocConsumer<OnBoardingCubit, OnBoardingStates>(
-          listener: (context, state) {
-            if (state is OnBoardingCompleted || state is OnBoardingSkipped) {
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                AppRoutes.login,
-                (route) => false,
+    final colors = SmartAppColor(context);
+
+    return Scaffold(
+      backgroundColor: colors.backgroundScreen,
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<AuthCubit, AuthStates>(
+            listener: (context, state) {
+              debugPrint("Listener triggered with state: //$state");
+              if (state is AuthSuccess ||
+                  state is AuthEmailVerified ||
+                  state is AuthGoogleSignInSuccess ||
+                  state is AuthContinueWithoutAccount) {
+                Navigator.pushReplacementNamed(context, AppRoutes.home);
+              } else if (state is GoVerificationState) {
+                CustomSnackBar.showSnackBar(
+                  state.message!,
+                  context,
+                  MessageType.warning,
+                );
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.verifyEmail,
+                  arguments: state.email,
+                );
+              }
+              if (state is AuthFailure) {
+                CustomSnackBar.showSnackBar(
+                  state.error,
+                  context,
+                  MessageType.error,
+                );
+              }
+              if (state is AuthEmailVerificationSent) {
+                CustomSnackBar.showSnackBar(
+                  state.message!,
+                  context,
+                  MessageType.success,
+                );
+              }
+              if (state is AuthEmailVerificationNeeded) {
+                CustomSnackBar.showSnackBar(
+                  state.message!,
+                  context,
+                  MessageType.warning,
+                );
+              }
+              if (state is AuthGoogleSignInFailure) {
+                CustomSnackBar.showSnackBar(
+                  state.error,
+                  context,
+                  MessageType.error,
+                );
+              }
+            },
+          ),
+          BlocListener<ConnectionCubit, ConnectionStates>(
+            listener: (context, state) {
+              if (state is ConnectionDisconnected) {
+                CustomSnackBar.showSnackBar(
+                  S.of(context).noInternet,
+                  context,
+                  MessageType.error,
+                );
+              } else if (state is ConnectionTimeOut) {
+                CustomSnackBar.showSnackBar(
+                  S.of(context).noInternet,
+                  context,
+                  MessageType.info,
+                );
+              } else if (state is ConnectionReconnected) {
+                CustomSnackBar.showSnackBar(
+                  S.of(context).connectedInternet,
+                  context,
+                  MessageType.success,
+                );
+              }
+            },
+          ),
+        ],
+        child: CustomLoading(
+          state: context.watch<AuthCubit>().state is AuthLoadingGoogleSignIn,
+          child: LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxWidth >= 600) {
+              return const Center(
+                child: SingleChildScrollView(child: onBoardingBody(width: 600)),
               );
             }
-          },
-          builder: (context, state) {
-            return Scaffold(
-              floatingActionButton: CustomNextButton(
-                  pages: _pages, pageController: _pageController),
-              body: SingleChildScrollView(
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: AlignmentDirectional.centerStart,
-                      end: AlignmentDirectional.centerEnd,
-                      colors: AppColor.onBoardingColorsList,
-                    ),
-                  ),
-                  child: SafeArea(
-                    child: Column(
-                      children: [
-                        CustomSkipButton(onPressed: () {
-                          context.read<OnBoardingCubit>().skipOnBoarding();
-                        }),
-                        PageViewBuilder(
-                            pageController: _pageController, pages: _pages),
-                        CustomSmoothPageIndicator(
-                            pageController: _pageController, pages: _pages),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-      }),
+            return const Center(
+                child: SingleChildScrollView(
+                    child: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: onBoardingBody(),
+            )));
+          }),
+        ),
+      ),
+    );
+  }
+}
+
+class onBoardingBody extends StatelessWidget {
+  const onBoardingBody({
+    super.key,
+    this.width,
+  });
+  final double? width;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = SmartAppColor(context);
+    final size = MediaQuery.of(context).size;
+
+    return Container(
+      constraints: BoxConstraints(maxWidth: size.height),
+      width: width ?? size.width,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: kToolbarHeight,
+          ),
+          const AppLogo(),
+          AppComponents.mediumVerticalSpace(),
+          Text(
+            S.of(context).appDescription,
+            style: AppConstants.bodyMediumStyle(colors.textSecondary),
+          ),
+          AppComponents.mediumVerticalSpace(),
+          const OnBoardingBodyBodyBuilder(),
+          AppComponents.mediumVerticalSpace(),
+          const AuthOptions(),
+          AppComponents.largeVerticalSpace(),
+          Text(
+            S.of(context).termsAgreement,
+            style: AppConstants.captionStyle(colors.textSecondary),
+          ),
+          AppComponents.smallVerticalSpace(),
+        ],
+      ),
     );
   }
 }

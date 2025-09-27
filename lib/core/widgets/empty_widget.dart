@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../constants/app_assets.dart';
+import '../constants/app_constants.dart';
+import '../constants/colors/smart_app_color.dart';
+
 class EmptyWidget extends StatelessWidget {
   const EmptyWidget({
     super.key,
@@ -17,40 +21,29 @@ class EmptyWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: Lottie.asset("assets/animations/empty.json")),
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    child: Lottie.asset(AppAssets.emptyAnimation)),
                 Text(
                   text,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppConstants.bodyLargeStyle(
+                      SmartAppColor(context).textPrimary),
                 )
               ]);
         } else {
-          return Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
-              ),
               SizedBox(
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: Lottie.asset("assets/animations/empty.json")),
               Text(
                 text,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppConstants.bodyLargeStyle(
+                    SmartAppColor(context).textPrimary),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.15,
-              )
             ],
-          ));
+          );
         }
       },
     );

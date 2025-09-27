@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/cubits/settings/setting_cubit.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
 import '../cubit/auth_cubit.dart';
 
 class TogglePasswordVisibilityIcon extends StatelessWidget {
@@ -11,15 +10,11 @@ class TogglePasswordVisibilityIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var darkMode =
-        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var iconColor = darkMode ? AppColor.white70 : AppColor.greyColor;
-
     final cubit = context.watch<AuthCubit>();
     final isVisible = isConfirmField
         ? cubit.isConfirmPasswordVisible
         : cubit.isPasswordVisible;
-
+    var colors = SmartAppColor(context);
     return IconButton(
       onPressed: () {
         if (isConfirmField) {
@@ -30,7 +25,7 @@ class TogglePasswordVisibilityIcon extends StatelessWidget {
       },
       icon: Icon(
         isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-        color: iconColor,
+        color: colors.grey,
       ),
     );
   }

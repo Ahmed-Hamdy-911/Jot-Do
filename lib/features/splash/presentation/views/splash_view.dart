@@ -2,11 +2,13 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_assets.dart';
-import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../core/widgets/components.dart';
 import '../../../../generated/l10n.dart';
 import 'package:page_transition/page_transition.dart';
+import '../../../../core/widgets/loading_animation.dart';
 import '../manager/cubit/splash_cubit.dart';
-import '../../../../core/constants/app_colors.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({
@@ -37,15 +39,11 @@ class SplashBody extends StatelessWidget {
       return context.read<SplashCubit>().checkNextScreen();
     }
 
+    final colors = SmartAppColor(context);
     return Container(
       height: screenHeight,
       width: screenWidth,
-      decoration: BoxDecoration(
-          gradient: RadialGradient(
-        center: Alignment.center,
-        radius: 1.4,
-        colors: AppColor.splashColorsList,
-      )),
+      color: colors.backgroundScreen,
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth >= 600) {
           return Center(
@@ -87,23 +85,22 @@ class SplashBody extends StatelessWidget {
                     );
                   },
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         S.of(context).appName,
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.07,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: AppConstants.appNameStyle(colors.textPrimary),
                       ),
                       Text(
                         S.of(context).splashText2,
-                        style: TextStyle(
-                          fontSize: screenWidth * 0.035,
-                          color: Colors.white,
+                        style: AppConstants.bodySmallStyle(
+                          colors.textSecondary,
                         ),
+                      ),
+                      AppComponents.smallHorizontalSpace(),
+                      const LoadingAnimation(
+                        height: 120,
                       ),
                     ],
                   ),
@@ -138,7 +135,7 @@ class SplashBody extends StatelessWidget {
                   ),
                 ),
               ),
-              const MediumSpace(),
+              AppComponents.mediumVerticalSpace(),
               TweenAnimationBuilder<double>(
                 tween: Tween<double>(begin: 0, end: 1),
                 duration: const Duration(seconds: 1),
@@ -155,14 +152,17 @@ class SplashBody extends StatelessWidget {
                       style: TextStyle(
                         fontSize: screenWidth * 0.104,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: colors.textPrimary,
+                        fontFamily: 'Kalam',
                       ),
                     ),
                     Text(S.of(context).splashText2,
                         style: TextStyle(
                           fontSize: screenWidth * 0.05,
-                          color: Colors.white,
+                          color: colors.textSecondary,
                         )),
+                    AppComponents.largeVerticalSpace(),
+                    const LoadingAnimation()
                   ],
                 ),
               ),

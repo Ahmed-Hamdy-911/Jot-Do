@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/cubits/settings/setting_cubit.dart';
-import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../core/widgets/components.dart';
 import '../../../../core/widgets/custom_text_form.dart';
 import '../../../../generated/l10n.dart';
 
@@ -17,10 +15,8 @@ class CustomEmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = SmartAppColor(context);
     var screenWidth = MediaQuery.sizeOf(context).width;
-    var darkMode =
-        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,11 +24,11 @@ class CustomEmailField extends StatelessWidget {
           S.of(context).email,
           style: TextStyle(
             fontSize: screenWidth < 600 ? 16 : 18,
-            color: textColor,
+            color: colors.textPrimary,
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SmallSpace(),
+         AppComponents.smallVerticalSpace(),
         CustomTextFormField(
           hintText: S.of(context).enter_email,
           controller: _emailController,
@@ -40,6 +36,8 @@ class CustomEmailField extends StatelessWidget {
           inputFormatters: [
             FilteringTextInputFormatter.deny(" "),
           ],
+          filled: true,
+          fillColor: colors.fillColor,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;

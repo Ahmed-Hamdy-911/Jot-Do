@@ -1,9 +1,10 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
-
+import 'package:flutter/material.dart' as material;
 import '../../generated/l10n.dart';
-import '../constants/app_colors.dart';
+import '../constants/app_constants.dart';
+import '../constants/colors/smart_app_color.dart';
 import '../models/message_type.dart';
 
 class CustomSnackBar {
@@ -28,6 +29,7 @@ class CustomSnackBar {
     ToastificationType? type,
     List<InlineSpan>? children,
   }) {
+    var colors = SmartAppColor(context);
     toastification.show(
       context: context,
       alignment: Alignment.bottomCenter,
@@ -37,7 +39,7 @@ class CustomSnackBar {
         _returnTitle(type, context),
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: _returnCustomBGToastification(type!),
+          color: _returnCustomBGToastification(type!, colors),
         ),
       ),
       showProgressBar: true,
@@ -56,7 +58,7 @@ class CustomSnackBar {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: _returnCustomBGToastification(type),
+            color: _returnCustomBGToastification(type, colors),
           ),
         ),
         child: Icon(
@@ -105,20 +107,21 @@ class CustomSnackBar {
     return iconData;
   }
 
-  static Color _returnCustomBGToastification(ToastificationType type) {
+  static Color _returnCustomBGToastification(
+      ToastificationType type, SmartAppColor colors) {
     Color? color;
     switch (type) {
       case ToastificationType.success:
-        color = AppColor.greenColor;
+        color = colors.green;
         break;
       case ToastificationType.error:
-        color = AppColor.redColor;
+        color = colors.red;
         break;
       case ToastificationType.warning:
-        color = AppColor.amberDarkColor;
+        color = colors.amber;
         break;
       default:
-        color = AppColor.blueColor;
+        color = colors.blue;
     }
     return color;
   }
@@ -134,5 +137,54 @@ class CustomSnackBar {
       default:
         return S.of(context).error;
     }
+  }
+
+  static void showDialog(
+    MessageType type,
+    BuildContext context,
+    String content,
+    VoidCallback onConfirm,
+  ) {
+    var colors = SmartAppColor(context);
+
+    material.showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: colors.backgroundMuted,
+        title: Text(
+          _returnTitle(type, context),
+          textAlign: TextAlign.center,
+          style: AppConstants.bodyMediumStyle(colors.textPrimary),
+        ),
+        content: Text(
+          content,
+          style: AppConstants.bodySmallStyle(colors.textSecondary),
+        ),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                child: Text(
+                  S.of(context).no,
+                  style: TextStyle(color: colors.blue),
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              TextButton(
+                child: Text(
+                  S.of(context).yes,
+                  style: TextStyle(color: colors.red),
+                ),
+                onPressed: () {
+                  onConfirm();
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

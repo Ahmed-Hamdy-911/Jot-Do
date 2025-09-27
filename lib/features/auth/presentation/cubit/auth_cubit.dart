@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
@@ -9,6 +8,7 @@ import '../../../../core/services/app_service.dart';
 import '../../data/models/user_model.dart';
 import '../../data/repository/auth_repository.dart';
 
+import '../../data/repository/cache_auth_repo.dart';
 import '../../data/repository/user_repo_impl.dart';
 import '../../data/repository/user_repository.dart';
 import 'auth_states.dart';
@@ -19,7 +19,6 @@ class AuthCubit extends Cubit<AuthStates> {
   final UserRepository _userRepository = UserRepoImpl();
   AuthCubit(
     this._authRepository,
-    
   ) : super(AuthInitialState());
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
@@ -44,6 +43,16 @@ class AuthCubit extends Cubit<AuthStates> {
     isPasswordVisible = false;
     isConfirmPasswordVisible = false;
     emit(AuthInitialState());
+  }
+
+  void continueWithoutAccount() {
+    CacheAuthRepo.continueWithoutAccount();
+    emit(AuthContinueWithoutAccount());
+  }
+
+  void reLogin() {
+    CacheAuthRepo.reLogin();
+    emit(AuthReLogin());
   }
 
   void register({
@@ -98,7 +107,7 @@ class AuthCubit extends Cubit<AuthStates> {
         await _authRepository.sendEmailVerification();
         return;
       }
-      log("isOnline: ${appService.isOnline}");
+      // log("isOnline: ${appService.isOnline}");
       final isLoggedIn = await _authRepository.checkUserStatus();
       CacheHelper.saveData(key: AppConstants.isLoggedIn, value: isLoggedIn);
 

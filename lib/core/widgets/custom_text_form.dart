@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../generated/l10n.dart';
 
-import '../constants/app_colors.dart';
 import '../constants/app_constants.dart';
-import '../cubits/settings/setting_cubit.dart';
+import '../../features/settings/presentation/cubits/setting_cubit.dart';
+import '../constants/colors/smart_app_color.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -40,6 +40,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.customInputStyle,
     this.focusNode,
+    this.expands = false,
   });
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -65,6 +66,7 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(PointerDownEvent)? onTapOutside;
   final void Function(String)? onChanged;
   final bool readOnly;
+  final bool expands;
   final String? initialValue;
   final EdgeInsetsGeometry? contentPadding;
   final bool? filled;
@@ -73,13 +75,14 @@ class CustomTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
+    var colors = SmartAppColor(context);
     var darkMode =
         context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var textColor = darkMode ? AppColor.whiteColor : AppColor.blackColor;
+    var textColor = colors.textPrimary;
     var inputTextColor = enabled == false
         ? darkMode
-            ? AppColor.white70
-            : AppColor.grey800
+            ? colors.white70
+            : colors.grey
         : textColor;
     return TextFormField(
       validator: validator ??
@@ -107,12 +110,13 @@ class CustomTextFormField extends StatelessWidget {
       onTap: onTap,
       onFieldSubmitted: onFieldSubmitted,
       onChanged: onChanged,
-      scrollPadding: const EdgeInsets.all(20.0),
+      scrollPadding: const EdgeInsets.all(16.0),
       inputFormatters: inputFormatters,
       enabled: enabled,
+      expands: expands,
       readOnly: readOnly,
       maxLength: maxLength,
-      cursorColor: AppColor.colorScheme,
+      cursorColor: colors.primary,
       decoration: InputDecoration(
         filled: filled,
         fillColor: fillColor,
@@ -120,40 +124,44 @@ class CustomTextFormField extends StatelessWidget {
         labelStyle: TextStyle(
           color: enabled == false
               ? darkMode
-                  ? AppColor.white70
-                  : AppColor.grey800
+                  ? colors.white70
+                  : colors.grey
               : darkMode
-                  ? AppColor.whiteColor
-                  : AppColor.grey800,
+                  ? colors.white
+                  : colors.grey,
         ),
         contentPadding: contentPadding ??
-            const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+            const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         hintText: hintText,
         hintStyle: customHintStyle ??
             TextStyle(
               fontSize: 14,
-              color: darkMode ? AppColor.white70 : AppColor.grey800,
+              color: darkMode ? colors.white70 : colors.grey,
             ),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         suffix: suffixWidget,
         errorStyle: TextStyle(
-          color: darkMode ? AppColor.redLightColor : AppColor.redColor,
+          color: colors.red,
           fontSize: 12,
         ),
         helperText: helperText,
         helperMaxLines: 2,
-        helperStyle:
-            TextStyle(color: darkMode ? AppColor.white70 : AppColor.blackColor),
+        helperStyle: TextStyle(color: colors.grey),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppConstants.kRadius),
+          borderSide: BorderSide(color: colors.red),
+        ),
         focusedBorder: customBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppConstants.kRadius),
-              borderSide: const BorderSide(color: AppColor.colorScheme),
+              borderSide: BorderSide(color: colors.primary),
             ),
         enabledBorder: customBorder ??
             OutlineInputBorder(
-                borderRadius: BorderRadius.circular(AppConstants.kRadius),
-                borderSide: BorderSide(color: AppColor.grey300)),
+              borderRadius: BorderRadius.circular(AppConstants.kRadius),
+              borderSide: BorderSide(color: colors.border),
+            ),
         border: customBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppConstants.kRadius),

@@ -1,4 +1,7 @@
 class AppAssets {
+  // app
+  static const String appIcon = 'assets/icons/jot&do_icon.png';
+
   // Splash
   static const String splash = 'assets/icons/jot&do_icon.png';
 
@@ -12,4 +15,8 @@ class AppAssets {
 
   // auth
   static const String googleLogo = 'assets/icons/google.png';
+
+  // loading
+  static const String loadingAnimation =
+      'assets/animations/Loading_animation.json';
 }

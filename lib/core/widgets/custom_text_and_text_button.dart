@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants/app_colors.dart';
+import '../constants/colors/smart_app_color.dart';
 
 class CustomTextAndTextButton extends StatelessWidget {
   const CustomTextAndTextButton({
@@ -19,6 +19,7 @@ class CustomTextAndTextButton extends StatelessWidget {
   final double? fontSize;
   @override
   Widget build(BuildContext context) {
+    var colors = SmartAppColor(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -28,7 +29,7 @@ class CustomTextAndTextButton extends StatelessWidget {
             fontSize: MediaQuery.sizeOf(context).width < 600
                 ? MediaQuery.sizeOf(context).width * 0.035
                 : MediaQuery.sizeOf(context).width * 0.015,
-            color: AppColor.mainLightColor,
+            color: colors.textSecondary,
           ),
         ),
         TextButton(
@@ -39,7 +40,7 @@ class CustomTextAndTextButton extends StatelessWidget {
               decoration: decoration ?? TextDecoration.none,
               fontSize: fontSize ?? 15,
               fontWeight: fontWeight,
-              color: AppColor.colorScheme,
+              color: colors.textPrimary,
             ),
           ),
         )

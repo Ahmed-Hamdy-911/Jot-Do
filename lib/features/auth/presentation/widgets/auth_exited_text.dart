@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/cubits/settings/setting_cubit.dart';
-import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../core/widgets/components.dart';
 
 class AuthExcitedText extends StatelessWidget {
   const AuthExcitedText({
@@ -14,32 +13,20 @@ class AuthExcitedText extends StatelessWidget {
   final String subtitle;
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.sizeOf(context).width;
-    var darkMode =
-        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
+    final colors = SmartAppColor(context);
     return Center(
       child: Column(
         children: [
           Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: AppColor.colorScheme,
-              fontWeight: FontWeight.bold,
-              fontSize:
-                  screenWidth < 600 ? screenWidth * 0.045 : screenWidth * 0.03,
-            ),
+            style: AppConstants.headlineMediumStyle(colors.textPrimary),
           ),
           Text(
             subtitle,
-            style: TextStyle(
-              color: textColor,
-              fontSize:
-                  screenWidth < 600 ? screenWidth * 0.035 : screenWidth * 0.02,
-            ),
+            style: AppConstants.bodyMediumStyle(colors.textSecondary),
           ),
-          const LargeSpace(),
+          AppComponents.mediumVerticalSpace(),
         ],
       ),
     );

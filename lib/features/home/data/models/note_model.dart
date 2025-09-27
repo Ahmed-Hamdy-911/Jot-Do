@@ -14,7 +14,7 @@ class NoteModel extends HiveObject {
   @HiveField(3)
   String createdAt;
   @HiveField(4)
-  int color;
+  int? color;
   @HiveField(5)
   bool isArchived;
   @HiveField(6)
@@ -33,7 +33,7 @@ class NoteModel extends HiveObject {
     required this.title,
     required this.content,
     required this.createdAt,
-    required this.color,
+     this.color,
     this.isArchived = false,
     this.isPinned = false,
     this.isFavorite = false,

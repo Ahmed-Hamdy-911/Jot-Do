@@ -1,7 +1,8 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'dart:async';
-import 'dart:developer';
+
+import 'package:flutter/material.dart';
 
 class CountdownTimerService {
   // generate stream numbers for timer(in seconds)
@@ -32,7 +33,7 @@ class CountdownTimerService {
     // start the timer in the background with a period of 1 second
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       final timeLeft = _currentTimeLeft();
-      log("timeLeft: $timeLeft");
+      debugPrint("timeLeft: $timeLeft");
       if (timeLeft == 0) {
         _timer?.cancel(); // cancel the timer when the time is up
         _emit(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants_spaces_widgets.dart';
+import 'components.dart';
 import 'custom_material_button.dart';
 
 Future<void> showMultiSelectBottomSheet(
@@ -9,7 +9,6 @@ Future<void> showMultiSelectBottomSheet(
   required List<String> options,
   required void Function(List<String> selected) onConfirm,
 }) {
-
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -19,8 +18,6 @@ Future<void> showMultiSelectBottomSheet(
     builder: (context) {
       return StatefulBuilder(
         builder: (context, setState) {
-
-
           return Padding(
             padding: EdgeInsets.only(
               left: 16,
@@ -52,9 +49,7 @@ Future<void> showMultiSelectBottomSheet(
                   color: Colors.grey[300],
                 ),
 
-
-
-                const SmallSpace(),
+                 AppComponents.smallVerticalSpace(),
 
                 CustomMaterialButton(
                   onPressed: () {

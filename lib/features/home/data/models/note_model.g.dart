@@ -21,7 +21,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       title: fields[1] as String,
       content: fields[2] as String,
       createdAt: fields[3] as String,
-      color: fields[4] as int,
+      color: fields[4] as int?,
       isArchived: fields[5] as bool,
       isPinned: fields[6] as bool,
       isFavorite: fields[7] as bool,

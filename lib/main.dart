@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/constants/app_constants.dart';
 import 'core/constants/app_themes.dart';
 import 'core/cubits/backup/backup_cubit.dart';
 import 'core/cubits/connectivity/connection_cubit.dart';
-import 'core/cubits/settings/setting_cubit.dart';
-import 'core/cubits/settings/setting_state.dart';
+import 'features/settings/presentation/cubits/setting_cubit.dart';
+import 'features/settings/presentation/cubits/setting_state.dart';
 import 'core/routing/app_routes.dart';
 import 'core/cubits/bloc_observer.dart';
 import 'core/routing/app_router.dart';
@@ -56,19 +57,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SettingCubit, SettingState>(
       builder: (context, state) {
-        return MaterialApp(
-          title: 'Jot&Do',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: state.themeMode,
-          locale: state.locale,
-          localeResolutionCallback: AppConstants.localeResolutionCallback,
-          supportedLocales: AppConstants.supportedLocales,
-          localizationsDelegates: AppConstants.localizationsDelegates,
-          initialRoute: AppRoutes.splash,
-          onGenerateRoute: AppRouter.onGenerateRoute,
-        );
+        return ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (_, child) {
+              return MaterialApp(
+                title: 'Jot&Do',
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.getLightTheme(context),
+                darkTheme: AppTheme.getDarkTheme(context),
+                themeMode: state.themeMode,
+                locale: state.locale,
+                localeResolutionCallback: AppConstants.localeResolutionCallback,
+                supportedLocales: AppConstants.supportedLocales,
+                localizationsDelegates: AppConstants.localizationsDelegates,
+                initialRoute: AppRoutes.splash,
+                onGenerateRoute: AppRouter.onGenerateRoute,
+              );
+            });
       },
     );
   }

@@ -2,6 +2,10 @@ abstract class AuthStates {}
 
 class AuthInitialState extends AuthStates {}
 
+class AuthContinueWithoutAccount extends AuthStates {}
+
+class AuthReLogin extends AuthStates {}
+
 class AuthTogglePasswordVisibility extends AuthStates {}
 
 class AuthToggleConfirmPasswordVisibility extends AuthStates {}

@@ -11,7 +11,6 @@ class AppRoutes {
   static const String terms = '/terms';
   static const String privacy = '/privacy';
   static const String notifications = '/notifications';
-  static const String dashboard = '/dashboard';
   static const String search = '/search';
   static const String favorites = '/favorites';
   static const String details = '/details';
@@ -32,5 +31,5 @@ class AppRoutes {
   static const String resetPassword = '/reset-password';
   static const String verifyEmail = '/verify-email';
   static const String onBoarding = '/onboarding';
-  static const String backup = '/backup';
+  static const String backupAndRestore = '/backup-and-restore';
 }

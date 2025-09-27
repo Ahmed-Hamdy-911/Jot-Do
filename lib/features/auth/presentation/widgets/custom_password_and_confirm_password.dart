@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/cubits/settings/setting_cubit.dart';
-import '../../../../core/widgets/constants_spaces_widgets.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../core/widgets/components.dart';
 import '../../../../generated/l10n.dart';
 
 import '../../../../../core/widgets/custom_text_form.dart';
@@ -42,10 +41,9 @@ class _CustomPasswordAndConfirmPasswordWidgetState
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.sizeOf(context).width;
-    var darkMode =
-        context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
-    var textColor = darkMode ? AppColor.white70 : AppColor.blackColor;
-
+    var colors = SmartAppColor(context);
+    var textColor = colors.grey;
+    var fillColor = colors.fillColor;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -57,13 +55,15 @@ class _CustomPasswordAndConfirmPasswordWidgetState
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SmallSpace(),
+        AppComponents.smallVerticalSpace(),
         CustomTextFormField(
           hintText: S.of(context).enter_password,
           controller: widget.passwordController,
           keyboardType: TextInputType.text,
           obscureText: !context.watch<AuthCubit>().isPasswordVisible,
           suffixIcon: const TogglePasswordVisibilityIcon(isConfirmField: false),
+          filled: true,
+          fillColor: fillColor,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;
@@ -74,7 +74,7 @@ class _CustomPasswordAndConfirmPasswordWidgetState
             return null;
           },
         ),
-        const MediumSpace(),
+        AppComponents.mediumVerticalSpace(),
         Text(
           S.of(context).confirm_password,
           style: TextStyle(
@@ -83,13 +83,15 @@ class _CustomPasswordAndConfirmPasswordWidgetState
             fontWeight: FontWeight.w500,
           ),
         ),
-        const SmallSpace(),
+        AppComponents.smallVerticalSpace(),
         CustomTextFormField(
           hintText: S.of(context).enter_confirm_password,
           controller: widget.confirmPasswordController,
           keyboardType: TextInputType.text,
           obscureText: !context.watch<AuthCubit>().isConfirmPasswordVisible,
           suffixIcon: const TogglePasswordVisibilityIcon(isConfirmField: true),
+          filled: true,
+          fillColor: fillColor,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return S.of(context).error_required_field;
