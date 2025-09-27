@@ -35,8 +35,6 @@ With an intuitive UI and powerful features, it helps you **capture ideas, organi
 
 ---
 
-## 📸 Screenshots 
-
 ## 📸 Screenshots
 
 ### 🌞 Light Mode 
