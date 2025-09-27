@@ -1,37 +1,43 @@
 # Jot & Do 📝✅
 
-**Jot & Do** is a modern Flutter-based mobile application that seamlessly blends **note-taking** and **task management** in one place.  
-With an intuitive UI and powerful features, it helps you **capture ideas, organize tasks, and stay productive**.
+**Jot & Do** is a modern Flutter-based mobile app that combines **note-taking** and **task management** in one place.  
+With an elegant UI, offline-first design, and smart sync features, it helps you **capture ideas, organize tasks, and stay productive anywhere**.
 
 ---
 
 ## ✨ Features
 
-- 📝 **Create & Edit Notes** – Add rich notes with title & content.  
-- 📌 **Pin Notes** – Keep important notes always at the top.  
-- ⭐ **Favorite Notes** – Mark notes you love for quick access.  
-- 📂 **Archive Notes** – Hide completed or old notes without deleting them.  
-- ⏳ **Recent Notes Filter** – View notes created within the last 7 days.  
-- 🗑 **Delete & Update** – Manage notes safely and keep your workspace clean.  
-- 🎨 **Beautiful UI** – Adaptive layout with **List/Grid** views.  
-- 💾 **Local Storage** – Powered by **Hive** for fast, offline-first experience.  
+- 📝 **Notes & Tasks** – Manage notes and to-dos in separate, organized spaces.  
+- 📌 **Pin, Favorite & Archive** – Flexible ways to highlight or hide items.  
+- 🎨 **Create Custom Filter** - Organize your notes by specific criteria.
+- 🎨 **Customizable UI** – Grid/List views, light & dark modes, and language support.  
+- 💾 **Offline Mode** – Works fully offline with local storage (Hive).  
+- ☁️ **Online Mode** – Secure cloud backup & sync when logged in.  
+- 🔐 **Verified Accounts** – Sign in with Google or email (with email verification).  
+- 🔄 **Smart Sync** – Auto/manual sync between devices with conflict detection.  
+- 📤 **Backup & Restore** – Export/import data (JSON) locally or to cloud, with user control before logout.  
+- 🚨 **Notifications & Alerts** – Helpful prompts for backup, sync, and account actions.  
+- 🛡 **Secure Data** – Planned support for encrypted backups (AES/RSA).  
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Flutter** (cross-platform mobile development)  
-- **Bloc / Cubit** for state management  
-- **Hive** for local database & offline storage  
-- **Custom Theming** with prepared fonts, icons, and assets  
+- **Flutter** for cross-platform development  
+- **Bloc / Cubit** for clean state management (MVVM architecture)  
+- **Hive** for offline database & local backup  
+- **Firebase** (Auth, Firestore) for secure login & cloud sync  
+- **Figma** for UI design  
 
 ---
 
 ## 📦 Project Status
 
-> ✅ Core functionality implemented  
-> 🎨 UI in progress  
-> 🔜 Upcoming: task management integration, cloud sync, and reminders  
+> ✅ Notes & tasks modules implemented  
+> ✅ Offline/online modes with smart sync  
+> ✅ Backup & restore (local & cloud)  
+> ✅ Polished UI with theming & multi-language support  
+> 🔜 Upcoming: encrypted backups, cross-device reminders, advanced search  
 
 ---
 
