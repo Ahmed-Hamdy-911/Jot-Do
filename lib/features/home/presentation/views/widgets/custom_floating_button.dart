@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../../../../generated/l10n.dart';
-import 'package:iconly/iconly.dart';
-import '../../../../../core/models/menu_item_model.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   const CustomFloatingButton({
@@ -31,29 +29,3 @@ class CustomFloatingButton extends StatelessWidget {
   }
 }
 
-List<MenuItemModel> defaultFilters = [
-  MenuItemModel(
-    title: S.current.filter_all,
-    icon: IconlyLight.document,
-    onTap: () {},
-    count: 0,
-  ),
-  MenuItemModel(
-    title: S.current.filter_favorite,
-    icon: IconlyLight.star,
-    onTap: () {},
-    count: 0,
-  ),
-  MenuItemModel(
-    title: S.current.filter_pined,
-    icon: Icons.push_pin_outlined,
-    onTap: () {},
-    count: 0,
-  ),
-  MenuItemModel(
-    title: S.current.filter_archived,
-    icon: Icons.archive_outlined,
-    onTap: () {},
-    count: 0,
-  ),
-];

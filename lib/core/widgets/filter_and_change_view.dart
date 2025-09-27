@@ -14,7 +14,6 @@ import '../../generated/l10n.dart';
 import '../constants/app_constants.dart';
 import 'custom_material_button.dart';
 import '../../features/home/presentation/cubits/top_body_navi/top_body_navi_cubit_.dart';
-import '../../features/home/presentation/views/widgets/custom_floating_button.dart';
 import 'pick_color_grid_view.dart';
 
 class FilterAndChangeView extends StatelessWidget {
@@ -109,6 +108,33 @@ Future<dynamic> customFilterBottomSheet(
   required IconData icon,
 }) {
   var colors = SmartAppColor(context);
+  List<MenuItemModel> defaultFilters = [
+    MenuItemModel(
+      title: S.of(context).filter_all,
+      icon: IconlyLight.document,
+      onTap: () {},
+      count: 0,
+    ),
+    MenuItemModel(
+      title: S.of(context).filter_favorite,
+      icon: IconlyLight.star,
+      onTap: () {},
+      count: 0,
+    ),
+    MenuItemModel(
+      title: S.of(context).filter_pined,
+      icon: Icons.push_pin_outlined,
+      onTap: () {},
+      count: 0,
+    ),
+    MenuItemModel(
+      title: S.of(context).filter_archived,
+      icon: Icons.archive_outlined,
+      onTap: () {},
+      count: 0,
+    ),
+  ];
+
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
