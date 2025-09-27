@@ -39,7 +39,10 @@ class LoginView extends StatelessWidget {
                         constraints: const BoxConstraints(maxWidth: 600),
                         child: const LoginForm());
                   } else {
-                    return const LoginForm();
+                    return const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: LoginForm(),
+                    );
                   }
                 }),
                 AppComponents.mediumVerticalSpace(),
