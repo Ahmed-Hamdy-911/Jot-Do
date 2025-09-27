@@ -119,7 +119,7 @@ Future<dynamic> customFilterBottomSheet(
           expand: false,
           initialChildSize: 0.6,
           minChildSize: 0.4,
-          maxChildSize: 0.95,
+          maxChildSize: 0.88,
           builder: (_, scrollController) {
             return Container(
               padding: const EdgeInsets.all(4.0),

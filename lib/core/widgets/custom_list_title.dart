@@ -36,7 +36,8 @@ class CustomListTitle extends StatelessWidget {
     return ListTile(
       leading: leading ?? Icon(leadingIcon, color: iconColor),
       enabled: enabled,
-      contentPadding: contentPadding,
+      contentPadding:
+          contentPadding ?? const EdgeInsetsDirectional.only(end: 0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
       ),
