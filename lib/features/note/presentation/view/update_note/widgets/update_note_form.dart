@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../../home/data/models/note_model.dart';
+import '../../../../data/models/note_model.dart';
 import '../../../cubits/update/update_note_cubit.dart';
 import '../../../cubits/update/update_note_state.dart';
 import 'update_note_form_body.dart';

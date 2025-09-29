@@ -1,9 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/app_service.dart';
 import 'local/local_note_repository.dart';
-import '../../../home/data/models/note_model.dart';
+import '../models/note_model.dart';
 import 'note_repository.dart';
 import 'remote/remote_note_repository.dart';
 
@@ -30,27 +32,60 @@ class SmartNoteRepository implements NoteRepository {
   }
 
   @override
-  Future<List<NoteModel>> getNotes([int index = 0]) async {
+  Future<List<NoteModel>> getNotes([String filterId = "all"]) async {
+    final safeFilter = filterId.isEmpty ? "all" : filterId;
+
     try {
-      List<NoteModel> localNotes = [];
+      List<NoteModel> filteredLocalNotes = [];
 
       if (_isOnline && _isAutoBackupAndSync) {
-        var remoteNotes = await _remoteNoteRepo.getNotes();
-
-        localNotes = await _localNoteRepo.getNotes(index);
+        final remoteNotes = await _remoteNoteRepo.getNotes();
+        final allLocalNotes = await _localNoteRepo.getNotes(); // بدون فلتر
 
         for (var note in remoteNotes) {
-          if (!localNotes.any((localNote) => localNote.id == note.id)) {
-            await _localNoteRepo.addNote(note.copyWith(isSynced: true));
+          // 🔎 ابحث عن النوت بالـ id
+          final existingNote = allLocalNotes
+              .where((localNote) => localNote.id == note.id)
+              .cast<NoteModel?>()
+              .firstWhere((n) => n != null, orElse: () => null);
+
+          if (existingNote == null) {
+            // ➕ مفيش نوت بنفس الـ id → أضفها
+            await _localNoteRepo.addNote(
+              note.copyWith(isSynced: true),
+            );
+          } else {
+            // 🔄 قارن البيانات قبل التحديث
+            if (!_isSameNote(note, existingNote)) {
+              await _localNoteRepo.updateNote(
+                note.id!,
+                note.copyWith(isSynced: true),
+              );
+            }
           }
         }
+
+        filteredLocalNotes = await _localNoteRepo.getNotes(safeFilter);
       } else {
-        localNotes = await _localNoteRepo.getNotes(index);
+        filteredLocalNotes = await _localNoteRepo.getNotes(safeFilter);
       }
-      return localNotes;
+
+      log("Fetched ${filteredLocalNotes.length} notes with filter: $safeFilter");
+      return filteredLocalNotes;
     } catch (e) {
       rethrow;
     }
+  }
+
+  /// ✅ دالة مقارنة آمنة
+  bool _isSameNote(NoteModel a, NoteModel b) {
+    return a.title == b.title &&
+        a.content == b.content &&
+        a.color == b.color &&
+        a.isArchived == b.isArchived &&
+        a.isPinned == b.isPinned &&
+        a.isFavorite == b.isFavorite &&
+        a.filterIds == b.filterIds;
   }
 
   @override
@@ -88,13 +123,13 @@ class SmartNoteRepository implements NoteRepository {
   @override
   Future<void> deleteAllNotes() async {
     try {
-      if (_isOnline && _isAutoBackupAndSync) {
-        await _localNoteRepo.deleteAllNotes();
-        await _remoteNoteRepo.deleteAllNotes();
-      } else {
-        await _localNoteRepo.deleteAllNotes();
-      }
+      await Future.wait([
+        _localNoteRepo.deleteAllNotes(),
+        _remoteNoteRepo.deleteAllNotes(),
+      ]);
+      debugPrint("✅ All notes deleted");
     } catch (e) {
+      debugPrint("❌ Error deleting notes: $e");
       rethrow;
     }
   }

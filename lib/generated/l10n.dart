@@ -514,6 +514,26 @@ class S {
     );
   }
 
+  /// `Name cannot exceed 20 characters`
+  String get error_long_name {
+    return Intl.message(
+      'Name cannot exceed 20 characters',
+      name: 'error_long_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name already exists`
+  String get error_name_already_exists {
+    return Intl.message(
+      'Name already exists',
+      name: 'error_name_already_exists',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Name cannot start with a number`
   String get error_name_starts_with_number {
     return Intl.message(

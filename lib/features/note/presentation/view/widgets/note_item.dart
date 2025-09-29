@@ -10,7 +10,7 @@ import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/components.dart';
 import '../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../home/data/models/note_model.dart';
+import '../../../data/models/note_model.dart';
 import '../../cubits/get/notes_cubit.dart';
 
 class NoteItem extends StatelessWidget {

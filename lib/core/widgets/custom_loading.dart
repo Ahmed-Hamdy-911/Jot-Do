@@ -22,7 +22,7 @@ class CustomLoading extends StatelessWidget {
           Container(
             height: size.height,
             width: size.width,
-            color: SmartAppColor(context).white.withValues(alpha: 0.1),
+            color: SmartAppColor(context).grey.withValues(alpha: 0.08),
             child: const Center(child: LoadingAnimation()),
           )
       ],

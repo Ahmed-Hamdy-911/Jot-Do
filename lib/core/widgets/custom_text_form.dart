@@ -41,6 +41,7 @@ class CustomTextFormField extends StatelessWidget {
     this.customInputStyle,
     this.focusNode,
     this.expands = false,
+    this.helperTextColor,
   });
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
@@ -73,6 +74,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
   final String? helperText;
   final FocusNode? focusNode;
+  final Color? helperTextColor;
   @override
   Widget build(BuildContext context) {
     var colors = SmartAppColor(context);
@@ -147,7 +149,9 @@ class CustomTextFormField extends StatelessWidget {
         ),
         helperText: helperText,
         helperMaxLines: 2,
-        helperStyle: TextStyle(color: colors.grey),
+        helperStyle: TextStyle(
+            color: helperTextColor ?? colors.textSecondary,
+            fontSize: AppConstants.bodySmall),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppConstants.kRadius),
           borderSide: BorderSide(color: colors.red),

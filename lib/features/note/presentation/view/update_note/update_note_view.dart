@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../home/data/models/note_model.dart';
+import '../../../data/models/note_model.dart';
 import '../../cubits/update/update_note_cubit.dart';
 import 'widgets/update_note_body.dart';
 

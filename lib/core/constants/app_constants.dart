@@ -200,10 +200,7 @@ class AppConstants {
 
   // home
   static int homeBodyIndex = 0;
-  static List<Widget> homeBodyList = const [
-    NoteView(),
-    TaskView(),
-  ];
+
   static int maxLengthOfContentNoteInHomeView = 397;
 
   static double kRadius = 16;
@@ -247,4 +244,7 @@ class AppConstants {
 
   // app service
   static var appService;
+  
+  // filter 
+  static const String filtersStorage = 'filters';
 }

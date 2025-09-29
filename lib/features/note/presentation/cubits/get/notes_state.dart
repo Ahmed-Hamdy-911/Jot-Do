@@ -1,4 +1,4 @@
-import '../../../../home/data/models/note_model.dart';
+import '../../../data/models/note_model.dart';
 
 abstract class NotesStates {}
 

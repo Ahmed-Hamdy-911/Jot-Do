@@ -40,6 +40,11 @@ class AppComponents {
           width: width ?? MediaQuery.of(context).size.width * 0.02,
         ),
       );
+  static Widget largeHorizontalSpace([double? width]) => Builder(
+        builder: (context) => SizedBox(
+          width: width ?? MediaQuery.of(context).size.width * 0.04,
+        ),
+      );
 
   static Widget customSwitchButton({
     required bool value,

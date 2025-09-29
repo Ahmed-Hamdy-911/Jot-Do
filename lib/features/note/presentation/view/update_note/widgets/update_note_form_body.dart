@@ -6,7 +6,7 @@ import '../../../../../../core/widgets/components.dart';
 import '../../../../../../core/widgets/custom_show_time_to_page.dart';
 import '../../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../../home/data/models/note_model.dart';
+import '../../../../data/models/note_model.dart';
 
 class UpdateFormBody extends StatelessWidget {
   const UpdateFormBody(

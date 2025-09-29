@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../note_repository.dart';
-import '../../../../home/data/models/note_model.dart';
+import '../../models/note_model.dart';
 
 class RemoteNoteRepository implements NoteRepository {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -32,19 +32,18 @@ class RemoteNoteRepository implements NoteRepository {
   @override
   Future<void> deleteAllNotes() async {
     try {
-      await _firestore
+      final snapshot = await _firestore
           .collection(_basicCollectionName)
           .doc(_userId)
           .collection(_secondaryCollectionName)
-          .get()
-          .then((snapshot) =>
-              snapshot.docs.forEach((doc) => doc.reference.delete()));
+          .get();
+
+      // Delete all docs in parallel and wait until all are finished
+      await Future.wait(
+        snapshot.docs.map((doc) => doc.reference.delete()),
+      );
     } on FirebaseException catch (e) {
-      debugPrint(
-          "FirebaseException on deleteAllNotes from RemNoteRepo: ${e.code}");
-      rethrow;
-    } on Exception catch (e) {
-      debugPrint("Exception on deleteAllNotes from RemNoteRepo: $e");
+      debugPrint("FirebaseException on deleteAllNotes: ${e.code}");
       rethrow;
     }
   }

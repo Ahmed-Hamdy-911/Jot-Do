@@ -1,4 +1,4 @@
-import '../../../home/data/models/note_model.dart';
+import '../models/note_model.dart';
 
 abstract class NoteRepository {
   Future<void> addNote(NoteModel noteModel);

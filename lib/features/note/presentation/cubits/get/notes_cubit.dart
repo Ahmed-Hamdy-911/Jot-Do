@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
-import '../../../../home/data/models/note_model.dart';
+import '../../../data/models/note_model.dart';
 import '../../../data/repository/smart_note_repository.dart';
 import 'notes_state.dart';
 
@@ -10,15 +10,15 @@ class NotesCubit extends Cubit<NotesStates> {
   final _smartNoteRepository = SmartNoteRepository();
   List<NoteModel> notesList = [];
 
-  Future<void> getNotes([int index = 0]) async {
-    if (index == 0 && notesList.isEmpty) {
+  Future<void> getNotes([String? filterId]) async {
+    final safeFilter = filterId ?? "all";
+    if ((safeFilter == "all") && notesList.isEmpty) {
       emit(NotesLoadingState());
     }
-    if (runtimeType != runtimeType) return;
     try {
-      notesList = await _smartNoteRepository.getNotes(index);
+      notesList = await _smartNoteRepository.getNotes(safeFilter);
       emit(GetAllNotesSuccessState());
-    } on Exception catch (e) {
+    } catch (e) {
       log(e.toString());
       emit(GetAllNotesErrorState(e.toString()));
     }
@@ -33,7 +33,7 @@ class NotesCubit extends Cubit<NotesStates> {
       if (index != -1) {
         notesList[index] = updatedNote;
       }
-
+      await getNotes("all");
       emit(ToggleNoteActionsPinSuccessState(isPinned: updatedNote.isPinned));
     } on Exception catch (e) {
       emit(NoteActionsErrorState(e.toString()));
@@ -50,7 +50,7 @@ class NotesCubit extends Cubit<NotesStates> {
       if (index != -1) {
         notesList[index] = updatedNote;
       }
-
+      await getNotes("all");
       emit(ToggleNoteFavoriteSuccessState(isFavorite: updatedNote.isFavorite));
     } on Exception catch (e) {
       emit(NoteActionsErrorState(e.toString()));
@@ -66,7 +66,7 @@ class NotesCubit extends Cubit<NotesStates> {
       if (index != -1) {
         notesList[index] = updatedNote;
       }
-
+      await getNotes("all");
       emit(ToggleNoteActionsArchiveSuccessState(
           isArchived: updatedNote.isArchived));
     } on Exception catch (e) {
@@ -74,12 +74,14 @@ class NotesCubit extends Cubit<NotesStates> {
     }
   }
 
-  void deleteNote(String id,) async {
+  void deleteNote(
+    String id,
+  ) async {
     try {
       await _smartNoteRepository.deleteNote(id);
 
       notesList.removeWhere((n) => n.id == id);
-
+      await getNotes("all");
       emit(NoteActionsDeleteSuccessState());
     } on Exception catch (e) {
       emit(NoteActionsErrorState(e.toString()));

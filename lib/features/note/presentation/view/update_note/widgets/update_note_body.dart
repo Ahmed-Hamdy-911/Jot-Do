@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../generated/l10n.dart';
-import '../../../../../home/data/models/note_model.dart';
+import '../../../../data/models/note_model.dart';
 import 'update_note_form.dart';
 
 class UpdateNoteBody extends StatelessWidget {

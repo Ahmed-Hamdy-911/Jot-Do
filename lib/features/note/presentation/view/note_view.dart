@@ -1,25 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/widgets/components.dart';
 import '../../../../core/widgets/custom_loading.dart';
 import '../../../../core/models/message_type.dart';
 import '../../../../core/widgets/custom_snackbar.dart';
 import '../../../../core/widgets/empty_widget.dart';
+import '../../../../core/widgets/filter_and_change_view.dart';
 import '../../../../generated/l10n.dart';
-import '../../../home/data/models/note_model.dart';
+import '../../../filters/data/repository/filter_repo.dart';
+import '../../../filters/presentation/cubits/filter/filter_cubit.dart';
+import '../../../filters/presentation/cubits/filter/filter_state.dart';
+import '../../../home/presentation/cubits/top_body_navi/top_body_navi_cubit_.dart';
+import '../../data/models/note_model.dart';
 import '../cubits/get/notes_cubit.dart';
 import '../cubits/get/notes_state.dart';
 import 'widgets/note_grid_view.dart';
 import 'widgets/note_list_view.dart';
 
 class NoteView extends StatelessWidget {
-  const NoteView({super.key});
+  const NoteView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => NotesCubit()..getNotes(),
+          create: (context) => NotesCubit()..getNotes("all"),
+        ),
+        BlocProvider(
+          create: (context) => FilterCubit(FilterRepository()),
         ),
       ],
       child: const NoteBody(),
@@ -52,34 +63,41 @@ class _NoteBodyState extends State<NoteBody> {
               getNotesWithFilter(context);
             }
 
-            if (state is ToggleNoteActionsPinSuccessState) {
+            if (state is ToggleNoteActionsArchiveSuccessState) {
               CustomSnackBar.showSnackBar(
-                  state.isPinned == true
-                      ? S.of(context).note_pined
-                      : S.of(context).note_unpined,
-                  context,
-                  MessageType.success);
-            }
-
-            if (state is ToggleNoteFavoriteSuccessState) {
-              CustomSnackBar.showSnackBar(
-                  state.isFavorite == true
-                      ? S.of(context).favorited
-                      : S.of(context).unfavorited,
+                  state.isArchived == true
+                      ? S.of(context).note_archived
+                      : S.of(context).note_unarchived,
                   context,
                   MessageType.success);
             }
           },
         ),
+        BlocListener<FilterCubit, FilterState>(
+          listener: (context, state) {
+            final selectedId = state.selectedFilterId;
+            if (selectedId != null) {
+              getNotesWithFilter(context, filterId: selectedId);
+            } else {
+              getNotesWithFilter(context);
+            }
+          },
+        ),
       ],
-      child: const Column(
-        children: [NoteLayoutBuilder()],
+      child: Column(
+        children: [
+          FilterAndChangeView(
+            isInNotes: context.watch<TopBodyNaviCubit>().state == 0,
+          ),
+          AppComponents.customDivider(15),
+          const NoteLayoutBuilder()
+        ],
       ),
     );
   }
 
-  void getNotesWithFilter(BuildContext context) {
-    context.read<NotesCubit>().getNotes();
+  void getNotesWithFilter(BuildContext context, {String? filterId}) {
+    context.read<NotesCubit>().getNotes(filterId ?? "all");
   }
 }
 

@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 import '../../../../../core/constants/app_constants.dart';
-import '../../../../home/data/models/note_model.dart';
+import '../../models/note_model.dart';
 import '../note_repository.dart';
 
 class LocalNoteRepository implements NoteRepository {
@@ -39,38 +39,50 @@ class LocalNoteRepository implements NoteRepository {
   }
 
   @override
-  Future<List<NoteModel>> getNotes([int index = 0]) async {
-    try {
-      var box = Hive.box<NoteModel>(AppConstants.notesStorage);
-      var notes = box.values.toList();
-      switch (index) {
-        case 0:
-          // check if the note is not archived
-          notes = getAllNotesWithoutArchived(notes);
-          break;
-        case 1:
-          // check if the note is new with less than 7 days
-          notes = getAllNotesAtLessWeek(notes);
-          break;
-        case 2: // check if the note is favorite
-          notes = getAllFavoriteNotes(notes);
+  Future<List<NoteModel>> getNotes([String filterId = "all"]) async {
+    final box = Hive.box<NoteModel>(AppConstants.notesStorage);
+    final notes = box.values.toList();
 
-          break;
-        case 3:
-          // check if the note is archived
-          notes = getAllArchivedNotes(notes);
-          break;
-        case 4:
-          // check if the note is pinned
-          notes = getAllPinnedNotes(notes);
-          break;
-        default:
-          notes = getAllNotesWithoutArchived(notes);
-      }
-      return notes;
-    } catch (e) {
-      rethrow;
+    if (filterId == "all") {
+      return _sortNotes(notes.where((n) => !n.isArchived).toList());
     }
+    if (filterId == "new") {
+      return _sortNotes(notes.where((n) {
+        final created = DateTime.tryParse(n.createdAt);
+        return created != null &&
+            DateTime.now().difference(created).inDays < 7 &&
+            !n.isArchived;
+      }).toList());
+    }
+    if (filterId == "favorite") {
+      return _sortNotes(
+          notes.where((n) => n.isFavorite && !n.isArchived).toList());
+    }
+    if (filterId == "pinned") {
+      return _sortNotes(
+          notes.where((n) => n.isPinned && !n.isArchived).toList());
+    }
+    if (filterId == "archived") {
+      return _sortNotes(notes.where((n) => n.isArchived).toList());
+    }
+
+    // custom filter
+    return _sortNotes(notes.where((n) {
+      // filterIds قد تكون null أو سلسلة فارغة، نتحقق أنها تحتوي على الـ id المطلوب
+      return (n.filterIds?.split(',').contains(filterId) ?? false) &&
+          !n.isArchived;
+    }).toList());
+  }
+
+  List<NoteModel> _sortNotes(List<NoteModel> notes) {
+    notes.sort((a, b) {
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+      final dateA = DateTime.tryParse(a.createdAt) ?? DateTime(1970);
+      final dateB = DateTime.tryParse(b.createdAt) ?? DateTime(1970);
+      return dateB.compareTo(dateA);
+    });
+    return notes;
   }
 
   List<NoteModel> getAllNotesAtLessWeek(List<NoteModel> notes) {

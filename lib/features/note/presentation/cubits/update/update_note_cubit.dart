@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../../home/data/models/note_model.dart';
+import '../../../data/models/note_model.dart';
 import '../../../data/repository/smart_note_repository.dart';
 import 'update_note_state.dart';
 

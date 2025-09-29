@@ -49,6 +49,8 @@
     "error_short_password": "Password must be at least 6 characters",
     "error_passwords_not_match": "Passwords do not match",
     "error_short_name": "Name must be at least 3 characters",
+    "error_long_name": "Name cannot exceed 20 characters",
+    "error_name_already_exists": "Name already exists",
     "error_name_starts_with_number": "Name cannot start with a number",
     "error_name_contains_special_characters": "Name cannot contain special characters",
     "success_registration": "Registration successful",

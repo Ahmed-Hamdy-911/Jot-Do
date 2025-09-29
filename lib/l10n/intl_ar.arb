@@ -49,6 +49,8 @@
     "error_short_password": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
     "error_passwords_not_match": "كلمتا المرور غير متطابقتين",
     "error_short_name": "يجب أن يتكون الاسم من 3 أحرف على الأقل",
+    "error_long_name": "لا يمكن أن يتجاوز الاسم 20 حرفًا",
+    "error_name_already_exists": "الاسم موجود بالفعل",
     "error_name_starts_with_number": "لا يمكن أن يبدأ الاسم برقم",
     "error_name_contains_special_characters": "لا يمكن أن يحتوي الاسم على رموز خاصة",
     "success_registration": "تم التسجيل بنجاح",

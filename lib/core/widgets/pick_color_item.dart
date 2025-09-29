@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/app_constants.dart';
 import '../constants/colors/smart_app_color.dart';
+import '../../features/filters/presentation/cubits/pick_color/pick_color_cubit.dart';
 
 class PickColorItem extends StatelessWidget {
   const PickColorItem({
@@ -14,8 +16,8 @@ class PickColorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final selectedColor = context.watch<PickColorCubit>().state.selectedColor;
-    final isSelected = false;
+    final selectedColor = context.watch<PickColorCubit>().state.selectedColor;
+    final isSelected = selectedColor == color;
     final colors = SmartAppColor(context);
     var screenWidth = MediaQuery.of(context).size.width;
     return Material(
@@ -24,7 +26,7 @@ class PickColorItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () => context.read<PickColorCubit>().pickColor(color),
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
         splashColor: color.withValues(alpha: 0.2),
         child: Container(

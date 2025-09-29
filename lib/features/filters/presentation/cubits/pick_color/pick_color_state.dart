@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PickColorState {
-  final Color selectedColor;
+  Color selectedColor;
 
   PickColorState({required this.selectedColor});
 }

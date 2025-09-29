@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../features/auth/presentation/views/profile/profile_view.dart';
 import '../../features/backups/presentation/view/backup_and_restore_view.dart';
-import '../../features/home/data/models/note_model.dart';
+import '../../features/note/data/models/note_model.dart';
 import '../../features/note/presentation/view/add_note/add_note_view.dart';
 import '../../features/note/presentation/view/update_note/update_note_view.dart';
 import '../../features/task/presentation/view/add_task_view.dart';

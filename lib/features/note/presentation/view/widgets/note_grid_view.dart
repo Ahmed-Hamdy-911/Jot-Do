@@ -1,7 +1,7 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../home/data/models/note_model.dart';
+import '../../../data/models/note_model.dart';
 import 'note_item.dart';
 
 class NoteGridView extends StatelessWidget {

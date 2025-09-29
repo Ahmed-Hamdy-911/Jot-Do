@@ -151,6 +151,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_invalid_email": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email",
     ),
+    "error_long_name": MessageLookupByLibrary.simpleMessage(
+      "Name cannot exceed 20 characters",
+    ),
+    "error_name_already_exists": MessageLookupByLibrary.simpleMessage(
+      "Name already exists",
+    ),
     "error_name_contains_special_characters":
         MessageLookupByLibrary.simpleMessage(
           "Name cannot contain special characters",
