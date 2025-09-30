@@ -36,7 +36,6 @@ class SelectionView extends StatelessWidget {
                 context,
                 selectionCubit: selectionCubit,
                 notesCubit: notesCubit,
-                notes: notesCubit.notesList,
               ).map((item) {
                 if (item.widget != null) return item.widget!;
                 return IconButton(
@@ -72,13 +71,14 @@ List<MenuItemModel> getSelectionMenuNotesItems(
   context, {
   required SelectionCubit<NoteModel> selectionCubit,
   required NotesCubit notesCubit,
-  required List<NoteModel> notes,
 }) {
   final selected = selectionCubit.state.selectedItems;
+
   final allFavorite =
       selected.isNotEmpty && selected.every((n) => n.isFavorite);
   final allArchived =
       selected.isNotEmpty && selected.every((n) => n.isArchived);
+
   void clearSelection() => selectionCubit.clearSelection();
 
   return [
@@ -92,37 +92,43 @@ List<MenuItemModel> getSelectionMenuNotesItems(
         padding: const EdgeInsets.all(8),
         child: Text(
           selected.length.toString(),
-          style: AppConstants.bodyLargeStyle(SmartAppColor(context).white),
+          style:
+              AppConstants.bodyLargeStyle(SmartAppColor(context).textPrimary),
         ),
       ),
       color: SmartAppColor(context).red,
     ),
+
+
     MenuItemModel(
       title: S.of(context).delete,
       icon: IconlyLight.delete,
       color: SmartAppColor(context).red,
       onTap: () {
-        notesCubit.deleteNotes(notes);
+        notesCubit.deleteNotes(selected); 
         clearSelection();
       },
     ),
+
+
     MenuItemModel(
       title: allArchived ? S.of(context).un_archive : S.of(context).archive,
       icon: allArchived ? Icons.unarchive_outlined : Icons.archive_outlined,
       color: SmartAppColor(context).grey,
       onTap: () {
-        notesCubit.setArchiveForNotes(notes);
+        notesCubit.setArchiveForNotes(selected); 
         clearSelection();
       },
     ),
+
     MenuItemModel(
       title: allFavorite ? S.of(context).un_favorites : S.of(context).favorites,
       icon: allFavorite ? Icons.star : Icons.star_border_outlined,
       color: SmartAppColor(context).yellow,
       onTap: () {
-        notesCubit.setFavoriteForNotes(notes);
+        notesCubit.setFavoriteForNotes(selected); 
         clearSelection();
       },
-    )
+    ),
   ];
 }
