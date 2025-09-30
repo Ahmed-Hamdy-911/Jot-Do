@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/routing/app_routes.dart';
 import '../../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../../../filters/presentation/cubits/filter/filter_cubit.dart';
 import '../../../../data/models/note_model.dart';
 import '../../../cubits/update/update_note_cubit.dart';
 import '../../../cubits/update/update_note_state.dart';
@@ -48,7 +49,7 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
         }
       },
       builder: (context, state) {
-        var dateTime = DateTime.now().toIso8601String();
+        var updateDateTime = DateTime.now().toIso8601String();
         return Column(
           children: [
             Form(
@@ -60,9 +61,9 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
                 )),
             CustomMaterialButton(
               isLoading: state is UpdateNoteLoadingState,
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  checkAndUpdateNote(dateTime, context);
+                  await checkAndUpdateNote(updateDateTime, context);
                 }
               },
               text: S.of(context).update_note,
@@ -73,26 +74,26 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
     );
   }
 
-  void checkAndUpdateNote(
-    String dateTime,
+  Future<void> checkAndUpdateNote(
+    String updateDateTime,
     BuildContext context,
-  ) {
+  ) async {
     final updatedTitle = _titleController.text;
     final updatedContent = _contentController.text;
-    // ignore: deprecated_member_use
-    final updatedColor = null;
+    final updateFilterId = context.read<FilterCubit>().state.selectedFilterId;
 
     final bool isChanged = updatedTitle != widget.noteModel.title ||
         updatedContent != widget.noteModel.content ||
-        updatedColor != widget.noteModel.color;
+        updateFilterId != widget.noteModel.filterId;
 
-    if (isChanged) {
-      widget.noteModel.title = updatedTitle;
-      widget.noteModel.content = updatedContent;
-      widget.noteModel.color = updatedColor;
-      widget.noteModel.lastUpdatedAt = dateTime;
+    if (!isChanged) return;
+    final updatedNote = widget.noteModel.copyWith(
+      title: updatedTitle,
+      content: updatedContent,
+      lastUpdatedAt: updateDateTime,
+      filterId: updateFilterId,
+    );
 
-      context.read<UpdateNoteCubit>().updateNote(widget.noteModel);
-    } else {}
+    await context.read<UpdateNoteCubit>().updateNote(updatedNote);
   }
 }

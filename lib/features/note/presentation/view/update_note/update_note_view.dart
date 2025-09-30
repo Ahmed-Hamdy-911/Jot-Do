@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../filters/data/repository/filter_repo.dart';
+import '../../../../filters/presentation/cubits/filter/filter_cubit.dart';
 import '../../../data/models/note_model.dart';
 import '../../cubits/update/update_note_cubit.dart';
 import 'widgets/update_note_body.dart';
@@ -13,6 +15,11 @@ class UpdateNoteView extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => UpdateNoteCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FilterCubit(FilterRepository())
+            ..loadFilters()
+            ..selectFilter(noteModel.filterId),
         ),
       ],
       child: UpdateNoteBody(

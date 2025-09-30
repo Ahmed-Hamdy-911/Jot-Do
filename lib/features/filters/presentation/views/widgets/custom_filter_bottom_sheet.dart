@@ -16,7 +16,6 @@ PersistentBottomSheetController customFilterBottomSheet(
   return scaffold.showBottomSheet(
     (sheetContext) {
       final colors = SmartAppColor(sheetContext);
-
       return BlocProvider.value(
         value: filterCubit,
         child: FilterView(
@@ -28,6 +27,8 @@ PersistentBottomSheetController customFilterBottomSheet(
     },
     enableDrag: true,
     backgroundColor: Colors.transparent,
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    elevation: 0,
     shape: const RoundedRectangleBorder(),
   );
 }

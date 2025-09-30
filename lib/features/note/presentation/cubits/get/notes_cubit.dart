@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import '../../../data/models/note_model.dart';
 import '../../../data/repository/smart_note_repository.dart';
@@ -9,9 +9,13 @@ class NotesCubit extends Cubit<NotesStates> {
 
   final _smartNoteRepository = SmartNoteRepository();
   List<NoteModel> notesList = [];
+  String _lastFilterId = "all";
 
+  String get lastFilterId => _lastFilterId;
   Future<void> getNotes([String? filterId]) async {
     final safeFilter = filterId ?? "all";
+    _lastFilterId = safeFilter;
+    // log("lastFilterId: $_lastFilterId");
     if ((safeFilter == "all") && notesList.isEmpty) {
       emit(NotesLoadingState());
     }
@@ -19,7 +23,7 @@ class NotesCubit extends Cubit<NotesStates> {
       notesList = await _smartNoteRepository.getNotes(safeFilter);
       emit(GetAllNotesSuccessState());
     } catch (e) {
-      log(e.toString());
+      // log(e.toString());
       emit(GetAllNotesErrorState(e.toString()));
     }
   }
@@ -33,7 +37,7 @@ class NotesCubit extends Cubit<NotesStates> {
       if (index != -1) {
         notesList[index] = updatedNote;
       }
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(ToggleNoteActionsPinSuccessState(isPinned: updatedNote.isPinned));
     } on Exception catch (e) {
       emit(NoteActionsErrorState(e.toString()));
@@ -50,7 +54,7 @@ class NotesCubit extends Cubit<NotesStates> {
       if (index != -1) {
         notesList[index] = updatedNote;
       }
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(ToggleNoteFavoriteSuccessState(isFavorite: updatedNote.isFavorite));
     } on Exception catch (e) {
       emit(NoteActionsErrorState(e.toString()));
@@ -66,7 +70,7 @@ class NotesCubit extends Cubit<NotesStates> {
       if (index != -1) {
         notesList[index] = updatedNote;
       }
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(ToggleNoteActionsArchiveSuccessState(
           isArchived: updatedNote.isArchived));
     } on Exception catch (e) {
@@ -81,9 +85,54 @@ class NotesCubit extends Cubit<NotesStates> {
       await _smartNoteRepository.deleteNote(id);
 
       notesList.removeWhere((n) => n.id == id);
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(NoteActionsDeleteSuccessState());
     } on Exception catch (e) {
+      emit(NoteActionsErrorState(e.toString()));
+    }
+  }
+
+  Future<void> setFavoriteForNotes(List<NoteModel> notes) async {
+    try {
+      final shouldBeFavorite = notes.any((n) => !n.isFavorite);
+      for (var n in notes) {
+        final updated = n.copyWith(isFavorite: shouldBeFavorite);
+        await _smartNoteRepository.updateNote(n.id!, updated);
+        final index = notesList.indexWhere((e) => e.id == n.id);
+        if (index != -1) notesList[index] = updated;
+      }
+      await getNotes("all");
+      emit(ToggleNoteFavoriteSuccessState(isFavorite: shouldBeFavorite));
+    } catch (e) {
+      emit(NoteActionsErrorState(e.toString()));
+    }
+  }
+
+  Future<void> setArchiveForNotes(List<NoteModel> notes) async {
+    try {
+      final shouldBeArchived = notes.any((n) => !n.isArchived);
+      for (var n in notes) {
+        final updated = n.copyWith(isArchived: shouldBeArchived);
+        await _smartNoteRepository.updateNote(n.id!, updated);
+        final index = notesList.indexWhere((e) => e.id == n.id);
+        if (index != -1) notesList[index] = updated;
+      }
+      await getNotes("all");
+      emit(ToggleNoteActionsArchiveSuccessState(isArchived: shouldBeArchived));
+    } catch (e) {
+      emit(NoteActionsErrorState(e.toString()));
+    }
+  }
+
+  Future<void> deleteNotes(List<NoteModel> notes) async {
+    try {
+      for (var n in notes) {
+        await _smartNoteRepository.deleteNote(n.id!);
+        notesList.removeWhere((e) => e.id == n.id);
+      }
+      await getNotes("all");
+      emit(NoteActionsDeleteSuccessState());
+    } catch (e) {
       emit(NoteActionsErrorState(e.toString()));
     }
   }

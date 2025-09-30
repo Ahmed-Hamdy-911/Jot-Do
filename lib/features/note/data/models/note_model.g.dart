@@ -29,7 +29,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       deletedAt: fields[9] as String?,
       isSynced: fields[10] as bool?,
       type: fields[11] as NoteType?,
-      filterIds: fields[12] as String?,
+      filterId: fields[12] as String?,
     );
   }
 
@@ -62,7 +62,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..writeByte(11)
       ..write(obj.type)
       ..writeByte(12)
-      ..write(obj.filterIds);
+      ..write(obj.filterId);
   }
 
   @override

@@ -5,8 +5,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-import '../../features/note/presentation/view/note_view.dart';
-import '../../features/task/presentation/view/task_view.dart';
 import '../../features/settings/data/models/language_model.dart';
 import '../../generated/l10n.dart';
 

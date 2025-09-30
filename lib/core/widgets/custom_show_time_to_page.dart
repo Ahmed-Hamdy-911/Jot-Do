@@ -30,6 +30,8 @@ class CustomShowTimeToPage extends StatelessWidget {
           initialValue: formatCreatedAt,
           customInputStyle: customInputStyle,
           labelText: S.of(context).created_at,
+          labelStyle:
+              AppConstants.bodyLargeStyle(SmartAppColor(context).textSecondary),
           enabled: false,
         ),
         AppComponents.mediumVerticalSpace(),
@@ -38,6 +40,8 @@ class CustomShowTimeToPage extends StatelessWidget {
             customBorder: const UnderlineInputBorder(),
             initialValue: formatUpdatedAt,
             labelText: S.of(context).last_updated,
+            labelStyle: AppConstants.bodyLargeStyle(
+                SmartAppColor(context).textSecondary),
             customInputStyle: customInputStyle,
             enabled: false,
           ),

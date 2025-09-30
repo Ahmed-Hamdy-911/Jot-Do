@@ -123,8 +123,8 @@ class CustomTextFormField extends StatelessWidget {
         filled: filled,
         fillColor: fillColor,
         labelText: labelText,
-        labelStyle: TextStyle(
-          color: enabled == false
+        labelStyle: AppConstants.bodyLargeStyle(
+          enabled == false
               ? darkMode
                   ? colors.white70
                   : colors.grey

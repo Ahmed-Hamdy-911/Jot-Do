@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../../core/cubits/selection/selection_cubit.dart';
 import '../../../../../core/models/menu_item_model.dart';
 import '../../../../../core/models/message_type.dart';
 import '../../../../../core/routing/app_routes.dart';
@@ -10,6 +11,8 @@ import '../../../../../core/services/format_service.dart';
 import '../../../../../core/widgets/components.dart';
 import '../../../../../core/widgets/custom_snackbar.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../filters/data/models/filter_model.dart';
+import '../../../../filters/presentation/cubits/filter/filter_cubit.dart';
 import '../../../data/models/note_model.dart';
 import '../../cubits/get/notes_cubit.dart';
 
@@ -22,34 +25,50 @@ class NoteItem extends StatelessWidget {
 
   final int index;
   final NoteModel note;
+
   @override
   Widget build(BuildContext context) {
     final colors = SmartAppColor(context);
-    // final selectionCubit = context.watch<SelectionCubit<NoteModel>>();
-    // final isSelectionMode = selectionCubit.state.isSelectionMode;
-    // final isSelected = selectionCubit.state.selectedItems.contains(note);
+    final selectionCubit = context.watch<SelectionCubit<NoteModel>>();
+    final isSelectionMode = selectionCubit.state.isSelectionMode;
+    final isSelected = selectionCubit.state.selectedItems.contains(note);
+
     return InkWell(
       borderRadius: BorderRadius.circular(AppConstants.kRadius),
-      onTap: () =>
-          Navigator.pushNamed(context, AppRoutes.updateNote, arguments: note),
+      onTap: () {
+        if (isSelectionMode) {
+          selectionCubit.toggleSelection(note);
+        } else {
+          Navigator.pushNamed(context, AppRoutes.updateNote, arguments: note);
+        }
+      },
+      onLongPress: () {
+        selectionCubit.toggleSelection(note);
+      },
+      onTapCancel: () {
+        if (isSelectionMode) {
+          selectionCubit.clearSelection();
+        }
+      },
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: colors.border),
+          border: Border.all(
+              color: isSelected ? colors.primary : colors.border, width: 1.5),
           borderRadius: BorderRadius.circular(AppConstants.kRadius),
         ),
         padding: const EdgeInsets.all(12),
-        child: NoteBody(
+        child: NoteItemBody(
           note: note,
-          // isSelectionMode: isSelectionMode,
-          // isSelected: isSelected,
+          isSelectionMode: isSelectionMode,
+          isSelected: isSelected,
         ),
       ),
     );
   }
 }
 
-class NoteBody extends StatelessWidget {
-  const NoteBody({
+class NoteItemBody extends StatelessWidget {
+  const NoteItemBody({
     super.key,
     required this.note,
     this.isSelectionMode = false,
@@ -57,7 +76,6 @@ class NoteBody extends StatelessWidget {
   });
 
   final NoteModel note;
-
   final bool isSelectionMode;
   final bool isSelected;
 
@@ -65,9 +83,17 @@ class NoteBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = SmartAppColor(context);
     var createdAtDate = FormatService.formatDateTime(note.createdAt);
+    final selectionCubit = context.watch<SelectionCubit<NoteModel>>();
     var noteCubit = context.read<NotesCubit>();
+    var filterCubit = context.read<FilterCubit>();
+    var filters = filterCubit.filters;
+    FilterModel? filterModel;
+    if (note.filterId != null && filters.isNotEmpty) {
+      final matched = filters.where((f) => f.id == note.filterId);
+      filterModel = matched.isNotEmpty ? matched.first : null;
+    }
+
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
@@ -77,59 +103,59 @@ class NoteBody extends StatelessWidget {
                 note.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: AppConstants.bodyLargeStyle(
-                  colors.textPrimary,
-                ),
+                style: AppConstants.bodyLargeStyle(colors.textPrimary),
               ),
             ),
-            Row(
-              children: [
-                if (note.isFavorite)
-                  InkWell(
-                    onTap: () {
-                      noteCubit.toggleFavoriteNote(note.id!, note);
-                    },
-                    child: Icon(
-                      IconlyBold.star,
-                      size: 20,
-                      color: colors.amber,
-                    ),
+            if (isSelectionMode)
+              AppComponents.customCheckbox(
+                value: isSelected,
+                colors: colors,
+                onChanged: (_) => selectionCubit.toggleSelection(note),
+              )
+            else ...[
+              if (note.isFavorite)
+                InkWell(
+                  onTap: note.isArchived
+                      ? null
+                      : () {
+                          noteCubit.toggleFavoriteNote(note.id!, note);
+                        },
+                  child: Icon(
+                    IconlyBold.star,
+                    size: 20,
+                    color: colors.amber,
                   ),
-                const SizedBox(
-                  width: 8,
                 ),
-                if (note.isPinned)
-                  InkWell(
+              const SizedBox(width: 8),
+              if (note.isPinned)
+                InkWell(
+                  onTap: note.isArchived
+                      ? null
+                      : () {
+                          noteCubit.togglePinNote(note.id!, note);
+                        },
+                  child: const Icon(Icons.push_pin, size: 20),
+                ),
+
+              // ✅ Menu يظهر فقط لو مش في Selection Mode
+              PopupMenuButton(
+                icon: const Icon(Icons.more_vert),
+                color: colors.backgroundScreen,
+                splashRadius: 15,
+                itemBuilder: (context) {
+                  return _noteMenuItems(context, note, noteCubit).map((item) {
+                    return PopupMenuItem(
+                      child: Row(children: [Text(item.title)]),
                       onTap: () {
-                        noteCubit.togglePinNote(note.id!, note);
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          item.onTap?.call();
+                        });
                       },
-                      child: const Icon(
-                        Icons.push_pin,
-                        size: 20,
-                      )),
-              ],
-            ),
-            PopupMenuButton(
-              icon: const Icon(Icons.more_vert),
-              color: colors.backgroundScreen,
-              splashRadius: 15,
-              itemBuilder: (context) {
-                return _noteMenuItems(context, note, noteCubit).map((item) {
-                  return PopupMenuItem(
-                    child: Row(
-                      children: [
-                        Text(item.title),
-                      ],
-                    ),
-                    onTap: () {
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        item.onTap?.call();
-                      });
-                    },
-                  );
-                }).toList();
-              },
-            )
+                    );
+                  }).toList();
+                },
+              ),
+            ]
           ],
         ),
         AppComponents.mediumVerticalSpace(),
@@ -144,10 +170,7 @@ class NoteBody extends StatelessWidget {
                   AppConstants.maxLengthOfContentNoteInHomeView)
                 TextSpan(
                   text: "  ${S.of(context).more_details}",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: colors.blue,
-                  ),
+                  style: TextStyle(fontSize: 14, color: colors.blue),
                 ),
             ],
           ),
@@ -157,9 +180,27 @@ class NoteBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: Text(
-                createdAtDate,
-                style: AppConstants.captionStyle(colors.textSecondary),
+              child: Row(
+                children: [
+                  Text(
+                    createdAtDate,
+                    style: AppConstants.captionStyle(colors.textSecondary),
+                  ),
+                  if (filterModel != null) ...[
+                    AppComponents.customVerticalDivider(10),
+                    Icon(Icons.circle,
+                        size: 16, color: Color(filterModel.color)),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        filterModel.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppConstants.captionStyle(colors.textSecondary),
+                      ),
+                    ),
+                  ]
+                ],
               ),
             ),
             if (note.isSynced != null)
@@ -185,16 +226,18 @@ List<MenuItemModel> _noteMenuItems(
       onTap: () =>
           Navigator.pushNamed(context, AppRoutes.updateNote, arguments: note),
     ),
-    MenuItemModel(
-      title: note.isPinned ? S.of(context).un_pin : S.of(context).pin,
-      onTap: () => notesCubit.togglePinNote(note.id!, note),
-    ),
-    MenuItemModel(
-      title: note.isFavorite
-          ? S.of(context).un_favorites
-          : S.of(context).favorites,
-      onTap: () => notesCubit.toggleFavoriteNote(note.id!, note),
-    ),
+    if (!note.isArchived) ...[
+      MenuItemModel(
+        title: note.isPinned ? S.of(context).un_pin : S.of(context).pin,
+        onTap: () => notesCubit.togglePinNote(note.id!, note),
+      ),
+      MenuItemModel(
+        title: note.isFavorite
+            ? S.of(context).un_favorites
+            : S.of(context).favorites,
+        onTap: () => notesCubit.toggleFavoriteNote(note.id!, note),
+      ),
+    ],
     MenuItemModel(
       title: note.isArchived ? S.of(context).un_archive : S.of(context).archive,
       onTap: () => notesCubit.toggleArchiveNote(note.id!, note),
@@ -210,7 +253,8 @@ List<MenuItemModel> _noteMenuItems(
     ),
     MenuItemModel(
       title: S.of(context).select,
-      // onTap: () => context.read<SelectionCubit>().toggleSelection(note),
+      onTap: () =>
+          context.read<SelectionCubit<NoteModel>>().toggleSelection(note),
     ),
   ];
 }

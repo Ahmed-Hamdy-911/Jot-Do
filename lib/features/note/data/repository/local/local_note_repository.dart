@@ -9,7 +9,12 @@ class LocalNoteRepository implements NoteRepository {
   Future<void> addNote(NoteModel noteModel) async {
     try {
       var box = Hive.box<NoteModel>(AppConstants.notesStorage);
-      await box.add(noteModel);
+      final index = box.values.toList().indexWhere((n) => n.id == noteModel.id);
+      if (index != -1) {
+        await box.putAt(index, noteModel);
+      } else {
+        await box.add(noteModel);
+      }
     } catch (e) {
       rethrow;
     }
@@ -68,8 +73,8 @@ class LocalNoteRepository implements NoteRepository {
 
     // custom filter
     return _sortNotes(notes.where((n) {
-      // filterIds قد تكون null أو سلسلة فارغة، نتحقق أنها تحتوي على الـ id المطلوب
-      return (n.filterIds?.split(',').contains(filterId) ?? false) &&
+      // filterId قد تكون null أو سلسلة فارغة، نتحقق أنها تحتوي على الـ id المطلوب
+      return (n.filterId?.split(',').contains(filterId) ?? false) &&
           !n.isArchived;
     }).toList());
   }

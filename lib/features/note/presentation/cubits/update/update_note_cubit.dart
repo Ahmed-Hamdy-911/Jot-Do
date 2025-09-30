@@ -6,12 +6,11 @@ import 'update_note_state.dart';
 
 class UpdateNoteCubit extends Cubit<UpdateNoteStates> {
   UpdateNoteCubit() : super(UpdateNoteInitialState());
-  final SmartNoteRepository _smartNoteRepository =
-      SmartNoteRepository();
+  final SmartNoteRepository _smartNoteRepository = SmartNoteRepository();
   Future<void> updateNote(NoteModel noteModel) async {
     emit(UpdateNoteLoadingState());
     try {
-      _smartNoteRepository.updateNote(noteModel.id!, noteModel);
+      await _smartNoteRepository.updateNote(noteModel.id!, noteModel);
       emit(UpdateNoteSuccessState());
     } on Exception catch (e) {
       emit(UpdateNoteErrorState(e.toString()));

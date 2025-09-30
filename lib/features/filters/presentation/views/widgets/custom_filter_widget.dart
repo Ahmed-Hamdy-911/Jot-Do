@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/models/menu_item_model.dart';
-import '../../../../../core/widgets/components.dart';
 import '../../../../../core/widgets/filter_title_and_button.dart';
 import '../../cubits/filter/filter_cubit.dart';
 import '../../cubits/filter/filter_state.dart';
@@ -38,9 +37,7 @@ class _CustomFilterBuilderState extends State<CustomFilterWidget> {
     return Column(
       children: [
         CustomFilterTitleAndButton(
-        
             colors: colors, isInBottomSheet: true, parentContext: context),
-        AppComponents.smallVerticalSpace(),
         BlocBuilder<FilterCubit, FilterState>(builder: (context, state) {
           final customFilters = [...state.filters]
             ..sort((a, b) => a.createdAt.compareTo(b.createdAt));

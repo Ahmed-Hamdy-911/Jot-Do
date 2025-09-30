@@ -2,17 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/widgets/components.dart';
 import '../../../../../core/routing/app_routes.dart';
+import '../../../../../core/widgets/custom_filters_view.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/widgets/custom_text_form.dart';
-import '../../../../../core/widgets/filter_title_and_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../filters/presentation/cubits/filter/filter_cubit.dart';
-import '../../../../filters/presentation/cubits/filter/filter_state.dart';
 import '../../../data/models/note_model.dart';
 import '../../cubits/add/add_note_cubit.dart';
 import '../../cubits/add/add_note_state.dart';
@@ -88,7 +86,7 @@ class _NoteFormState extends State<NoteForm> {
                 customBorder: customBorder,
                 maxLines: isWideScreen
                     ? (screenHeight * 0.58 / 20).floor()
-                    : (screenWidth * 0.8 / 15).floor(),
+                    : (screenWidth * 0.7 / 15).floor(),
                 filled: filled,
                 fillColor: colors.fillColor,
                 customInputStyle: customInputStyle.copyWith(fontSize: 15),
@@ -102,7 +100,7 @@ class _NoteFormState extends State<NoteForm> {
                             title: _titleController.text,
                             content: _contentController.text,
                             createdAt: dateTime,
-                            filterIds: context
+                            filterId: context
                                 .read<FilterCubit>()
                                 .state
                                 .selectedFilterId,
@@ -117,87 +115,6 @@ class _NoteFormState extends State<NoteForm> {
           ),
         );
       },
-    );
-  }
-}
-
-class CustomFiltersView extends StatefulWidget {
-  const CustomFiltersView({
-    super.key,
-  });
-
-  @override
-  State<CustomFiltersView> createState() => _CustomFiltersViewState();
-}
-
-class _CustomFiltersViewState extends State<CustomFiltersView> {
-  initState() {
-    context.read<FilterCubit>().loadFilters();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var colors = SmartAppColor(context);
-    var screenWidth = MediaQuery.sizeOf(context).width;
-    return Column(
-      children: [
-        AppComponents.customDivider(15),
-        AppComponents.smallVerticalSpace(),
-        CustomFilterTitleAndButton(
-            colors: colors, isInBottomSheet: false, parentContext: context),
-        BlocBuilder<FilterCubit, FilterState>(
-          builder: (context, state) {
-            final customFilters = [...state.filters]
-              ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
-            return Container(
-              height: 50.h,
-              width: screenWidth,
-              padding: const EdgeInsetsDirectional.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                color: colors.fillColor,
-                borderRadius: BorderRadius.circular(AppConstants.kRadius),
-              ),
-              child: ListView.builder(
-                itemCount: customFilters.length,
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  final filter = customFilters[index];
-                  final isSelected = filter.id == state.selectedFilterId;
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: FilterChip(
-                      label: Row(
-                        children: [
-                          Text(
-                            filter.name,
-                            style:
-                                AppConstants.bodySmallStyle(colors.textPrimary),
-                          ),
-                          AppComponents.largeHorizontalSpace(),
-                          Icon(
-                            Icons.circle,
-                            size: 12,
-                            color: Color(filter.color),
-                          ),
-                        ],
-                      ),
-                      selected: isSelected,
-                      onSelected: (_) {
-                        context.read<FilterCubit>().selectFilter(
-                              isSelected ? null : filter.id,
-                            );
-                      },
-                    ),
-                  );
-                },
-              ),
-            );
-          },
-        ),
-        AppComponents.smallVerticalSpace(),
-      ],
     );
   }
 }

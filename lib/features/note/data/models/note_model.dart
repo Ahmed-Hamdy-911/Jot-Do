@@ -32,7 +32,7 @@ class NoteModel extends HiveObject {
   @HiveField(11)
   NoteType? type;
   @HiveField(12)
-  String? filterIds;
+  String? filterId;
 
   NoteModel({
     String? id,
@@ -47,7 +47,7 @@ class NoteModel extends HiveObject {
     this.deletedAt,
     this.isSynced = true,
     this.type = NoteType.text,
-    this.filterIds,
+    this.filterId,
   }) : this.id = id ?? const Uuid().v4();
 
   /// Convert NoteModel to JSON
@@ -65,7 +65,7 @@ class NoteModel extends HiveObject {
       'last_updated_at': lastUpdatedAt,
       'is_synced': isSynced,
       'deleted_at': deletedAt,
-      'filter_ids': filterIds
+      'filter_id': filterId
     };
   }
 
@@ -86,7 +86,7 @@ class NoteModel extends HiveObject {
       lastUpdatedAt: json['last_updated_at'],
       isSynced: json['is_synced'] ?? true,
       deletedAt: json['deleted_at'],
-      filterIds: json['filter_ids'] ?? 'all',
+      filterId: json['filter_id'] ?? 'all',
     );
   }
 
@@ -101,6 +101,7 @@ class NoteModel extends HiveObject {
     String? lastUpdatedAt,
     bool? isSynced,
     String? deletedAt,
+    String? filterId,
   }) {
     return NoteModel(
       id: id,
@@ -114,6 +115,7 @@ class NoteModel extends HiveObject {
       lastUpdatedAt: lastUpdatedAt ?? this.lastUpdatedAt,
       isSynced: isSynced ?? this.isSynced,
       deletedAt: deletedAt ?? this.deletedAt,
+      filterId: filterId ?? this.filterId,
     );
   }
 }

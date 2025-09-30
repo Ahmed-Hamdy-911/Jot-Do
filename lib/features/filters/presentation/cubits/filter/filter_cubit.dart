@@ -9,6 +9,8 @@ class FilterCubit extends Cubit<FilterState> {
 
   FilterCubit(this._repo) : super(const FilterState());
 
+  List<FilterModel> get filters => state.filters;
+
   Future<void> loadFilters() async {
     final filters = await _repo.getFilters();
     emit(state.copyWith(filters: filters));

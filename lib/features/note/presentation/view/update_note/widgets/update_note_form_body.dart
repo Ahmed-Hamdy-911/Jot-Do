@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../../core/widgets/components.dart';
+import '../../../../../../core/widgets/custom_filters_view.dart';
 import '../../../../../../core/widgets/custom_show_time_to_page.dart';
 import '../../../../../../core/widgets/custom_text_form.dart';
 import '../../../../../../generated/l10n.dart';
@@ -29,6 +30,7 @@ class UpdateFormBody extends StatelessWidget {
     var screenWidth = MediaQuery.sizeOf(context).width;
     var screenHeight = MediaQuery.sizeOf(context).height;
     final isWideScreen = screenWidth > 600;
+    final bool noContent = contentController.text.isEmpty;
     return Column(
       children: [
         CustomTextFormField(
@@ -50,11 +52,15 @@ class UpdateFormBody extends StatelessWidget {
           fillColor: colors.fillColor,
           controller: contentController,
           customBorder: customBorder,
-          maxLines: isWideScreen
-              ? (screenHeight * 0.59 / 20).floor()
-              : (screenHeight * 0.6 / 24).floor(),
+          maxLines: noContent
+              ? 5
+              : isWideScreen
+                  ? (screenHeight * 0.59 / 20).floor()
+                  : (screenHeight * 0.6 / 24).floor(),
           customInputStyle: AppConstants.bodySmallStyle(textColor),
         ),
+        AppComponents.customDivider(15),
+        const CustomFiltersView(),
         AppComponents.customDivider(15),
         CustomShowTimeToPage(
           isUpdating: noteModel.lastUpdatedAt,

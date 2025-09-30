@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
@@ -38,24 +37,22 @@ class SmartNoteRepository implements NoteRepository {
     try {
       List<NoteModel> filteredLocalNotes = [];
 
-      if (_isOnline && _isAutoBackupAndSync) {
+      if (appService.isOnline && appService.isAutoBackupAndSync) {
         final remoteNotes = await _remoteNoteRepo.getNotes();
-        final allLocalNotes = await _localNoteRepo.getNotes(); // بدون فلتر
+        final allLocalNotes = await _localNoteRepo.getNotes();
 
         for (var note in remoteNotes) {
-          // 🔎 ابحث عن النوت بالـ id
-          final existingNote = allLocalNotes
-              .where((localNote) => localNote.id == note.id)
-              .cast<NoteModel?>()
-              .firstWhere((n) => n != null, orElse: () => null);
+          final existingNote = allLocalNotes.firstWhere(
+            (localNote) => localNote.id == note.id,
+            orElse: () {
+              return NoteModel(title: '', content: '', createdAt: '');
+            },
+          );
 
+          // ignore: unnecessary_null_comparison
           if (existingNote == null) {
-            // ➕ مفيش نوت بنفس الـ id → أضفها
-            await _localNoteRepo.addNote(
-              note.copyWith(isSynced: true),
-            );
+            await _localNoteRepo.addNote(note.copyWith(isSynced: true));
           } else {
-            // 🔄 قارن البيانات قبل التحديث
             if (!_isSameNote(note, existingNote)) {
               await _localNoteRepo.updateNote(
                 note.id!,
@@ -70,7 +67,7 @@ class SmartNoteRepository implements NoteRepository {
         filteredLocalNotes = await _localNoteRepo.getNotes(safeFilter);
       }
 
-      log("Fetched ${filteredLocalNotes.length} notes with filter: $safeFilter");
+      // log("Fetched ${filteredLocalNotes.length} notes with filter: $safeFilter");
       return filteredLocalNotes;
     } catch (e) {
       rethrow;
@@ -85,7 +82,7 @@ class SmartNoteRepository implements NoteRepository {
         a.isArchived == b.isArchived &&
         a.isPinned == b.isPinned &&
         a.isFavorite == b.isFavorite &&
-        a.filterIds == b.filterIds;
+        a.filterId == b.filterId;
   }
 
   @override

@@ -22,10 +22,10 @@ class FilterView extends StatelessWidget {
     return DraggableScrollableSheet(
         expand: false,
         initialChildSize: 0.6,
-        minChildSize: 0.4,
+        minChildSize: 0.6,
         maxChildSize: 0.95,
         builder: (_, scrollController) {
-          return Container(
+          return Ink(
             padding: const EdgeInsets.all(4.0),
             decoration: BoxDecoration(
               color: colors.backgroundScreen,
@@ -62,7 +62,7 @@ class FilterView extends StatelessWidget {
                     ],
                   ),
                 ),
-                AppComponents.mediumVerticalSpace(),
+                AppComponents.smallVerticalSpace(),
                 Expanded(
                   child: SingleChildScrollView(
                     controller: scrollController,

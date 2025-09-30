@@ -9,6 +9,15 @@ class AppComponents {
         height: height ?? 30,
       );
 
+  static Widget customVerticalDivider([double? width, double? height]) =>
+      SizedBox(
+        height: height ?? 20,
+        child: VerticalDivider(
+          width: width ?? 30,
+          thickness: 1.5,
+        ),
+      );
+
   /// ---------------- Vertical Spaces ----------------
   static Widget smallVerticalSpace([double? height]) => Builder(
         builder: (context) => SizedBox(
@@ -71,5 +80,24 @@ class AppComponents {
         color: color,
       ),
     );
+  }
+
+  static Widget customCheckbox({
+    required bool value,
+    required SmartAppColor colors,
+    void Function(bool)? onChanged,
+  }) {
+    return Transform.scale(
+        scale: 0.8,
+        child: Checkbox(
+          value: value,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4)),
+          ),
+          side: BorderSide(color: colors.primary),
+          checkColor: colors.primary,
+          activeColor: colors.green,
+          onChanged: (_) => onChanged,
+        ));
   }
 }

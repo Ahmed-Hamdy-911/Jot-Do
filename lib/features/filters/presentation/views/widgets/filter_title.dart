@@ -33,7 +33,7 @@ class FilterTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppConstants.kRadius),
       ),
       selected: selected,
-      selectedColor: colors.reverseBackgroundColor,
+      selectedColor: colors.green,
       selectedTileColor: colors.reverseTextColor,
       leading: customFilter
           ? CircleAvatar(
