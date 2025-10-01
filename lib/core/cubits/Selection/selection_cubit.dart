@@ -10,9 +10,13 @@ class SelectionCubit<T> extends Cubit<SelectionState<T>> {
   }
 
   void enterSelectionMode(T item) {
+    final updated = List<T>.from(state.selectedItems);
+    if (!updated.contains(item)) {
+      updated.add(item);
+    }
     emit(state.copyWith(
       isSelectionMode: true,
-      selectedItems: [item],
+      selectedItems: updated,
     ));
   }
 

@@ -23,27 +23,31 @@ class CustomShowTimeToPage extends StatelessWidget {
         isUpdating != null ? FormatService.formatDateTime(updatedAt) : null;
     TextStyle? customInputStyle =
         AppConstants.bodySmallStyle(SmartAppColor(context).textSecondary);
-    return Column(
+    return Row(
       children: [
-        CustomTextFormField(
-          customBorder: const UnderlineInputBorder(),
-          initialValue: formatCreatedAt,
-          customInputStyle: customInputStyle,
-          labelText: S.of(context).created_at,
-          labelStyle:
-              AppConstants.bodyLargeStyle(SmartAppColor(context).textSecondary),
-          enabled: false,
-        ),
-        AppComponents.mediumVerticalSpace(),
-        if (isUpdating != null)
-          CustomTextFormField(
+        Expanded(
+          child: CustomTextFormField(
             customBorder: const UnderlineInputBorder(),
-            initialValue: formatUpdatedAt,
-            labelText: S.of(context).last_updated,
+            initialValue: formatCreatedAt,
+            customInputStyle: customInputStyle,
+            labelText: S.of(context).created_at,
             labelStyle: AppConstants.bodyLargeStyle(
                 SmartAppColor(context).textSecondary),
-            customInputStyle: customInputStyle,
             enabled: false,
+          ),
+        ),
+        AppComponents.mediumHorizontalSpace(),
+        if (isUpdating != null)
+          Expanded(
+            child: CustomTextFormField(
+              customBorder: const UnderlineInputBorder(),
+              initialValue: formatUpdatedAt,
+              labelText: S.of(context).last_updated,
+              labelStyle: AppConstants.bodyLargeStyle(
+                  SmartAppColor(context).textSecondary),
+              customInputStyle: customInputStyle,
+              enabled: false,
+            ),
           ),
       ],
     );

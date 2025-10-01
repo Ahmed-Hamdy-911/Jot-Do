@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import '../../../data/models/note_model.dart';
 import '../../../data/repository/smart_note_repository.dart';
@@ -101,7 +100,7 @@ class NotesCubit extends Cubit<NotesStates> {
         final index = notesList.indexWhere((e) => e.id == n.id);
         if (index != -1) notesList[index] = updated;
       }
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(ToggleNoteFavoriteSuccessState(isFavorite: shouldBeFavorite));
     } catch (e) {
       emit(NoteActionsErrorState(e.toString()));
@@ -117,7 +116,7 @@ class NotesCubit extends Cubit<NotesStates> {
         final index = notesList.indexWhere((e) => e.id == n.id);
         if (index != -1) notesList[index] = updated;
       }
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(ToggleNoteActionsArchiveSuccessState(isArchived: shouldBeArchived));
     } catch (e) {
       emit(NoteActionsErrorState(e.toString()));
@@ -130,7 +129,7 @@ class NotesCubit extends Cubit<NotesStates> {
         await _smartNoteRepository.deleteNote(n.id!);
         notesList.removeWhere((e) => e.id == n.id);
       }
-      await getNotes("all");
+      await getNotes(_lastFilterId);
       emit(NoteActionsDeleteSuccessState());
     } catch (e) {
       emit(NoteActionsErrorState(e.toString()));

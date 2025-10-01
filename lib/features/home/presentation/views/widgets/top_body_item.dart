@@ -55,21 +55,22 @@ class TopBodyItem extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: () {
+          debugPrint('TopBodyItem controller hash: ${pageController.hashCode}');
           context.read<TopBodyNaviCubit>().changeBody(selectedIndex);
-          pageController.animateToPage(
-            selectedIndex,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
-          );
-        },
-        onHighlightChanged: (bool value) {
-          if (value) {
-            context.read<TopBodyNaviCubit>().changeBody(selectedIndex);
-            pageController.animateToPage(
-              selectedIndex,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
+          if (pageController.hasClients) {
+            try {
+              pageController.animateToPage(
+                selectedIndex,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            } catch (e) {
+              debugPrint('animateToPage error: $e');
+              pageController.jumpToPage(selectedIndex);
+            }
+          } else {
+            debugPrint(
+                'PageController has no clients yet; will rely on cubit sync.');
           }
         },
         borderRadius: borderRadius(),
@@ -88,7 +89,7 @@ class TopBodyItem extends StatelessWidget {
                 icon,
                 color: isSelected ? colors.primary : colors.textPrimary,
               ),
-             AppComponents.smallHorizontalSpace(),
+              AppComponents.smallHorizontalSpace(),
               Text(
                 title,
                 overflow: TextOverflow.ellipsis,

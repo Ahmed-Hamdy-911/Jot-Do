@@ -43,11 +43,10 @@ class NoteItem extends StatelessWidget {
         }
       },
       onLongPress: () {
-        selectionCubit.toggleSelection(note);
-      },
-      onTapCancel: () {
-        if (isSelectionMode) {
-          selectionCubit.clearSelection();
+        if (!isSelectionMode) {
+          selectionCubit.enterSelectionMode(note);
+        } else {
+          selectionCubit.toggleSelection(note);
         }
       },
       child: Container(

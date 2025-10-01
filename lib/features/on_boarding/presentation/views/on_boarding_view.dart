@@ -34,7 +34,11 @@ class OnBoardingView extends StatelessWidget {
                   state is AuthEmailVerified ||
                   state is AuthGoogleSignInSuccess ||
                   state is AuthContinueWithoutAccount) {
-                Navigator.pushReplacementNamed(context, AppRoutes.home);
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  AppRoutes.home,
+                  (route) => false,
+                );
               } else if (state is GoVerificationState) {
                 CustomSnackBar.showSnackBar(
                   state.message!,

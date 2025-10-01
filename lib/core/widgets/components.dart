@@ -100,4 +100,9 @@ class AppComponents {
           onChanged: (_) => onChanged,
         ));
   }
+
+  static Widget appBarPadding(context) => Padding(
+          padding: EdgeInsets.only(
+        top: MediaQuery.of(context).padding.top,
+      ));
 }

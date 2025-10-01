@@ -15,12 +15,10 @@ class FilterAndChangeView extends StatelessWidget {
   const FilterAndChangeView({
     super.key,
     required this.isInNotes,
-  
-    
   });
 
   final bool isInNotes;
-  
+
   @override
   Widget build(BuildContext context) {
     bool isInNotes = context.watch<TopBodyNaviCubit>().state == 0;
@@ -30,53 +28,55 @@ class FilterAndChangeView extends StatelessWidget {
             ? true
             : false;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        ShowFilterView(
-          colors: colors,
-         
-        ),
-        Row(
-          children: [
-            if (!platform)
+    return Container(
+      height: 30.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ShowFilterView(
+            colors: colors,
+          ),
+          Row(
+            children: [
+              if (!platform)
+                CustomMaterialButton(
+                  height: 25.h,
+                  minWidth: 20.w,
+                  radius: AppConstants.kRadius - 4,
+                  color: isInNotes ? colors.primary : colors.backgroundScreen,
+                  onPressed: () {},
+                  widget: Icon(
+                    Icons.list,
+                    size: 25,
+                    color: isInNotes
+                        ? colors.backgroundSecondary
+                        : colors.textSecondary,
+                  ),
+                ),
+              AppComponents.smallHorizontalSpace(),
               CustomMaterialButton(
                 height: 25.h,
                 minWidth: 20.w,
-                radius: AppConstants.kRadius - 4,
-                color: isInNotes ? colors.primary : colors.backgroundScreen,
                 onPressed: () {},
+                radius: AppConstants.kRadius - 4,
+                color: platform
+                    ? colors.primary
+                    : isInNotes
+                        ? colors.backgroundScreen
+                        : colors.primary,
                 widget: Icon(
-                  Icons.list,
-                  size: 25,
-                  color: isInNotes
+                  Icons.grid_view_outlined,
+                  color: platform
                       ? colors.backgroundSecondary
-                      : colors.textSecondary,
+                      : isInNotes
+                          ? colors.textSecondary
+                          : colors.backgroundSecondary,
                 ),
               ),
-            AppComponents.smallHorizontalSpace(),
-            CustomMaterialButton(
-              height: 25.h,
-              minWidth: 20.w,
-              onPressed: () {},
-              radius: AppConstants.kRadius - 4,
-              color: platform
-                  ? colors.primary
-                  : isInNotes
-                      ? colors.backgroundScreen
-                      : colors.primary,
-              widget: Icon(
-                Icons.grid_view_outlined,
-                color: platform
-                    ? colors.backgroundSecondary
-                    : isInNotes
-                        ? colors.textSecondary
-                        : colors.backgroundSecondary,
-              ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

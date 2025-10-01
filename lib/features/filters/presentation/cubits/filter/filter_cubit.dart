@@ -13,7 +13,10 @@ class FilterCubit extends Cubit<FilterState> {
 
   Future<void> loadFilters() async {
     final filters = await _repo.getFilters();
-    emit(state.copyWith(filters: filters));
+    emit(state.copyWith(
+      filters: filters,
+      selectedFilterId: state.selectedFilterId,
+    ));
   }
 
   Future<void> addFilter(FilterModel filter) async {
@@ -25,7 +28,12 @@ class FilterCubit extends Cubit<FilterState> {
   Future<void> deleteFilter(String id) async {
     await _repo.deleteFilter(id);
     final filters = await _repo.getFilters();
-    emit(state.copyWith(filters: filters));
+    final selectedId =
+        state.selectedFilterId == id ? null : state.selectedFilterId;
+    emit(state.copyWith(
+      filters: filters,
+      selectedFilterId: selectedId,
+    ));
   }
 
   void selectFilter(String? id) {

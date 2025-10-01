@@ -1,10 +1,11 @@
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../core/cubits/connectivity/connection_cubit.dart';
 import '../../../../core/cubits/connectivity/connection_state.dart';
 import '../cubits/bottom_sheet_cubit/bottom_sheet_cubit.dart';
-import '../cubits/bottom_sheet_cubit/bottom_sheet_state.dart';
 import '../cubits/top_body_navi/top_body_navi_cubit_.dart';
 import 'widgets/home_body.dart';
 
@@ -54,47 +55,63 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class HomeScaffold extends StatelessWidget {
+class HomeScaffold extends StatefulWidget {
   const HomeScaffold({super.key});
+
+  @override
+  State<HomeScaffold> createState() => _HomeScaffoldState();
+}
+
+class _HomeScaffoldState extends State<HomeScaffold> {
+  late final PageController _pageController;
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     var colors = SmartAppColor(context);
-    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     context.read<BottomSheetCubit>().setScaffoldKey(scaffoldKey);
-    return BlocBuilder<BottomSheetCubit, BottomSheetState>(
-      builder: (context, bsState) {
-        final isSheetOpen = bsState.isOpen;
-
-        return Scaffold(
-          key: scaffoldKey,
-          appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: CustomHomeAppBar(),
-          ),
-          body: const HomeBody(),
-          bottomNavigationBar: isSheetOpen
-              ? const SizedBox.shrink()
-              : Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        colors.backgroundScreen.withValues(alpha: 0.4),
-                        colors.backgroundScreen.withValues(alpha: 0.8),
-                        colors.backgroundScreen,
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                  ),
+    final showBottomNavBar = (Platform.isAndroid || Platform.isIOS);
+    return Scaffold(
+      key: scaffoldKey,
+      extendBody: true,
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: CustomHomeAppBar(),
+      ),
+      body: HomeBody(pageController: _pageController),
+      bottomNavigationBar: showBottomNavBar
+          ? Container(
+              height: 30.h,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    colors.backgroundScreen.withValues(alpha: 0.01),
+                    colors.backgroundScreen.withValues(alpha: 0.3),
+                    colors.backgroundScreen.withValues(alpha: 0.6),
+                    colors.backgroundScreen,
+                  ],
                 ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-          floatingActionButton: CustomFloatingButton(
-            currentPage: context.watch<TopBodyNaviCubit>().state,
-          ),
-        );
-      },
+              ),
+            )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: CustomFloatingButton(
+        currentPage: context.watch<TopBodyNaviCubit>().state,
+      ),
     );
   }
 }

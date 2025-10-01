@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../filters/data/models/filter_model.dart';
 import 'note_type_model.dart';
 
 part 'note_model.g.dart';
@@ -9,29 +10,43 @@ part 'note_model.g.dart';
 class NoteModel extends HiveObject {
   @HiveField(0)
   String? id;
+
   @HiveField(1)
   String title;
+
   @HiveField(2)
   String content;
+
   @HiveField(3)
   String createdAt;
+
   @HiveField(4)
   int? color;
+
   @HiveField(5)
   bool isArchived;
+
   @HiveField(6)
   bool isPinned;
+
   @HiveField(7)
   bool isFavorite;
+
   @HiveField(8)
   String? lastUpdatedAt;
+
   @HiveField(9)
   String? deletedAt;
+
   @HiveField(10)
   bool? isSynced;
+
   @HiveField(11)
   NoteType? type;
+
   @HiveField(12)
+  List<FilterModel>? filters;
+  @HiveField(13)
   String? filterId;
 
   NoteModel({
@@ -47,14 +62,15 @@ class NoteModel extends HiveObject {
     this.deletedAt,
     this.isSynced = true,
     this.type = NoteType.text,
+    this.filters = const [],
     this.filterId,
-  }) : this.id = id ?? const Uuid().v4();
+  }) : id = id ?? const Uuid().v4();
 
   /// Convert NoteModel to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'type': type!.name,
+      'type': type?.name,
       'title': title,
       'content': content,
       'created_at': createdAt,
@@ -65,6 +81,7 @@ class NoteModel extends HiveObject {
       'last_updated_at': lastUpdatedAt,
       'is_synced': isSynced,
       'deleted_at': deletedAt,
+      'filters': filters?.map((f) => f.toJson()).toList() ?? [],
       'filter_id': filterId
     };
   }
@@ -86,11 +103,14 @@ class NoteModel extends HiveObject {
       lastUpdatedAt: json['last_updated_at'],
       isSynced: json['is_synced'] ?? true,
       deletedAt: json['deleted_at'],
-      filterId: json['filter_id'] ?? 'all',
+      filters: (json['filters'] as List<dynamic>?)
+              ?.map((e) => FilterModel.fromJson(e))
+              .toList() ??
+          [],
+      filterId: json['filter_id'],
     );
   }
 
-  //
   NoteModel copyWith({
     String? title,
     String? content,
@@ -101,6 +121,7 @@ class NoteModel extends HiveObject {
     String? lastUpdatedAt,
     bool? isSynced,
     String? deletedAt,
+    List<FilterModel>? filters,
     String? filterId,
   }) {
     return NoteModel(
@@ -115,6 +136,8 @@ class NoteModel extends HiveObject {
       lastUpdatedAt: lastUpdatedAt ?? this.lastUpdatedAt,
       isSynced: isSynced ?? this.isSynced,
       deletedAt: deletedAt ?? this.deletedAt,
+      type: type,
+      filters: filters ?? this.filters,
       filterId: filterId ?? this.filterId,
     );
   }

@@ -24,7 +24,7 @@ class AppConstants {
   static final double displayLarge = scaledSp(isArabic() ? 26 : 28.0);
 
 // Section headings - For feature titles like "Works offline", "Auto sync & backup"
-  static final double headlineLarge = scaledSp(24.0);
+  static final double headlineLarge = scaledSp(22.0);
   static final double headlineMedium = scaledSp(isArabic() ? 18 : 20.0);
 
 // Section subtitles - For secondary headings like "Your notes", "Your tasks"
@@ -85,6 +85,8 @@ class AppConstants {
         fontWeight: fontSemiBold,
         color: color,
         fontFamily: 'Kalam',
+        letterSpacing: 0.1,
+        height: 1,
       );
 
   /// Feature descriptions - The explanatory text under each feature title
@@ -242,7 +244,7 @@ class AppConstants {
 
   // app service
   static var appService;
-  
-  // filter 
+
+  // filter
   static const String filtersStorage = 'filters';
 }

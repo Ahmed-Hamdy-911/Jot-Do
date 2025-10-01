@@ -85,7 +85,9 @@ class _NoteBodyState extends State<NoteBody> {
                 isInNotes: context.watch<TopBodyNaviCubit>().state == 0,
               ),
             ],
-            AppComponents.customDivider(15),
+            AppComponents.smallVerticalSpace(),
+            AppComponents.customDivider(0),
+            AppComponents.smallVerticalSpace(),
             const NoteLayoutBuilder()
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../generated/l10n.dart';
 import '../../../home/presentation/cubits/bottom_sheet_cubit/bottom_sheet_cubit.dart';
@@ -13,11 +14,9 @@ class ShowFilterView extends StatelessWidget {
   const ShowFilterView({
     super.key,
     required this.colors,
-  
   });
 
   final SmartAppColor colors;
- 
 
   @override
   Widget build(BuildContext context) {
@@ -64,23 +63,32 @@ class ShowFilterView extends StatelessWidget {
               icon = IconlyLight.document;
           }
         }
-
-        return OutlinedButton.icon(
-          style: ButtonStyle(
-            foregroundColor: WidgetStatePropertyAll(colors.primary),
-          ),
-          onPressed: () {
+        return InkWell(
+          borderRadius: BorderRadius.circular(AppConstants.kRadius),
+          onTap: () {
             context.read<BottomSheetCubit>().openFilterSheet(
                   context,
                   title: S.of(context).filter_notes,
                   icon: IconlyLight.document,
                 );
           },
-          icon: Icon(icon,
-              size: 20, color: customFilter.id.isNotEmpty ? color : null),
-          label: Padding(
-            padding: const EdgeInsetsDirectional.only(start: 10.0),
-            child: Text(label),
+          child: Ink(
+            decoration: BoxDecoration(
+              color: colors.fillColor,
+              borderRadius: BorderRadius.circular(AppConstants.kRadius),
+              border: Border.all(color: colors.border),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            child: Row(
+              children: [
+                Icon(icon,
+                    size: 20, color: customFilter.id.isNotEmpty ? color : null),
+                Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 8.0),
+                  child: Text(label),
+                ),
+              ],
+            ),
           ),
         );
       },

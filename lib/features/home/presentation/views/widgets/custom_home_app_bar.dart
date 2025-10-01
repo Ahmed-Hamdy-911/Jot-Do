@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
@@ -33,16 +35,29 @@ class CustomHomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-
       actions: [
         IconButton(
+          padding: EdgeInsets.zero,
+          tooltip: S.of(context).syncNow,
           onPressed: () {},
           icon: Icon(
             Icons.cloud_sync_outlined,
             color: colors.textPrimary,
           ),
         ),
+        if (Platform.isAndroid || Platform.isIOS)
+          IconButton(
+            padding: EdgeInsets.zero,
+            tooltip: S.of(context).search,
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              color: colors.textPrimary,
+            ),
+          ),
         IconButton(
+          padding: EdgeInsets.zero,
+          tooltip: S.of(context).settings,
           onPressed: () {
             Navigator.pushNamed(context, AppRoutes.settings);
           },
@@ -52,23 +67,6 @@ class CustomHomeAppBar extends StatelessWidget {
           ),
         ),
       ],
-      // bottom: TabBar(
-      //   dividerColor: AppColors.transparentColor,
-      //   indicatorSize: TabBarIndicatorSize.label,
-      //   controller: tabController,
-      //   unselectedLabelColor: colors.textSecondary,
-      //   labelColor: colors.textPrimary,
-      //   indicatorColor: colors.textPrimary,
-      //   labelStyle: AppConstants.bodyMediumStyle(colors.textPrimary),
-      //   tabs: [
-      //     Tab(
-      //       text: S.of(context).your_notes,
-      //     ),
-      //     Tab(
-      //       text: S.of(context).your_tasks,
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

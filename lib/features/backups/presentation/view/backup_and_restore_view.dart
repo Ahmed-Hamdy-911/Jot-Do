@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../core/widgets/components.dart';
+import '../../../../core/widgets/custom_blur_widget.dart';
 import '../../../../generated/l10n.dart';
 import 'widgets/about_backups_widget.dart';
 import 'widgets/backup_status_widget.dart';
@@ -11,8 +13,17 @@ class BackupAndRestoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).backup_and_restore),
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: CustomBlurWidget(
+          child: AppBar(
+            title: Text(S.of(context).backup_and_restore),
+            backgroundColor:
+                SmartAppColor(context).backgroundScreen.withValues(alpha: 0.2),
+            elevation: 0,
+          ),
+        ),
       ),
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth >= 600) {
@@ -41,7 +52,7 @@ class BackupAndRestoreBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppComponents.smallVerticalSpace(),
+            AppComponents.appBarPadding(context),
             BackupStatusWidget(
               lengthUnSyncedData: 0,
               dateTime: DateTime.now().toIso8601String(),

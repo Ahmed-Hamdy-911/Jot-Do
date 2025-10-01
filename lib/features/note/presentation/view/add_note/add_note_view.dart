@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/custom_blur_widget.dart';
 import '../../../../../core/widgets/custom_loading.dart';
 import '../../../../filters/data/repository/filter_repo.dart';
 import '../../../../filters/presentation/cubits/filter/filter_cubit.dart';
@@ -25,8 +28,17 @@ class AddNoteView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(S.of(context).add_note),
+        extendBodyBehindAppBar: true,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: CustomBlurWidget(
+            child: AppBar(
+              backgroundColor: SmartAppColor(context)
+                  .backgroundScreen
+                  .withValues(alpha: 0.2),
+              title: Text(S.of(context).add_note),
+            ),
+          ),
         ),
         body: const AddNoteBody(),
       ),
@@ -43,10 +55,15 @@ class AddNoteBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomLoading(
       state: context.watch<AddNoteCubit>().state is AddNoteLoadingState,
-      child: const SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: NoteForm(),
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              AppComponents.appBarPadding(context),
+              const NoteForm(),
+            ],
+          ),
         ),
       ),
     );

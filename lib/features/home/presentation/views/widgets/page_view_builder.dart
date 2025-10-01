@@ -19,17 +19,17 @@ class PageViewBuilder extends StatelessWidget {
       const NoteView(),
       const TaskView(),
     ];
+
+    debugPrint('PageView controller hash: ${_pageController.hashCode}');
+
     return Expanded(
       child: PageView.builder(
-        scrollDirection: Axis.horizontal,
         controller: _pageController,
         itemCount: homeBodyList.length,
         onPageChanged: (index) {
           context.read<TopBodyNaviCubit>().changeBody(index);
         },
-        itemBuilder: (context, index) {
-          return homeBodyList[index];
-        },
+        itemBuilder: (context, index) => homeBodyList[index],
       ),
     );
   }
