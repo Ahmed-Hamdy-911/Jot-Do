@@ -90,7 +90,10 @@ class SplashBody extends StatelessWidget {
                     children: [
                       Text(
                         S.of(context).appName,
-                        style: AppConstants.appNameStyle(colors.textPrimary),
+                        style: screenWidth >= 600
+                            ? AppConstants.largeAppNameStyle(colors.textPrimary)
+                            : AppConstants.mediumAppNameStyle(
+                                colors.textPrimary),
                       ),
                       Text(
                         S.of(context).splashText2,

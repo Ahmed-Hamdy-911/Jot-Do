@@ -81,7 +81,7 @@ class ShowFilterView extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppConstants.kRadius),
               border: Border.all(color: colors.border),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,

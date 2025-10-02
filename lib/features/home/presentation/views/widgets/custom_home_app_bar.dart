@@ -25,7 +25,7 @@ class CustomHomeAppBar extends StatelessWidget {
         children: [
           Text(
             S.of(context).appName,
-            style: AppConstants.appNameStyle(colors.textPrimary),
+            style: AppConstants.mediumAppNameStyle(colors.textPrimary),
           ),
           Text(
             index == context.watch<TopBodyNaviCubit>().state

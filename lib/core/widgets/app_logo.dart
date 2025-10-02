@@ -19,7 +19,7 @@ class AppLogo extends StatelessWidget {
           AppComponents.smallVerticalSpace(),
           Text(
             S.of(context).appName,
-            style: AppConstants.appNameStyle(colors.textPrimary),
+            style: AppConstants.mediumAppNameStyle(colors.textPrimary),
           ),
         ],
       ),

@@ -12,11 +12,9 @@ class AppConstants {
   // 👉 Typography scale
 
   static double scaledSp(double size) {
-    // لو Web أو Desktop → رجّع نفس الحجم بدون .sp
     if (kIsWeb || Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
       return size;
     }
-    // على الموبايل استعمل .sp
     return size.sp;
   }
 
@@ -48,6 +46,7 @@ class AppConstants {
 
   static final double settingMedium = scaledSp(isArabic() ? 12 : 14.0);
 
+  static final double largeSize = 25;
   // 👉 Font weights
   static const FontWeight fontLight = FontWeight.w300;
   static const FontWeight fontNormal = FontWeight.w400;
@@ -80,12 +79,20 @@ class AppConstants {
         color: color,
         height: 1.3,
       );
-  static TextStyle appNameStyle(Color color) => TextStyle(
+  static TextStyle mediumAppNameStyle(Color color) => TextStyle(
         fontSize: headlineLarge,
         fontWeight: fontSemiBold,
         color: color,
         fontFamily: 'Kalam',
         letterSpacing: 0.1,
+        height: 1,
+      );
+  static TextStyle largeAppNameStyle(Color color) => TextStyle(
+        fontSize: largeSize,
+        fontWeight: fontSemiBold,
+        color: color,
+        fontFamily: 'Kalam',
+        letterSpacing: 0.2,
         height: 1,
       );
 
