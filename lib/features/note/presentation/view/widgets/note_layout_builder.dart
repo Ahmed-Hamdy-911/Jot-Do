@@ -18,7 +18,6 @@ class NoteLayoutBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.sizeOf(context).width;
     return Expanded(
       child: BlocBuilder<NotesCubit, NotesStates>(
         builder: (context, state) {
