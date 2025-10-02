@@ -4,7 +4,6 @@ import '../../generated/l10n.dart';
 import '../constants/app_constants.dart';
 import '../constants/colors/smart_app_color.dart';
 import '../services/format_service.dart';
-import 'components.dart';
 import 'custom_text_form.dart';
 
 class CustomShowTimeToPage extends StatelessWidget {
@@ -36,7 +35,6 @@ class CustomShowTimeToPage extends StatelessWidget {
             enabled: false,
           ),
         ),
-        AppComponents.mediumHorizontalSpace(),
         if (isUpdating != null)
           Expanded(
             child: CustomTextFormField(

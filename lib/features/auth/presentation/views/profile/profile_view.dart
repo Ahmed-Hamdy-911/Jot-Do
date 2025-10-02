@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/custom_card.dart';
 import '../../../../../core/widgets/custom_loading.dart';
 import '../../../../../core/models/message_type.dart';
 import '../../../../../core/widgets/custom_material_button.dart';
@@ -187,63 +188,65 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
                 width: screenWidth >= 600 ? 600 : screenWidth,
                 constraints: BoxConstraints(maxHeight: screenHeight - 100),
-                child: Column(
-                  children: [
-                    CustomTextFormField(
-                      controller: _nameController,
-                      focusNode: _nameFocusNode,
-                      labelText: S.of(context).name,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return S.of(context).error_required_field;
-                        } else if (value.length < 3) {
-                          return S.of(context).error_short_name;
-                        } else if (value.startsWith(RegExp(r'^[0-9]'))) {
-                          return S.of(context).error_name_starts_with_number;
-                        } else if (value.contains(RegExp(r'^.*[@/$!%*?&]'))) {
-                          return S
-                              .of(context)
-                              .error_name_contains_special_characters;
-                        }
-                        return null;
-                      },
-                      onTap: () {
-                        _nameFocusNode.requestFocus();
-                      },
-                      onFieldSubmitted: (value) => _submitName(),
-                      onChanged: (val) {
-                        final changed = val.trim() != (_originalName ?? '');
-                        if (changed != _isEditing) {
-                          setState(() {
-                            _isEditing = changed;
-                          });
-                        }
-                      },
-                    ),
-                    AppComponents.mediumVerticalSpace(),
-                    CustomTextFormField(
-                      initialValue: user.email,
-                      labelText: S.of(context).email,
-                      enabled: false,
-                    ),
-                    CustomShowTimeToPage(
-                      isUpdating: user.updatedAt,
-                      createdAt: user.createdAt,
-                      updatedAt: user.updatedAt,
-                    ),
-                    AppComponents.largeVerticalSpace(),
-                    CustomMaterialButton(
-                      onPressed: () {
-                        CustomSnackBar.showSnackBar(
-                          S.of(context).comingSoon,
-                          context,
-                          MessageType.info,
-                        );
-                      },
-                      text: S.of(context).delete,
-                      color: Colors.red,
-                    ),
-                  ],
+                child: CustomCard(
+                  child: Column(
+                    children: [
+                      CustomTextFormField(
+                        controller: _nameController,
+                        focusNode: _nameFocusNode,
+                        labelText: S.of(context).name,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return S.of(context).error_required_field;
+                          } else if (value.length < 3) {
+                            return S.of(context).error_short_name;
+                          } else if (value.startsWith(RegExp(r'^[0-9]'))) {
+                            return S.of(context).error_name_starts_with_number;
+                          } else if (value.contains(RegExp(r'^.*[@/$!%*?&]'))) {
+                            return S
+                                .of(context)
+                                .error_name_contains_special_characters;
+                          }
+                          return null;
+                        },
+                        onTap: () {
+                          _nameFocusNode.requestFocus();
+                        },
+                        onFieldSubmitted: (value) => _submitName(),
+                        onChanged: (val) {
+                          final changed = val.trim() != (_originalName ?? '');
+                          if (changed != _isEditing) {
+                            setState(() {
+                              _isEditing = changed;
+                            });
+                          }
+                        },
+                      ),
+                      AppComponents.mediumVerticalSpace(),
+                      CustomTextFormField(
+                        initialValue: user.email,
+                        labelText: S.of(context).email,
+                        enabled: false,
+                      ),
+                      CustomShowTimeToPage(
+                        isUpdating: user.updatedAt,
+                        createdAt: user.createdAt,
+                        updatedAt: user.updatedAt,
+                      ),
+                      AppComponents.largeVerticalSpace(),
+                      CustomMaterialButton(
+                        onPressed: () {
+                          CustomSnackBar.showSnackBar(
+                            S.of(context).comingSoon,
+                            context,
+                            MessageType.info,
+                          );
+                        },
+                        text: S.of(context).delete,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

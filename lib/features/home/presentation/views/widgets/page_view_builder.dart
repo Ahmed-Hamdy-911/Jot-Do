@@ -20,8 +20,7 @@ class PageViewBuilder extends StatelessWidget {
       const TaskView(),
     ];
 
-    debugPrint('PageView controller hash: ${_pageController.hashCode}');
-
+ 
     return Expanded(
       child: PageView.builder(
         controller: _pageController,

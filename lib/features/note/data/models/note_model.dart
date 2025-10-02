@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../filters/data/models/filter_model.dart';
 import 'note_type_model.dart';
 
 part 'note_model.g.dart';
@@ -45,8 +44,6 @@ class NoteModel extends HiveObject {
   NoteType? type;
 
   @HiveField(12)
-  List<FilterModel>? filters;
-  @HiveField(13)
   String? filterId;
 
   NoteModel({
@@ -62,7 +59,6 @@ class NoteModel extends HiveObject {
     this.deletedAt,
     this.isSynced = true,
     this.type = NoteType.text,
-    this.filters = const [],
     this.filterId,
   }) : id = id ?? const Uuid().v4();
 
@@ -81,7 +77,6 @@ class NoteModel extends HiveObject {
       'last_updated_at': lastUpdatedAt,
       'is_synced': isSynced,
       'deleted_at': deletedAt,
-      'filters': filters?.map((f) => f.toJson()).toList() ?? [],
       'filter_id': filterId
     };
   }
@@ -103,10 +98,6 @@ class NoteModel extends HiveObject {
       lastUpdatedAt: json['last_updated_at'],
       isSynced: json['is_synced'] ?? true,
       deletedAt: json['deleted_at'],
-      filters: (json['filters'] as List<dynamic>?)
-              ?.map((e) => FilterModel.fromJson(e))
-              .toList() ??
-          [],
       filterId: json['filter_id'],
     );
   }
@@ -121,7 +112,6 @@ class NoteModel extends HiveObject {
     String? lastUpdatedAt,
     bool? isSynced,
     String? deletedAt,
-    List<FilterModel>? filters,
     String? filterId,
   }) {
     return NoteModel(
@@ -137,7 +127,6 @@ class NoteModel extends HiveObject {
       isSynced: isSynced ?? this.isSynced,
       deletedAt: deletedAt ?? this.deletedAt,
       type: type,
-      filters: filters ?? this.filters,
       filterId: filterId ?? this.filterId,
     );
   }

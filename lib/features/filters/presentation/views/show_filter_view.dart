@@ -1,3 +1,6 @@
+import 'dart:io' show Platform;
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
@@ -78,14 +81,20 @@ class ShowFilterView extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppConstants.kRadius),
               border: Border.all(color: colors.border),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(icon,
                     size: 20, color: customFilter.id.isNotEmpty ? color : null),
                 Padding(
                   padding: const EdgeInsetsDirectional.only(start: 8.0),
-                  child: Text(label),
+                  child: Text(label,
+                      style: kIsWeb || Platform.isWindows
+                          ? AppConstants.captionStyle(colors.textPrimary)
+                          : AppConstants.bodyMediumStyle(colors.textPrimary)),
                 ),
               ],
             ),
