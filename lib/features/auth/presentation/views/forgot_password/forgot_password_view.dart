@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_loading.dart';
+import '../../../../../core/widgets/buttons/custom_material_button.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/custom/custom_loading.dart';
 import '../../cubit/auth_cubit.dart';
 import '../../cubit/auth_states.dart';
 import '../../widgets/auth_exited_text.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/widgets/custom_material_button.dart';
 
 import '../../widgets/custom_email_field.dart';
 

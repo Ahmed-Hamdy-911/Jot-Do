@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/widgets/custom_loading.dart';
+import '../../../../../core/widgets/custom/custom_loading.dart';
 import '../../cubit/auth_cubit.dart';
 import '../../cubit/auth_states.dart';
 import '../../widgets/register_form.dart';

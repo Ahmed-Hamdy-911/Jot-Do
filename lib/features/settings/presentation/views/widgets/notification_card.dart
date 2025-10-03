@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/components/components.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/widgets/custom_card.dart';
-import '../../../../../core/widgets/custom_list_title.dart';
+import '../../../../../core/widgets/custom/custom_card.dart';
+import '../../../../../core/widgets/custom/custom_list_title.dart';
 
 class NotificationSettingCard extends StatelessWidget {
   const NotificationSettingCard({

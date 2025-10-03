@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants/app_constants.dart';
 import '../../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../../core/widgets/components.dart';
-import '../../../../../../core/widgets/custom_filters_view.dart';
-import '../../../../../../core/widgets/custom_show_time_to_page.dart';
-import '../../../../../../core/widgets/custom_text_form.dart';
+import '../../../../../../core/widgets/components/components.dart';
+import '../../../../../../core/widgets/filter/custom_filters_view.dart';
+import '../../../../../../core/widgets/custom/custom_show_time_to_page.dart';
+import '../../../../../../core/widgets/custom_fields/custom_text_form.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../data/models/note_model.dart';
 

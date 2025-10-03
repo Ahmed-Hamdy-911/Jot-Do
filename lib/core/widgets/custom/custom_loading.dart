@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants/colors/smart_app_color.dart';
-import 'loading_animation.dart';
+import '../../constants/colors/smart_app_color.dart';
+import '../components/loading_animation.dart';
 
 class CustomLoading extends StatelessWidget {
   const CustomLoading({

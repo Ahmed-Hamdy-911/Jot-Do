@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/components/components.dart';
 import '../../../../settings/presentation/cubits/setting_cubit.dart';
 import '../../cubits/top_body_navi/top_body_navi_cubit_.dart';
 

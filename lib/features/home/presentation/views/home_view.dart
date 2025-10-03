@@ -83,6 +83,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
     var colors = SmartAppColor(context);
     context.read<BottomSheetCubit>().setScaffoldKey(scaffoldKey);
     final showBottomNavBar = (Platform.isAndroid || Platform.isIOS);
+    final isOpenSheet = context.watch<BottomSheetCubit>().state.isOpen;
     return Scaffold(
       key: scaffoldKey,
       extendBody: true,
@@ -92,21 +93,23 @@ class _HomeScaffoldState extends State<HomeScaffold> {
       ),
       body: HomeBody(pageController: _pageController),
       bottomNavigationBar: showBottomNavBar
-          ? Container(
-              height: 30.h,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    colors.backgroundScreen.withValues(alpha: 0.01),
-                    colors.backgroundScreen.withValues(alpha: 0.3),
-                    colors.backgroundScreen.withValues(alpha: 0.6),
-                    colors.backgroundScreen,
-                  ],
-                ),
-              ),
-            )
+          ? isOpenSheet
+              ? null
+              : Container(
+                  height: 30.h,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        colors.backgroundScreen.withValues(alpha: 0.01),
+                        colors.backgroundScreen.withValues(alpha: 0.3),
+                        colors.backgroundScreen.withValues(alpha: 0.6),
+                        colors.backgroundScreen,
+                      ],
+                    ),
+                  ),
+                )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: CustomFloatingButton(

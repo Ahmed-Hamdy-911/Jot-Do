@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/models/menu_item_model.dart';
-import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/components/components.dart';
 
 class FilterTile extends StatelessWidget {
   final MenuItemModel item;

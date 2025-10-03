@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/components/components.dart';
 import '../../cubits/setting_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/language_model.dart';
-import '../../../../../core/widgets/custom_card.dart';
-import '../../../../../core/widgets/custom_list_title.dart';
+import '../../../../../core/widgets/custom/custom_card.dart';
+import '../../../../../core/widgets/custom/custom_list_title.dart';
 
 class AppearanceSettingCard extends StatelessWidget {
   const AppearanceSettingCard({super.key});

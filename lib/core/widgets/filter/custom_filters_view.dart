@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../features/filters/presentation/cubits/filter/filter_cubit.dart';
-import '../../features/filters/presentation/cubits/filter/filter_state.dart';
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
-import 'components.dart';
+import '../../../features/filters/presentation/cubits/filter/filter_cubit.dart';
+import '../../../features/filters/presentation/cubits/filter/filter_state.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
+import '../components/components.dart';
 import 'filter_title_and_button.dart';
 
 class CustomFiltersView extends StatelessWidget {

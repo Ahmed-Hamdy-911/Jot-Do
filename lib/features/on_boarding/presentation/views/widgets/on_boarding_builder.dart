@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
-import '../../../../../core/widgets/components.dart';
+import '../../../../../core/widgets/components/components.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/on_boarding_model.dart';
 import 'on_boarding_item.dart';

@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../core/widgets/components.dart';
+import '../../../../core/widgets/components/components.dart';
 import '../../../../generated/l10n.dart';
 import 'package:page_transition/page_transition.dart';
-import '../../../../core/widgets/loading_animation.dart';
+import '../../../../core/widgets/components/loading_animation.dart';
 import '../manager/cubit/splash_cubit.dart';
 
 class SplashView extends StatelessWidget {

@@ -7,14 +7,14 @@ import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/helper/cache_helper.dart';
 import '../../../../../core/models/message_type.dart';
 import '../../../../../core/routing/app_routes.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/widgets/custom_snackbar.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/buttons/custom_button.dart';
+import '../../../../../core/widgets/components/custom_snackbar.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../auth/presentation/cubit/auth_cubit.dart';
 import '../../../../auth/presentation/cubit/auth_states.dart';
-import '../../../../../core/widgets/custom_card.dart';
-import '../../../../../core/widgets/custom_list_title.dart';
+import '../../../../../core/widgets/custom/custom_card.dart';
+import '../../../../../core/widgets/custom/custom_list_title.dart';
 
 class AccountSettingCard extends StatelessWidget {
   const AccountSettingCard({

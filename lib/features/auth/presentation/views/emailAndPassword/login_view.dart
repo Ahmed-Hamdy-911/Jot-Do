@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/app_logo.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_loading.dart';
-import '../../../../../core/widgets/custom_text_and_text_button.dart';
+import '../../../../../core/widgets/components/app_logo.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/custom/custom_loading.dart';
+import '../../../../../core/widgets/custom/custom_text_and_text_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/routing/app_routes.dart';
 import '../../cubit/auth_cubit.dart';

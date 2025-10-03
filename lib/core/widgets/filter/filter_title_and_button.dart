@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../features/filters/presentation/views/widgets/add_filter.dart';
-import '../../generated/l10n.dart';
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
+import '../../../features/filters/presentation/views/widgets/add_filter.dart';
+import '../../../generated/l10n.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
 
 class CustomFilterTitleAndButton extends StatelessWidget {
   const CustomFilterTitleAndButton({

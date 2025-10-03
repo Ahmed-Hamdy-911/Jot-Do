@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/widgets/empty_widget.dart';
+import '../../../../core/widgets/components/empty_widget.dart';
 import '../../../../generated/l10n.dart';
 
 class TaskView extends StatelessWidget {

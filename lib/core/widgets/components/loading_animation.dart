@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../constants/app_assets.dart';
+import '../../constants/app_assets.dart';
 
 class LoadingAnimation extends StatelessWidget {
   const LoadingAnimation({

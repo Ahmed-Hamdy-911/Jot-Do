@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/models/menu_item_model.dart';
-import '../../../../../core/widgets/filter_title_and_button.dart';
+import '../../../../../core/widgets/filter/filter_title_and_button.dart';
 import '../../cubits/filter/filter_cubit.dart';
 import '../../cubits/filter/filter_state.dart';
 import 'filter_title.dart';

@@ -3,10 +3,10 @@ import 'package:iconly/iconly.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/widgets/custom_card.dart';
-import '../../../../../core/widgets/custom_list_title.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/buttons/custom_button.dart';
+import '../../../../../core/widgets/custom/custom_card.dart';
+import '../../../../../core/widgets/custom/custom_list_title.dart';
 import '../../../../../generated/l10n.dart';
 
 class LocalBackupWidget extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../generated/l10n.dart';
-import '../constants/app_assets.dart';
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
+import '../../../generated/l10n.dart';
+import '../../constants/app_assets.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
 import 'components.dart';
 
 class AppLogo extends StatelessWidget {

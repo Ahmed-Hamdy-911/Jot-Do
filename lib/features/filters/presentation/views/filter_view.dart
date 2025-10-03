@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../core/widgets/components.dart';
+import '../../../../core/widgets/components/components.dart';
 import 'widgets/custom_filter_widget.dart';
 import 'widgets/default_filter_widget.dart';
 

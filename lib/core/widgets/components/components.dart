@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/colors/smart_app_color.dart';
+import '../../constants/colors/smart_app_color.dart';
 
 class AppComponents {
   /// Divider

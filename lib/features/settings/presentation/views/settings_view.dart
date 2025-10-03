@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../core/widgets/components.dart';
-import '../../../../core/widgets/custom_blur_widget.dart';
+import '../../../../core/widgets/components/components.dart';
+import '../../../../core/widgets/custom/custom_blur_widget.dart';
 import '../../../../generated/l10n.dart';
 import 'widgets/account_card.dart';
 import 'widgets/delete_all_data_card.dart';

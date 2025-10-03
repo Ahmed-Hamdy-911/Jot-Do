@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../features/filters/presentation/views/show_filter_view.dart';
-import '../constants/colors/smart_app_color.dart';
-import '../cubits/layout_cubit.dart';
-import 'components.dart';
-import '../constants/app_constants.dart';
+import '../../../features/filters/presentation/views/show_filter_view.dart';
+import '../../constants/colors/smart_app_color.dart';
+import '../../cubits/layout_cubit.dart';
+import '../components/components.dart';
+import '../../constants/app_constants.dart';
 
 class FilterAndChangeView extends StatelessWidget {
   const FilterAndChangeView({super.key, required this.isInNotes});

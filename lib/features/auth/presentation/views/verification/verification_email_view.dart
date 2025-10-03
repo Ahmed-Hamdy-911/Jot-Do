@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/cubits/countdown_timer/countdown_timer_cubit.dart';
 import '../../../../../core/cubits/countdown_timer/countdown_timer_state.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_loading.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/custom/custom_loading.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/widgets/custom_material_button.dart';
+import '../../../../../core/widgets/buttons/custom_material_button.dart';
 import '../../cubit/auth_cubit.dart';
 import '../../cubit/auth_states.dart';
 

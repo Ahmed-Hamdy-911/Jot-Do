@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_blur_widget.dart';
-import '../../../../../core/widgets/custom_loading.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/custom/custom_blur_widget.dart';
+import '../../../../../core/widgets/custom/custom_loading.dart';
 import '../../../../filters/data/repository/filter_repo.dart';
 import '../../../../filters/presentation/cubits/filter/filter_cubit.dart';
 import '../../cubits/add/add_note_cubit.dart';

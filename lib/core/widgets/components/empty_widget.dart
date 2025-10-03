@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../constants/app_assets.dart';
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
+import '../../constants/app_assets.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
 
 class EmptyWidget extends StatelessWidget {
   const EmptyWidget({

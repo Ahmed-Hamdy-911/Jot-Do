@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../core/widgets/components.dart';
-import '../../../../core/widgets/custom_text_form.dart';
+import '../../../../core/widgets/components/components.dart';
+import '../../../../core/widgets/custom_fields/custom_text_form.dart';
 import '../../../../generated/l10n.dart';
 
 class CustomEmailField extends StatelessWidget {

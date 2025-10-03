@@ -2,10 +2,10 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 import 'package:flutter/material.dart' as material;
-import '../../generated/l10n.dart';
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
-import '../models/message_type.dart';
+import '../../../generated/l10n.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
+import '../../models/message_type.dart';
 
 class CustomSnackBar {
   static ContentType _mapToContentType(MessageType type) {

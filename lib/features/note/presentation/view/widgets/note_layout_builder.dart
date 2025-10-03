@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/cubits/layout_cubit.dart';
-import '../../../../../core/widgets/custom_loading.dart';
-import '../../../../../core/widgets/empty_widget.dart';
+import '../../../../../core/widgets/custom/custom_loading.dart';
+import '../../../../../core/widgets/components/empty_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/note_model.dart';
 import '../../cubits/get/notes_cubit.dart';

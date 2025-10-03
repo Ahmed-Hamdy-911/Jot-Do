@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
-import '../../features/filters/presentation/cubits/pick_color/pick_color_cubit.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
+import '../../../features/filters/presentation/cubits/pick_color/pick_color_cubit.dart';
 
 class PickColorItem extends StatelessWidget {
   const PickColorItem({

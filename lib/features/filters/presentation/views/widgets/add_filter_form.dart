@@ -6,10 +6,10 @@ import 'package:iconly/iconly.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/widgets/components.dart';
-import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/widgets/custom_text_form.dart';
-import '../../../../../core/widgets/pick_color_grid_view.dart';
+import '../../../../../core/widgets/components/components.dart';
+import '../../../../../core/widgets/buttons/custom_button.dart';
+import '../../../../../core/widgets/custom_fields/custom_text_form.dart';
+import '../../../../../core/widgets/pick_color/pick_color_grid_view.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../home/presentation/cubits/bottom_sheet_cubit/bottom_sheet_cubit.dart';
 import '../../../data/models/filter_model.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
-import 'components.dart';
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
+import '../components/components.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.child, this.title});

@@ -4,8 +4,8 @@ import 'package:iconly/iconly.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/widgets/custom_card.dart';
-import '../../../../../core/widgets/custom_list_title.dart';
+import '../../../../../core/widgets/custom/custom_card.dart';
+import '../../../../../core/widgets/custom/custom_list_title.dart';
 import '../../../../note/data/repository/smart_note_repository.dart';
 
 class DeleteAllDataCard extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../constants/app_constants.dart';
-import '../constants/colors/smart_app_color.dart';
+
+import '../../constants/app_constants.dart';
+import '../../constants/colors/smart_app_color.dart';
 
 class CustomMaterialButton extends StatelessWidget {
   const CustomMaterialButton({
