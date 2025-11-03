@@ -29,9 +29,9 @@ class NoteBody extends StatefulWidget {
 class _NoteBodyState extends State<NoteBody> {
   final TextEditingController searchController = TextEditingController();
   @override
-  void initState() {
+  void initState() { super.initState();
     getNotesWithFilter();
-    super.initState();
+   
   }
 
   Future<void> getNotesWithFilter({String? filterId}) async {

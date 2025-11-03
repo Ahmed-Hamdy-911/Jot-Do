@@ -322,6 +322,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notification_description": MessageLookupByLibrary.simpleMessage(
       "الحصول على اشعارات جديدة للملاحظات والمهام.",
     ),
+    "radio_recovery_code_title": MessageLookupByLibrary.simpleMessage(
+      "لقد حفظت رمز الاستعادة",
+    ),
+    "recovery_button_remind_me_later": MessageLookupByLibrary.simpleMessage(
+      "ذكّرني لاحقًا",
+    ),
+    "recovery_button_save_it": MessageLookupByLibrary.simpleMessage("حفظه"),
+    "recovery_button_skip": MessageLookupByLibrary.simpleMessage(
+      "تخطي على أية حال",
+    ),
     "recovery_code_action_cancel": MessageLookupByLibrary.simpleMessage(
       "إلغاء",
     ),
@@ -340,6 +350,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "recovery_code_backup_trusted_person": MessageLookupByLibrary.simpleMessage(
       "أعطِ نسخة لشخص تثق به.",
+    ),
+    "recovery_code_backups_label": MessageLookupByLibrary.simpleMessage(
+      "خيارات الحفظ الموصى به",
     ),
     "recovery_code_confirm_discard_text": MessageLookupByLibrary.simpleMessage(
       "هل متأكد أنك تريد تخطي حفظ الرمز؟ قد تفقد الوصول إلى ملاحظاتك إذا لم توجد طريقة استرجاع بديلة.",
@@ -368,6 +381,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "recovery_code_print_button": MessageLookupByLibrary.simpleMessage("طباعة"),
     "recovery_code_qr_alt": MessageLookupByLibrary.simpleMessage(
       "كود QR لرمز الاستعادة",
+    ),
+    "recovery_code_qr_description": MessageLookupByLibrary.simpleMessage(
+      "اسحب هذا الكود QR لتحويل رمز الاستعادة الخاص بك لجهاز اخر",
     ),
     "recovery_code_remind_me_later": MessageLookupByLibrary.simpleMessage(
       "ذكّرني لاحقًا",

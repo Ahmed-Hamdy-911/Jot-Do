@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_constants.dart';
 import '../../constants/colors/smart_app_color.dart';
 
-
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
@@ -60,5 +59,5 @@ class CustomButton extends StatelessWidget {
             ),
           ],
         ));
-  }
+  }   
 }

@@ -50,9 +50,9 @@ class VerificationBody extends StatefulWidget {
 
 class _VerificationBodyState extends State<VerificationBody> {
   @override
-  void initState() {
+  void initState() {   super.initState();
     context.read<CountdownTimerCubit>().startTimer(fromSeconds: 120);
-    super.initState();
+ 
   }
 
   @override

@@ -27,9 +27,9 @@ class AddFilterForm extends StatefulWidget {
 
 class _AddFilterFormState extends State<AddFilterForm> {
   @override
-  void initState() {
+  void initState() {    super.initState();
     context.read<PickColorCubit>().reset();
-    super.initState();
+
   }
 
   final _filterNameController = TextEditingController();

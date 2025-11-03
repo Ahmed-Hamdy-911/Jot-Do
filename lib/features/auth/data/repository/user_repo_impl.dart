@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/helper/cache_helper.dart';
 import '../models/user_model.dart';
 import 'user_repository.dart';
 
@@ -70,5 +71,24 @@ class UserRepoImpl implements UserRepository {
       debugPrint("Unknown error on updateUser from UserRepo: ${e.toString()}");
       rethrow;
     }
+  }
+
+  // استمع للتغيير عند بدء التشغيل أو أثناء الجلسة
+  final metaDoc = FirebaseFirestore.instance.doc('app_meta/forceLogout');
+
+  void startForceLogoutListener(BuildContext context) {
+    metaDoc.snapshots().listen((snapshot) {
+      if (!snapshot.exists) return;
+      final serverVersion = snapshot.data()?['version'];
+      final localVersion = CacheHelper.getData(key: 'forceLogoutVersion') ?? 0;
+
+      if (serverVersion != null && serverVersion != localVersion) {
+        // خزَّن النسخة الجديدة محلياً عشان لا ينفذ مره تاني
+        CacheHelper.saveData(key: 'forceLogoutVersion', value: serverVersion);
+        // افرض تسجيل الخروج
+        FirebaseAuth.instance.signOut();
+        // خيار: أعرض حوار يطالب المستخدم بإعادة تسجيل الدخول
+      }
+    });
   }
 }

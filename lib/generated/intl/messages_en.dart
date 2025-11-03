@@ -313,6 +313,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notification_description": MessageLookupByLibrary.simpleMessage(
       "Receive notifications for new notes and tasks.",
     ),
+    "radio_recovery_code_title": MessageLookupByLibrary.simpleMessage(
+      "I have saved the code",
+    ),
+    "recovery_button_remind_me_later": MessageLookupByLibrary.simpleMessage(
+      "Remind me later",
+    ),
+    "recovery_button_save_it": MessageLookupByLibrary.simpleMessage(
+      "I saved it",
+    ),
+    "recovery_button_skip": MessageLookupByLibrary.simpleMessage("Skip anyway"),
     "recovery_code_action_cancel": MessageLookupByLibrary.simpleMessage(
       "Cancel",
     ),
@@ -362,6 +372,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "recovery_code_print_button": MessageLookupByLibrary.simpleMessage("Print"),
     "recovery_code_qr_alt": MessageLookupByLibrary.simpleMessage(
       "QR code for recovery code",
+    ),
+    "recovery_code_qr_description": MessageLookupByLibrary.simpleMessage(
+      "Scan this QR code to transfer your recovery code to another device",
     ),
     "recovery_code_remind_me_later": MessageLookupByLibrary.simpleMessage(
       "Remind me later",

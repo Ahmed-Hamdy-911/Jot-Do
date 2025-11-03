@@ -5,7 +5,6 @@ class AppRoutes {
   static const String register = '/register';
   static const String profile = '/profile';
   static const String settings = '/settings';
-  static const String checkRecoveryOperation = '/check-recovery-operation';
   static const String recoveryCode = '/recovery-code';
   static const String enterRecoveryCode = '/enter-recovery-code';
   static const String about = '/about';

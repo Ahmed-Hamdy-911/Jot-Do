@@ -3,8 +3,6 @@ import '../constants/app_constants.dart';
 import '../helper/cache_helper.dart';
 import '../helper/secure_storage_helper.dart';
 
-/// Singleton Service لإدارة حالة التطبيق والبيانات المؤقتة
-/// يستخدم لتخزين البيانات اللي محتاجها في أكتر من مكان أثناء تشغيل التطبيق
 class AppSession {
   // ═══════════════════════════════════════════════════════════
   // Singleton Pattern
@@ -18,28 +16,26 @@ class AppSession {
   }
 
   // ═══════════════════════════════════════════════════════════
-  // Stream للإشعار بالتغييرات
+  // Stream to notify changes
   // ═══════════════════════════════════════════════════════════
   final _onChangeController = StreamController<AppSession>.broadcast();
   Stream<AppSession> get changes => _onChangeController.stream;
 
   // ═══════════════════════════════════════════════════════════
-  // بيانات الحالة (Session Data)
+  //(Session Data)
   // ═══════════════════════════════════════════════════════════
 
-  // بيانات مؤقتة (تتمسح عند إغلاق التطبيق)
+  // cache data (data that will be saved in cache and  will be available even if the app is closed)
   bool isOnline = false;
   String? currentScreen;
   Map<String, dynamic>? tempData;
 
-  // بيانات محفوظة (من Cache)
+  // data saved in secure storage and cache 
   String? _uid;
-  String? _userEmail;
-  String? _userName;
   bool _isAutoBackupAndSync = false;
   bool _isLoggedIn = false;
 
-  // بيانات Recovery
+  // recovery data
   String? pendingRecoveryCode;
   bool? isSameDevice;
 
@@ -47,13 +43,11 @@ class AppSession {
   // Getters
   // ═══════════════════════════════════════════════════════════
   String? get uid => _uid;
-  String? get userEmail => _userEmail;
-  String? get userName => _userName;
   bool get isAutoBackupAndSync => _isAutoBackupAndSync;
   bool get isLoggedIn => _isLoggedIn;
 
   // ═══════════════════════════════════════════════════════════
-  // Initialization من Cache
+  // Initialization from Cache
   // ═══════════════════════════════════════════════════════════
   Future<void> _initializeFromCache() async {
     _uid = await SecureStorageHelper.read(key: AppConstants.uid) ?? null;
@@ -65,7 +59,7 @@ class AppSession {
   }
 
   // ═══════════════════════════════════════════════════════════
-  // Setters مع حفظ في Cache
+  // Setters (With Cache)
   // ═══════════════════════════════════════════════════════════
 
   Future<void> setUid(String newUid, {bool saveToCache = true}) async {
@@ -92,7 +86,7 @@ class AppSession {
   }
 
   // ═══════════════════════════════════════════════════════════
-  // بيانات مؤقتة (بدون Cache)
+  // Setters (No Cache)
   // ═══════════════════════════════════════════════════════════
 
   void setOnlineStatus(bool status) {
@@ -129,7 +123,7 @@ class AppSession {
   // Clear & Logout
   // ═══════════════════════════════════════════════════════════
 
-  /// مسح البيانات المؤقتة فقط
+  /// delete the temp data only
   Future<void> clearTempData() async {
     currentScreen = null;
     tempData = null;
@@ -140,21 +134,17 @@ class AppSession {
     _notifyChanges();
   }
 
-  /// تسجيل الخروج (مسح كل شيء)
+  /// logout and clear all data
   Future<void> logout() async {
-    // مسح من الذاكرة
+   // delete all data
     _uid = null;
-    _userEmail = null;
-    _userName = null;
     _isLoggedIn = false;
     await clearTempData();
-
-    // مسح من Cache
 
     _notifyChanges();
   }
 
-  /// مسح كل البيانات (حتى الإعدادات)
+  /// clear all data (Except Settings)
   Future<void> clearAll() async {
     await clearTempData();
     _uid = null;
@@ -173,7 +163,7 @@ class AppSession {
     }
   }
 
-  /// إعادة تحميل البيانات من Cache
+  /// reload from cache
   Future<void> reload() async {
     await _initializeFromCache();
   }
@@ -191,8 +181,6 @@ class AppSession {
     return '''
     AppSession {
       uid: $_uid,
-      email: $_userEmail,
-      name: $_userName,
       isLoggedIn: $_isLoggedIn,
       isOnline: $isOnline,
       isAutoBackup: $_isAutoBackupAndSync,

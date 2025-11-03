@@ -2184,6 +2184,16 @@ class S {
     );
   }
 
+  /// `Scan this QR code to transfer your recovery code to another device`
+  String get recovery_code_qr_description {
+    return Intl.message(
+      'Scan this QR code to transfer your recovery code to another device',
+      name: 'recovery_code_qr_description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Note: This code will be shown only one time.`
   String get recovery_code_show_once_note {
     return Intl.message(
@@ -2269,6 +2279,46 @@ class S {
     return Intl.message(
       'The app is performing some important operations, please wait...',
       name: 'app_performing_some_operations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I have saved the code`
+  String get radio_recovery_code_title {
+    return Intl.message(
+      'I have saved the code',
+      name: 'radio_recovery_code_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I saved it`
+  String get recovery_button_save_it {
+    return Intl.message(
+      'I saved it',
+      name: 'recovery_button_save_it',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remind me later`
+  String get recovery_button_remind_me_later {
+    return Intl.message(
+      'Remind me later',
+      name: 'recovery_button_remind_me_later',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Skip anyway`
+  String get recovery_button_skip {
+    return Intl.message(
+      'Skip anyway',
+      name: 'recovery_button_skip',
       desc: '',
       args: [],
     );

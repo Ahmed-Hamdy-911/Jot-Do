@@ -7,6 +7,7 @@ import '../../features/note/data/models/note_model.dart';
 import '../../features/note/presentation/view/add_note/add_note_view.dart';
 import '../../features/note/presentation/view/update_note/update_note_view.dart';
 // import '../../features/recovery_code/presentation/view/recovery_code_view.dart';
+import '../../features/recovery_code/presentation/views/recovery_code_view.dart';
 import '../../features/task/presentation/view/add_task_view.dart';
 import '../../features/settings/presentation/views/settings_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
@@ -69,12 +70,12 @@ class AppRouter {
           child: const ProfileView(),
           settings: settings,
         );
-      // case AppRoutes.recoveryCode:
-      //   return PageTransition(
-      //     type: PageTransitionType.fade,
-      //     child: const RecoveryCodeView(),
-      //     settings: settings,
-      //   );
+      case AppRoutes.recoveryCode:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: const RecoveryCodeView(),
+          settings: settings,
+        );
       case AppRoutes.home:
         return PageTransition(
           type: PageTransitionType.fade,

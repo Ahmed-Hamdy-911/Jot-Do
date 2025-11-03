@@ -253,6 +253,7 @@
     "recovery_code_confirm_discard_text": "Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.",
     "recovery_code_security_tip": "Tip: Store this code in a password manager or write it down and keep it in a safe place.",
     "recovery_code_qr_alt": "QR code for recovery code",
+    "recovery_code_qr_description": "Scan this QR code to transfer your recovery code to another device",
     "recovery_code_show_once_note": "Note: This code will be shown only one time.",
     "recovery_code_backups_label": "Recommended backup options",
     "recovery_code_backup_password_manager": "Save it in your password manager.",
@@ -261,5 +262,9 @@
     "recovery_code_backup_cloud_note": "Save in your secure notes (offline)",
     "recovery_code_action_save_secure": "Save securely",
     "recovery_code_action_cancel": "Cancel",
-    "app_performing_some_operations": "The app is performing some important operations, please wait..."
+    "app_performing_some_operations": "The app is performing some important operations, please wait...",
+    "radio_recovery_code_title": "I have saved the code",
+    "recovery_button_save_it": "I saved it",
+    "recovery_button_remind_me_later": "Remind me later",
+    "recovery_button_skip": "Skip anyway"
 }

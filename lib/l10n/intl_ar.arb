@@ -253,11 +253,17 @@
     "recovery_code_confirm_discard_text": "هل متأكد أنك تريد تخطي حفظ الرمز؟ قد تفقد الوصول إلى ملاحظاتك إذا لم توجد طريقة استرجاع بديلة.",
     "recovery_code_security_tip": "نصيحة: احفظ هذا الرمز في مدير كلمات المرور أو اكتبه واحتفظ به في مكان آمن.",
     "recovery_code_qr_alt": "كود QR لرمز الاستعادة",
+    "recovery_code_qr_description": "اسحب هذا الكود QR لتحويل رمز الاستعادة الخاص بك لجهاز اخر",
     "recovery_code_backup_password_manager": "احفظه في مدير كلمات المرور الخاص بك.",
+    "recovery_code_backups_label": "خيارات الحفظ الموصى به",
     "recovery_code_backup_print": "خزّنه في صندوق ودائع آمن.",
     "recovery_code_backup_trusted_person": "أعطِ نسخة لشخص تثق به.",
     "recovery_code_backup_cloud_note": "احفظه في ملاحظات آمنة (دون اتصال)",
     "recovery_code_action_save_secure": "احفظ بأمان",
     "recovery_code_action_cancel": "إلغاء",
-    "app_perorming_some_operations": "يقوم التطبيق بإجراء بعض العمليات الهامة، يرجى الانتظار..."
+    "app_perorming_some_operations": "يقوم التطبيق بإجراء بعض العمليات الهامة، يرجى الانتظار...",
+    "radio_recovery_code_title": "لقد حفظت رمز الاستعادة",
+    "recovery_button_save_it": "حفظه",
+    "recovery_button_remind_me_later": "ذكّرني لاحقًا",
+    "recovery_button_skip": "تخطي على أية حال"
 }

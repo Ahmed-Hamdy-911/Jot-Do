@@ -19,9 +19,9 @@ class CustomFilterWidget extends StatefulWidget {
 
 class _CustomFilterBuilderState extends State<CustomFilterWidget> {
   @override
-  void initState() {
+  void initState() {    super.initState();
     context.read<FilterCubit>().loadFilters();
-    super.initState();
+
   }
 
   void onFilterTap(String filterId) {
