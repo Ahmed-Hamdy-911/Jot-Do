@@ -32,6 +32,7 @@ abstract class AppColors {
   Color get grey;
   Color get red;
   Color get yellow;
+  Color get orange;
   Color get amber;
   Color get green;
   Color get blue;

@@ -2,11 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/app_constants.dart';
 import '../../helper/cache_helper.dart';
-import '../../services/app_service.dart';
+import '../../services/app_session.dart';
 import 'backup_state.dart';
 
 class BackupCubit extends Cubit<BackupStates> {
-  final AppService appService = AppConstants.appService;
+  final AppSession appSession = AppConstants.appSession;
   BackupCubit() : super(BackupInitial());
 
   void toggleAutoBackup(bool value) {
@@ -15,9 +15,9 @@ class BackupCubit extends Cubit<BackupStates> {
     var isLoggedIn = CacheHelper.getData(key: AppConstants.isLoggedIn) ?? false;
 
     var isBackupAndSync = isAutoBackupAndSync && isLoggedIn;
-    appService.isAutoBackupAndSync = isBackupAndSync;
+
     CacheHelper.saveData(
-        key: AppConstants.isAutoBackupAndSync, value: isAutoBackupAndSync);
+        key: AppConstants.isAutoBackupAndSync, value: isBackupAndSync);
     // log("isBackupAndSync: $isBackupAndSync");
     emit(AutoBackupToggled(value));
   }

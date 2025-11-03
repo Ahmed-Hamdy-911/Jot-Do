@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_constants.dart';
@@ -6,6 +8,7 @@ import '../../../../core/cubits/connectivity/connection_cubit.dart';
 import '../../../../core/cubits/connectivity/connection_state.dart';
 import '../../../../core/models/message_type.dart';
 import '../../../../core/routing/app_routes.dart';
+import '../../../../core/services/app_session.dart';
 import '../../../../core/widgets/components/app_logo.dart';
 import '../../../../core/widgets/components/components.dart';
 import '../../../../core/widgets/custom/custom_loading.dart';
@@ -34,6 +37,8 @@ class OnBoardingView extends StatelessWidget {
                   state is AuthEmailVerified ||
                   state is AuthGoogleSignInSuccess ||
                   state is AuthContinueWithoutAccount) {
+                final appSession = AppSession.instance;
+                log('[TEST] appSession: $appSession');
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   AppRoutes.home,

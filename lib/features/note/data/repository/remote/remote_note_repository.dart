@@ -7,6 +7,9 @@ import '../note_repository.dart';
 import '../../models/note_model.dart';
 
 class RemoteNoteRepository implements NoteRepository {
+  // final EncryptionService encryptService;
+  // RemoteNoteRepository(this.encryptService);
+  RemoteNoteRepository();
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final _userId = FirebaseAuth.instance.currentUser?.uid;
   String _basicCollectionName = AppConstants.privateNotesStorage;
@@ -14,6 +17,12 @@ class RemoteNoteRepository implements NoteRepository {
   @override
   Future<void> addNote(NoteModel noteModel) async {
     try {
+      // final noteMap = await EncryptionHelper.encryptModel<NoteModel>(
+      //   noteModel,
+      //   (n) => n.toJson(),
+      //   encryptService,
+      //   fields: ['title', 'content'],
+      // );
       await _firestore
           .collection(_basicCollectionName)
           .doc(_userId)
@@ -69,15 +78,24 @@ class RemoteNoteRepository implements NoteRepository {
   @override
   Future<List<NoteModel>> getNotes() async {
     try {
-      var snapshot = await _firestore
+      final snapshot = await _firestore
           .collection(_basicCollectionName)
           .doc(_userId)
           .collection(_secondaryCollectionName)
           .orderBy("created_at", descending: true)
           .get();
 
-      var notes =
-          snapshot.docs.map((e) => NoteModel.fromJson(e.data())).toList();
+      // final notes = snapshot.docs.map((doc) {
+      //   return EncryptionHelper.decryptModel<NoteModel>(
+      //     doc.data(),
+      //     (m) => NoteModel.fromJson(m),
+      //     encryptService,
+      //     fields: ['title', 'content'],
+      //   );
+      // }).toList();
+      final notes = snapshot.docs.map((doc) {
+        return NoteModel.fromJson(doc.data());
+      }).toList();
 
       return notes;
     } on FirebaseException catch (e) {

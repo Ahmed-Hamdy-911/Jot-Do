@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../core/helper/cache_helper.dart';
+import '../../../../core/helper/secure_storage_helper.dart';
 import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/buttons/custom_material_button.dart';
 import '../../../../core/widgets/components/components.dart';
@@ -35,8 +36,9 @@ class _LoginFormState extends State<LoginForm> {
 
   Future<void> _loadSavedCredentials() async {
     final cubit = context.read<AuthCubit>();
-    final savedEmail = CacheHelper.getData(key: 'userEmail');
-    final savedPassword = CacheHelper.getData(key: 'userPassword');
+
+    final savedEmail = await SecureStorageHelper.read(key: 'userEmail');
+    final savedPassword = await SecureStorageHelper.read(key: 'userPassword');
     final savedRemember = CacheHelper.getData(key: 'rememberMe') ?? false;
 
     if (savedEmail != null) emailController.text = savedEmail;

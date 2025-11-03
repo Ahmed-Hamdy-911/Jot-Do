@@ -46,6 +46,8 @@ class NoteModel extends HiveObject {
   @HiveField(12)
   String? filterId;
 
+  NoteModel.empty() : this(id: null, title: '', content: '', createdAt: '');
+
   NoteModel({
     String? id,
     required this.title,
@@ -67,8 +69,10 @@ class NoteModel extends HiveObject {
     return {
       'id': id,
       'type': type?.name,
-      'title': title,
-      'content': content,
+      "title": title,
+      "title_iv": "<iv_base64>",
+      "content": content,
+      "content_iv": "<iv_base64>",
       'created_at': createdAt,
       'color': color,
       'is_archived': isArchived,

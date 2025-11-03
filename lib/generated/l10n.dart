@@ -1993,6 +1993,286 @@ class S {
       args: [],
     );
   }
+
+  /// `Recovery Code`
+  String get recovery_code_title {
+    return Intl.message(
+      'Recovery Code',
+      name: 'recovery_code_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save this code to restore your notes on another device.`
+  String get recovery_code_subtitle {
+    return Intl.message(
+      'Save this code to restore your notes on another device.',
+      name: 'recovery_code_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This code allows you to recover encrypted notes if you sign in on another device.`
+  String get recovery_code_instruction {
+    return Intl.message(
+      'This code allows you to recover encrypted notes if you sign in on another device.',
+      name: 'recovery_code_instruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your recovery code`
+  String get recovery_code_generated_label {
+    return Intl.message(
+      'Your recovery code',
+      name: 'recovery_code_generated_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy code`
+  String get recovery_code_copy_button {
+    return Intl.message(
+      'Copy code',
+      name: 'recovery_code_copy_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save as file`
+  String get recovery_code_save_file_button {
+    return Intl.message(
+      'Save as file',
+      name: 'recovery_code_save_file_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Print`
+  String get recovery_code_print_button {
+    return Intl.message(
+      'Print',
+      name: 'recovery_code_print_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show QR`
+  String get recovery_code_show_qr_button {
+    return Intl.message(
+      'Show QR',
+      name: 'recovery_code_show_qr_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I saved it`
+  String get recovery_code_done_button {
+    return Intl.message(
+      'I saved it',
+      name: 'recovery_code_done_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remind me later`
+  String get recovery_code_remind_me_later {
+    return Intl.message(
+      'Remind me later',
+      name: 'recovery_code_remind_me_later',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Important — Save your recovery code`
+  String get recovery_code_warning_title {
+    return Intl.message(
+      'Important — Save your recovery code',
+      name: 'recovery_code_warning_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We only show this recovery code once. If you lose it and you don't have another recovery method (password or a registered device), you will not be able to restore your encrypted notes.`
+  String get recovery_code_warning_text {
+    return Intl.message(
+      'We only show this recovery code once. If you lose it and you don\'t have another recovery method (password or a registered device), you will not be able to restore your encrypted notes.',
+      name: 'recovery_code_warning_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep this code safe. We can't recover your notes without it.`
+  String get recovery_code_warning_short {
+    return Intl.message(
+      'Keep this code safe. We can\'t recover your notes without it.',
+      name: 'recovery_code_warning_short',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recovery code copied to clipboard.`
+  String get recovery_code_copy_success {
+    return Intl.message(
+      'Recovery code copied to clipboard.',
+      name: 'recovery_code_copy_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to copy. Try again.`
+  String get recovery_code_copy_fail {
+    return Intl.message(
+      'Failed to copy. Try again.',
+      name: 'recovery_code_copy_fail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discard recovery code?`
+  String get recovery_code_confirm_discard_title {
+    return Intl.message(
+      'Discard recovery code?',
+      name: 'recovery_code_confirm_discard_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.`
+  String get recovery_code_confirm_discard_text {
+    return Intl.message(
+      'Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.',
+      name: 'recovery_code_confirm_discard_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tip: Store this code in a password manager or write it down and keep it in a safe place.`
+  String get recovery_code_security_tip {
+    return Intl.message(
+      'Tip: Store this code in a password manager or write it down and keep it in a safe place.',
+      name: 'recovery_code_security_tip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `QR code for recovery code`
+  String get recovery_code_qr_alt {
+    return Intl.message(
+      'QR code for recovery code',
+      name: 'recovery_code_qr_alt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note: This code will be shown only one time.`
+  String get recovery_code_show_once_note {
+    return Intl.message(
+      'Note: This code will be shown only one time.',
+      name: 'recovery_code_show_once_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recommended backup options`
+  String get recovery_code_backups_label {
+    return Intl.message(
+      'Recommended backup options',
+      name: 'recovery_code_backups_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save it in your password manager.`
+  String get recovery_code_backup_password_manager {
+    return Intl.message(
+      'Save it in your password manager.',
+      name: 'recovery_code_backup_password_manager',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Store it in a safe deposit box.`
+  String get recovery_code_backup_print {
+    return Intl.message(
+      'Store it in a safe deposit box.',
+      name: 'recovery_code_backup_print',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Give a copy to someone you trust.`
+  String get recovery_code_backup_trusted_person {
+    return Intl.message(
+      'Give a copy to someone you trust.',
+      name: 'recovery_code_backup_trusted_person',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save in your secure notes (offline)`
+  String get recovery_code_backup_cloud_note {
+    return Intl.message(
+      'Save in your secure notes (offline)',
+      name: 'recovery_code_backup_cloud_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save securely`
+  String get recovery_code_action_save_secure {
+    return Intl.message(
+      'Save securely',
+      name: 'recovery_code_action_save_secure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get recovery_code_action_cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'recovery_code_action_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The app is performing some important operations, please wait...`
+  String get app_performing_some_operations {
+    return Intl.message(
+      'The app is performing some important operations, please wait...',
+      name: 'app_performing_some_operations',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

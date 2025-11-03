@@ -6,13 +6,14 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../../core/services/app_session.dart';
 import 'auth_repository.dart';
 
 class AuthRepoImpl implements AuthRepository {
   var _firebaseAuth = FirebaseAuth.instance;
   @override
-  dynamic get user => _firebaseAuth.currentUser;
-
+  dynamic get user => _firebaseAuth.currentUser!;
+  final _session = AppSession.instance;
   // Define your authentication methods here
   @override
   Future<void> register({
@@ -25,6 +26,7 @@ class AuthRepoImpl implements AuthRepository {
         email: email,
         password: password,
       );
+      _session.setUid(_firebaseAuth.currentUser!.uid);
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on register from AuthRepo: ${e.code}");
       if (e.code == "network-request-failed") {
@@ -60,6 +62,7 @@ class AuthRepoImpl implements AuthRepository {
         email: email,
         password: password,
       );
+      _session.setUid(_firebaseAuth.currentUser!.uid);
     } on TimeoutException catch (_) {
       throw ("Time out No internet connection");
     } on FirebaseAuthException catch (e) {
@@ -101,7 +104,7 @@ class AuthRepoImpl implements AuthRepository {
         final credential = GoogleAuthProvider.credential(
           idToken: googleAuth.idToken,
         );
-
+        // await  _session.setUid(_firebaseAuth.currentUser!.uid);
         return await _firebaseAuth.signInWithCredential(credential);
       }
     } on GoogleSignInException catch (e) {
@@ -132,6 +135,7 @@ class AuthRepoImpl implements AuthRepository {
         await googleUser.disconnect();
         await googleUser.signOut();
       }
+      await AppSession.instance.logout();
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on sign out from AuthRepo: ${e.code}");
       if (e.code == "network-request-failed") {

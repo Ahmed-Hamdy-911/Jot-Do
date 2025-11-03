@@ -49,6 +49,8 @@ class AppColorsDark implements AppColors {
   @override
   Color get yellow => const Color(0xffc0a800);
   @override
+  Color get orange => const Color(0xffffa500);
+  @override
   Color get amber => const Color(0xffc0a800);
   @override
   Color get green => const Color.fromARGB(255, 7, 122, 74);

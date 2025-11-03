@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../../core/services/app_session.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../core/widgets/custom/custom_card.dart';
 import '../../../../../core/widgets/custom/custom_loading.dart';
@@ -32,6 +32,9 @@ class _ProfileViewState extends State<ProfileView> {
   String? _originalName;
   bool _isEditing = false;
   bool _isUpdating = false;
+
+  final _appSession = AppSession.instance;
+  bool get _isOnline => _appSession.isOnline;
 
   @override
   void initState() {
@@ -64,7 +67,7 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Future<void> _submitName() async {
-    if (AppConstants.appService.isOnline == false) {
+    if (_isOnline == false) {
       CustomSnackBar.showSnackBar(
         S.of(context).noInternet,
         context,

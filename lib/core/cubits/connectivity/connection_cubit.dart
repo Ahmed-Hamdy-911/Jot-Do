@@ -3,13 +3,13 @@ import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import '../../constants/app_constants.dart';
-import '../../services/app_service.dart';
+import '../../services/app_session.dart';
 import 'connection_state.dart';
 
 class ConnectionCubit extends Cubit<ConnectionStates> {
   final Connectivity _connectivity = Connectivity();
-  final AppService appService = AppConstants.appService;
+  final _appSession = AppSession.instance;
+// bool get _isOnline => _appSession.isOnline;
 
   late final StreamSubscription<ConnectivityResult> _connectivitySub;
   late final StreamSubscription<InternetStatus> _internetSub;
@@ -36,7 +36,7 @@ class ConnectionCubit extends Cubit<ConnectionStates> {
 
     if (result == ConnectivityResult.none) {
       _timeoutTimer?.cancel();
-      appService.isOnline = false;
+      _appSession.isOnline = false;
       _wasDisconnected = true;
       _emitIfChanged(ConnectionDisconnected());
       return;
@@ -44,7 +44,7 @@ class ConnectionCubit extends Cubit<ConnectionStates> {
 
     _timeoutTimer?.cancel();
     _timeoutTimer = Timer(const Duration(seconds: 5), () {
-      if (!appService.isOnline) {
+      if (!_appSession.isOnline) {
         _emitIfChanged(
             ConnectionTimeOut("Network available but no internet (timeout)"));
       }
@@ -61,19 +61,19 @@ class ConnectionCubit extends Cubit<ConnectionStates> {
     _timeoutTimer?.cancel();
 
     if (status == InternetStatus.connected) {
-      appService.isOnline = true;
+      _appSession.isOnline = true;
       _emitIfChanged(ConnectionConnected());
     } else {
-      appService.isOnline = false;
+      _appSession.isOnline = false;
       _emitIfChanged(ConnectionDisconnected());
     }
 
-    debugPrint(appService.isOnline.toString());
+    debugPrint(_appSession.isOnline.toString());
   }
 
   Future<void> _checkInitialStatus() async {
     final hasInternet = await InternetConnection().hasInternetAccess;
-    appService.isOnline = hasInternet;
+    _appSession.isOnline = hasInternet;
     _wasDisconnected = !hasInternet;
     _emitIfChanged(
         hasInternet ? ConnectionConnected() : ConnectionDisconnected());

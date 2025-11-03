@@ -1,10 +1,9 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../../core/constants/app_constants.dart';
 import '../../../../core/helper/cache_helper.dart';
-import '../../../../core/services/app_service.dart';
+import '../../../../core/helper/secure_storage_helper.dart';
+import '../../../../core/services/app_session.dart';
 import '../../data/models/user_model.dart';
 import '../../data/repository/auth_repository.dart';
 
@@ -15,7 +14,8 @@ import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
   final AuthRepository _authRepository;
-  final AppService appService = AppConstants.appService;
+  final _appSession = AppSession.instance;
+  bool get _isOnline => _appSession.isOnline;
   final UserRepository _userRepository = UserRepoImpl();
   AuthCubit(
     this._authRepository,
@@ -61,7 +61,7 @@ class AuthCubit extends Cubit<AuthStates> {
     required String password,
   }) async {
     emit(AuthLoadingState());
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
@@ -91,7 +91,7 @@ class AuthCubit extends Cubit<AuthStates> {
     required String password,
   }) async {
     emit(AuthLoadingState());
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
@@ -107,16 +107,16 @@ class AuthCubit extends Cubit<AuthStates> {
         await _authRepository.sendEmailVerification();
         return;
       }
-      // log("isOnline: ${appService.isOnline}");
+      // log("isOnline: ${_isOnline}");
       final isLoggedIn = await _authRepository.checkUserStatus();
-      CacheHelper.saveData(key: AppConstants.isLoggedIn, value: isLoggedIn);
+      _appSession.setLoginStatus(isLoggedIn);
 
       if (rememberMe) {
-        CacheHelper.saveData(key: 'userEmail', value: email);
-        CacheHelper.saveData(key: 'userPassword', value: password);
+        SecureStorageHelper.write(key: 'userEmail', value: email);
+        SecureStorageHelper.write(key: 'userPassword', value: password);
       } else {
-        CacheHelper.saveData(key: 'userEmail', value: null);
-        CacheHelper.saveData(key: 'userPassword', value: null);
+        SecureStorageHelper.write(key: 'userEmail', value: null);
+        SecureStorageHelper.write(key: 'userPassword', value: null);
       }
 
       emit(AuthSuccess());
@@ -131,7 +131,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
   Future<void> checkEmailVerification() async {
     emit(AuthVerificationLoading());
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
@@ -139,7 +139,7 @@ class AuthCubit extends Cubit<AuthStates> {
       final isVerified = await _authRepository.isEmailVerified();
       if (isVerified) {
         final isLoggedIn = await _authRepository.checkUserStatus();
-        CacheHelper.saveData(key: AppConstants.isLoggedIn, value: isLoggedIn);
+        _appSession.setLoginStatus(isLoggedIn);
         emit(AuthEmailVerified());
       } else {
         emit(AuthEmailVerificationNeeded(
@@ -153,7 +153,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
   Future<void> resendVerificationEmail() async {
     emit(AuthLoadingState());
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
@@ -168,13 +168,13 @@ class AuthCubit extends Cubit<AuthStates> {
 
   Future<void> logout() async {
     emit(AuthLoadingState());
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
     try {
       await _authRepository.logout();
-      CacheHelper.saveData(key: AppConstants.isLoggedIn, value: false);
+
       emit(AuthLoggedOut());
     } catch (e) {
       if (e.toString().contains("No internet connection")) {
@@ -186,7 +186,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
   Future<void> forgotPassword({required String email}) async {
     emit(AuthLoadingState());
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
@@ -201,13 +201,14 @@ class AuthCubit extends Cubit<AuthStates> {
 
   Future<void> signInWithGoogle() async {
     emit((AuthLoadingGoogleSignIn()));
-    if (appService.isOnline == false) {
+    if (_isOnline == false) {
       emit(AuthFailure("No internet connection"));
       return;
     }
     try {
       await _authRepository.signInWithGoogle();
       var firebaseUser = _authRepository.user;
+      await _appSession.setUid(firebaseUser.uid);
 
       // check if user exists
       var existingUser = await _userRepository.getUserById(firebaseUser.uid);
@@ -224,7 +225,7 @@ class AuthCubit extends Cubit<AuthStates> {
       } else {}
 
       final isLoggedIn = await _authRepository.checkUserStatus();
-      CacheHelper.saveData(key: AppConstants.isLoggedIn, value: isLoggedIn);
+      await _appSession.setLoginStatus(isLoggedIn);
       emit(AuthGoogleSignInSuccess());
     } catch (e) {
       debugPrint("Google sign-in failed: $e");

@@ -53,6 +53,7 @@ class AppConstants {
   static const FontWeight fontMedium = FontWeight.w500;
   static const FontWeight fontSemiBold = FontWeight.w600;
   static const FontWeight fontBold = FontWeight.w700;
+  static const FontWeight fontExtraBold = FontWeight.w800;
 
   // 👉 Text styles with specific use cases
 
@@ -178,6 +179,19 @@ class AppConstants {
         color: color,
       );
 
+  static TextStyle customStyle({
+    required Color color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    double? height,
+  }) =>
+      TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        height: height,
+      );
+
   static const supportedLocales = [
     Locale("en", ''),
     Locale("ar", ''),
@@ -249,8 +263,9 @@ class AppConstants {
   // backup and sync
   static const String BackupAndSync = 'BackupAndSync';
 
-  // app service
-  static var appService;
+  // app session
+  static var appSession;
+  static const String uid = 'user_id';
 
   // filter
   static const String filtersStorage = 'filters';

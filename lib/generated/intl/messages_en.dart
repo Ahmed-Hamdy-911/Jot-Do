@@ -37,6 +37,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Your thoughts, organized and synced across all devices",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("Jot & Do"),
+    "app_performing_some_operations": MessageLookupByLibrary.simpleMessage(
+      "The app is performing some important operations, please wait...",
+    ),
     "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
     "apple": MessageLookupByLibrary.simpleMessage("Continue with Apple"),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
@@ -309,6 +312,86 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "push_notification_description": MessageLookupByLibrary.simpleMessage(
       "Receive notifications for new notes and tasks.",
+    ),
+    "recovery_code_action_cancel": MessageLookupByLibrary.simpleMessage(
+      "Cancel",
+    ),
+    "recovery_code_action_save_secure": MessageLookupByLibrary.simpleMessage(
+      "Save securely",
+    ),
+    "recovery_code_backup_cloud_note": MessageLookupByLibrary.simpleMessage(
+      "Save in your secure notes (offline)",
+    ),
+    "recovery_code_backup_password_manager":
+        MessageLookupByLibrary.simpleMessage(
+          "Save it in your password manager.",
+        ),
+    "recovery_code_backup_print": MessageLookupByLibrary.simpleMessage(
+      "Store it in a safe deposit box.",
+    ),
+    "recovery_code_backup_trusted_person": MessageLookupByLibrary.simpleMessage(
+      "Give a copy to someone you trust.",
+    ),
+    "recovery_code_backups_label": MessageLookupByLibrary.simpleMessage(
+      "Recommended backup options",
+    ),
+    "recovery_code_confirm_discard_text": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.",
+    ),
+    "recovery_code_confirm_discard_title": MessageLookupByLibrary.simpleMessage(
+      "Discard recovery code?",
+    ),
+    "recovery_code_copy_button": MessageLookupByLibrary.simpleMessage(
+      "Copy code",
+    ),
+    "recovery_code_copy_fail": MessageLookupByLibrary.simpleMessage(
+      "Failed to copy. Try again.",
+    ),
+    "recovery_code_copy_success": MessageLookupByLibrary.simpleMessage(
+      "Recovery code copied to clipboard.",
+    ),
+    "recovery_code_done_button": MessageLookupByLibrary.simpleMessage(
+      "I saved it",
+    ),
+    "recovery_code_generated_label": MessageLookupByLibrary.simpleMessage(
+      "Your recovery code",
+    ),
+    "recovery_code_instruction": MessageLookupByLibrary.simpleMessage(
+      "This code allows you to recover encrypted notes if you sign in on another device.",
+    ),
+    "recovery_code_print_button": MessageLookupByLibrary.simpleMessage("Print"),
+    "recovery_code_qr_alt": MessageLookupByLibrary.simpleMessage(
+      "QR code for recovery code",
+    ),
+    "recovery_code_remind_me_later": MessageLookupByLibrary.simpleMessage(
+      "Remind me later",
+    ),
+    "recovery_code_save_file_button": MessageLookupByLibrary.simpleMessage(
+      "Save as file",
+    ),
+    "recovery_code_security_tip": MessageLookupByLibrary.simpleMessage(
+      "Tip: Store this code in a password manager or write it down and keep it in a safe place.",
+    ),
+    "recovery_code_show_once_note": MessageLookupByLibrary.simpleMessage(
+      "Note: This code will be shown only one time.",
+    ),
+    "recovery_code_show_qr_button": MessageLookupByLibrary.simpleMessage(
+      "Show QR",
+    ),
+    "recovery_code_subtitle": MessageLookupByLibrary.simpleMessage(
+      "Save this code to restore your notes on another device.",
+    ),
+    "recovery_code_title": MessageLookupByLibrary.simpleMessage(
+      "Recovery Code",
+    ),
+    "recovery_code_warning_short": MessageLookupByLibrary.simpleMessage(
+      "Keep this code safe. We can\'t recover your notes without it.",
+    ),
+    "recovery_code_warning_text": MessageLookupByLibrary.simpleMessage(
+      "We only show this recovery code once. If you lose it and you don\'t have another recovery method (password or a registered device), you will not be able to restore your encrypted notes.",
+    ),
+    "recovery_code_warning_title": MessageLookupByLibrary.simpleMessage(
+      "Important — Save your recovery code",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(

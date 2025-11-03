@@ -12,7 +12,7 @@ class SmartAppColor extends AppColors {
   bool get _isDark =>
       context.watch<SettingCubit>().state.themeMode == ThemeMode.dark;
   AppColors get _colors => _isDark ? AppColorsDark() : AppColorsLight();
-   List<Color> filterColors = [
+  List<Color> filterColors = [
     Colors.blue, // Top row - Blue
     Colors.green, // Top row - Green
     Colors.purple, // Top row - Purple
@@ -69,6 +69,8 @@ class SmartAppColor extends AppColors {
   Color get red => _colors.red;
   @override
   Color get yellow => _colors.yellow;
+  @override
+  Color get orange => _colors.orange;
   @override
   Color get amber => _colors.amber;
   @override

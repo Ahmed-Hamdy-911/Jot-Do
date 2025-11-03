@@ -10,7 +10,7 @@ import 'features/settings/presentation/cubits/setting_state.dart';
 import 'core/routing/app_routes.dart';
 import 'core/cubits/bloc_observer.dart';
 import 'core/routing/app_router.dart';
-import 'core/services/app_service.dart';
+
 import 'core/services/local_storage_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'features/auth/data/repository/auth_repo_impl.dart';
@@ -28,7 +28,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  AppConstants.appService = AppService();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider(

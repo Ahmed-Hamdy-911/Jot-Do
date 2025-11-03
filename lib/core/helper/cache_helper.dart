@@ -12,4 +12,9 @@ class CacheHelper {
     var box = Hive.box(AppConstants.settingsStorage);
     return box.get(key);
   }
+
+  static dynamic deleteData({required String key}) {
+    var box = Hive.box(AppConstants.settingsStorage);
+    return box.delete(key);
+  }
 }

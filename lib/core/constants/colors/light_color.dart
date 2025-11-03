@@ -49,6 +49,8 @@ class AppColorsLight implements AppColors {
   @override
   Color get yellow => const Color(0xffffc107);
   @override
+  Color get orange => const Color(0xffffa500);
+  @override
   Color get amber => const Color(0xffffc107);
   @override
   Color get green => const Color(0xff26C281);

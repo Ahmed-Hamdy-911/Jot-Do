@@ -18,6 +18,7 @@ class AddNoteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final encryptionService = EncryptionService();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -26,6 +27,7 @@ class AddNoteView extends StatelessWidget {
         BlocProvider(
           create: (context) => FilterCubit(FilterRepository())..loadFilters(),
         ),
+        // BlocProvider(create: (context) => EncryptionCubit(encryptionService)),
       ],
       child: Scaffold(
         extendBodyBehindAppBar: true,

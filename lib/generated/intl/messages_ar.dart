@@ -322,6 +322,80 @@ class MessageLookup extends MessageLookupByLibrary {
     "push_notification_description": MessageLookupByLibrary.simpleMessage(
       "الحصول على اشعارات جديدة للملاحظات والمهام.",
     ),
+    "recovery_code_action_cancel": MessageLookupByLibrary.simpleMessage(
+      "إلغاء",
+    ),
+    "recovery_code_action_save_secure": MessageLookupByLibrary.simpleMessage(
+      "احفظ بأمان",
+    ),
+    "recovery_code_backup_cloud_note": MessageLookupByLibrary.simpleMessage(
+      "احفظه في ملاحظات آمنة (دون اتصال)",
+    ),
+    "recovery_code_backup_password_manager":
+        MessageLookupByLibrary.simpleMessage(
+          "احفظه في مدير كلمات المرور الخاص بك.",
+        ),
+    "recovery_code_backup_print": MessageLookupByLibrary.simpleMessage(
+      "خزّنه في صندوق ودائع آمن.",
+    ),
+    "recovery_code_backup_trusted_person": MessageLookupByLibrary.simpleMessage(
+      "أعطِ نسخة لشخص تثق به.",
+    ),
+    "recovery_code_confirm_discard_text": MessageLookupByLibrary.simpleMessage(
+      "هل متأكد أنك تريد تخطي حفظ الرمز؟ قد تفقد الوصول إلى ملاحظاتك إذا لم توجد طريقة استرجاع بديلة.",
+    ),
+    "recovery_code_confirm_discard_title": MessageLookupByLibrary.simpleMessage(
+      "هل تريد تجاهل حفظ رمز الاستعادة؟",
+    ),
+    "recovery_code_copy_button": MessageLookupByLibrary.simpleMessage(
+      "نسخ الرمز",
+    ),
+    "recovery_code_copy_fail": MessageLookupByLibrary.simpleMessage(
+      "فشل النسخ. حاول مرة أخرى.",
+    ),
+    "recovery_code_copy_success": MessageLookupByLibrary.simpleMessage(
+      "تم نسخ رمز الاستعادة إلى الحافظة.",
+    ),
+    "recovery_code_done_button": MessageLookupByLibrary.simpleMessage(
+      "لقد حفظته",
+    ),
+    "recovery_code_generated_label": MessageLookupByLibrary.simpleMessage(
+      "رمز الاستعادة الخاص بك",
+    ),
+    "recovery_code_instruction": MessageLookupByLibrary.simpleMessage(
+      "هذا الرمز يتيح لك استعادة الملاحظات المشفّرة إذا قمت بتسجيل الدخول من جهاز آخر.",
+    ),
+    "recovery_code_print_button": MessageLookupByLibrary.simpleMessage("طباعة"),
+    "recovery_code_qr_alt": MessageLookupByLibrary.simpleMessage(
+      "كود QR لرمز الاستعادة",
+    ),
+    "recovery_code_remind_me_later": MessageLookupByLibrary.simpleMessage(
+      "ذكّرني لاحقًا",
+    ),
+    "recovery_code_save_file_button": MessageLookupByLibrary.simpleMessage(
+      "حفظ كملف",
+    ),
+    "recovery_code_security_tip": MessageLookupByLibrary.simpleMessage(
+      "نصيحة: احفظ هذا الرمز في مدير كلمات المرور أو اكتبه واحتفظ به في مكان آمن.",
+    ),
+    "recovery_code_show_qr_button": MessageLookupByLibrary.simpleMessage(
+      "عرض QR",
+    ),
+    "recovery_code_subtitle": MessageLookupByLibrary.simpleMessage(
+      "احفظ هذا الرمز حتى تستعيد ملاحظاتك على جهاز آخر.",
+    ),
+    "recovery_code_title": MessageLookupByLibrary.simpleMessage(
+      "رمز الاستعادة",
+    ),
+    "recovery_code_warning_short": MessageLookupByLibrary.simpleMessage(
+      "احتفظ بهذا الرمز في مكان آمن. لا يمكننا استعادة ملاحظاتك بدونه.",
+    ),
+    "recovery_code_warning_text": MessageLookupByLibrary.simpleMessage(
+      "سنقوم بعرض رمز الاستعادة مرة واحدة فقط. إذا فقدته ولم يكن لديك طريقة استرجاع أخرى (كلمة مرور أو جهاز مسجّل)، فلن تتمكن من استعادة ملاحظاتك المشفّرة.",
+    ),
+    "recovery_code_warning_title": MessageLookupByLibrary.simpleMessage(
+      "تنبيه مهم — احفظ رمز الاستعادة",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "أنشئ حسابك وافتح الميزات الحصرية.",
