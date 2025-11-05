@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../core/widgets/custom/custom_blur_widget.dart';
 import '../../../../generated/l10n.dart';
@@ -11,7 +10,7 @@ class RecoveryCodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RecoveryCode();
+    return const RecoveryCode();
   }
 }
 
@@ -32,7 +31,6 @@ class RecoveryCode extends StatelessWidget {
               backgroundColor: colors.backgroundScreen.withValues(alpha: 0.2),
               title: Text(
                 S.of(context).recovery_code_title,
-                style: AppConstants.headlineMediumStyle(colors.textPrimary),
               ),
             ),
           ),
@@ -57,8 +55,8 @@ class CustomRecoveryLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: CircularProgressIndicator(),
       ),
     );

@@ -266,5 +266,21 @@
     "radio_recovery_code_title": "I have saved the code",
     "recovery_button_save_it": "I saved it",
     "recovery_button_remind_me_later": "Remind me later",
-    "recovery_button_skip": "Skip anyway"
+    "recovery_button_skip": "Skip anyway",
+    "recovery_info_title": "Important",
+    "recovery_info_description": "Your recovery code is the only way to restore your cloud data. If you lose it, you won’t be able to recover your data or sync with the cloud again. Please store this code in a safe and private place.",
+    "recovery_lost_description": "If you lost your recovery code, your cloud data cannot be restored. You can still use the app in offline mode, but syncing will be disabled until you enter the correct recovery code. To use cloud sync again, you’ll need to delete your account and create a new one. This will also erase all existing data. Please keep your recovery code in a safe place.",
+    "with_code": "Enter The Code",
+    "with_scan": "Scan The QR Code",
+    "enterRecoveryCode": "Enter Recovery Code",
+    "recoveryCodeDescription": "Enter your recovery code to restore your encrypted data.",
+    "recoveryCodeLength": "Your recovery code is 36 characters long and contains letters and numbers. You can enter it with or without dashes.",
+    "recoveryCode": "Recovery Code",
+    "recoveryCodeExample": "AbCd12Ef6h341jK15fMnOp780pSt9BUvMx",
+    "enterRecoveryCodeHint": "Enter the 36-character code you saved when setting up recovery.",
+    "restoreData": "Restore Data",
+    "cantFindRecoveryCode": "Can't find your recovery code?",
+    "recoveryTip1": "Check your password manager",
+    "recoveryTip2": "Look for a printed copy in a safe place",
+    "recoveryTip3": "Check your secure notes or backup files"
 }

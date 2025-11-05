@@ -73,6 +73,13 @@ class SettingBody extends StatelessWidget {
                   Navigator.pushNamed(context, AppRoutes.recoveryCode);
                 },
                 noTrailing: true),
+            AppComponents.largeVerticalSpace(),
+            CustomListTitle(
+                title: S.of(context).enterRecoveryCode,
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.enterRecoveryCode);
+                },
+                noTrailing: true),
           ],
         ),
       ),

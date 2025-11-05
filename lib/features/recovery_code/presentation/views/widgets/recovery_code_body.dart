@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/components/components.dart';
 import 'action_buttons_widget.dart';
 import 'backup_label_widget.dart';
-import 'recovery_instruction_widget.dart';
-import 'warning_recovery_code_widget.dart';
+import 'warning_recovery_widget.dart';
 import 'your_recovery_code_widget.dart';
 
 class RecoveryCodeBody extends StatelessWidget {
@@ -15,17 +14,16 @@ class RecoveryCodeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0).copyWith(top: 0),
       children: [
         AppComponents.appBarPadding(context),
-        const RecoveryInstructionWidget(),
         AppComponents.mediumVerticalSpace(),
-        const WaringRecoveryCodeWidget(),
-        AppComponents.largeVerticalSpace(),
+        const WarningRecoveryCodeWidget(),
+        AppComponents.mediumVerticalSpace(),
         const RecoveryCodeWidget(),
-        AppComponents.largeVerticalSpace(),
+        AppComponents.mediumVerticalSpace(),
         const BackupLabelWidget(),
-        AppComponents.largeVerticalSpace(),
+        AppComponents.mediumVerticalSpace(),
         const ActionButtons(),
       ],
     );

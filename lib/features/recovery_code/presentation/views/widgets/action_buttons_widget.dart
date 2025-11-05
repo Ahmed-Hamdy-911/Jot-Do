@@ -62,14 +62,14 @@ class _ActionButtonsState extends State<ActionButtons> {
               text: S.of(context).recovery_button_save_it,
               bgColor:
                   _isSaved ? colors.blue : colors.blue.withValues(alpha: 0.5),
-              style: AppConstants.bodyMediumStyle(colors.white),
+              style: AppConstants.buttonPrimaryStyle(colors.white),
               onPressed: _isSaved ? () {} : null,
             ),
             AppComponents.smallVerticalSpace(),
             CustomButton(
               text: S.of(context).recovery_button_remind_me_later,
               bgColor: colors.backgroundScreen,
-              style: AppConstants.bodyMediumStyle(colors.textPrimary),
+              style: AppConstants.buttonPrimaryStyle(colors.textPrimary),
               onPressed: () {
                 showDialog(
                     context: context,

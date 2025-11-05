@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/services/app_session.dart';
-import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../generated/l10n.dart';
+import 'backup_option_item.dart';
 import 'copy_button.dart';
 import 'show_recovery_code_qr_widget.dart';
 
@@ -85,51 +85,15 @@ class KeyBackupOption extends StatelessWidget {
                 title: S.of(context).recovery_code_show_qr_button,
                 icon: Icons.qr_code_2_outlined,
                 onPressed: () {
-                  // Show QR code action
                   showDialog(
                       context: context,
-                      builder: (context) => ShowRecoveryWithQRWidget());
+                      builder: (context) => const ShowRecoveryWithQRWidget());
                 },
               ),
             ),
           ],
         ),
       ],
-    );
-  }
-}
-
-class BackupOptionItem extends StatelessWidget {
-  const BackupOptionItem(
-      {super.key,
-      required this.title,
-      required this.icon,
-      required this.onPressed});
-  final String title;
-  final IconData icon;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomButton(
-      bgColor: SmartAppColor(context).backgroundScreen,
-      borderColor: SmartAppColor(context).transparent,
-      onPressed: onPressed,
-      text: '',
-      widget: Row(
-        children: [
-          Icon(
-            icon,
-            color: SmartAppColor(context).textPrimary,
-          ),
-          AppComponents.mediumHorizontalSpace(),
-          Text(
-            title,
-            style: AppConstants.bodyMediumStyle(
-                SmartAppColor(context).textPrimary),
-          ),
-        ],
-      ),
     );
   }
 }

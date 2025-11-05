@@ -55,7 +55,7 @@ class _ShowRecoveryWithQRWidgetState extends State<ShowRecoveryWithQRWidget> {
               children: [
                 Text(
                   S.of(context).recovery_code_qr_alt,
-                  style: AppConstants.bodyLargeStyle(colors.reverseTextColor),
+                  style: AppConstants.bodyLargeStyle(colors.black),
                 ),
                 IconButton(
                   onPressed: () => Navigator.pop(context),
@@ -85,7 +85,9 @@ class _ShowRecoveryWithQRWidgetState extends State<ShowRecoveryWithQRWidget> {
               style: AppConstants.bodyMediumStyle(colors.grey),
             ),
             AppComponents.mediumVerticalSpace(),
-            const CopyButton(),
+            CopyButton(
+              bgColor: colors.backgroundSecondary,
+            ),
           ],
         ),
       ),

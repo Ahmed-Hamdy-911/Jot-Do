@@ -2323,6 +2323,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Important`
+  String get recovery_info_title {
+    return Intl.message(
+      'Important',
+      name: 'recovery_info_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your recovery code is the only way to restore your cloud data. If you lose it, you won’t be able to recover your data or sync with the cloud again. Please store this code in a safe and private place.`
+  String get recovery_info_description {
+    return Intl.message(
+      'Your recovery code is the only way to restore your cloud data. If you lose it, you won’t be able to recover your data or sync with the cloud again. Please store this code in a safe and private place.',
+      name: 'recovery_info_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you lost your recovery code, your cloud data cannot be restored. You can still use the app in offline mode, but syncing will be disabled until you enter the correct recovery code. To use cloud sync again, you’ll need to delete your account and create a new one. This will also erase all existing data. Please keep your recovery code in a safe place.`
+  String get recovery_lost_description {
+    return Intl.message(
+      'If you lost your recovery code, your cloud data cannot be restored. You can still use the app in offline mode, but syncing will be disabled until you enter the correct recovery code. To use cloud sync again, you’ll need to delete your account and create a new one. This will also erase all existing data. Please keep your recovery code in a safe place.',
+      name: 'recovery_lost_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter The Code`
+  String get with_code {
+    return Intl.message(
+      'Enter The Code',
+      name: 'with_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan The QR Code`
+  String get with_scan {
+    return Intl.message(
+      'Scan The QR Code',
+      name: 'with_scan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Recovery Code`
+  String get enterRecoveryCode {
+    return Intl.message(
+      'Enter Recovery Code',
+      name: 'enterRecoveryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your recovery code to restore your encrypted data.`
+  String get recoveryCodeDescription {
+    return Intl.message(
+      'Enter your recovery code to restore your encrypted data.',
+      name: 'recoveryCodeDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your recovery code is 36 characters long and contains letters and numbers. You can enter it with or without dashes.`
+  String get recoveryCodeLength {
+    return Intl.message(
+      'Your recovery code is 36 characters long and contains letters and numbers. You can enter it with or without dashes.',
+      name: 'recoveryCodeLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recovery Code`
+  String get recoveryCode {
+    return Intl.message(
+      'Recovery Code',
+      name: 'recoveryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AbCd12Ef6h341jK15fMnOp780pSt9BUvMx`
+  String get recoveryCodeExample {
+    return Intl.message(
+      'AbCd12Ef6h341jK15fMnOp780pSt9BUvMx',
+      name: 'recoveryCodeExample',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the 36-character code you saved when setting up recovery.`
+  String get enterRecoveryCodeHint {
+    return Intl.message(
+      'Enter the 36-character code you saved when setting up recovery.',
+      name: 'enterRecoveryCodeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore Data`
+  String get restoreData {
+    return Intl.message(
+      'Restore Data',
+      name: 'restoreData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't find your recovery code?`
+  String get cantFindRecoveryCode {
+    return Intl.message(
+      'Can\'t find your recovery code?',
+      name: 'cantFindRecoveryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your password manager`
+  String get recoveryTip1 {
+    return Intl.message(
+      'Check your password manager',
+      name: 'recoveryTip1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Look for a printed copy in a safe place`
+  String get recoveryTip2 {
+    return Intl.message(
+      'Look for a printed copy in a safe place',
+      name: 'recoveryTip2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your secure notes or backup files`
+  String get recoveryTip3 {
+    return Intl.message(
+      'Check your secure notes or backup files',
+      name: 'recoveryTip3',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

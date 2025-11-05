@@ -84,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Backup synced successfully",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cantFindRecoveryCode": MessageLookupByLibrary.simpleMessage(
+      "Can\'t find your recovery code?",
+    ),
     "charactersCounter": MessageLookupByLibrary.simpleMessage("/20 characters"),
     "checkAutoBackupAndSync": MessageLookupByLibrary.simpleMessage(
       "Ensure auto backup & sync is enabled before retrying.",
@@ -142,6 +145,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "enable": MessageLookupByLibrary.simpleMessage("Enable"),
     "enable_now": MessageLookupByLibrary.simpleMessage("Enable Now"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterRecoveryCode": MessageLookupByLibrary.simpleMessage(
+      "Enter Recovery Code",
+    ),
+    "enterRecoveryCodeHint": MessageLookupByLibrary.simpleMessage(
+      "Enter the 36-character code you saved when setting up recovery.",
+    ),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "Re-enter your password",
     ),
@@ -316,6 +325,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "radio_recovery_code_title": MessageLookupByLibrary.simpleMessage(
       "I have saved the code",
     ),
+    "recoveryCode": MessageLookupByLibrary.simpleMessage("Recovery Code"),
+    "recoveryCodeDescription": MessageLookupByLibrary.simpleMessage(
+      "Enter your recovery code to restore your encrypted data.",
+    ),
+    "recoveryCodeExample": MessageLookupByLibrary.simpleMessage(
+      "AbCd12Ef6h341jK15fMnOp780pSt9BUvMx",
+    ),
+    "recoveryCodeLength": MessageLookupByLibrary.simpleMessage(
+      "Your recovery code is 36 characters long and contains letters and numbers. You can enter it with or without dashes.",
+    ),
+    "recoveryTip1": MessageLookupByLibrary.simpleMessage(
+      "Check your password manager",
+    ),
+    "recoveryTip2": MessageLookupByLibrary.simpleMessage(
+      "Look for a printed copy in a safe place",
+    ),
+    "recoveryTip3": MessageLookupByLibrary.simpleMessage(
+      "Check your secure notes or backup files",
+    ),
     "recovery_button_remind_me_later": MessageLookupByLibrary.simpleMessage(
       "Remind me later",
     ),
@@ -406,6 +434,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "recovery_code_warning_title": MessageLookupByLibrary.simpleMessage(
       "Important — Save your recovery code",
     ),
+    "recovery_info_description": MessageLookupByLibrary.simpleMessage(
+      "Your recovery code is the only way to restore your cloud data. If you lose it, you won’t be able to recover your data or sync with the cloud again. Please store this code in a safe and private place.",
+    ),
+    "recovery_info_title": MessageLookupByLibrary.simpleMessage("Important"),
+    "recovery_lost_description": MessageLookupByLibrary.simpleMessage(
+      "If you lost your recovery code, your cloud data cannot be restored. You can still use the app in offline mode, but syncing will be disabled until you enter the correct recovery code. To use cloud sync again, you’ll need to delete your account and create a new one. This will also erase all existing data. Please keep your recovery code in a safe place.",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "Sign up and unlock exclusive features.",
@@ -417,6 +452,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "remember_me": MessageLookupByLibrary.simpleMessage("Remember Me"),
     "resend_code": MessageLookupByLibrary.simpleMessage("Resend email?"),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "restoreData": MessageLookupByLibrary.simpleMessage("Restore Data"),
     "restoreFromBackup": MessageLookupByLibrary.simpleMessage(
       "Restore from Backup",
     ),
@@ -526,6 +562,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "warning": MessageLookupByLibrary.simpleMessage("Warning"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
+    "with_code": MessageLookupByLibrary.simpleMessage("Enter The Code"),
+    "with_scan": MessageLookupByLibrary.simpleMessage("Scan The QR Code"),
     "worksOffline": MessageLookupByLibrary.simpleMessage("Works offline"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
     "your_notes": MessageLookupByLibrary.simpleMessage("Your Notes"),

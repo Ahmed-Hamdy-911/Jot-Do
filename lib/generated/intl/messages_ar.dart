@@ -87,6 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم النسخ والمزامنة بنجاح",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+    "cantFindRecoveryCode": MessageLookupByLibrary.simpleMessage(
+      "لا يمكنك العثور على رمز الاستعادة؟",
+    ),
     "charactersCounter": MessageLookupByLibrary.simpleMessage("/20 حرفًا"),
     "checkAutoBackupAndSync": MessageLookupByLibrary.simpleMessage(
       "تأكد من تفعيل النسخ الاحتياطي والمزامنة قبل إعادة المحاولة.",
@@ -147,6 +150,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "enable": MessageLookupByLibrary.simpleMessage("تفعيل"),
     "enable_now": MessageLookupByLibrary.simpleMessage("فعّل الآن"),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+    "enterRecoveryCode": MessageLookupByLibrary.simpleMessage(
+      "أدخل رمز الاستعادة",
+    ),
+    "enterRecoveryCodeHint": MessageLookupByLibrary.simpleMessage(
+      "أدخل الرمز المكون من 36 حرفًا الذي حفظته عند إعداد الاستعادة.",
+    ),
     "enter_confirm_password": MessageLookupByLibrary.simpleMessage(
       "أعد إدخال كلمة المرور",
     ),
@@ -325,6 +334,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "radio_recovery_code_title": MessageLookupByLibrary.simpleMessage(
       "لقد حفظت رمز الاستعادة",
     ),
+    "recoveryCode": MessageLookupByLibrary.simpleMessage("رمز الاستعادة"),
+    "recoveryCodeDescription": MessageLookupByLibrary.simpleMessage(
+      "أدخل رمز الاستعادة الخاص بك لاستعادة بياناتك المشفرة.",
+    ),
+    "recoveryCodeExample": MessageLookupByLibrary.simpleMessage(
+      "AbCd12Ef6h341jK15fMnOp780pSt9BUvMx",
+    ),
+    "recoveryCodeLength": MessageLookupByLibrary.simpleMessage(
+      "رمز الاستعادة الخاص بك يتكون من 36 حرفًا ويحتوي على أحرف وأرقام. يمكنك إدخاله بشرطات أو بدونها.",
+    ),
+    "recoveryTip1": MessageLookupByLibrary.simpleMessage(
+      "تحقق من مدير كلمات المرور الخاص بك",
+    ),
+    "recoveryTip2": MessageLookupByLibrary.simpleMessage(
+      "ابحث عن نسخة مطبوعة في مكان آمن",
+    ),
+    "recoveryTip3": MessageLookupByLibrary.simpleMessage(
+      "تحقق من ملاحظاتك الآمنة أو ملفات النسخ الاحتياطي",
+    ),
     "recovery_button_remind_me_later": MessageLookupByLibrary.simpleMessage(
       "ذكّرني لاحقًا",
     ),
@@ -412,6 +440,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "recovery_code_warning_title": MessageLookupByLibrary.simpleMessage(
       "تنبيه مهم — احفظ رمز الاستعادة",
     ),
+    "recovery_info_description": MessageLookupByLibrary.simpleMessage(
+      "رمز الاستعادة هو الطريقة الوحيدة لاسترجاع بياناتك السحابية. إذا فقدت هذا الرمز، لن تتمكن من استعادة بياناتك أو المزامنة مع السحابة مرة أخرى. يُرجى حفظ هذا الرمز في مكان آمن وسري.",
+    ),
+    "recovery_info_title": MessageLookupByLibrary.simpleMessage("تنبيه هام"),
+    "recovery_lost_description": MessageLookupByLibrary.simpleMessage(
+      "نأسف، ولكن إذا فقدت رمز الاستعادة فلن تتمكن من استرجاع بياناتك السحابية. لا يزال بإمكانك استخدام التطبيق في الوضع غير المتصل، ولكن لن تتم المزامنة حتى إدخال رمز الاستعادة الصحيح. لاستعادة المزامنة، يجب حذف حسابك وإنشاء حساب جديد، مع العلم أن ذلك سيؤدي إلى حذف جميع بياناتك الحالية. يُرجى الاحتفاظ برمز الاستعادة في مكان آمن.",
+    ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "register_excited_text": MessageLookupByLibrary.simpleMessage(
       "أنشئ حسابك وافتح الميزات الحصرية.",
@@ -425,6 +460,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "reset_password": MessageLookupByLibrary.simpleMessage(
       "إعادة تعيين كلمة المرور",
     ),
+    "restoreData": MessageLookupByLibrary.simpleMessage("استعادة البيانات"),
     "restoreFromBackup": MessageLookupByLibrary.simpleMessage(
       "استعادة من النسخ الاحتياطي",
     ),
@@ -534,6 +570,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "warning": MessageLookupByLibrary.simpleMessage("تحذير"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
+    "with_code": MessageLookupByLibrary.simpleMessage("ادخل الرمز"),
+    "with_scan": MessageLookupByLibrary.simpleMessage("امسح QR"),
     "worksOffline": MessageLookupByLibrary.simpleMessage("يعمل دون اتصال"),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
     "your_notes": MessageLookupByLibrary.simpleMessage("ملاحظاتك"),
