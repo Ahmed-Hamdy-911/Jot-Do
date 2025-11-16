@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
+import '../../../../../core/routing/app_routes.dart';
+import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../generated/l10n.dart';
 import 'alert_recovery_widget.dart';
@@ -36,6 +39,19 @@ class EnterCodeWidget extends StatelessWidget {
         const FormEnterCode(),
         AppComponents.largeVerticalSpace(),
         const SomeOtherInstructions(),
+        AppComponents.mediumVerticalSpace(),
+        CustomButton(
+          text: S.of(context).recovery_code_remind_me_later,
+          style: AppConstants.buttonPrimaryStyle(colors.white),
+          bgColor: colors.red,
+          onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.home,
+              (route) => false,
+            );
+          },
+        )
       ],
     );
   }

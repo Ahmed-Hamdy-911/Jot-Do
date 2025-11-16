@@ -13,39 +13,41 @@ class EmptyWidget extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth > 600) {
-          return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return SingleChildScrollView(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: Lottie.asset(AppAssets.emptyAnimation)),
+                  Text(
+                    text,
+                    style: AppConstants.bodyLargeStyle(
+                        SmartAppColor(context).textPrimary),
+                  )
+                ]);
+          } else {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
                     height: MediaQuery.of(context).size.height * 0.5,
-                    child: Lottie.asset(AppAssets.emptyAnimation)),
+                    child: Lottie.asset("assets/animations/empty.json")),
                 Text(
                   text,
                   style: AppConstants.bodyLargeStyle(
                       SmartAppColor(context).textPrimary),
-                )
-              ]);
-        } else {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  child: Lottie.asset("assets/animations/empty.json")),
-              Text(
-                text,
-                style: AppConstants.bodyLargeStyle(
-                    SmartAppColor(context).textPrimary),
-              ),
-            ],
-          );
-        }
-      },
+                ),
+              ],
+            );
+          }
+        },
+      ),
     );
   }
 }

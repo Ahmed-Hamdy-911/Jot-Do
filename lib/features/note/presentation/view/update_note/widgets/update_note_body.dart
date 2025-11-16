@@ -75,7 +75,8 @@ class UpdateNoteBody extends StatelessWidget {
             await _checkAndUpdateNote();
           },
           child: isLoading
-              ? AppComponents.customCircleLoading(color: colors.textInverse)
+              ? AppComponents.customCircleLoading(context,
+                  color: colors.textInverse)
               : const Icon(
                   Icons.done,
                 )),

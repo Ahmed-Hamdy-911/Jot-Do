@@ -74,6 +74,7 @@ class AuthCubit extends Cubit<AuthStates> {
           createdAt: DateTime.now().millisecondsSinceEpoch.toString());
       await _userRepository.saveUser(user);
       await _authRepository.sendEmailVerification();
+
       emit(GoVerificationState(
           email: email,
           message: "Verification email sent. Please verify your email."));
@@ -107,16 +108,13 @@ class AuthCubit extends Cubit<AuthStates> {
         await _authRepository.sendEmailVerification();
         return;
       }
-      // log("isOnline: ${_isOnline}");
-      final isLoggedIn = await _authRepository.checkUserStatus();
-      _appSession.setLoginStatus(isLoggedIn);
 
       if (rememberMe) {
-        SecureStorageHelper.write(key: 'userEmail', value: email);
-        SecureStorageHelper.write(key: 'userPassword', value: password);
+        await SecureStorageHelper.write(key: 'userEmail', value: email);
+        await SecureStorageHelper.write(key: 'userPassword', value: password);
       } else {
-        SecureStorageHelper.write(key: 'userEmail', value: null);
-        SecureStorageHelper.write(key: 'userPassword', value: null);
+        await SecureStorageHelper.delete(key: 'userEmail');
+        await SecureStorageHelper.delete(key: 'userPassword');
       }
 
       emit(AuthSuccess());
@@ -207,12 +205,9 @@ class AuthCubit extends Cubit<AuthStates> {
     }
     try {
       await _authRepository.signInWithGoogle();
-      var firebaseUser = _authRepository.user;
-      await _appSession.setUid(firebaseUser.uid);
-
       // check if user exists
+      final firebaseUser = _authRepository.user;
       var existingUser = await _userRepository.getUserById(firebaseUser.uid);
-
       if (existingUser == null) {
         // user not found -> create new one
         var newUser = UserModel(
@@ -224,8 +219,6 @@ class AuthCubit extends Cubit<AuthStates> {
         await _userRepository.saveUser(newUser);
       } else {}
 
-      final isLoggedIn = await _authRepository.checkUserStatus();
-      await _appSession.setLoginStatus(isLoggedIn);
       emit(AuthGoogleSignInSuccess());
     } catch (e) {
       debugPrint("Google sign-in failed: $e");

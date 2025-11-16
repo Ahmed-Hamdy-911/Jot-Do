@@ -71,13 +71,13 @@ class AppComponents {
     );
   }
 
-  static Widget customCircleLoading({double? strokeWidth, Color? color}) {
+  static Widget customCircleLoading(context,{double? strokeWidth, Color? color}) {
     return SizedBox(
       height: 28,
       width: 28,
       child: CircularProgressIndicator(
         strokeWidth: strokeWidth ?? 2,
-        color: color,
+        color: color?? SmartAppColor(context).reverseBackgroundColor,
       ),
     );
   }

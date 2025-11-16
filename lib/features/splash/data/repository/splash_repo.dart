@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/helper/cache_helper.dart';
-import '../../../auth/data/repository/auth_repository.dart';
+import '../../../../core/services/app_session.dart';
 import '../../../home/presentation/views/home_view.dart';
 import '../../../on_boarding/presentation/views/on_boarding_view.dart';
+import '../../../recovery_code/presentation/views/recovery_code_view.dart';
 
 class SplashRepo {
-  final AuthRepository authRepository;
-
-  SplashRepo(this.authRepository);
+  final _appSession = AppSession.instance;
 
   Widget checkNextScreen() {
-    bool continueWithoutAccount =
-        CacheHelper.getData(key: AppConstants.continueWithoutAccount) ?? false;
+    final continueWithout = _appSession.continueWithoutAccount;
+    final loggedIn = _appSession.isLoggedIn;
+    final needRecovery = _appSession.shouldShowRecoveryView;
 
-    final isLoggedIn =
-        CacheHelper.getData(key: AppConstants.isLoggedIn) ?? false;
-
-    if (isLoggedIn || continueWithoutAccount) {
-      return const HomeView();
-    }
-
-    return const OnBoardingView();
+    if (!loggedIn && !continueWithout) return const OnBoardingView();
+    if (loggedIn && needRecovery) return const RecoveryCodeView();
+    return const HomeView();
   }
 }

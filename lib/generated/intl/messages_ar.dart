@@ -37,6 +37,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "أفكارك، منظمة ومتزامنة عبر جميع الأجهزة",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("دوّن ونفّذ"),
+    "app_performing_some_operations": MessageLookupByLibrary.simpleMessage(
+      "يقوم التطبيق بإجراء بعض العمليات الهامة، يرجى الانتظار...",
+    ),
     "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
     "apple": MessageLookupByLibrary.simpleMessage("تابع باستخدام آبل"),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
@@ -229,6 +232,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "importNotes": MessageLookupByLibrary.simpleMessage("استيراد البيانات"),
     "info": MessageLookupByLibrary.simpleMessage("معلومة"),
+    "invalidRecoveryCode": MessageLookupByLibrary.simpleMessage(
+      "رمز الاستعادة غير صحيح",
+    ),
     "json": MessageLookupByLibrary.simpleMessage(" (.json)"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastBackup": MessageLookupByLibrary.simpleMessage("آخر نسخ احتياطي"),
@@ -309,6 +315,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "أو تابع باستخدام",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "permission_denied": MessageLookupByLibrary.simpleMessage(
+      "تم رفض الصلاحية",
+    ),
+    "permission_denied_text": MessageLookupByLibrary.simpleMessage(
+      "لاستخدام هذه الميزة، يرجى منح حق الوصول إلى مساحة التخزين الخاصة بك.",
+    ),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "pin": MessageLookupByLibrary.simpleMessage("تثبيت"),
     "please_login_first": MessageLookupByLibrary.simpleMessage(
@@ -335,6 +347,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "لقد حفظت رمز الاستعادة",
     ),
     "recoveryCode": MessageLookupByLibrary.simpleMessage("رمز الاستعادة"),
+    "recoveryCodeCopied": MessageLookupByLibrary.simpleMessage(
+      "تم نسخ رمز الاستعادة للحافظة",
+    ),
     "recoveryCodeDescription": MessageLookupByLibrary.simpleMessage(
       "أدخل رمز الاستعادة الخاص بك لاستعادة بياناتك المشفرة.",
     ),
@@ -343,6 +358,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "recoveryCodeLength": MessageLookupByLibrary.simpleMessage(
       "رمز الاستعادة الخاص بك يتكون من 36 حرفًا ويحتوي على أحرف وأرقام. يمكنك إدخاله بشرطات أو بدونها.",
+    ),
+    "recoveryCodeSaved": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ رمز الاستعادة في الملف",
     ),
     "recoveryTip1": MessageLookupByLibrary.simpleMessage(
       "تحقق من مدير كلمات المرور الخاص بك",
@@ -356,12 +374,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "recovery_button_remind_me_later": MessageLookupByLibrary.simpleMessage(
       "ذكّرني لاحقًا",
     ),
-    "recovery_button_save_it": MessageLookupByLibrary.simpleMessage("حفظه"),
+    "recovery_button_save_it": MessageLookupByLibrary.simpleMessage(
+      "لقد قمت بحفظه",
+    ),
     "recovery_button_skip": MessageLookupByLibrary.simpleMessage(
       "تخطي على أية حال",
-    ),
-    "recovery_code_action_cancel": MessageLookupByLibrary.simpleMessage(
-      "إلغاء",
     ),
     "recovery_code_action_save_secure": MessageLookupByLibrary.simpleMessage(
       "احفظ بأمان",
@@ -383,10 +400,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "خيارات الحفظ الموصى به",
     ),
     "recovery_code_confirm_discard_text": MessageLookupByLibrary.simpleMessage(
-      "هل متأكد أنك تريد تخطي حفظ الرمز؟ قد تفقد الوصول إلى ملاحظاتك إذا لم توجد طريقة استرجاع بديلة.",
+      "هل متأكد أنك تريد تخطي حفظ الرمز؟ قد تفقد الوصول إلى بياناتك إذا لم توجد طريقة استرجاع بديلة.",
     ),
     "recovery_code_confirm_discard_title": MessageLookupByLibrary.simpleMessage(
       "هل تريد تجاهل حفظ رمز الاستعادة؟",
+    ),
+    "recovery_code_copied": MessageLookupByLibrary.simpleMessage(
+      "تم نسخه للحافظة",
     ),
     "recovery_code_copy_button": MessageLookupByLibrary.simpleMessage(
       "نسخ الرمز",
@@ -435,7 +455,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "احتفظ بهذا الرمز في مكان آمن. لا يمكننا استعادة ملاحظاتك بدونه.",
     ),
     "recovery_code_warning_text": MessageLookupByLibrary.simpleMessage(
-      "سنقوم بعرض رمز الاستعادة مرة واحدة فقط. إذا فقدته ولم يكن لديك طريقة استرجاع أخرى (كلمة مرور أو جهاز مسجّل)، فلن تتمكن من استعادة ملاحظاتك المشفّرة.",
+      "سنقوم بعرض رمز الاستعادة مرة واحدة فقط. إذا فقدته ولم يكن لديك طريقة استرجاع أخرى، فلن تتمكن من استعادة ملاحظاتك المشفّرة.",
     ),
     "recovery_code_warning_title": MessageLookupByLibrary.simpleMessage(
       "تنبيه مهم — احفظ رمز الاستعادة",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
@@ -7,6 +8,7 @@ import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../core/widgets/custom_fields/custom_text_form.dart';
 import '../../../../../generated/l10n.dart';
+import '../../cubits/recovery_code/recovery_code_cubit.dart';
 
 class FormEnterCode extends StatefulWidget {
   const FormEnterCode({super.key});
@@ -58,14 +60,25 @@ class _FormEnterCodeState extends State<FormEnterCode> {
                 LengthLimitingTextInputFormatter(41),
               ],
               keyboardType: TextInputType.text,
-              validator: (value) => null,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return S.of(context).error_required_field;
+                }
+                return null;
+              },
             ),
             AppComponents.mediumVerticalSpace(),
             CustomButton(
               text: S.of(context).restoreData,
               bgColor: colors.reverseBackgroundColor,
               style: AppConstants.buttonPrimaryStyle(colors.reverseTextColor),
-              onPressed: () {},
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  await context
+                      .read<RecoveryCodeCubit>()
+                      .enterRecoveryCode(code: _codeController.text);
+                }
+              },
             ),
           ],
         ),

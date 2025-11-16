@@ -222,6 +222,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "importNotes": MessageLookupByLibrary.simpleMessage("Import Data"),
     "info": MessageLookupByLibrary.simpleMessage("Info"),
+    "invalidRecoveryCode": MessageLookupByLibrary.simpleMessage(
+      "Invalid recovery code",
+    ),
     "json": MessageLookupByLibrary.simpleMessage(" (.json)"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lastBackup": MessageLookupByLibrary.simpleMessage("Last backup"),
@@ -302,6 +305,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Or continue with",
     ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "permission_denied": MessageLookupByLibrary.simpleMessage(
+      "Permission denied",
+    ),
+    "permission_denied_text": MessageLookupByLibrary.simpleMessage(
+      "To use this feature, please grant access to your storage.",
+    ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "pin": MessageLookupByLibrary.simpleMessage("Pin"),
     "please_login_first": MessageLookupByLibrary.simpleMessage(
@@ -326,6 +335,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "I have saved the code",
     ),
     "recoveryCode": MessageLookupByLibrary.simpleMessage("Recovery Code"),
+    "recoveryCodeCopied": MessageLookupByLibrary.simpleMessage(
+      "Recovery code copied to clipboard",
+    ),
     "recoveryCodeDescription": MessageLookupByLibrary.simpleMessage(
       "Enter your recovery code to restore your encrypted data.",
     ),
@@ -334,6 +346,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "recoveryCodeLength": MessageLookupByLibrary.simpleMessage(
       "Your recovery code is 36 characters long and contains letters and numbers. You can enter it with or without dashes.",
+    ),
+    "recoveryCodeSaved": MessageLookupByLibrary.simpleMessage(
+      "Recovery code saved to file",
     ),
     "recoveryTip1": MessageLookupByLibrary.simpleMessage(
       "Check your password manager",
@@ -351,9 +366,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "I saved it",
     ),
     "recovery_button_skip": MessageLookupByLibrary.simpleMessage("Skip anyway"),
-    "recovery_code_action_cancel": MessageLookupByLibrary.simpleMessage(
-      "Cancel",
-    ),
     "recovery_code_action_save_secure": MessageLookupByLibrary.simpleMessage(
       "Save securely",
     ),
@@ -374,10 +386,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Recommended backup options",
     ),
     "recovery_code_confirm_discard_text": MessageLookupByLibrary.simpleMessage(
-      "Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.",
+      "Are you sure you want to skip saving the code? You may lose access to your data if no other recovery method exists.",
     ),
     "recovery_code_confirm_discard_title": MessageLookupByLibrary.simpleMessage(
       "Discard recovery code?",
+    ),
+    "recovery_code_copied": MessageLookupByLibrary.simpleMessage(
+      "copied to clipboard",
     ),
     "recovery_code_copy_button": MessageLookupByLibrary.simpleMessage(
       "Copy code",
@@ -429,7 +444,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Keep this code safe. We can\'t recover your notes without it.",
     ),
     "recovery_code_warning_text": MessageLookupByLibrary.simpleMessage(
-      "We only show this recovery code once. If you lose it and you don\'t have another recovery method (password or a registered device), you will not be able to restore your encrypted notes.",
+      "We only show this recovery code once. If you lose it and you don\'t have another recovery method, you will not be able to restore your encrypted notes.",
     ),
     "recovery_code_warning_title": MessageLookupByLibrary.simpleMessage(
       "Important — Save your recovery code",

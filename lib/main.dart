@@ -23,10 +23,22 @@ void main() async {
     Bloc.observer = MyBlocObserver();
     return true;
   }());
-  await LocalStorageService.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await LocalStorageService.init();
+  // log('[Init] shouldShowRecoveryView=${AppSession.instance.shouldShowRecoveryView}');
+  // log('[Init] isLoggedIn=${AppSession.instance.isLoggedIn}');
+  // log('[Test] ${await AppSession.instance.pendingRecoveryCode}');
+  // log('[Init] isSameUser=${AppSession.instance.isSameUser}');
+  // final keyManager = KeyManager();
+  // await keyManager.performStartupChecks();
+  // log('[Init] performStartupChecks=${await keyManager.performStartupChecks()}');
+  // final appSession = AppSession.instance;
+  // log("[Init] shouldShowRecoveryViewFromAppSession=${appSession.shouldShowRecoveryView}");
+  // AppSession.instance.clearAll();
+  // await KeyManager().performStartupChecks();
+  // KeyManager().clearAllKeysAndMetadata();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider(

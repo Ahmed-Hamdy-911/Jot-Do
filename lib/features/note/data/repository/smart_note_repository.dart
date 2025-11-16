@@ -23,7 +23,7 @@ class SmartNoteRepository implements NoteRepository {
   // ═══════════════════════════════════════════════════════════
   @override
   Future<void> addNote(NoteModel noteModel) async {
-    debugPrint("📊 isOnline: $_isOnline | isAutoSync: $_isAutoBackupAndSync");
+    // debugPrint("📊 isOnline: $_isOnline | isAutoSync: $_isAutoBackupAndSync");
     
     try {
       if (_shouldSyncRemote) {

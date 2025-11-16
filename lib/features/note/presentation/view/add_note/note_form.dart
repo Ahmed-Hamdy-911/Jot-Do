@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
@@ -106,7 +104,7 @@ class _NoteFormState extends State<NoteForm> {
                                 .selectedFilterId,
                           ),
                         );
-                    log("Note Added: Title='${_titleController.text}', Content='${_contentController.text}', CreatedAt='$dateTime', FilterId='${context.read<FilterCubit>().state.selectedFilterId}'");
+                    // log("Note Added: Title='${_titleController.text}', Content='${_contentController.text}', CreatedAt='$dateTime', FilterId='${context.read<FilterCubit>().state.selectedFilterId}'");
                   }
                 },
                 text: S.of(context).save_note,

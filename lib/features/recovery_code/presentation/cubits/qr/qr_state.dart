@@ -18,6 +18,11 @@ class QRScanError extends QRScanState {
   QRScanError(this.message);
 }
 
+class QRScanFailure extends QRScanState {
+  final String message;
+  QRScanFailure(this.message);
+}
+
 class QRControllerChanged extends QRScanState {
   final bool torchOn;
   final bool isBackCamera;

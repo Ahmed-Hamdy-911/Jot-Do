@@ -1,13 +1,12 @@
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/helper/cache_helper.dart';
+import '../../../../core/services/app_session.dart';
 
 class CacheAuthRepo {
+  static final appSession = AppSession.instance;
   static void continueWithoutAccount() {
-    CacheHelper.saveData(key: AppConstants.continueWithoutAccount, value: true);
+    appSession.setContinueWithoutAccount(true);
   }
 
   static void reLogin() {
-    CacheHelper.saveData(
-        key: AppConstants.continueWithoutAccount, value: false);
+    appSession.setContinueWithoutAccount(false);
   }
 }

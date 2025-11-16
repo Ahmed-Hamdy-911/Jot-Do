@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../generated/l10n.dart';
+import '../../cubits/recovery_code/recovery_code_cubit.dart';
 import 'alert_discard_recovery_code_widget.dart';
 
 class ActionButtons extends StatefulWidget {
@@ -63,7 +65,11 @@ class _ActionButtonsState extends State<ActionButtons> {
               bgColor:
                   _isSaved ? colors.blue : colors.blue.withValues(alpha: 0.5),
               style: AppConstants.buttonPrimaryStyle(colors.white),
-              onPressed: _isSaved ? () {} : null,
+              onPressed: _isSaved
+                  ? () {
+                      context.read<RecoveryCodeCubit>().acknowledgeSaved();
+                    }
+                  : null,
             ),
             AppComponents.smallVerticalSpace(),
             CustomButton(
@@ -72,8 +78,12 @@ class _ActionButtonsState extends State<ActionButtons> {
               style: AppConstants.buttonPrimaryStyle(colors.textPrimary),
               onPressed: () {
                 showDialog(
-                    context: context,
-                    builder: (context) => const AlertDiscardRecoveryCode());
+                  context: context,
+                  builder: (dialogContext) => BlocProvider.value(
+                    value: context.read<RecoveryCodeCubit>(),
+                    child: const AlertDiscardRecoveryCode(),
+                  ),
+                );
               },
             ),
           ],

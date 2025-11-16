@@ -26,7 +26,8 @@ class AuthRepoImpl implements AuthRepository {
         email: email,
         password: password,
       );
-      _session.setUid(_firebaseAuth.currentUser!.uid);
+      await _session.setLoginStatus(true);
+      await _session.setUid(_firebaseAuth.currentUser!.uid);
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on register from AuthRepo: ${e.code}");
       if (e.code == "network-request-failed") {
@@ -62,7 +63,8 @@ class AuthRepoImpl implements AuthRepository {
         email: email,
         password: password,
       );
-      _session.setUid(_firebaseAuth.currentUser!.uid);
+      await _session.setLoginStatus(true);
+      await _session.setUid(_firebaseAuth.currentUser!.uid);
     } on TimeoutException catch (_) {
       throw ("Time out No internet connection");
     } on FirebaseAuthException catch (e) {
@@ -82,6 +84,7 @@ class AuthRepoImpl implements AuthRepository {
     try {
       if (kIsWeb) {
         final googleProvider = GoogleAuthProvider();
+        await _session.setLoginStatus(true);
         return await _firebaseAuth.signInWithPopup(googleProvider);
       } else if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
         throw UnimplementedError(
@@ -105,7 +108,11 @@ class AuthRepoImpl implements AuthRepository {
           idToken: googleAuth.idToken,
         );
         // await  _session.setUid(_firebaseAuth.currentUser!.uid);
-        return await _firebaseAuth.signInWithCredential(credential);
+        final result = await _firebaseAuth.signInWithCredential(credential);
+        await _session.setLoginStatus(true);
+        await _session.setUid(_firebaseAuth.currentUser!.uid);
+        // log('[TEST] after google sign-in: isLoggedIn=${AppSession.instance.isLoggedIn}, uid=${AppSession.instance.uid}');
+        return result;
       }
     } on GoogleSignInException catch (e) {
       debugPrint(
@@ -135,7 +142,7 @@ class AuthRepoImpl implements AuthRepository {
         await googleUser.disconnect();
         await googleUser.signOut();
       }
-      await AppSession.instance.logout();
+      await _session.logout();
     } on FirebaseAuthException catch (e) {
       debugPrint("FirebaseAuthException on sign out from AuthRepo: ${e.code}");
       if (e.code == "network-request-failed") {
@@ -197,8 +204,10 @@ class AuthRepoImpl implements AuthRepository {
   Future<bool> checkUserStatus() async {
     final user = _firebaseAuth.currentUser;
     if (user != null && user.emailVerified) {
+      AppSession.instance.setLoginStatus(true);
       return true;
     }
+    AppSession.instance.setLoginStatus(false);
     return false;
   }
 }

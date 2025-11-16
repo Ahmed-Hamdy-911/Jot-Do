@@ -14,9 +14,9 @@ class FormatService {
   }
 
   // format datetime
-  static String formatDateTime(dynamic dateTime) {
+  static String formatDateTime(dynamic dateTime, {String? format}) {
     var locale = CacheHelper.getData(key: AppConstants.localeKey);
-    final formatter = DateFormat('d/M/yyyy h:mm a', locale);
+    final formatter = DateFormat(format ?? 'd/M/yyyy h:mm a', locale);
 
     if (dateTime is DateTime) {
       return formatter.format(dateTime);

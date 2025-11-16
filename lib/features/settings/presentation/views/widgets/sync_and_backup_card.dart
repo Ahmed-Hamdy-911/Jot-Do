@@ -28,7 +28,7 @@ class SyncAndBackupSettingCard extends StatelessWidget {
             leadingIcon: Icons.cloud_outlined,
             trailing: AppComponents.customSwitchButton(
               colors: colors,
-              value: true,
+              value: false,
               onChanged: (value) {},
             ),
           ),
@@ -39,7 +39,7 @@ class SyncAndBackupSettingCard extends StatelessWidget {
             leadingIcon: Icons.backup_outlined,
             trailing: AppComponents.customSwitchButton(
               colors: colors,
-              value: true,
+              value: false,
               onChanged: (value) {},
             ),
           ),

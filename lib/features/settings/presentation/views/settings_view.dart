@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../core/routing/app_routes.dart';
 import '../../../../core/widgets/components/components.dart';
 import '../../../../core/widgets/custom/custom_blur_widget.dart';
-import '../../../../core/widgets/custom/custom_list_title.dart';
 import '../../../../generated/l10n.dart';
 import 'widgets/account_card.dart';
 import 'widgets/delete_all_data_card.dart';
@@ -67,19 +65,6 @@ class SettingBody extends StatelessWidget {
             AppComponents.mediumVerticalSpace(),
             const NotificationSettingCard(),
             AppComponents.largeVerticalSpace(),
-            CustomListTitle(
-                title: S.of(context).recovery_code_title,
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.recoveryCode);
-                },
-                noTrailing: true),
-            AppComponents.largeVerticalSpace(),
-            CustomListTitle(
-                title: S.of(context).enterRecoveryCode,
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.enterRecoveryCode);
-                },
-                noTrailing: true),
           ],
         ),
       ),

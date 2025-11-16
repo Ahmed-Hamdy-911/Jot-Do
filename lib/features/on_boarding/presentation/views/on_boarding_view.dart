@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_constants.dart';
@@ -7,6 +6,7 @@ import '../../../../core/cubits/connectivity/connection_cubit.dart';
 import '../../../../core/cubits/connectivity/connection_state.dart';
 import '../../../../core/models/message_type.dart';
 import '../../../../core/routing/app_routes.dart';
+import '../../../../core/services/app_session.dart';
 import '../../../../core/widgets/components/app_logo.dart';
 import '../../../../core/widgets/components/components.dart';
 import '../../../../core/widgets/custom/custom_loading.dart';
@@ -29,19 +29,40 @@ class OnBoardingView extends StatelessWidget {
       body: MultiBlocListener(
         listeners: [
           BlocListener<AuthCubit, AuthStates>(
-            listener: (context, state) {
+            listener: (context, state) async {
               debugPrint("Listener triggered with state: //$state");
-              if (state is AuthSuccess ||
-                  state is AuthEmailVerified ||
-                  state is AuthGoogleSignInSuccess ||
-                  state is AuthContinueWithoutAccount) {
-                // final appSession = AppSession.instance;
-                // log('[TEST] appSession: $appSession');
+              if (state is AuthContinueWithoutAccount) {
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   AppRoutes.home,
                   (route) => false,
                 );
+              }
+              if (state is AuthSuccess ||
+                  state is AuthEmailVerified ||
+                  state is AuthGoogleSignInSuccess ||
+                  state is AuthContinueWithoutAccount) {
+                // final keyManager = KeyManager();
+                // await keyManager.performStartupChecks();
+                // log('[Init] performStartupChecks=${await keyManager.performStartupChecks()}');
+                final appSession = AppSession.instance;
+                // log("[Init] shouldShowRecoveryViewFromAppSession=${appSession.shouldShowRecoveryView}");
+                // User logged in - now check if they need recovery setup
+                if (appSession.shouldShowRecoveryView) {
+                  // ✅ Show recovery if needed
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.recoveryCode,
+                    (route) => false,
+                  );
+                } else {
+                  // Recovery already handled, go to home
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    AppRoutes.home,
+                    (route) => false,
+                  );
+                }
               } else if (state is GoVerificationState) {
                 CustomSnackBar.showSnackBar(
                   state.message!,
@@ -116,11 +137,11 @@ class OnBoardingView extends StatelessWidget {
                 child: SingleChildScrollView(child: onBoardingBody(width: 600)),
               );
             }
-            return const Center(
+            return Center(
                 child: SingleChildScrollView(
                     child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: onBoardingBody(),
+              padding: const EdgeInsets.all(12.0).copyWith(bottom: 0),
+              child: const onBoardingBody(),
             )));
           }),
         ),
@@ -140,33 +161,40 @@ class onBoardingBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = SmartAppColor(context);
     final size = MediaQuery.of(context).size;
-
     return Container(
       constraints: BoxConstraints(maxWidth: size.height),
       width: width ?? size.width,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          const SizedBox(
-            height: kToolbarHeight,
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: kToolbarHeight,
+              ),
+              const AppLogo(),
+              AppComponents.mediumVerticalSpace(),
+              Text(
+                S.of(context).appDescription,
+                style: AppConstants.bodyMediumStyle(colors.textSecondary),
+              ),
+              AppComponents.mediumVerticalSpace(),
+              const OnBoardingBodyBodyBuilder(),
+              AppComponents.mediumVerticalSpace(),
+              const AuthOptions(),
+              AppComponents.largeVerticalSpace(),
+              AppComponents.largeVerticalSpace(),
+            ],
           ),
-          const AppLogo(),
-          AppComponents.mediumVerticalSpace(),
-          Text(
-            S.of(context).appDescription,
-            style: AppConstants.bodyMediumStyle(colors.textSecondary),
+          PositionedDirectional(
+            bottom: 0,
+            child: Text(
+              S.of(context).termsAgreement,
+              style: AppConstants.captionStyle(colors.textSecondary),
+            ),
           ),
-          AppComponents.mediumVerticalSpace(),
-          const OnBoardingBodyBodyBuilder(),
-          AppComponents.mediumVerticalSpace(),
-          const AuthOptions(),
-          AppComponents.largeVerticalSpace(),
-          Text(
-            S.of(context).termsAgreement,
-            style: AppConstants.captionStyle(colors.textSecondary),
-          ),
-          AppComponents.smallVerticalSpace(),
         ],
       ),
     );

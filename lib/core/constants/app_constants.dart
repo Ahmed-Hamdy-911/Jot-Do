@@ -266,7 +266,16 @@ class AppConstants {
   // app session
   static var appSession;
   static const String uid = 'user_id';
+  static const String shouldShowRecoveryView = 'should_show_recovery_view';
+  static const String deviceStorageKey = 'device_key';
+  static const String pendingRecoveryCode = 'pending_recovery_code';
+
+  // isSameUser
+  static const String isSameUser = 'isSameUser';
 
   // filter
   static const String filtersStorage = 'filters';
+
+  // keys
+  static const String keysCollection = 'keys';
 }

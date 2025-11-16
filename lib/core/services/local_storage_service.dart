@@ -4,6 +4,7 @@ import '../../features/filters/data/models/filter_model.dart';
 import '../../features/note/data/models/note_model.dart';
 import '../../features/note/data/models/note_type_model.dart';
 import '../constants/app_constants.dart';
+import 'app_session.dart';
 
 class LocalStorageService {
   // note
@@ -15,5 +16,7 @@ class LocalStorageService {
     await Hive.openBox<NoteModel>(AppConstants.notesStorage);
     await Hive.openBox(AppConstants.settingsStorage);
     await Hive.openBox<FilterModel>(AppConstants.filtersStorage);
+
+    await AppSession.instance.reload();
   }
 }

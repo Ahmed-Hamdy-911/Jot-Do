@@ -19,8 +19,7 @@ class ShowRecoveryWithQRWidget extends StatefulWidget {
 class _ShowRecoveryWithQRWidgetState extends State<ShowRecoveryWithQRWidget> {
   @protected
   late QrImage qrImage;
-  final recoveryCode = AppSession.instance.pendingRecoveryCode ??
-      'AbCd12-EfGh34-IjKl56-MnOp78-QrSt90-UvWx';
+  final recoveryCode = AppSession.instance.pendingRecoveryCode!;
   @override
   void initState() {
     super.initState();

@@ -13,7 +13,7 @@ class QRScanCubit extends Cubit<QRScanState> {
 
   MobileScannerController _createController() {
     final c = MobileScannerController(
-      detectionSpeed: DetectionSpeed.noDuplicates,
+      detectionSpeed: DetectionSpeed.normal,
       torchEnabled: false,
       facing: CameraFacing.back,
       formats: [BarcodeFormat.qrCode],
@@ -51,7 +51,7 @@ class QRScanCubit extends Cubit<QRScanState> {
         emit(QRScanPermissionDenied());
       }
     } catch (e) {
-      emit(QRScanError(e.toString()));
+      emit(QRScanFailure(e.toString()));
     }
   }
 
@@ -76,6 +76,7 @@ class QRScanCubit extends Cubit<QRScanState> {
     } catch (e) {
       if (!isClosed) {
         emit(QRScanError(e.toString()));
+        reScan();
       }
     } finally {
       processing = false;

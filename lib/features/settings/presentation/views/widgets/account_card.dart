@@ -4,9 +4,9 @@ import 'package:iconly/iconly.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
-import '../../../../../core/helper/cache_helper.dart';
 import '../../../../../core/models/message_type.dart';
 import '../../../../../core/routing/app_routes.dart';
+import '../../../../../core/services/app_session.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/components/custom_snackbar.dart';
@@ -23,8 +23,7 @@ class AccountSettingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLoggedIn =
-        CacheHelper.getData(key: AppConstants.isLoggedIn) ?? false;
+    bool isLoggedIn = AppSession.instance.isLoggedIn;
     var colors = SmartAppColor(context);
     return BlocConsumer<AuthCubit, AuthStates>(
       listener: (context, state) {
@@ -85,7 +84,8 @@ class AccountSettingCard extends StatelessWidget {
                   },
                   borderColor: colors.border,
                   widget: state is AuthLoadingState
-                      ? AppComponents.customCircleLoading(color: colors.primary)
+                      ? AppComponents.customCircleLoading(context,
+                          color: colors.primary)
                       : Icon(
                           isLoggedIn ? IconlyLight.logout : IconlyLight.login,
                           color: colors.textPrimary,

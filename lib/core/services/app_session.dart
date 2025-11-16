@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../../features/recovery_code/data/services/key_manager.dart';
 import '../constants/app_constants.dart';
 import '../helper/cache_helper.dart';
 import '../helper/secure_storage_helper.dart';
@@ -13,7 +14,7 @@ class AppSession {
 
   AppSession._internal() {
     _initializeFromCache();
-  }
+  }   
 
   // ═══════════════════════════════════════════════════════════
   // Stream to notify changes
@@ -30,14 +31,19 @@ class AppSession {
   String? currentScreen;
   Map<String, dynamic>? tempData;
 
-  // data saved in secure storage and cache 
+  // data saved in secure storage and cache
   String? _uid;
   bool _isAutoBackupAndSync = false;
   bool _isLoggedIn = false;
+  bool continueWithoutAccount = false;
+  bool _isSameUser = false;
 
   // recovery data
   String? pendingRecoveryCode;
   bool? isSameDevice;
+
+  // should show recovery code or not
+  bool shouldShowRecoveryView = true;
 
   // ═══════════════════════════════════════════════════════════
   // Getters
@@ -45,6 +51,7 @@ class AppSession {
   String? get uid => _uid;
   bool get isAutoBackupAndSync => _isAutoBackupAndSync;
   bool get isLoggedIn => _isLoggedIn;
+  bool get isSameUser => _isSameUser;
 
   // ═══════════════════════════════════════════════════════════
   // Initialization from Cache
@@ -54,7 +61,16 @@ class AppSession {
     _isAutoBackupAndSync =
         CacheHelper.getData(key: AppConstants.isAutoBackupAndSync) ?? false;
     _isLoggedIn = CacheHelper.getData(key: AppConstants.isLoggedIn) ?? false;
+    continueWithoutAccount =
+        CacheHelper.getData(key: AppConstants.continueWithoutAccount) ?? false;
 
+    shouldShowRecoveryView =
+        CacheHelper.getData(key: AppConstants.shouldShowRecoveryView) ?? true;
+
+    pendingRecoveryCode =
+        await SecureStorageHelper.read(key: AppConstants.pendingRecoveryCode) ??
+            null;
+    _isSameUser = CacheHelper.getData(key: AppConstants.isSameUser) ?? false;
     _notifyChanges();
   }
 
@@ -85,6 +101,23 @@ class AppSession {
     _notifyChanges();
   }
 
+  Future<void> setContinueWithoutAccount(bool value) async {
+    continueWithoutAccount = value;
+    await CacheHelper.saveData(
+      key: AppConstants.continueWithoutAccount,
+      value: value,
+    );
+    _notifyChanges();
+  }
+
+  Future<void> setShouldShowRecoveryView(bool value) async {
+    shouldShowRecoveryView = value; // ✅ CORRECT VARIABLE
+    await CacheHelper.saveData(
+      key: AppConstants.shouldShowRecoveryView, // ✅ Better key name
+      value: value,
+    );
+    _notifyChanges();
+  }
   // ═══════════════════════════════════════════════════════════
   // Setters (No Cache)
   // ═══════════════════════════════════════════════════════════
@@ -96,6 +129,8 @@ class AppSession {
 
   void setPendingRecoveryCode(String? code) {
     pendingRecoveryCode = code;
+    SecureStorageHelper.write(
+        key: AppConstants.pendingRecoveryCode, value: code);
     _notifyChanges();
   }
 
@@ -119,6 +154,23 @@ class AppSession {
     return tempData?[key];
   }
 
+  Future<void> updateIsSameUser() async {
+    if (_uid == null) return;
+    _isSameUser = await KeyManager().isSameUser();
+    await CacheHelper.saveData(
+        key: AppConstants.isSameUser, value: _isSameUser);
+    _notifyChanges();
+  }
+
+  Future<void> updateShouldShowRecoveryView() async {
+    if (_uid == null) return;
+    shouldShowRecoveryView = await KeyManager().shouldShowRecoveryView();
+    await CacheHelper.saveData(
+        key: AppConstants.shouldShowRecoveryView,
+        value: shouldShowRecoveryView);
+    _notifyChanges();
+  }
+
   // ═══════════════════════════════════════════════════════════
   // Clear & Logout
   // ═══════════════════════════════════════════════════════════
@@ -131,16 +183,19 @@ class AppSession {
     isSameDevice = null;
     await SecureStorageHelper.delete(key: AppConstants.uid);
     await CacheHelper.deleteData(key: AppConstants.isLoggedIn);
+    await CacheHelper.deleteData(key: AppConstants.isSameUser);
+    await CacheHelper.deleteData(key: AppConstants.shouldShowRecoveryView);
+
     _notifyChanges();
   }
 
   /// logout and clear all data
   Future<void> logout() async {
-   // delete all data
+    // delete all data
     _uid = null;
     _isLoggedIn = false;
     await clearTempData();
-
+    await reload();
     _notifyChanges();
   }
 

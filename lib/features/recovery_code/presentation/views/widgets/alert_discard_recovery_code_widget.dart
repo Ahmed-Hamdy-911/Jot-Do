@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/constants/colors/smart_app_color.dart';
 import '../../../../../core/widgets/buttons/custom_button.dart';
 import '../../../../../core/widgets/components/components.dart';
 import '../../../../../generated/l10n.dart';
+import '../../cubits/recovery_code/recovery_code_cubit.dart';
+import '../../cubits/recovery_code/recovery_code_state.dart';
 
 class AlertDiscardRecoveryCode extends StatelessWidget {
   const AlertDiscardRecoveryCode({super.key});
@@ -54,11 +57,23 @@ class AlertDiscardRecoveryCode extends StatelessWidget {
               style: AppConstants.bodyMediumStyle(colors.textSecondary),
             ),
             AppComponents.largeVerticalSpace(),
-            CustomButton(
-              text: S.of(context).recovery_button_skip,
-              bgColor: colors.red,
-              style: AppConstants.bodyLargeStyle(colors.white),
-              onPressed: () {},
+            BlocBuilder<RecoveryCodeCubit, RecoveryCodeState>(
+              builder: (context, state) {
+                if (state is RecoveryCodeCreated) {
+                  return CustomButton(
+                    text: S.of(context).recovery_button_skip,
+                    bgColor: colors.red,
+                    style: AppConstants.bodyLargeStyle(colors.white),
+                    onPressed: () async {
+                      Navigator.pop(context);
+                      await context
+                          .read<RecoveryCodeCubit>()
+                          .skipSavingRecovery(code: state.recoveryCode);
+                    },
+                  );
+                }
+                return Container();
+              },
             ),
             AppComponents.mediumVerticalSpace(),
             CustomButton(

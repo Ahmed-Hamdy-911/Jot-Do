@@ -2044,6 +2044,16 @@ class S {
     );
   }
 
+  /// `copied to clipboard`
+  String get recovery_code_copied {
+    return Intl.message(
+      'copied to clipboard',
+      name: 'recovery_code_copied',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save as file`
   String get recovery_code_save_file_button {
     return Intl.message(
@@ -2104,10 +2114,10 @@ class S {
     );
   }
 
-  /// `We only show this recovery code once. If you lose it and you don't have another recovery method (password or a registered device), you will not be able to restore your encrypted notes.`
+  /// `We only show this recovery code once. If you lose it and you don't have another recovery method, you will not be able to restore your encrypted notes.`
   String get recovery_code_warning_text {
     return Intl.message(
-      'We only show this recovery code once. If you lose it and you don\'t have another recovery method (password or a registered device), you will not be able to restore your encrypted notes.',
+      'We only show this recovery code once. If you lose it and you don\'t have another recovery method, you will not be able to restore your encrypted notes.',
       name: 'recovery_code_warning_text',
       desc: '',
       args: [],
@@ -2154,10 +2164,10 @@ class S {
     );
   }
 
-  /// `Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.`
+  /// `Are you sure you want to skip saving the code? You may lose access to your data if no other recovery method exists.`
   String get recovery_code_confirm_discard_text {
     return Intl.message(
-      'Are you sure you want to skip saving the code? You may lose access to your notes if no other recovery method exists.',
+      'Are you sure you want to skip saving the code? You may lose access to your data if no other recovery method exists.',
       name: 'recovery_code_confirm_discard_text',
       desc: '',
       args: [],
@@ -2259,16 +2269,6 @@ class S {
     return Intl.message(
       'Save securely',
       name: 'recovery_code_action_save_secure',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cancel`
-  String get recovery_code_action_cancel {
-    return Intl.message(
-      'Cancel',
-      name: 'recovery_code_action_cancel',
       desc: '',
       args: [],
     );
@@ -2479,6 +2479,56 @@ class S {
     return Intl.message(
       'Check your secure notes or backup files',
       name: 'recoveryTip3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid recovery code`
+  String get invalidRecoveryCode {
+    return Intl.message(
+      'Invalid recovery code',
+      name: 'invalidRecoveryCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recovery code copied to clipboard`
+  String get recoveryCodeCopied {
+    return Intl.message(
+      'Recovery code copied to clipboard',
+      name: 'recoveryCodeCopied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recovery code saved to file`
+  String get recoveryCodeSaved {
+    return Intl.message(
+      'Recovery code saved to file',
+      name: 'recoveryCodeSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission denied`
+  String get permission_denied {
+    return Intl.message(
+      'Permission denied',
+      name: 'permission_denied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To use this feature, please grant access to your storage.`
+  String get permission_denied_text {
+    return Intl.message(
+      'To use this feature, please grant access to your storage.',
+      name: 'permission_denied_text',
       desc: '',
       args: [],
     );

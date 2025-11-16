@@ -14,7 +14,7 @@ class BackupOptionItem extends StatelessWidget {
       this.bgColor});
   final String title;
   final IconData icon;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Color? bgColor;
 
   @override
